@@ -1,0 +1,9 @@
+[OK]   chain => B_k in E_(B_d) for k<d, blocks disjoint (512 chains, n<=8, m<=3)
+[OK]   Sec 8.1 exponents lambda_e > 0 and match kappa update (37133 pairs, n<=8)
+[OK]   Cor 1.2: separation => |FS|=|FP|=2^m-1, FS∩FP=A (3000 random m<=7)
+[OK]   Cor 1.2 tight separated sequences m<=6
+[OK]   Lemma 2.1: tail/pivot index counts and cardinality colours
+[OK]   Sec 2.5 tolerance choices give positive total count
+[OK]   Cor 2.2: v = 2v mod q  <=>  v = 0
+
+7 checks passed

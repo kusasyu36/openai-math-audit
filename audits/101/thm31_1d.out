@@ -1,0 +1,6 @@
+GH check E x^2 = 1.0  E x^4= 3.0
+V=y+exp(-y/1.0)+.01y^2: 2*gap=0.67911313  EA=-6.51e-32  B=0.168564  EY^2=0.00455718  remainder=1.36674e-5  OK=True
+V=y+exp(-y/0.5)+.01y^2: 2*gap=0.54337791  EA=6.46e-33  B=0.320516  EY^2=0.00975534  remainder=2.24875e-5  OK=True
+V=y+exp(-y/0.25)+.01y^2: 2*gap=0.38123464  EA=6.51e-32  B=0.513752  EY^2=0.0121709  remainder=2.58261e-5  OK=True
+V=y^2/2+softplus(3y): 2*gap=0.81655419  EA=1.06e-31  B=0.0195448  EY^2=0.00338504  remainder=1.32368e-5  OK=True
+V=y^4/4+y^2/2 (not (2.1) at inf, smooth): 2*gap=0.81388885  EA=-5.61e-32  B=5.93473e-67  EY^2=0.0284015  remainder=6.35489e-5  OK=True

@@ -1,0 +1,6 @@
+cube: t, t^3=1, J=A t^2, t^T J t = J : OK
+six cubes: B_u = S_u T^2 = -J^{x6}, symmetric, invariant, and S_u T = S_u^t : OK
+eigenvalue omega^0: dim 22, inertia of J^(x6)(x, conj y) = (20, 2, 0)
+eigenvalue omega^1: dim 21, inertia of J^(x6)(x, conj y) = (6, 15, 0)
+eigenvalue omega^2: dim 21, inertia of J^(x6)(x, conj y) = (6, 15, 0)
+Phi_d(1) = p for prime powers, 1 otherwise (d<450): OK

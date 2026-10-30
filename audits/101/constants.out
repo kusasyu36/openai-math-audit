@@ -1,0 +1,37 @@
+OK   (2.26) coeff d^2 = 1/16 0.0625
+OK   (2.26) coeff d^4 = 1/480 0.0020833333333333333
+OK   (2.26) coeff d^6 = 1/26880 3.7202380952380956e-05
+OK   (2.26) coeff d^8 >0 4.133597883597884e-07
+OK   x coth x + x^2/sinh^2 x >= 2 (sampled) x in (0,20)
+OK   (2.26) addition identity max err (float m inputs) 4.951549821310221e-15
+OK   (2.25) exponential-average formula checked
+OK   omega(lam)/sqrt(lam) at lam=1e12 -> 24/125=.192 0.19200000000498346
+OK   omega = H rho u checked
+OK   (3.29) factorisation (1/50)(1-2u)(1+68u) (Fraction(1, 50), Fraction(33, 25), Fraction(-68, 25)) vs (Fraction(1, 50), Fraction(33, 25), Fraction(-68, 25))
+OK   69/500 + 1/500 = 7/50 0.14
+OK   .027+.111 = 69/500 0.138
+OK   (4.7) s(.28^2+.075*.67^2/(4*.36)) < .111 0.11003265765765766
+OK   (4.7) max (b-beta)^2 over b in (0,1/2) = .28^2 0.0784
+OK   1-eps-kappa = .36 0.36
+OK   (4.9) .13+2(.13)^{3/2}<.25 0.2237443331620637
+OK   (4.9) linear-in-x remainder at x=0: .91-7u >= 0 for u<=.13 0.0
+OK   (4.10) 1-1.28^2/(16*.33) > .689 0.6896969696969697
+OK   (4.11) case lam>=1 <.02582 0.025817212121212123
+OK   (4.11) case lam<=1 <.027 2.1592137592137593e-05
+OK   rho <= .64 0.64
+OK   H<=lam (lam>=1), H<=alpha s (lam<=1) sampled lam in (0,10)
+OK   (4.12) tangent slope < .52 0.5074268717863081
+OK   (4.12) tangent intercept < .16 0.15659020820617725
+OK   F0(S)<=.16+.52S on (0,s] sampled
+OK   (4.12) .075(.16+.52S) < .089(.15+.45325S) coeffs (Fraction(3, 250), Fraction(267, 20000), Fraction(39, 1000), Fraction(161357, 4000000))
+OK   kappa/s = .45325 0.45325
+OK   (4.12) max of alphaF0/rho / min(.089,.88/sqrt lam) over lam in [0,100] 0.9093011082044247
+OK   (4.13) J(x)>=0 sampled x in (0,5) 
+OK   (4.12) .075*.478/.15 < .88 0.239
+Traceback (most recent call last):
+  File "./audits/101/constants.py", line 100, in <module>
+    show('(4.12) .089<.688*.13 and .88<.688*1.28', (Fr(688,1000)*Fr(13,100),Fr(688,1000)*Fr(128,100)), Fr(89,1000)<Fr(688,1000)*Fr(13,100) and Fr(88,100)<Fr(688,1000)*Fr(128,100))
+  File "./audits/101/constants.py", line 9, in show
+    print(('OK  ' if cond else 'FAIL'), name, float(val) if not isinstance(val, str) else val)
+                                              ^^^^^^^^^^
+TypeError: float() argument must be a string or a real number, not 'tuple'

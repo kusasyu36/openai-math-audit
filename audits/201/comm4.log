@@ -1,0 +1,7 @@
+[comm seed=5] initial: nonzero entries of q(w(Z)) in degree 0: 0
+[comm seed=5] initial: nonzero entries of q(w(Z)) in degree 1: 0
+[comm seed=5] initial: nonzero entries of q(w(Z)) in degree 2: 0
+[comm seed=5] l=3: unknowns=2112, base error nonzeros=44, rank A=172, rank [A|b]=172, consistent=True
+   after correction: nonzeros of q(w(Z)) in degrees <= 3: [0, 0, 0, 0]
+[comm seed=5] l=4: unknowns=4224, base error nonzeros=440, rank A=346, rank [A|b]=346, consistent=True
+   after correction: nonzeros of q(w(Z)) in degrees <= 4: [0, 0, 0, 0, 0]

@@ -1,0 +1,9 @@
+product A residual valuations: {}
+product R residual valuations: {}
+E = sum e_b > 0: True  digits(E) = 140
+support size 849  max digits 140
+chains OK; max chain length 16 min exponent 2
+s0 digits 144  N mod 8 = 0  N digits 144
+Hessian rank f1 = 16E (digits 141), f2 = 0
+mu(p1)=mu(p2): follows from residuals above (ratio = prod R_b^{2e_b} = 1)
+ALL CHECKS PASSED

@@ -1,0 +1,76 @@
+== 1. numerical invariants (Sec.2, Prop 2.4, Sec.5) ==
+[OK]   C = 2Gamma+4F has bidegree (8,4)
+[OK]   genus (a-1)(b-1) = 21
+[OK]   K_Sigma + C = (6,2) = Gamma+4F
+[OK]   deg K_C = 40 = 2g-2
+[OK]   deg H = F.C = 4
+[OK]   Gamma.Gamma = 8 (Gamma|Gamma = 4F+Delta has deg 8)
+[OK]   C.Gamma = 24 = 4*deg Z (contact 4 at 6 pts)
+[OK]   deg L = 10 and 4 deg L = deg K_C
+[OK]   table h0(N_j) = 16,14,12,10
+[OK]   table residual h0 = 10,2,0,0
+[OK]   table ranks = 6,12,12,10 (<= length 6*l)
+[OK]   h0(Sigma,(6-j,2)) = 3(7-j); j=0 gives g=21
+[OK]   h0(O(Z))=1, h0(H+2Z)=2, h0(theta)=3, h0(theta+H)=6
+[OK]   h1(L) = h0(L) - (10+1-21) = 12 = h0(3L)
+[OK]   evaluation surjectivity k>=4: deg((3-k)L+Z) <= -4
+[OK]   deg f_*Lambda = 0
+[OK]   unique self-dual splitting with h0(E(-1))=3,h0(E(-2))=2 is (3,0,0,-3)
+[OK]   h0(E) = 6 = h0(Lambda)
+[OK]   relative dualizing: 2 Lambda = K_C + 2H (degrees 48)
+[OK]   principal-part annihilator dim 12 - h0(N_Gamma)=12-10 = 2
+[OK]   H^1(L^{k+1})=0 for k>=4 (deg L^{3-k}<0)
+[OK]   tail vanishing n>=9: H^1(L^n), H^1(L^{n-4}) dual to L^{4-n}, L^{8-n}
+[OK]   K_Y.C = 2g-2-C^2 = 50
+[OK]   discrepancy -5 consistent: (-5C).C = 50
+[OK]   p_g >= h1(L)+g = 33 and p_g-g-b >= 12
+[OK]   Bergner-Graf bound p_g-g-b<=2 is violated (needed for consistency)
+== 2. Lemma curve:six-vectors (numeric, 50 digits) ==
+[OK]   lam=0.001: w = (h,h)
+[OK]   lam=0.001: w^2 = 90
+[OK]   lam=0.001: w_j^2 + w_j.w = 1 for all j
+[OK]   lam=0.001: sum(w_j^2-1) = -90 = -9 deg L
+[OK]   lam=0.001: three distinct nonisotropic directions
+[OK]   lam=(0.0003 + 0.0001j): w = (h,h)
+[OK]   lam=(0.0003 + 0.0001j): w^2 = 90
+[OK]   lam=(0.0003 + 0.0001j): w_j^2 + w_j.w = 1 for all j
+[OK]   lam=(0.0003 + 0.0001j): sum(w_j^2-1) = -90 = -9 deg L
+[OK]   lam=(0.0003 + 0.0001j): three distinct nonisotropic directions
+[OK]   cubic discriminant: lowest lambda-term is -4 b^3 lambda
+[OK]   symbolic: d(z)^2 + d(z).(h,h) = R^2 - h^2/4
+[OK]   derivative of direction ratio at 0 is -h/(2R)
+== 3. Lemma jets:bracket, split coefficients ==
+[OK]   bracket formula (jets:general-bracket) for k=1..4, l=0..3
+[OK]   divergence L_D sigma = t^k((k-4)b+h') sigma, sigma=t^-5 dt^dz
+[OK]   split coefficients A~=g^{-(k+1)}(A+aB), B~=g^{3-k}B (k=0..5)
+== 4. order-two obstruction (Lemma jets:second-obstruction) ==
+[OK]   order-one transition turns inside (p, m r) into (P,0)=(p+m r', 0)
+[OK]   Delta A_2 matches (jets:second-expansion)
+[OK]   Delta U matches (jets:second-expansion)
+[OK]   cubic exp term starts at index >= 3
+[OK]   order-2 generator: dA_2 = h r' - h' r/2, dU = -2 h r
+[OK]   delta Psi_ij = -1/2 d(h r_i r_j) (exact)
+[OK]   F_ij = -1/3 R_i p_j - 2/3 R_i R_j' - R_i' R_j
+[OK]   H_ij = -R_i p_j - 1/3 R_i R_j' - 2/3 R_i' R_j
+[OK]   T_ij = -7/12 R_i p_j - 9/12 R_j p_i - 5/4 R_i R_j' - 17/12 R_i' R_j
+[OK]   T^sym = -2/3 (R_i p_j + R_j p_i + 2 R_i R_j' + 2 R_i' R_j)
+[OK]   T^alt(i=1,j=2) = 1/12 ((R^p)(0) + (R^R')(0))
+[OK]   P = R(0)/z + p(0) + 2R'(0) + O(z)
+[OK]   Res(P_i P_j dz) = R_i p_j + R_j p_i + 2R_i R_j' + 2R_i' R_j
+[OK]   sum T^alt = (1/12)(-9 deg L) = -3/4 deg L
+[OK]   outside total: -(4 * 3/4) - 6 * 3/4 = -3/4 deg L  (u1 fibre deg 4, |Z| = 6)
+[OK]   Psi~ - Psi = 3/4 (r_i U_j - r_j U_i) dlog g
+[OK]   Res[(r'/z + 2r/z^2)dz] = 3 r'(0)
+[OK]   leading action dA_k=(1-k)b r + h r', dB_k=-k h r (k=1..7)
+[OK]   old order-1 transition on t^k a E_t: dA_k=(k-1)/3 m' a + m a', dB_k=-m a
+== 5. Sec.3 trace / principal parts ==
+[OK]   local trace matrix is antidiagonal identity (e=1..6)
+[OK]   (trace:two-coefficients) equal principal parts
+[OK]   s(0) = -b'(0)^4 / k_y(0,0)^2
+[OK]   (b1^2/K0)^2 * E/s(0) = -E  (isometry sign)
+[OK]   contact: k(-b^4/K, z) = O(z^8)
+[OK]   frame change: tau_new = g^3 psi/z tau -> l_new = g0^-7 l (psi'(0)=g0^4)
+== 6. Lemma algebra:finite-determinacy constants ==
+[OK]   n >= n0 implies q>=max(N,2), 2q>=n+1, n+q-1>=n+1
+
+68 checks passed

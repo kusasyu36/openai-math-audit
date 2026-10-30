@@ -1,0 +1,2 @@
+pairs 55939 worst relative max-eigenvalue with Z scaled by 1/delta: (-7.943003673371429e-05, (-12.0, 20.0, 75.91715537109727))
+max (Z-cost after Schur)/(r delta^2) = (0.13687870466076485, (-1.001, 3.1))  (must be <=1)

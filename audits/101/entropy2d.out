@@ -1,0 +1,30 @@
+exp product (equality)                                       gap = 0.0
+e^{-x} on cone |y|<=x (cone over interval = simplex; equality) gap = -1.694065895e-21
+e^{-x-y} on cone 0<=y<=2x (equality expected)                gap = -1.270549421e-21
+e^(-x-y) on x,y>=0, x+y<=0.5                                 gap = 0.3389924299
+e^(-x-y) on x,y>=0, x+y<=1                                   gap = 0.3323392582
+e^(-x-y) on x,y>=0, x+y<=2                                   gap = 0.3040375832
+e^(-x-y) on x,y>=0, x+y<=4                                   gap = 0.2013017083
+e^(-x-y) on x,y>=0, x+y<=8                                   gap = 0.03488881125
+uniform triangle                                             gap = 0.3410656136
+uniform square                                               gap = 0.4849066498
+uniform disk                                                 gap = 0.531024247
+e^{-max(x,y)} on orthant                                     gap = 0.0
+e^{-x} 1{|y|<=sqrt x}                                        gap = 0.2162059792
+x e^{-x} on |y|<=x                                           gap = 0.2210567011
+e^{-x-y^2} on x>=0                                           gap = 0.4189385332
+e^{-x-xy?}: e^{-(x+|y|)} on x>=0,|y|<=x                      gap = 0.2349968219
+e^{-sqrt(x^2+y^2)} on quarter plane 0<=y<=x                  gap = 0.04045206083
+e^{-x} on cone 0<=y<=x minus x>=1 cap? (e^{-x} on {0<=y<=x<=3}) gap = 0.2577943592
+1D Gamma(1.0) gap = 0.0
+1D Gamma(1.5) gap = 0.1582402213
+1D Gamma(2.0) gap = 0.2306420746
+1D Gamma(5.0) gap = 0.3488642004
+uniform simplex n=1: gap = 0.24245332
+uniform simplex n=2: gap = 0.34106561
+uniform simplex n=3: gap = 0.39498612
+uniform simplex n=4: gap = 0.42905989
+uniform simplex n=5: gap = 0.45256204
+uniform simplex n=6: gap = 0.46975893
+uniform simplex n=7: gap = 0.48289083
+uniform simplex n=8: gap = 0.49324807

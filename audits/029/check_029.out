@@ -1,0 +1,56 @@
+OK   M0=1033/1000
+OK   reflection exponent 933/2000
+OK   C*(1)=a/2+h0/6=7/15
+OK   C*(s)=s-8/15
+OK   margin 7/15-933/2000 = 1/6000
+OK   condition b < 4(1-a)/3
+OK   1/6000 - 1e-5 > 1/20000
+OK   1/20000 > 1e-6 (Thm 1.2 width weaker than proved)
+OK   E* formula equals a/2+sx-1+h0 sz+b(sw-1)
+   Rw rel = -0.00664989  Rz rel = -0.0006665666666666667
+OK   Rw rel = -0.00664989
+OK   Rz rel ~ -0.000666566666
+OK   Rw,Rz < -0.0005
+   base rel = -0.10926756666666666
+OK   base rel = 1e-7 + 7/300 - .132601
+   rows: small -0.010267566666666667  exceptional -0.049261566666666666  good -0.0012566666666666666
+OK   small rows -0.010267566..
+OK   exceptional rows -0.049261566..
+OK   good rows -377/300000
+OK   E*(4,4,R0)=3.849+.1R0
+OK   large rows exponent .44901 < C*(1)-.01
+OK   |D1W| exponent region1 = -1.001
+OK   1-xi-w-6z max = -1.908
+OK   4-6xi-6z max = -2.948
+OK   enlarged margins .00098,.90792,1.94788
+OK   (7.21) l=1,e0=0 region1 = -0.497
+OK   t=1,k=1 exponent 1-xi-w = -.001/-.948
+OK   (8.7) 10(1/2-.996)+1/2+1 = -3.46
+OK   (8.9) 11*(2-2*.996) = .088
+OK   three-circles theta<1 (0.7504); disk edges .9965,.998,1.001
+OK   tk'+t'k+(t-k)t'+(t'-k')t = 2tt'
+OK   2(e0+3l)(e0'+3l')+4e0e0' = 0 mod 6
+OK   row exponent 8-j at j=1 is 1; 1-4 = 3 mod 6 (quadratic)
+OK   b=1/200: b(4H+2)<=0.2+2b and e^-H<=e^2 e^{-1/(20b)}
+OK   b=1/300: b(4H+2)<=0.2+2b and e^-H<=e^2 e^{-1/(20b)}
+OK   b=1/1000: b(4H+2)<=0.2+2b and e^-H<=e^2 e^{-1/(20b)}
+OK   b=3/1000: b(4H+2)<=0.2+2b and e^-H<=e^2 e^{-1/(20b)}
+OK   0.9-0.2-1/4 > 1/4
+OK   table d0=-1 u mod 8=3 (mod 24 class 11)
+OK   table d0=2 u mod 8=3 (mod 24 class 11)
+OK   table d0=-2 u mod 8=7 (mod 24 class 23)
+OK   table d0=3 u mod 8=5 (mod 24 class 5)
+OK   table d0=-3 u mod 8=5 (mod 24 class 5)
+OK   table d0=6 u mod 8=3 (mod 24 class 11)
+OK   table d0=-6 u mod 8=7 (mod 24 class 23)
+OK   Lemma 2.4 brute force for all admissible |a|<=60
+OK   F_13: G2G4=Q, G2^2=J G4, (G2/sqrtQ)^3=J/sqrtQ, J≡-1 mod 3 & N=Q, J=-pi+ w/ rho≡x^((p-1)/3) mod pi, G1G4=conj(chi4)G2G3, g1g2=conj(chi4)g3 g2^3, g3=±1, digit id (6.4), Lemma6.2 unit power
+OK   F_37: G2G4=Q, G2^2=J G4, (G2/sqrtQ)^3=J/sqrtQ, J≡-1 mod 3 & N=Q, J=-pi+ w/ rho≡x^((p-1)/3) mod pi, G1G4=conj(chi4)G2G3, g1g2=conj(chi4)g3 g2^3, g3=±1, digit id (6.4), Lemma6.2 unit power
+OK   F_61: G2G4=Q, G2^2=J G4, (G2/sqrtQ)^3=J/sqrtQ, J≡-1 mod 3 & N=Q, J=-pi+ w/ rho≡x^((p-1)/3) mod pi, G1G4=conj(chi4)G2G3, g1g2=conj(chi4)g3 g2^3, g3=±1, digit id (6.4), Lemma6.2 unit power
+OK   F_73: G2G4=Q, G2^2=J G4, (G2/sqrtQ)^3=J/sqrtQ, J≡-1 mod 3 & N=Q, J=-pi+ w/ rho≡x^((p-1)/3) mod pi, G1G4=conj(chi4)G2G3, g1g2=conj(chi4)g3 g2^3, g3=±1, digit id (6.4), Lemma6.2 unit power
+OK   F_97: G2G4=Q, G2^2=J G4, (G2/sqrtQ)^3=J/sqrtQ, J≡-1 mod 3 & N=Q, J=-pi+ w/ rho≡x^((p-1)/3) mod pi, G1G4=conj(chi4)G2G3, g1g2=conj(chi4)g3 g2^3, g3=±1, digit id (6.4), Lemma6.2 unit power
+OK   F_109: G2G4=Q, G2^2=J G4, (G2/sqrtQ)^3=J/sqrtQ, J≡-1 mod 3 & N=Q, J=-pi+ w/ rho≡x^((p-1)/3) mod pi, G1G4=conj(chi4)G2G3, g1g2=conj(chi4)g3 g2^3, g3=±1, digit id (6.4), Lemma6.2 unit power
+   Buchstab: lhs=2.74306 rhs=2.74306
+OK   (11.6) Buchstab identity numerically (b=0.15)
+OK   omega(u)->e^-gamma (u=7.9)
+TOTAL OK=51 FAIL=0

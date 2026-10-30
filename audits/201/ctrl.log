@@ -1,0 +1,4 @@
+[comm seed=2] initial: nonzero entries of q(w(Z)) in degree 0: 0
+[comm seed=2] initial: nonzero entries of q(w(Z)) in degree 1: 0
+[comm seed=2] initial: nonzero entries of q(w(Z)) in degree 2: 0
+[comm seed=2 CONTROL-no-reverse] l=3: unknowns=704, base error nonzeros=44, rank A=88, rank [A|b]=89, consistent=False

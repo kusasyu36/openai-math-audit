@@ -1,0 +1,5 @@
+[gen seed=3] initial: nonzero entries of q(w(Z)) in degree 0: 0
+[gen seed=3] initial: nonzero entries of q(w(Z)) in degree 1: 0
+[gen seed=3] initial: nonzero entries of q(w(Z)) in degree 2: 0
+[gen seed=3] l=3: unknowns=2112, base error nonzeros=44, rank A=176, rank [A|b]=176, consistent=True
+   after correction: nonzeros of q(w(Z)) in degrees <= 3: [0, 0, 0, 0]

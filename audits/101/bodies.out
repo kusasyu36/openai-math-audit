@@ -1,0 +1,38 @@
+n, L_simplex(formula), L_simplex(vertex calc), 1/e - L
+1 0.288675134594813 0.288675134594813 0.0792043
+2 0.3102016197007 0.3102016197007 0.0576778
+3 0.322496807972723 0.322496807972723 0.0453826
+4 0.330461547700126 0.330461547700126 0.0374179
+5 0.336044257982225 0.336044257982225 0.0318352
+6 0.340175657258892 0.340175657258892 0.0277038
+7 0.343357052534279 0.343357052534279 0.0245224
+8 0.34588255138784 0.34588255138784 0.0219969
+large n check: L_simplex(n) < 1/e: True
+
+--- closed-form bodies, ratio L_K / L_simplex (must be <1) ---
+2 cube:0.9306 ball:0.90939 cross:0.9306 | max cube 0.93060486
+3 cube:0.89513 ball:0.86025 cross:0.8909 | max simplex1xsimplex2 0.9390897
+4 cube:0.87355 ball:0.82887 cross:0.86468 | max simplex1xsimplex3 0.94923879
+5 cube:0.85904 ball:0.80685 cross:0.84586 | max simplex1xsimplex4 0.95715471
+6 cube:0.84861 ball:0.79044 cross:0.83159 | max simplex1xsimplex5 0.96315325
+7 cube:0.84074 ball:0.77767 cross:0.82034 | max simplex1xsimplex6 0.9677706
+8 cube:0.8346 ball:0.7674 cross:0.81119 | max simplex1xsimplex7 0.9714048
+9 cube:0.82968 ball:0.75895 cross:0.8036 | max simplex1xsimplex8 0.974327
+10 cube:0.82564 ball:0.75185 cross:0.79718 | max simplex1xsimplex9 0.97672168
+11 cube:0.82226 ball:0.7458 cross:0.79166 | max simplex1xsimplex10 0.97871662
+12 cube:0.8194 ball:0.74056 cross:0.78686 | max simplex1xsimplex11 0.98040237
+max ratio over closed-form/product bodies: 0.9804023685
+
+--- profile bodies K={(x,t): x in rho(t)K0, 0<=t<=1}, K0 in R^{n-1} ---
+n=2 cone over simplex ratio (should be 1): 1.0
+n=3 cone over simplex ratio (should be 1): 1.0
+n=4 cone over simplex ratio (should be 1): 1.0
+n=5 cone over simplex ratio (should be 1): 1.0
+n=6 cone over simplex ratio (should be 1): 1.0
+n=7 cone over simplex ratio (should be 1): 1.0
+max ratio over profile bodies: 1.00004254532 (2, 'ball', 'pl')
+
+--- random polytopes (brute-force hull), ratio L_K/L_simplex ---
+n=2: max L_K/L_simplex over random polytopes = 1.0
+n=3: max L_K/L_simplex over random polytopes = 0.9996733117
+n=4: max L_K/L_simplex over random polytopes = 0.9993664348

@@ -1,0 +1,93 @@
+OK  4.2 .67sqrt(p)-|h0|              min=   0.0158923 at a=-15.0
+OK  4.2 p-.25 (a>=0)                 min=   0.0514763 at a=0.0
+OK  4.2 p-.46 (a>=4)                 min=   0.0177738 at a=4.0
+OK  4.2 p-1/(7+a^2) (a<=0)           min= 0.000109992 at a=-15.0
+OK  4.2 p>0                          min=  0.00442034 at a=-15.0
+OK  4.6 -z (a>=-1)                   min=   0.0424321 at a=-1.0
+OK  4.6 .070-chi (a<=-1)             min=  0.00281959 at a=-1.0
+OK  4.6 .097-chi (a>=-1)             min=  0.00459878 at a=0.65
+OK  4.6 .70-z (a<=-1)                min=   0.0554501 at a=-3.37
+OK  4.6 1.77-h* (a<=-1)              min=    0.115771 at a=-1.0
+OK  4.6 1.77-h* (a>=-1)              min=    0.112686 at a=-0.725
+OK  4.6 h*-.8 (a<=-1)                min=    0.226207 at a=-15.0
+OK  4.6 h*-.8 (a>=-1)                min=    0.398136 at a=30.0
+OK  4.6 z+.08 (a<=-1)                min=   0.0375679 at a=-1.0
+OK  4.6 z+.475 (a>=-1)               min=   0.0331788 at a=1.646
+OK  L2.1 1-qd>0 (q'<1)               min=  0.00110377 at a=30.0
+OK  L2.1 d>0                         min=   0.0332597 at a=30.0
+OK  L2.1 d^2-(1-qd)>=0               min=  2.43397e-6 at a=30.0
+OK  L2.1 qd>0                        min= 8.29606e-49 at a=-15.0
+OK  L2.2 1/2-b>0                     min=  0.00312799 at a=30.0
+OK  L2.2 b>0                         min=  0.00438646 at a=-15.0
+OK  L2.2 l>0                         min= 0.000171252 at a=30.0
+OK  O (4.4) R11                      min=    0.108864 at a=-15.0
+OK  O (4.4) det                      min=   0.0665672 at a=-15.0
+OK  O .295(7+a^2)-D                  min=    0.720552 at a=-3.0
+OK  O Jmax-J0                        min=    0.207099 at a=-3.0
+OK  O K0-Kmin                        min=   0.0506101 at a=-3.0
+OK  O Kmax-K0                        min=   0.0485604 at a=-15.0
+OK  O Lmax-L                         min=   0.0205224 at a=-3.0
+OK  O b-bmin                         min=  0.00438646 at a=-15.0
+OK  O bmax-b                         min=  0.00450468 at a=-3.0
+OK  O slope-m0                       min=  0.00888855 at a=-15.0
+OK  P1 (4.4) R11                     min=    0.116192 at a=-2.0
+OK  P1 (4.4) det                     min=   0.0932024 at a=-3.0
+OK  P1 Dmax-D                        min=    0.300552 at a=-3.0
+OK  P1 Jmax-J0                       min=    0.100794 at a=-2.0
+OK  P1 K0-Kmin                       min=   0.0478371 at a=-2.0
+OK  P1 Kmax-K0                       min=   0.0393899 at a=-3.0
+OK  P1 Lmax-L                        min=   0.0303366 at a=-2.0
+OK  P1 b-bmin                        min=  0.00249532 at a=-3.0
+OK  P1 bmax-b                        min=  0.00609163 at a=-2.0
+OK  P1 slope-m0                      min=   0.0261203 at a=-3.0
+OK  R1 (4.4) R11                     min=   0.0914848 at a=-1.0
+OK  R1 (4.4) det                     min=   0.0817974 at a=-1.0
+OK  R1 Dmax-D                        min=    0.131482 at a=-2.0
+OK  R1 Jmax-J0                       min=   0.0530988 at a=-1.765
+OK  R1 K0-Kmin                       min=   0.0257995 at a=-1.431
+OK  R1 Kmax-K0                       min=   0.0331629 at a=-2.0
+OK  R1 Lmax-L                        min=   0.0339389 at a=-1.11
+OK  R1 b-bmin                        min=  0.00390837 at a=-2.0
+OK  R1 bmax-b                        min=  0.00342762 at a=-1.0
+OK  R1 slope-m0                      min=   0.0292102 at a=-2.0
+OK  T1 (4.4) R11                     min=   0.0118546 at a=30.0
+OK  T1 (4.4) det                     min=  0.00837462 at a=30.0
+OK  T1 Dmax-D                        min=   0.0243998 at a=4.0
+OK  T1 Jmax-J0                       min=   0.0411115 at a=30.0
+OK  T1 K0-Kmin                       min=   0.0481807 at a=30.0
+OK  T1 Kmax-K0                       min=   0.0240143 at a=4.0
+OK  T1 Lmax-L                        min=    0.018495 at a=4.0
+OK  T1 b-bmin                        min=  0.00186933 at a=4.0
+OK  T1 bmax-b                        min=  0.00312799 at a=30.0
+OK  T1 slope-m0                      min=     1.08657 at a=4.0
+OK  U1 (4.4) R11                     min=   0.0388523 at a=0.5
+OK  U1 (4.4) det                     min=   0.0356131 at a=0.5
+OK  U1 Dmax-D                        min=   0.0747228 at a=-1.0
+OK  U1 Jmax-J0                       min=   0.0508384 at a=-1.0
+OK  U1 K0-Kmin                       min=   0.0350941 at a=-1.0
+OK  U1 Kmax-K0                       min=   0.0267558 at a=0.5
+OK  U1 Lmax-L                        min=   0.0366468 at a=-1.0
+OK  U1 b-bmin                        min=  0.00657238 at a=-1.0
+OK  U1 bmax-b                        min=  0.00264813 at a=0.5
+OK  U1 slope-m0                      min=   0.0475231 at a=-1.0
+OK  V1 (4.4) R11                     min=   0.0188218 at a=4.0
+OK  V1 (4.4) det                     min=   0.0173158 at a=4.0
+OK  V1 Dmax-D                        min=   0.0383871 at a=0.5
+OK  V1 Jmax-J0                       min=   0.0766859 at a=0.5
+OK  V1 K0-Kmin                       min=   0.0612442 at a=0.5
+OK  V1 Kmax-K0                       min=   0.0213693 at a=1.974
+OK  V1 Lmax-L                        min=   0.0416608 at a=0.5
+OK  V1 b-bmin                        min=  0.00235187 at a=0.5
+OK  V1 bmax-b                        min=  0.00313067 at a=4.0
+OK  V1 slope-m0                      min=    0.555793 at a=0.5
+q(-1)= 0.287599970939  >.287
+q(-2)= 0.055247862679  <.056
+q(-3)= 0.00443783904213  <.005
+q(4)= 4.22560714449  >4
+log q(-1)/q(-2) = 1.64974087 > 1.62
+log q(-1)/q(-3) = 4.171402969 > 4
+log q(4)/q(-2) = 4.337088577 > 4
+log q(4)/q(-3) = 6.858750677 > 6.5
+q(0)= 0.79788456080286535587989211986876373695171726232987  sqrt(2/pi)= 0.79788456080286535587989211986876373695171726232987
+q(10)= 10.0980932339625  paper 10.098093234
+k(-6)= 0.162377660816768  paper .16237766

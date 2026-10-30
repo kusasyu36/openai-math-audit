@@ -1,0 +1,4 @@
+(3.22) identity max abs error: 2.5244e-28
+Lemma 3.4: max over trials of [max_b LHS]/RHS (<=1 required): 0.8883087947
+(3.23): max LHS/RHS (<=1 required): 0.7706504773
+(3.25): max lin^2/(4 c quad) (<=1 required): 0.5201317897
