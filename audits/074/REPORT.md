@@ -1,5 +1,7 @@
 # 監査レポート 074: Kakeya in three and four dimensions（OpenAI, 2026-09）
 
+> **2026-10-30**: 指摘 #1（引用番号）は Codex の独立レビューでも正しいと確認された（3D 論文は定理・補題・定義が節ごとの共通カウンター、preamble.tex:22）。主担当も tex で確認。4D 論文の誤った引用は 3 か所: 01-introduction.tex:135、02-framework.tex:930、05-scalar-tools.tex:79（本文の l.188、l.931 は paper.txt の行）。
+
 - 監査日: 2026-10-30（監査役: Claude サブエージェント。報告書は主担当が代筆保存。指摘 #1 は主担当が原文で確認済み）
 - 対象:
   - 3D 論文「The Kakeya maximal conjecture in three dimensions」（97 ページ、主対象）

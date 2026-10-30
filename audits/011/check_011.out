@@ -1,0 +1,40 @@
+OK   log d0 = O(L^0.21)
+OK   H^{1/N}=O(1): log H / N -> 0 (0.21 < 0.5)
+OK   path budget exponent 0.71
+OK   label budget exponent 0.71
+OK   Bonferroni gap exp(-L^0.76 log L) beats exp(L^0.73)
+OK   (C(N+1))^T/T! decays: log N < log T  (0.5 < 0.76)
+OK   log S = O(L^0.96) <= C_K L^0.98
+OK   log S = o(L) so S = x^{o(1)}
+OK   weak Kloosterman 3/4+1/200 = 0.755
+OK   u-exponent of CRT Fourier sum <= 0.76
+OK   S-exponent <= 2
+OK   retained freq cost u^{0.04+0.76}=u^{0.80}
+OK   Fourier tail Delta^-11 T1^-9 = u^-0.07
+OK   tail contribution u^{0.93} < u
+OK   grid: -c+3eps = -5c/8
+OK   box sides within [Y^0.1, Y^0.9]
+OK   goodness test (i) catches lambda<Y^-0.8: |l|<Y^0.2 and ||l alpha||<Y^-0.8<Y^-0.7
+OK   Dirichlet/Minkowski: lambda << Y^-1/2 consistent with A'B' << Y
+OK   clean bound: A'/Y <= Y^-0.1
+OK   sqrt(B/M^K) exponent at K=200 equals 1-0.005K
+OK   sqrt(B/M^K) exponent at K=400 equals 1-0.005K
+OK   sqrt(B/M^K) exponent at K=1000 equals 1-0.005K
+OK   0.005K > G+2 gives raw-dirty exponent < -G
+OK   truncation 2^{-B+KN} exp(L^0.74): 2 > 0.74 and 2 > 0.5
+OK   truncation beats L^{-AN}=exp(-A L^0.5 log L)
+OK   Q_birth = L^{O(1)} (2.5)
+OK   r0/N = L^{-0.1} log L -> 0
+OK   j = O(L^0.9); j log j = O(L^0.9 log L) = O(L^0.91)
+OK   |I| exp(O(L^0.91)) * x^{-c} -> 0 (0.91 < 1)
+OK   bad-tuple mass L^{-j-0.45+0.24} = L^{-j-0.21}
+OK   sieve level z^(4h+2) < x^c0 (h=2)
+OK   sieve level z^(4h+2) < x^c0 (h=4)
+OK   sieve level z^(4h+2) < x^c0 (h=10)
+OK   sieve level z^(4h+2) < x^c0 (h=100)
+OK   major-arc normalisation (YX)^2/(XY) = XY
+OK   Bonferroni divisors W^{O(log L)} = x^{o(1)}
+OK   029 bands 0.1<a_i<0.2 and W=exp(L^0.24) identical to 011
+predicted proportion P+(p-1)>x^0.9 : 0.10536051565782634 (=log(10/9))
+
+37 OK, 0 FAIL

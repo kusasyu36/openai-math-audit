@@ -1,5 +1,7 @@
 # 監査レポート 201: A Counterexample to Kurosh's Division-Ring Problem（OpenAI, 2026-09-23, 45 ページ）
 
+> **2026-10-30 訂正（指摘 #1 を撤回）**: Codex（GPT-6.1）の独立レビューで、§3.1 の出発体は tex（`build/sections/application.tex:23`）では `k_0=\overline{\mathbb Q}`（ℚ の代数閉包）であり、1 のすべての冪根を含むと分かった。paper.txt で上線が消えていたための読み違い。主担当も tex で確認した。したがって指摘 #1 は誤りで、論文のこの箇所は正しい。以下の本文は当時のまま残す。
+
 - 監査日: 2026-10-29（監査役: Claude サブエージェント。報告書は主担当が代筆保存。指摘 #1 は主担当が原文で確認済み）
 - 自作スクリプト: `audits/201/`（`check_combinatorics.py`、`check_prop10_1.py`、`check_linkage_d2.py`、専用 venv `.venv201`）。リポジトリのコードは実行していない。
 

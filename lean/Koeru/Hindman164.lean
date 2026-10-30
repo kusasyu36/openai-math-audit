@@ -4,7 +4,7 @@ import Mathlib
 # OpenAI 結果 164: Hindman の有限和・有限積予想（命題のみ）
 
 出典: openai/math `preprints/Monochromatic-finite-sums-and-products-in-the-positive-integers-September-23-2026`
-定理 1.1 と系 1.2 の命題を、論文の文言どおりに書く。証明は `sorry`（第 1 段）。
+定理 1.1 と系 1.2 の命題を、論文の文言どおりに書く。定理 1.1 自体の証明は `sorry`（OpenAI の主張）。そこからの帰結は証明済み。
 
 彩色は `χ : ℕ → Fin r`。論文の `χ : ℕ → [r]`（ℕ は正の整数）に対応する。
 0 での値は使わない（a_j はすべて正）。

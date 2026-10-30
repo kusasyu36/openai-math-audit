@@ -33,7 +33,9 @@ structure IsChain {m : ℕ} (T : Fin m → Finset ℕ) (piv : Fin m → ℕ) : P
 def block {m : ℕ} (T : Fin m → Finset ℕ) (piv : Fin m → ℕ) (d : Fin m) : Finset ℕ :=
   insert (piv d) (T d)
 
-/-- 補題 2.5（積の鎖の選択）。 -/
+/-- 補題 2.5（積の鎖の選択）。
+論文は x を正の整数の列とするが、ここでは `x : ℕ → ℕ` のすべて（0 を含む）について示す。
+これは論文の形より強く、論文の形を含む。 -/
 theorem lemma_2_5 (m r : ℕ) (hr : 0 < r) : ∃ n, ∀ (χ : ℕ → Fin r) (x : ℕ → ℕ),
     ∃ (T : Fin m → Finset ℕ) (piv : Fin m → ℕ), IsChain T piv ∧
       (∀ d, block T piv d ⊆ range n) ∧
