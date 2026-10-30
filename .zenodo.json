@@ -1,0 +1,28 @@
+{
+  "title": "Independent audit of OpenAI's October 2026 AI-generated mathematics",
+  "upload_type": "software",
+  "version": "1.0.0",
+  "publication_date": "2026-10-30",
+  "creators": [
+    { "name": "kusasyu36" }
+  ],
+  "description": "<p>An independent audit of selected unformalized results from OpenAI's October 2026 collection of AI-generated mathematics manuscripts (github.com/openai/math), plus Lean 4 formalizations of some combinatorial parts (Hindman's sum-product problem, result 164: Lemma 2.5 and Corollary 1.2, with a self-contained finite Ramsey theorem).</p><p>The audits and the Lean code were written by Anthropic's Claude (Opus 5.5) acting as research agents, under the direction of the repository owner, who is not a professional mathematician. Findings were re-checked against the LaTeX sources and reviewed independently by OpenAI's Codex (GPT-6.1); that review overturned one original finding, which is kept in the repository as a withdrawn finding. No finding has been reviewed by a domain expert. Please treat them as leads for experts, not as verdicts. Audit reports are in Japanese.</p>",
+  "license": "apache-2.0",
+  "access_right": "open",
+  "keywords": [
+    "AI-generated mathematics",
+    "proof audit",
+    "Lean 4",
+    "formal verification",
+    "OpenAI",
+    "Hindman's theorem",
+    "Ramsey theory"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/openai/math",
+      "relation": "references",
+      "resource_type": "publication"
+    }
+  ]
+}
