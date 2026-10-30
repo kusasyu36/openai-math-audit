@@ -1,0 +1,16 @@
+You are an independent reviewer. Check whether Lean 4 statements faithfully formalize the statements of a paper. Read-only; you do not need to build anything (no network). Focus on the STATEMENTS (definitions and theorem types), not on proofs.
+
+Paper: data/openai_math/preprints/Monochromatic-finite-sums-and-products-in-the-positive-integers-September-23-2026/ (build/*.tex, paper.txt). OpenAI result 164, a Hindman finite sums and products result.
+
+Lean files: public_repo/lean/Koeru/Hindman164.lean (Theorem 1.1, Corollary 1.2, the conjecture), public_repo/lean/Koeru/Lemma25.lean (Lemma 2.5), and helpers FiniteSums.lean, Ramsey.lean. Also see the faithfulness report audits/faithfulness/REPORT.md if useful, but judge independently.
+
+Check carefully:
+- Quantifier order and dependencies (which of r, m, R, D, chi the sequence may depend on).
+- Off-by-one: 0-based vs 1-based indexing, the separation condition (1.1) for d=1 vs d>=2, strict vs non-strict inequalities, real vs natural arithmetic and casts, sums/products over k<d.
+- Positive integers vs ℕ including 0: does using chi : ℕ → Fin r (value at 0 unused) change the meaning? Is r = 0 handled correctly?
+- Whether "distinct" is captured (StrictMono) and whether the paper requires more or less.
+- Lemma 2.5: compare exactly with the paper's Lemma 2.5 statement.
+- Whether any statement is vacuous or trivially true/false due to a formalization slip.
+- Whether theorem names/comments overclaim (e.g. a statement proved with sorry described as proved). Note which theorems have sorry.
+
+Output in Japanese, concise: for each formal statement, 判定 (論文どおり / ずれあり), the exact discrepancy with file:line on both sides, and a suggested fix. End with an overall verdict.

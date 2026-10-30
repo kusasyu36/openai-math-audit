@@ -4,7 +4,7 @@ On 6 October 2026, OpenAI released a collection of AI-generated mathematics manu
 
 This repository records an independent audit of selected unformalized results, plus Lean formalizations of some of the combinatorial parts.
 
-> **How this was produced.** The audits and the Lean code were written by Anthropic's Claude (Opus 5.5) acting as research agents, under the direction of the repository owner. The owner is not a professional mathematician. Every finding listed under "Issues" below was re-checked against the original LaTeX source by the coordinating agent, and then reviewed independently by OpenAI's Codex (GPT-6.1), a model from a different developer, against the same sources. That review overturned one of our original findings (see "Withdrawn finding"). None of the findings has been reviewed by a domain expert. Please treat them as leads for experts, not as verdicts.
+> **How this was produced.** The audits and the Lean code were written by Anthropic's Claude (Opus 5.5) acting as research agents, under the direction of the repository owner. The owner is not a professional mathematician. Every finding listed under "Issues" below was re-checked against the original LaTeX source by the coordinating agent, and then reviewed independently by OpenAI's Codex (GPT-6.1), a model from a different developer, against the same sources. That review overturned one of our original findings (see "Withdrawn finding"). The prompts and Codex's full responses are in `audits/codex_review/` (in Japanese; links there point to files of our working copy, including the openai/math manuscripts, which are not included here). None of the findings has been reviewed by a domain expert. Please treat them as leads for experts, not as verdicts.
 
 ## Method
 

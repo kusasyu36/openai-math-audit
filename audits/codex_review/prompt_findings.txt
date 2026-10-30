@@ -1,0 +1,27 @@
+You are an independent reviewer. Another AI (Claude) audited several unrefereed OpenAI math preprints and reported two "confirmed errors" and one "major gap". Before these are published, check each claim against the ORIGINAL source text. Be skeptical: your job is to find out whether Claude's claims are wrong, overstated, or mis-cited. Do not trust the reports; read the papers.
+
+Working directory is the project root. Read-only. Do not run any code from data/openai_math.
+
+Claim A (paper 201, Kurosh division ring counterexample)
+- Report: audits/201/REPORT.md (finding #1)
+- Source: data/openai_math/preprints/A-Counterexample-to-Kuroshs-Division-Ring-Problem-September-23-2026/ (build/main.tex, build/sections/*.tex, paper.txt)
+- Claim: Theorem 2.1 assumes the base field k contains all roots of unity (used for zeta_n in k in the symbol algebras), but §3.1 starts from k0 = Q and says "Thus it satisfies the hypotheses of Theorem 2.1". Q does not. Replacing k0 by Q(mu_infinity) fixes it with no effect on the conclusion.
+- Check: Is the hypothesis really in Thm 2.1? Does §3.1 really say this with k0 = Q? Is there some other place (e.g. a later extension of scalars, a remark) that already handles it, making the "error" void? Is the proposed fix actually sufficient (countability, char 0, anything else used about k0)?
+
+Claim B (paper 074, Kakeya 3D and 4D)
+- Report: audits/074/REPORT.md (finding #1)
+- Sources: data/openai_math/preprints/The-Kakeya-maximal-conjecture-in-three-dimensions-September-23-2026/ and .../Every-four-dimensional-Kakeya-set-has-full-Hausdorff-dimension-September-24-2026/
+- Claim: The 4D paper cites "[24, Lemma 2.3]" of the 3D paper (around l.188 and l.931 of the 4D text, and bibliography entry [24]); in the 3D paper 2.3 is "Definition 2.3 (Critical exponent)", and the matching statement is Lemma 3.3 ("Weighted set estimate in a line chart"). Mathematical impact: none.
+- Check: Confirm or refute the numbering in the 3D paper's actual compiled numbering (theorem counters may be shared between definitions and lemmas, or per section — check the tex \newtheorem setup and the PDF/paper.txt). Is it possible the 4D paper cites a different version of the 3D paper? Is the content match with Lemma 3.3 right?
+
+Claim C (paper 171, hypercube Ramsey number linear)
+- Report: audits/171/REPORT.md (finding #1)
+- Source: data/openai_math/preprints/The-hypercube-Ramsey-number-has-linear-order-September-23-2026/build/sections/ (03-..., 09-...)
+- Claim: §9 "adapted height construction" (file 09, around L74-102) needs the §3 height-selection lemma, whose hypothesis b > b_0 + (D+1)rho (file 03, around L301-302) fails in the §9 setting; §9 says it modifies Steps 2-4 of that proof but the modified "same scale induction" is asserted in one paragraph without being written out. Claude calls this a gap in exposition, not an error.
+- Check: Is the hypothesis really violated in §9? Does §9 (or an appendix) actually write out the modified induction somewhere, so that "gap" is unfair? Conversely, is it worse than a gap (does the modification actually fail)?
+
+Output (in Japanese, plain language, concise): for each of A, B, C give
+1. 判定: 正しい / 一部正しい / 誤り（Claude の主張が）
+2. 根拠: file:line references you actually read
+3. 公開する文面への修正案 (if the wording overstates or misstates anything)
+Then a short overall summary. If you could not check something, say so explicitly.
