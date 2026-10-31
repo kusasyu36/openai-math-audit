@@ -1,0 +1,15 @@
+=== Part A: model band (Lemma spec:model) ===
+d=8, D'=16, |A|=64, |B|=32: max second singular value = 0.5813 (chi = 0.4187)
+multiplicity of +1: 2 (claim rho = 2); of -1: 2; max |other eigenvalue| = 0.5005 (claim <= 1-chi = 0.5813)
+diagonal block of E at a vertex of A_1 vs h_1^2 p/(2|A|): max error 2.47e-17
+sum over all vertices of Tr_n E(v,v) = 2.000000 (= tr p = rho = 2)
+Part A OK
+
+=== Part B: one voltage + one weight per edge approximating incidence (x) convolution projection ===
+deck group Z/24, projection K of rank 5, ||k||_1 = 1.646
+d=  16 D'=  32 |A|= 64 |B|= 32: ||T - U(x)K|| = 0.6710  (sqrt(d)*err = 2.68), second s.v. of U = 0.403; #eigenvalues > 0.75: 5 (model: r = 5); largest eigenvalue <= 0.75: 0.671
+d=  64 D'= 128 |A|= 64 |B|= 32: ||T - U(x)K|| = 0.3442  (sqrt(d)*err = 2.75), second s.v. of U = 0.195; #eigenvalues > 0.75: 5 (model: r = 5); largest eigenvalue <= 0.75: 0.344
+d= 256 D'= 512 |A|= 64 |B|= 32: ||T - U(x)K|| = 0.1715  (sqrt(d)*err = 2.74), second s.v. of U = 0.102; #eigenvalues > 0.75: 5 (model: r = 5); largest eigenvalue <= 0.75: 0.172
+d=1024 D'=2048 |A|= 64 |B|= 32: ||T - U(x)K|| = 0.0870  (sqrt(d)*err = 2.78), second s.v. of U = 0.050; #eigenvalues > 0.75: 5 (model: r = 5); largest eigenvalue <= 0.75: 0.087
+Part B: the error decays like C/sqrt(d); once it is below the model gap, the upper band has exactly the model multiplicity r
+

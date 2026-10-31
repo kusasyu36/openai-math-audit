@@ -1,0 +1,41 @@
+OK   Delta = 0.02776 | filtering.tex:63-64 
+OK   Gamma = 0.46220 | filtering.tex:65 
+OK   a*Gamma = Delta (alpha a W = Delta when alpha=Gamma/W) | checksum.tex:450 
+OK   Delta <= tau and eta-H bounds: tau-Gamma = Delta | checksum.tex:194-199 
+OK   Delta+Gamma = tau | checksum.tex:197-199 
+OK   error exponent = -0.00081952 <= -0.0007 | checksum.tex:491-495 exp=-2561/3125000
+OK   0.5169 < eta (true requirement of the moment bound) | checksum.tex:488-491 slack=41/50000
+OK   case1: 7.5 delta + (30-25.5)eps > 0  (i.e. 30 > 25.5) | checksum.tex:448-449 
+OK   case2: 8.3(4a+3)eps < 30 eps | checksum.tex:458 8.3(4a+3)=26.8940
+OK   case2 derivation: -alpha U = -Delta + alpha(aW-U) uses alpha a W = Delta | checksum.tex:450-457 
+OK   48eps = 18eps (match-good) + 30eps (domination) | checksum.tex:225,445,473 
+OK   match-good 18eps = 12eps (expectation) + 6eps (Markov slack) | checksum.tex:216,225,306-307 
+OK   entry-good 14eps = 8eps + 6eps | checksum.tex:223,280-283 
+OK   12eps match expectation = 4eps(tables)+8eps(threshold) | checksum.tex:269,298-301 
+OK   cap exponent tau+20eps = 0.4899602 | implementation.tex:285 
+OK   tau+20eps < 0.489995 | implementation.tex:285-286 
+OK   preliminary 0.489985 < 0.489995 | implementation.tex:286 
+OK   0.49 - 0.489995 = 0.000005 > 0 | implementation.tex:339 
+OK   trial division eta/2 = 0.25886 | implementation.tex:284 
+OK   Chebyshev gap 0.01004-0.010025 = 0.000015 | setup.tex:197-198 
+OK   0.5 - 0.010025 = 0.489975 | setup.tex:203 
+OK   0.489975 n + 1/2 <= 0.489985 n  for n >= 50000 | setup.tex:203-204 
+OK   17 m/2 <= n/2 : 17*0.0567/2 = 0.48195 <= 0.5 | aliases.tex:79 9639/20000
+OK   h(1/4) < 0.81128 | aliases.tex:82 h(1/4)=0.8112781245
+OK   h(.0567)+.0567 < 0.40 | aliases.tex:82,300-302 =0.3709034119
+OK   eta - 0.40 - 0.00001 > 0 | aliases.tex:308 
+OK   list exponent 1/2+(h(1/4)-1/2-gamma)m = 0.489909101 < 0.48992 | aliases.tex:206-211 489909101/1000000000
+OK   list exponent < tau (cap, Markov slack >0) | aliases.tex:261-269 slack=50899/1000000000
+OK   pair exponent 1+(2h(1/4)-1-gamma)m-eta+guard = 0.489848677 < 0.48988 | aliases.tex:246-253 489848677/1000000000
+OK   pair exponent < tau | aliases.tex:261-269 slack=111323/1000000000
+OK   generation exponent m + n/4 = 0.3067 | aliases.tex:165-166 
+OK   0.4894 = 0.5-0.0106 > gamma = 0.48925 | aliases.tex:354-355,397 
+OK   Markov lower bound 1-.01004/(17*.0106*.0567) > 0.017 > 0.005 | aliases.tex:346-352 =0.0173568
+OK   per-trial prob (.005/(m+1))(1/2)(1/(4K0 n^2)) >= n^-4 for large n (poly(1/n^3) vs n^-4) | aliases.tex:423-426 (needs m+1 <= n, 8K0 <= n/200) 
+OK   max_k h(k/m)+h(1/2-k/m) = 2h(1/4) (concavity) | aliases.tex:203-206 max=1.62255624891827
+OK   1 - n/N0 >= 11/12 when N0 >= 12n | setup.tex:58-59 
+OK   5/6 >= 2/3 | implementation.tex:264 
+OK   sum_{j<=m} C(n,j)2^j <= 2^{0.40 n} at n=2000 | aliases.tex:297-303 log2 S=730.06921 vs 0.40n=800
+OK   0.489995 n + K log(n+b+2) < 4(n+b+log n) asymptotically | implementation.tex:299-307 (asymptotic) 
+
+SUMMARY: 39 / 39 OK

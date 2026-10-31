@@ -1,0 +1,85 @@
+OK   setup:hstar  H0 <= 5003 log2 d  (ell=1)   H0/log2d = 20011/4 = 5002.7500
+OK   tower: 2r - s = log2 d (ell=1)
+OK   setup:hstar  H0 <= 5003 log2 d  (ell=2)   H0/log2d = 40021/8 = 5002.6250
+OK   tower: 2r - s = log2 d (ell=2)
+OK   setup:hstar  H0 <= 5003 log2 d  (ell=3)   H0/log2d = 60031/12 = 5002.5833
+OK   tower: 2r - s = log2 d (ell=3)
+OK   setup:hstar  H0 <= 5003 log2 d  (ell=10)   H0/log2d = 200101/40 = 5002.5250
+OK   tower: 2r - s = log2 d (ell=10)
+OK   setup:hstar  H0 <= 5003 log2 d  (ell=100)   H0/log2d = 2001001/400 = 5002.5025
+OK   tower: 2r - s = log2 d (ell=100)
+OK   setup:hstar  H0 <= 5003 log2 d  (ell=1000000)   H0/log2d = 20010000001/4000000 = 5002.5000
+OK   tower: 2r - s = log2 d (ell=1000000)
+OK   sampling l.696-698: alphabet exponent 1 + 7/4 + 1/32 = 89/32 < 3
+OK   setup l.82: L_i = 100 H_i/log2 d is > 2 (geometry l.61)
+   L* = 4000008, C_* = 4.000e+13, C_bullet = 8.000e+10
+   nil:choice-m requires m > L(201 C_*) = 6.237e+50  (so n_f ~ 1.9e+101)
+OK   geometry l.629: L* = 2 + 2(D0+3) + 2 D0 = 4 D0 + 8
+OK   nil:weighted (m=2): A* n_f > C_bullet h*
+OK   nil:weighted (m=2): kappa n_f > C_bullet
+OK   sam:second-width (m=2): kappa/m > 4 E0 + A*/5002 (margin)
+OK   sam:first-width (m=2): A* > 6 E0 h* (+margin)
+OK   nil:weighted (m=3): A* n_f > C_bullet h*
+OK   nil:weighted (m=3): kappa n_f > C_bullet
+OK   sam:second-width (m=3): kappa/m > 4 E0 + A*/5002 (margin)
+OK   sam:first-width (m=3): A* > 6 E0 h* (+margin)
+OK   nil:weighted (m=10): A* n_f > C_bullet h*
+OK   nil:weighted (m=10): kappa n_f > C_bullet
+OK   sam:second-width (m=10): kappa/m > 4 E0 + A*/5002 (margin)
+OK   sam:first-width (m=10): A* > 6 E0 h* (+margin)
+OK   nil:window l.940: log2(1+2^x) - max(x,0) in [0,1]   values [0.0, 0.17, 0.585, 0.772, 1.0, 0.772, 0.585, 0.17, 0.0]
+OK   nil:window l.943-946: 2^u/(1+2^u)^2 <= 2^{-|u|}
+OK   nil:window l.922-924: t'(b) = kappa log2 t(delta-t)/delta
+OK   nil:window: delta - t(b) = delta/(1+2^{kb})
+OK   nil:product from the two identities: t(delta-t) = delta^2 2^{kb}/(1+2^{kb})^2 <= delta^2 2^{-k|b|} <= delta^2 2^{k} 2^{-k|i|}
+OK   nil:projection l.656-662: |1/(1-l)| <= 2 on [-1/4,1/4] and |1/l| <= 2 on [3/4,5/4]
+OK   nil:projection l.675: p <= 4 K^2 on the spectral intervals (1 <= 4 l^2 for l>=3/4)
+OK   nil:projection l.667-671: ||K|| <= 1/4 gives ||K^2 - K|| delta_1 >= 3/4 ||K delta_1||
+OK   spec: r0 - alpha/2 >= 1/C_chi (chi=1/4)
+OK   spec:cover-projection: alpha/(r0-alpha) < 1 (chi=1/4)   = 0.0030
+OK   spec:global-gap: 3 alpha/(r0 - 3 alpha) < 1 (chi=1/4)
+OK   spec:global-gap: 1-chi+4alpha < 1-chi/4 < 1-3alpha (chi=1/4)
+OK   spec:kernel-form: 1-3alpha > 1-chi+3alpha (chi=1/4)
+OK   spec:kernel-form l.746-748: (1-chi+alpha) + chi/1000 + alpha = 1-chi+3alpha
+OK   spec:perturbation r0 <= b/2 with b = chi - alpha (chi=1/4)
+OK   spec:global-gap: u = 3alpha < r0/2 (chi=1/4)
+OK   spec: r0 - alpha/2 >= 1/C_chi (chi=1/800)
+OK   spec:cover-projection: alpha/(r0-alpha) < 1 (chi=1/800)   = 0.0030
+OK   spec:global-gap: 3 alpha/(r0 - 3 alpha) < 1 (chi=1/800)
+OK   spec:global-gap: 1-chi+4alpha < 1-chi/4 < 1-3alpha (chi=1/800)
+OK   spec:kernel-form: 1-3alpha > 1-chi+3alpha (chi=1/800)
+OK   spec:kernel-form l.746-748: (1-chi+alpha) + chi/1000 + alpha = 1-chi+3alpha
+OK   spec:perturbation r0 <= b/2 with b = chi - alpha (chi=1/800)
+OK   spec:global-gap: u = 3alpha < r0/2 (chi=1/800)
+OK   spec:layer-norm l.310-312: (chi/3)(4/chi)/(1-1/2) = 8/3 <= 4
+OK   spec:localization l.341-347: 2(1 + 2 x/(1-x)) = 6 at x = 1/2
+OK   spec:S-small: 16 * 6 = 96
+OK   spec:compression l.94-109: a + 8eps + 4eps <= a + 20 eps
+OK   spec:compression l.86-88: eps + 2 eps^2 <= 2 eps for eps <= 1/2
+OK   spec:compression l.86-87: (1-eps^2)^{-1/2} - 1 <= 2 eps^2 at eps=1/2   lhs = 0.1547
+OK   spec:forest-error l.510-515: 2*sqrt2*sqrt2 = 4
+OK   geo:arcs l.341: b <= 3J+3m-3 and J <= b/10 give b <= (30/7)(m-1)
+OK   geo:embeddings l.353: m=1 gives 20J <= 2b <= 6J => J=0
+OK   geo:chain-filling l.415: 2b <= 12 m
+OK   geo:thin l.537-539: R <= 9*16*12*200 = 345600 < 10^6
+OK   geo:arcs l.323-331: 20*100 = 2000 and 10^4/2 = 5000 > 2000
+OK   geo:balls l.661: 25*100 = 2500 and 3*2500 = 7500
+OK   geo:balls l.673: 6 log2 d <= 500 (L*+1) H_i
+OK   geo:balls l.675-676: C_bullet/2 = 10^4 (L*+1) >= 8000 (L*+1)
+OK   geo:balls l.652-662: 2 R_Q + 2 < C_* H_j/log2 d (5000(L*+1) << 5*10^6 (L*+1))
+OK   geo:avoidance l.583-591: 12 (L+1) * 2 L_i = 24 (L+1) L_i
+OK   sam girth l.821-826: log2(6D)^a <= 3 C_* H_i needs log2 6 <= log2 d  (ell >= 1: 4 >= 2.58)
+OK   sam girth l.830-832: E0 > 10 C_* + ... > 3 C_* + 5 + margin
+OK   sam:C2-order: C2 > 2(C1+4) gives C1 - C2/2 < -4
+OK   sam:block-probability: (C4 D)/(eps^2 d D/4) = 4 C4/(eps^2 d)  (D cancels)
+OK   sam:empirical l.332-339: log(Markov bound) ~ -(log q)^2/(32 A*) -> -infinity   leading coefficient -1/(32*A)
+OK   sam:walk-count l.916-918: (l+1) 4^l 9^l <= 72^l (uses l+1 <= 2^l)
+OK   sam:walk-count l.870-873: sum(deg-2) = 2E - 2V = 2(b1 - 1)
+OK   exp:realized-gap l.541, 570: (1/20)^2/2 = 1/800
+OK   prune l.301-306: s*(100 H_i/log2 d)/4 = 25 s H_i/log2 d = 62.5 H_i
+OK   prune l.309-310: 62.5 H_i - 2s > 2 H_j with H_j <= H_i + 100 H_i/log2 d + 1 (ell=7)
+OK   tower l.49-52: |A_i| = 2^{2r + 2 n0 s + |i| + 1} = d 2^{H_i} since 2r - s = log2 d
+OK   tower: |B_i| = 2^{l_B + s - r + 1 + l_A} = 2^{s + 2 n0 s + |i| + 1} = 2^{H_i}
+OK   sam l.1030-1037: 3 eps (width one) and 2*3 eps = 6 eps; eps < eta/6
+
+81/81 checks OK

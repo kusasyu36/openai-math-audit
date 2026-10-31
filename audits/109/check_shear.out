@@ -1,0 +1,22 @@
+[OK] Lemma lower-lower: A = E1 Π E2 with lower-triangular invertible E1,E2 and rank(A) ones (40 random rational matrices) 
+[OK] pivot update (D+=H; swap; D=H-D) yields (h+d, d) 
+[OK] shear sequence equals (H + A D, D) over Z/7^3 
+[OK] D-=H; H+=D; D=H-D sends (H,D) to (D,H) 
+[OK] Φ_{M'}Φ_M = Φ_{M'+M} 
+   k=1: F_k / m^(k tau) = 1.000001
+   k=2: F_k / m^(k tau) = 1.000001
+   k=3: F_k / m^(k tau) = 1.000001
+   k=4: F_k / m^(k tau) = 1.000001
+   k=5: F_k / m^(k tau) = 1.000001
+   k=6: F_k / m^(k tau) = 1.000001
+   k=7: F_k / m^(k tau) = 1.000001
+[OK] F_k / m^{k tau} stays bounded (a = s_b/W_b < m^tau) 
+   a/m^tau = 0.999999999985004
+   e=1e+07: k=2, rho=43, q^(2rho)>=W^k: True, rho<e: True
+   e=1e+09: k=2, rho=43, q^(2rho)>=W^k: True, rho<e: True
+   e=1e+12: k=2, rho=43, q^(2rho)>=W^k: True, rho<e: True
+   e=1e+20: k=4, rho=85, q^(2rho)>=W^k: True, rho<e: True
+[OK] sum_j a_j m^{j tau} = O(e^tau) (ratio bounded) 1.000e+09
+[OK] j log W <= (log_m e0) log W = O(e0) 
+
+ALL OK

@@ -1,0 +1,16 @@
+[OK] scalar network bit h=5: scratch restored 
+[OK] scalar network bit h=5: (X,Y)->(-Y,X) 
+[OK] scalar network bit h=6: scratch restored 
+[OK] scalar network bit h=6: (X,Y)->(-Y,X) 
+[OK] scalar network complex h=5: scratch restored 
+[OK] scalar network complex h=5: (X,Y)->(-Y,X) 
+[OK] X wire total over 3 stages = m-1 
+[OK] Y wire total over 3 stages = m-1 
+[OK] side wire total = m 
+[OK] center wire total = m + 2h 
+[OK] sum |Δdim| = Wm - 2N + 2L with L = I c h 
+[OK] Q labels (form I-J/9), h=5: nesting, nondegeneracy, residual dims, projections 
+[OK] F_2 labels, h=5: nesting, residual dims, nondegenerate & nonalternating residuals 
+[OK] F_2 labels, h=7: same  (h=6 は X∪Y=[6] の隣接対で交代形式になるので除外; 再実行で OK)
+
+ALL OK (after h=7 rerun)

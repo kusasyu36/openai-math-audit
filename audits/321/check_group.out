@@ -1,0 +1,40 @@
+OK   4^2 = 1 mod 15 (x1 acts with order 2 on Z/15)
+OK   3^3 = 1 mod 26 (x2 acts with order 3 on Z/26)
+OK   G->A: relator r1 holds
+OK   G->A: relator r2 holds
+OK   G->A: relator r3 holds
+OK   G->A: relator r4 holds
+OK   G->A: relator t1 holds
+OK   G->A: relator t2 holds
+OK   G->B: relator r1 holds
+OK   G->B: relator r2 holds
+OK   G->B: relator r3 holds
+OK   G->B: relator r4 holds
+OK   G->B: relator t1 holds
+OK   G->B: relator t2 holds
+OK   G->AxB: relator r1 holds
+OK   G->AxB: relator r2 holds
+OK   G->AxB: relator r3 holds
+OK   G->AxB: relator r4 holds
+OK   G->AxB: relator t1 holds
+OK   G->AxB: relator t2 holds
+OK   image of x1 in AxB is nontrivial, of order 2
+OK   image of x2 in AxB has order 3
+OK   image of a1 has order 15, of a2 order 26
+OK   edge Z/2: x1 has order 2 in A
+OK   edge Z/2: a2^13 has order 2 in B
+OK   edge Z/3: x2 has order 3 in B
+OK   edge Z/3: a1^5 has order 3 in A
+OK   A has order 30, B order 78
+OK   gcd(15,2)=1 and gcd(26,3)=1 => H_2(A)=H_2(B)=0 (LHS spectral sequence)
+OK   |A_ab| = 6 (commutator subgroup order 5)
+OK   |B_ab| = 6 (commutator subgroup order 13)
+OK   Z/2 edge maps injectively into A_ab and B_ab (orders 2,2)
+OK   Z/3 edge maps injectively into B_ab and A_ab (orders 3,3)
+OK   hence Z/2+Z/3 -> A_ab+B_ab injective on distinct primary parts => H_2(G;Z)=0 (MV)
+OK   H_1(G) = coker(Z/2+Z/3 -> Z/6+Z/6) + Z(graph loop) = Z/6 + Z
+rational Euler characteristic chi(G) = -307/390
+OK   chi(G) = -307/390 > -1, so chi(Y) >= chi(G) allows chi(Y)=0 (def 1) for 2-complexes
+OK   chi(X) = 1-5+6-2 = 0 >= chi(G)
+
+ALL OK

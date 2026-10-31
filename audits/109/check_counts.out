@@ -1,0 +1,77 @@
+[OK] v = 161700 161700
+[OK] N = 4227952113000000 4227952113000000
+[OK] I = 78440670000 78440670000
+[OK] z_b = 13968 13968
+[OK] z_c = 147731 147731
+[OK] W_b 177176569091445000000
+[OK] W_c 1873807244643542670000
+[OK] neighbor formulas at h=6 (9, 10)
+[OK] neighbor formulas at h=7 (18, 16)
+[OK] neighbor formulas at h=8 (30, 25)
+[OK] L_b/N = 100/539 100/539
+[OK] L_c/N = 101/539 101/539
+[OK] L_b < N/2 and L_c < N/2 
+[OK] s_b = 177176569088785861287000000 177176569088785861287000000
+[OK] s_c = 1873807244636671267308000000 1873807244636671267308000000
+[OK] s_b < W_b m 2659138713000000
+[OK] s_c < W_c m 6871402692000000
+[OK] eta_b = 339/22587335000000 339/22587335000000
+[OK] eta_c = 73/19906842167500 73/19906842167500
+[OK] eta_b > 20*2^-50 844.8984097053715
+[OK] eta_c > 20*2^-50 206.4383002284924
+[OK] m^(1-2^-50) > m(1-eta_b) exact 
+[OK] m^(1-2^-50) > m(1-eta_c) exact 
+[OK] log m < 20 13.815510557964274
+   first h with L_b<N/2: 39; with L_c<N/2: 40
+   bit: s/W = 999999.999984991620, log_m(s/W) = 1 - 1.086e-12; tau=1-2^-50 = 1 - 8.882e-16
+[OK] bit: s/W < m^tau (float) 
+   complex: s/W = 999999.999996332917, log_m(s/W) = 1 - 2.653e-13; tau=1-2^-50 = 1 - 8.882e-16
+[OK] complex: s/W < m^tau (float) 
+[OK] m^10 < B < m^11, nu = 11 (11, 421070402185313436016911541181936724564881374144872712056492640064)
+[OK] C_1 = 20 
+[OK] 24W^3+4s+4W+4 < E 
+[OK] max(tau,sigma) < lambda < 1 
+[OK] tau(1+c/beta) < 1-31*2^-55 < lambda 0.9999999999999991
+[OK] sigma+beta(1-sigma) = 1-2^-51 < lambda < lambda' 
+[OK] eps < 1/12 
+[OK] eps*C1 < 1 
+[OK] eps(2-tau) < 1-tau 
+[OK] 3/4+delta+3eps/2 < 1 
+[OK] eps(1+c) < 1 
+[OK] eps+delta < 1 
+[OK] delta < 1/8 
+   g1 prefix dK = 2722258935367507707706924801860107763711/2722258935367507707706996859454145691648 ≈ 1.000e+00
+   g2 chunk exch pK^(tau-1) = 1/3064991081731777716716694054300618367237478244367204352 ≈ 3.263e-55
+   g3 layers ell d^lam' = 1/680564733841876926926749214863536422912 ≈ 1.469e-39
+   g4 CRT d^2(1+ell^tau) = 37778930737057254866943/42535295865117307932921825928971026432 ≈ 8.882e-16
+   g5 gaussian = 14167099448608935641085/75557863725914323419136 ≈ 1.875e-01
+   g6 chirps = 35417748621522339102719/37778931862957161709568 ≈ 9.375e-01
+   g7 packed products = 1/37778931862957161709568 ≈ 2.647e-23
+[OK] g2 = 2^-181 
+[OK] g3 = 2^-129 
+[OK] g4 > 2^-51 
+[OK] g1 > 1/2, g5 > 1/8, g6 > 1/2 
+[OK] min g = 2^-181 = 2 kappa 
+[OK] table power dK 0.000000
+[OK] table power pK^(tau-1) 1.000000
+[OK] table power ell d^lam' 1.000000
+[OK] table power d^2 ell^tau 1.000000
+[OK] table power d p^(1/2+delta) alpha 0.812500
+[OK] table power d p^delta 0.062500
+[OK] table power log(rp) ~ p^(1-eps) 1.000000
+[OK] all powers <= 1-2kappa 
+   d>=2 needs b >= 2^(2^75); K>=6 needs d >= 6^(2^56) i.e. b >= 6^(2^131) (astronomical cutoffs)
+[OK] gamma < 28 d^2 sqrt(b) at b=2^24 (113511.68172483394, 114688.0)
+[OK] 28 b^(2/3) <= b/4 at b=2^24 (1835007.9999999988, 4194304.0)
+[OK] 448 b 2^(-3b/4) < 1/2 at b=2^24 
+[OK] final error symbolic = 448 b 2^(gamma-b) 
+[OK] S(3E_s+2) < 28 2^gamma T^2 L given S<T, 2^gamma T L>=2 
+[OK] capacity q(2^b-1)^2 < 2^(3b) 
+[OK] ||w|| <= 1/16 
+[OK] alpha^4 theta > 3 d b (symbolic) 
+[OK] (1-1/(2d))^d > 1/2 for d=2..60 
+   2.01 e^(-pi x/2) < 2^-x iff x > 0.7955; paper needs alpha^2 theta > p/alpha^2 > 1 (p>alpha^4 => >1 only).
+[OK] x=1 : 2.01 e^{-pi/2} < 1/2 ? 0.4178379484650314
+   K>=6 iff p >= 6^(2^131); K/log p -> inf requires p^(2^-131) >> log p
+
+ALL OK

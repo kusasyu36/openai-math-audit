@@ -1,0 +1,73 @@
+OK   zeta^3 = 1, zeta != 1
+OK   rho(r1) = 1
+OK   rho(r2) = 1
+OK   rho(r3) = 1
+OK   rho(r4) = 1
+OK   rho(t1) = 1
+OK   rho(t2) = 1
+D computed (zeta = exp(2 pi i/3)):
+⎡1.5 - 0.5⋅√3⋅ⅈ           -2.0           0       0             0       ⎤
+⎢                                                                      ⎥
+⎢                                                  √3⋅ⅈ                ⎥
+⎢      0                   0             2  -1.5 - ────        0       ⎥
+⎢                                                   2                  ⎥
+⎢                                                                      ⎥
+⎢      1                   0             0     -1.0            0       ⎥
+⎢                                                                      ⎥
+⎢                      -24.0 - 8.0⋅√3⋅ⅈ                                ⎥
+⎢      0         1.0 + ────────────────  1       0       1.5 + 0.5⋅√3⋅ⅈ⎥
+⎣                             16                                       ⎦
+OK   D equals the matrix in eq:fox-matrix (l.137-144)
+OK   minor (cols x1,a1,x2,s) = -4(1-zeta^2)  [-6.0 - 2.0*sqrt(3)*I]
+OK   rank D = 4  => H_2(B;L_rho) = 0 (l.164-167)
+OK   chi(B) = 1-5+4 = 0, h0 = 0, h2 = 0 => h_1(B;L_rho) = h_1(G;C_rho) = 0
+OK   Fox rows of t1 = x1^2 and t2 = x2^3 vanish at rho
+OK   hence h_2(B';L_rho) = 2 = chi(B') and the two 3-cells kill exactly this
+D(z) for the Z-cover (s -> z):
+⎡1.5 - 0.5⋅√3⋅ⅈ       -2.0       0       0          0    ⎤
+⎢                                                        ⎥
+⎢                                          √3⋅ⅈ          ⎥
+⎢      0               0         2  -1.5 - ────     0    ⎥
+⎢                                           2            ⎥
+⎢                                                        ⎥
+⎢      1               0         0     -1.0         0    ⎥
+⎢                                                        ⎥
+⎢                  3   2 - √3⋅ⅈ                  3   √3⋅ⅈ⎥
+⎢      0         - ─ + ────────  z       0       ─ + ────⎥
+⎣                  2      2                      2    2  ⎦
+OK   D(1) = D
+4x4 minors of D(z): [-3.0*z - 1.0*sqrt(3)*I*z + 3.0 + 1.0*sqrt(3)*I, -6.0 - 2.0*sqrt(3)*I, 3.0*I*(sqrt(3) - I), -6.00000000000000, 6.0 + 2.0*sqrt(3)*I]
+OK   some 4x4 minor of D(z) is a nonzero Laurent polynomial => H_2(B-hat;p^*L) = 0
+abelianised 6x5 matrix (rows r1..r4,t1,t2):
+⎡0.0  -3.0   0     0     0 ⎤
+⎢                          ⎥
+⎢ 0    0    0.0  -2.0    0 ⎥
+⎢                          ⎥
+⎢ 1    0     0   -13.0   0 ⎥
+⎢                          ⎥
+⎢ 0   -5.0   1     0    0.0⎥
+⎢                          ⎥
+⎢ 2    0     0     0     0 ⎥
+⎢                          ⎥
+⎣ 0    0     3     0     0 ⎦
+Smith normal form diagonal: [1, 1, 1, 6, 0]
+OK   H_1(G;Z) = Z + Z/6 (SNF diag has three 1's, one 6, one 0)
+OK   abelianised rows r1..r4 have rank 4 over Q (H_1(P;Q) = Q)
+
+(a) membership over Q[G_ab] components
+OK     [trivial] Fox row of t1 lies in the K[z^+-]-span of rows r1..r4 (z^k needed: 0)
+OK     [trivial] Fox row of t2 lies in the K[z^+-]-span of rows r1..r4 (z^k needed: 1)
+OK     [sign   ] Fox row of t1 lies in the K[z^+-]-span of rows r1..r4 (z^k needed: 0)
+OK     [sign   ] Fox row of t2 lies in the K[z^+-]-span of rows r1..r4 (z^k needed: 0)
+OK     [zeta3  ] Fox row of t1 lies in the K[z^+-]-span of rows r1..r4 (z^k needed: 0)
+OK     [zeta3  ] Fox row of t2 lies in the K[z^+-]-span of rows r1..r4 (z^k needed: 0)
+OK     [zeta6  ] Fox row of t1 lies in the K[z^+-]-span of rows r1..r4 (z^k needed: 0)
+OK     [zeta6  ] Fox row of t2 lies in the K[z^+-]-span of rows r1..r4 (z^k needed: 0)
+
+(b) membership over the group rings of the finite quotients A (order 30) and B (order 78)
+OK     [A] Fox row of t1 in left Q[A]-span of rows r1..r4 (rank 101 -> 101)
+OK     [A] Fox row of t2 in left Q[A]-span of rows r1..r4 (rank 101 -> 101)
+OK     [B] Fox row of t1 in left Q[B]-span of rows r1..r4 (rank 261 -> 261)
+OK     [B] Fox row of t2 in left Q[B]-span of rows r1..r4 (rank 261 -> 261)
+
+ALL OK

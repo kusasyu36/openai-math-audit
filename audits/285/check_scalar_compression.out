@@ -1,0 +1,5 @@
+unnormalized trace a = tau_N(p) = 0.333333
+c_a = sqrt(1-a)-sqrt(a) = 0.239146
+min over 200 random xi = p xi of ||U xi||/||xi|| = 0.960104  (must be >= c_a)
+finite-dimensional stand-in (k=7, N=2): ||e^2-e|| = 1.17e-15, ||e-e*|| = 4.59e-16, tau(e) = 0.428571, tau_N(p) = 0.428571
+scalar compression: all checks OK

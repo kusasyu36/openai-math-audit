@@ -1,0 +1,21 @@
+Delta = 0.02776  Gamma = 0.4622  a = 0.06006057983556901774123755949805279099956
+target 2^0.5168 = 1.430778158304556414786431741553434952331  2^0.5169 = 1.430877335726387777695615674659294458104
+bounds |r|<=2.433 ? 1.805  |s|<=4.010 ? 3.79
+N=   64: int M^2 2^(8.5(Delta-u)) = 1.42896843478   int M^2 2^(8.3(a v-u)) = 1.42884700932
+          Z_f=1.19636253 Z_g=1.28774066 Z_f,kappa(unnormalised F^kappa)=1.21107899 Z_g,kappa=1.30381115
+N=  512: int M^2 2^(8.5(Delta-u)) = 1.42896843478   int M^2 2^(8.3(a v-u)) = 1.42884700932
+          Z_f=1.19636253 Z_g=1.28774066 Z_f,kappa(unnormalised F^kappa)=1.21107899 Z_g,kappa=1.30381115
+N= 4096: int M^2 2^(8.5(Delta-u)) = 1.42896843478   int M^2 2^(8.3(a v-u)) = 1.42884700932
+          Z_f=1.19636253 Z_g=1.28774066 Z_f,kappa(unnormalised F^kappa)=1.21107899 Z_g,kappa=1.30381115
+min D, min D-A, min D-E over 4096 nodes: 0.0684079 0.115281 0.109784
+mean of 2^u (must be <= 1): 0.99974132
+max u, min u, max v: 0.178327 -0.559112 0.62752
+max |my 64-node hat X_j - table| (table tolerance 0.0004): 4.9463e-6
+64-node averages (paper eq hatted-average-bound: <1.4295): 1.4289684 1.428847
+table-based 64-averages: 1.428968 1.428847  +0.0004 tol: 1.429368 1.429247
+exponent -tau-Delta+0.5169+48eps = -0.00081952  (paper: -0.00081952)
+log2 of computed moment1, moment2 (4096 nodes): 0.51497405 0.51485145  need < eta = 0.51772
+ideal bound at lambda=8.5: 2^(lam*Delta)*(E (M^2)^(1/(lam+1)))^(lam+1) = 1.3686667
+ideal bound at lambda=4.0: 2^(lam*Delta)*(E (M^2)^(1/(lam+1)))^(lam+1) = 1.3946499
+ideal bound at lambda=20.0: 2^(lam*Delta)*(E (M^2)^(1/(lam+1)))^(lam+1) = 1.5810567
+max |Q(z)-1| on sampled strip points |Im z|=0.38,0.19 (paper: <0.54): 0.450371

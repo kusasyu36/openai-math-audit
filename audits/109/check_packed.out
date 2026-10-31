@@ -1,0 +1,13 @@
+[OK] eight-op identity (u',w') = (u + c(1-2(u mod 2)), w) for all parities, c in {0,1} 
+[OK] max displacement <= 4 2
+[OK] first four ops induce cycle (00 01 10), fix 11 {(0, 0): (0, 1), (0, 1): (1, 0), (1, 0): (0, 0), (1, 1): (1, 1)}
+[OK] last four ops induce cycle (01 10 11), fix 00 {(0, 0): (0, 0), (0, 1): (1, 0), (1, 0): (1, 1), (1, 1): (0, 1)}
+[OK] first four ops stay in the parity square (quotients preserved) 
+[OK] S_0 = T_0 off B (random sample) 
+[OK] S_0(B) ⊂ B (random sample) 
+[OK] reversed lines with negated offsets invert S_0 
+[OK] |B|/M <= δ_bad = min(1, 80(f-1)2^-K) 0.2806 <= 0.3125
+   exact bad fraction 0.2777; union bound 0.3125; sampled 0.2806
+[OK] exhaustive-ish K=9,f=3 with x on selected bits: S_0 = T_0 off B 
+
+ALL OK

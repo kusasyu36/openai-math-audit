@@ -1,0 +1,32 @@
+[OK] (a) T P_s F_s = P_t F_t S  (s,t,alpha)=(7,11,2) 5.6571e-41
+[OK] (b) ||N-I|| < 2.01 e^(-pi alpha^2 theta/2) 9.6207e-8 < 0.055451
+[OK] (b) q_0=0, q_{s-1}<t, q increasing 
+[OK] (c) P_s F_s = 2^(2alpha^2) B_0 P_t F_t A 3.6229e-40
+[OK] (c) ||S'||<3/4, ||J'||<7/8, ||D'||<1 0.5,0.5,0.1571
+[OK] (a) T P_s F_s = P_t F_t S  (s,t,alpha)=(13,16,2) 8.1521e-41
+[OK] (b) ||N-I|| < 2.01 e^(-pi alpha^2 theta/2) 0.0011517 < 0.4715
+[OK] (b) q_0=0, q_{s-1}<t, q increasing 
+[OK] (c) P_s F_s = 2^(2alpha^2) B_0 P_t F_t A 4.9397e-40
+[OK] (c) ||S'||<3/4, ||J'||<7/8, ||D'||<1 0.5,0.5006,0.2272
+[OK] (a) T P_s F_s = P_t F_t S  (s,t,alpha)=(11,16,3) 7.8793e-41
+[OK] (b) ||N-I|| < 2.01 e^(-pi alpha^2 theta/2) 5.2555e-13 < 0.0032541
+[OK] (b) q_0=0, q_{s-1}<t, q increasing 
+[OK] (c) P_s F_s = 2^(2alpha^2) B_0 P_t F_t A 8.9439e-39
+[OK] (c) ||S'||<3/4, ||J'||<7/8, ||D'||<1 0.5,0.5,0.005255
+[OK] (d) Q F_t u = conj(a).(a*(conj(a).u))/T  (d=2, s=(3,5), t=(4,8)) 1.5614e-40
+[OK] (d) a has period t_i 
+[OK] (e) (R F_s^+)[(R F_s u).(R F_s v)] = u*v/S^2 1.7648e-42
+[OK] (e) F_s(u*v) = S (F_s u).(F_s v) 
+[OK] (e) F_s^+ F_s = I/S 
+[OK] (f) F_t^+ F_t^- = I/t in C[y]/(y^r+1), r=t=8 0.0
+[OK] (f) F_t^+ F_t^- = I/t, r=8, t=4 
+[OK] (f) character cancellation sum_k omega^{jk} 
+[OK] (f) decimation-in-frequency formula (eq:synthetic-dif) 
+[OK] (f) DIF recursion stores (F_t z)_j at slot rev(j) 
+[OK] (f) M F^+((F^- f)(F^- g)/r) = f*g/(rM) 
+[OK] (g) twist x->zeta y: cyclic conv = untwist(negacyclic conv of twisted) 
+[OK] (g) (eq:triangular-crt) coordinates = k*mu_i mod s_i 
+[OK] (g) Φ bijective on monomials 
+[OK] (g) Φ preserves cyclic convolution (3,5,7) 
+
+ALL OK
