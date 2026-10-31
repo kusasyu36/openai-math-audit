@@ -1,5 +1,7 @@
 # Independent audit of OpenAI's October 2026 AI-generated mathematics
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23826762.svg)](https://doi.org/10.5281/zenodo.23826762)
+
 On 6 October 2026, OpenAI released a collection of AI-generated mathematics manuscripts ([openai/math](https://github.com/openai/math)); its catalogue now lists about 720. OpenAI reports that about 42% of the top-line results (300 of 719, per its `history.md`) have accompanying Lean formalizations. Its history also records the withdrawal of three manuscripts on 7 October 2026.
 
 This repository records an independent audit of selected unformalized results, plus Lean formalizations of some of the combinatorial parts.
@@ -78,6 +80,10 @@ lake build
 ```
 
 This code is not intended for Mathlib. Mathlib's policy on AI use closes AI-generated pull requests that lack expert supervision, and this code was not written under such supervision.
+
+## Citation
+
+Please cite the archived release on Zenodo: kusasyu36, *Independent audit of OpenAI's October 2026 AI-generated mathematics*, Zenodo, [doi:10.5281/zenodo.23826762](https://doi.org/10.5281/zenodo.23826762). This DOI always resolves to the latest version; v1.0.0 is [doi:10.5281/zenodo.23826763](https://doi.org/10.5281/zenodo.23826763). See also `CITATION.cff`.
 
 ## Licence
 
