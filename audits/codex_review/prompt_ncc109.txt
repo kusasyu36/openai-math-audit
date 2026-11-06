@@ -1,0 +1,12 @@
+You are an independent reviewer. Another AI (Claude) audited an unrefereed OpenAI preprint (paper 109, "Integer multiplication below n log n") and inferred a strong implication that the paper itself never states. Before this is published, check it skeptically. Do not trust the report; read the paper (TeX) and use your own knowledge of the literature.
+
+Working directory is the project root. Read-only. Do not run any code from data/openai_math.
+- Report: audits/109/REPORT.md (sections 2(a), 2(c), 5.1)
+- Source: data/openai_math/preprints/Integer-multiplication-below-n-log-n-September-23-2026/build/ (main.tex, sections/*.tex)
+- Public wording to be published: public_repo/README.md, the row for 109.
+
+Claim: (1) The algorithm (fixed multitape TM, time O(n (lg n)^{1-kappa})) is oblivious: head movement depends only on n (see report 2(a) for the three places where payload dependence could hide). (2) An oblivious fixed-tape TM running in time T gives a constant fan-in/fan-out Boolean circuit of size O(T). (3) Hence, with Afshani-Freksen-Kamma-Larsen 2019 (Omega(n log n) gates for multiplication circuits, assuming the undirected k-pairs network coding conjecture), the paper, if correct, refutes that conjecture. (4) The paper does not cite AFKL or mention network coding / obliviousness. (5) Locally, Lemma chunk-swap (04-swap.tex) may conflict with Adler-Harvey-Jain-Kleinberg-Rasala Lehman 2006 (marked unverified in the report).
+
+Check: Is each step right? Is the oblivious reading actually supported by the TeX (cite lines), or is there payload-dependent head movement? Is step (2) correct (tape count ~1e21 is a constant; any issue)? Is AFKL's model really constant-degree Boolean circuits matching (2)? Is (4) true (grep the TeX and bib)? Is the public wording overstated?
+
+Output in Japanese, plain language, concise: for each of (1)-(5) give 判定（正しい / 一部正しい / 誤り / 確認できず）, 根拠（file:line you actually read, or literature）, then 公開文面への修正案, then a short overall summary.
