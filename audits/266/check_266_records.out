@@ -1,0 +1,32 @@
+coarse0: 764 records; range-check failures=0; r in [2.0131e-05,0.125] (cap 0.125); k histogram={0: 1, 4: 763}
+coarse1: 774 records; range-check failures=0; r in [2.0131e-05,0.125] (cap 0.125); k histogram={0: 1, 4: 773}
+coarse2: 757 records; range-check failures=0; r in [2.0131e-05,0.125] (cap 0.125); k histogram={0: 1, 4: 756}
+coarse3: 788 records; range-check failures=0; r in [2.01311e-05,0.125] (cap 0.125); k histogram={0: 1, 4: 787}
+A outputs total: 3083 (paper: 764+774+757+788 = 3083 )
+mid: 600 records; range-check failures=0; r in [7.87513e-08,0.0699999] (cap 0.07); k histogram={0: 1, 4: 599}
+fine: 22379 records; range-check failures=0; r in [7.77343e-08,0.0159999] (cap 0.016); k histogram={0: 1, 4: 22378}
+fb1: 1127 records; range-check failures=0; r in [0.00384193,0.0109998] (cap 0.011); k histogram={4: 1127}
+zero-count bad files OK (8 bytes each): midbad finebad fb1bad fb1cbad0-3
+number of batches: 88 (paper: 88; 87*256+107 = 22379 )
+batch sizes: [107, 256] last: 107 sum: 22379
+batch concat == fine (ignoring radius): mismatches=0; all batch radii == .016: True; replacement enlarges: True
+initial C unresolved records: 163 (paper: 163); nonempty bad files: 15 (paper: 15)
+nonempty bad files (C-locale sort): ['bad10.bin', 'bad3.bin', 'bad4.bin', 'bad5.bin', 'bad52.bin', 'bad53.bin', 'bad55.bin', 'bad56.bin', 'bad6.bin', 'bad7.bin', 'bad78.bin', 'bad79.bin', 'bad8.bin', 'bad80.bin', 'bad84.bin']
+fallback inputs match sorted nonempty bad files: True
+fallback parents: 163 (paper: 163); fallback outputs: 1127 (paper: 1127)
+final C0: result done282 bad0 (graph0 cap0 over0 cluster0)
+final C1: result done282 bad0 (graph0 cap0 over0 cluster0)
+final C2: result done282 bad0 (graph0 cap0 over0 cluster0)
+final C3: result done281 bad0 (graph0 cap0 over0 cluster0)
+final C total done: 1127 == fb1 count: True
+C batch exits: {0: 73, 1: 15} (paper: 73 exits 0, 15 exits 1); all done==batch size, bad==file count, categories sum OK
+graph-cap failures: 163 (paper: all 163 graph caps)
+centers header: ['112', '249878'] rows: 249878 (paper: 249,878)
+all rows: 10 ints, s in 0..4, bins in 0..111: True
+distinct five-bin x tuples among centers: 13557 (program printed 'xs 22829' = x lists passing filters, not all need appear)
+x bins nondecreasing in every row: True
+orientation filter a<=l-d+1 (seed.tex:187-189) for all rows: True
+s == first minimizer of |2b_s+1-N| (seed.tex:192-193) for all rows: True
+y tail bins nondecreasing: True
+gap filters: g_x,mid <= 1-(l-1)/N: True ; g_y,mid >= 1-(l+2)/N: True
+TOTAL range-check failures: 0

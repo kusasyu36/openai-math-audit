@@ -1,0 +1,34 @@
+   theta=0.0000 M=0 dim=73789 done (850s)
+   theta=0.0000 M=1 dim=69576 done (1477s)
+   theta=0.0000 M=2 dim=58278 done (1781s)
+   theta=0.0000 M=3 dim=43252 done (1904s)
+   theta=0.0000 M=4 dim=28314 done (1938s)
+   theta=0.0000 M=5 dim=16236 done (1943s)
+   theta=0.0000 M=6 dim=8074 done (1944s)
+   theta=0.0000 M=7 dim=3432 done (1944s)
+   theta=0.0000 M=8 dim=1221 done (1944s)
+   theta=0.0000 M=9 dim=352 done (1944s)
+   theta=0.0000 M=10 dim=78 done (1944s)
+   theta=0.0000 M=11 dim=12 done (1945s)
+   theta=0.0000 M=12 dim=1 done (1945s)
+n=12 theta=0.0000: E0=-16.8695561395 E0/n=-1.4057963450 gap=0.4841964699 mult=1
+   b=12.25: Z = 1.900547564  table 1.900547  diff +5.64e-07  OK
+   b=10.5: Z = 1.754226254
+   [1945s]
+   theta=3.1416 M=0 dim=73789 done (636s)
+   theta=3.1416 M=1 dim=69576 done (1172s)
+   theta=3.1416 M=2 dim=58278 done (1435s)
+   theta=3.1416 M=3 dim=43252 done (1536s)
+   theta=3.1416 M=4 dim=28314 done (1562s)
+   theta=3.1416 M=5 dim=16236 done (1566s)
+   theta=3.1416 M=6 dim=8074 done (1567s)
+   theta=3.1416 M=7 dim=3432 done (1567s)
+   theta=3.1416 M=8 dim=1221 done (1567s)
+   theta=3.1416 M=9 dim=352 done (1567s)
+   theta=3.1416 M=10 dim=78 done (1567s)
+   theta=3.1416 M=11 dim=12 done (1567s)
+   theta=3.1416 M=12 dim=1 done (1567s)
+n=12 theta=3.1416: E0=-16.7976404936 E0/n=-1.3998033745 gap=0.4024438235 mult=1
+   b=12.25: Z = 0.787405362  table 0.7874049999999999  diff +3.62e-07  OK
+   b=10.5: Z = 0.822783877
+   [1567s]

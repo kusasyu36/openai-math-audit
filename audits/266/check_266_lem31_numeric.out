@@ -1,0 +1,4 @@
+Installed 1 package in 43ms
+OK   M^*M = [[4,S],[conj S,4]] max residual 8.88e-16
+OK   squared singular values = 4 +- |S| max residual 4.44e-15
+OK   inverse-frame formula (scaled residual) max residual 7.94e-15

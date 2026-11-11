@@ -1,0 +1,24 @@
+[n=8 d=3 pairs=5 l=14 σ=-1] Q1=A_e,Q2=A_e^2-D_e: True; recurrence j=3..39: True; row sums d q^(j-1): True
+    W: series(39 terms) vs pencil on 1^⊥: 6.97e-11;  pencil vs M^-1/m_h on 1^⊥: 8.88e-16
+    exposure: 𝒟'=True, A_e'=True, M'=True
+    [m_h K]^-1 + G_0 = H_0^-1: True;  Woodbury W' = W - WUHU^TW: True;  ||D_p|| = 0.368
+    min eig M on 1^⊥ = 0.7678, after exposure = 0.7678
+[n=10 d=4 pairs=9 l=22 σ=1] Q1=A_e,Q2=A_e^2-D_e: True; recurrence j=3..39: True; row sums d q^(j-1): True
+    W: series(39 terms) vs pencil on 1^⊥: 7.79e-07;  pencil vs M^-1/m_h on 1^⊥: 3.55e-15
+    exposure: 𝒟'=True, A_e'=True, M'=True
+    [m_h K]^-1 + G_0 = H_0^-1: True;  Woodbury W' = W - WUHU^TW: True;  ||D_p|| = 1.853
+    min eig M on 1^⊥ = 0.3409, after exposure = 0.3853
+[n=12 d=3 pairs=10 l=16 σ=-1] Q1=A_e,Q2=A_e^2-D_e: True; recurrence j=3..39: True; row sums d q^(j-1): True
+    W: series(39 terms) vs pencil on 1^⊥: 1.76e-10;  pencil vs M^-1/m_h on 1^⊥: 2.41e-15
+    exposure: 𝒟'=True, A_e'=True, M'=True
+    [m_h K]^-1 + G_0 = H_0^-1: True;  Woodbury W' = W - WUHU^TW: True;  ||D_p|| = 0.087
+    min eig M on 1^⊥ = 0.3335, after exposure = 0.3335
+[n=9 d=5 pairs=12 l=21 σ=-1] Q1=A_e,Q2=A_e^2-D_e: True; recurrence j=3..39: True; row sums d q^(j-1): True
+    W: series(39 terms) vs pencil on 1^⊥: 5.55e-09;  pencil vs M^-1/m_h on 1^⊥: 5.55e-16
+    exposure: 𝒟'=True, A_e'=True, M'=True
+    [m_h K]^-1 + G_0 = H_0^-1: True;  Woodbury W' = W - WUHU^TW: True;  ||D_p|| = 0.250
+    min eig M on 1^⊥ = 1.0144, after exposure = 0.9490
+[empty pairing n=10 d=3] max|W - I| on 1^⊥ = 8.88e-16
+[contraction (4.2)] l=11 k=1: lhs=-0.108065 rhs=-0.108065 diff=6.94e-17
+[contraction (4.2)] l=10 k=2: lhs=-0.215493 rhs=-0.215493 diff=2.78e-17
+[contraction (4.2)] l=10 k=2: lhs=0.010378 rhs=0.010378 diff=5.72e-17

@@ -1,0 +1,34 @@
+== T1  Lemma 3.1 (01-table.tex:64-91): U_q は q 次の体か
+  p=  7 q=3 ell=  37 aux=True  |H_q|=  12 dim U_q=3 field_found=True -> OK
+  p= 13 q=3 ell=  37 aux=True  |H_q|=  12 dim U_q=3 field_found=True -> OK
+  p=  5 q=3 ell=  37 aux=True  |H_q|=  12 dim U_q=3 field_found=True -> OK
+  p= 11 q=5 ell= 181 aux=True  |H_q|=  36 dim U_q=5 field_found=True -> OK
+  p=  7 q=5 ell=  61 aux=True  |H_q|=  12 dim U_q=5 field_found=True -> OK
+  p= 19 q=3 ell=  37 aux=True  |H_q|=  12 dim U_q=3 field_found=True -> OK
+  p=  3 q=5 ell=  61 aux=True  |H_q|=  12 dim U_q=5 field_found=True -> OK
+  p=  7 q=3 ell=  73 aux=False |H_q|=  24 dim U_q=3 field_found=False -> OK  (非体の証拠: minpoly T**3 - 2*T が可約)
+  p= 13 q=3 ell=1009 aux=False |H_q|= 336 dim U_q=3 field_found=False -> OK  (非体の証拠: minpoly T**3 + 4*T**2 - 4*T - 3 が可約)
+  p= 11 q=5 ell=  61 aux=False |H_q|=  12 dim U_q=5 field_found=False -> OK  (非体の証拠: minpoly T**5 - 4*T**4 - 3*T**3 - 2*T**2 - 2*T - 1 が可約)
+  T1: OK
+== T2  q=2 の非平方構成 (01-table.tex:100-117)
+  p=   5 ell_2=  73 c=v^2=   2 const=True nonsquare=True ord(omega_2)=2^2: True -> OK
+  p=   7 ell_2=  73 c=v^2=   6 const=True nonsquare=True ord(omega_2)=2^1: True -> OK
+  p=  11 ell_2=  73 c=v^2=  10 const=True nonsquare=True ord(omega_2)=2^1: True -> OK
+  p=  13 ell_2=  73 c=v^2=   2 const=True nonsquare=True ord(omega_2)=2^2: True -> OK
+  p=  17 ell_2=  73 c=v^2=  14 const=True nonsquare=True ord(omega_2)=2^4: True -> OK
+  p=  29 ell_2=  73 c=v^2=  11 const=True nonsquare=True ord(omega_2)=2^2: True -> OK
+  p=  41 ell_2=  97 c=v^2=  14 const=True nonsquare=True ord(omega_2)=2^3: True -> OK
+  p=  97 ell_2= 337 c=v^2=  60 const=True nonsquare=True ord(omega_2)=2^5: True -> OK
+  p= 101 ell_2=  73 c=v^2=  94 const=True nonsquare=True ord(omega_2)=2^2: True -> OK
+  p= 113 ell_2=  73 c=v^2= 103 const=True nonsquare=True ord(omega_2)=2^4: True -> OK
+  T2: OK
+== T3  eq:auxiliary (q=2) と最小素数平方非剰余の関係 (00-introduction.tex:52-55)
+  素数 p < 3000 の全件で  最小 ell_2 == 最小の素数 ell ≡ 1 (24), (ell/p) = -1 : OK
+  ell_2 が大きい例 (p, ell_2, 最小素数非剰余 n_p): [(1217, 457, 3), (487, 409, 3), (937, 409, 5), (1451, 409, 2), (97, 337, 5)]
+  max ell_2 / n_p = 204.5
+  注: ell_2 は p を法とする素数平方非剰余であり、その最小値を polylog(p) で抑えるのは Ankeny 型 (GRH) の命題。
+  T3: OK
+== T4  LTE: v_q(Q^d - 1) = v_q(Q-1) + v_q(d), q 奇素数, q | Q-1
+  奇素数 q, 800 件: OK;  q=2 の対照 (Q=3,d=2) で等式が不成立 (論文も q 奇数を仮定: 02-finite-fields.tex:137)
+  T4: OK
+ALL: OK

@@ -1,0 +1,36 @@
+OK  foundations.tex:364          q^R0 l1^2/n = n^{1/3+.34a}                       claim=+0.333367 calc=+0.333367
+OK  foundations.tex:365          b = n^{1/3+.345a} (margin over above = .005a)    claim=+0.333368 calc=+0.333368
+OK  foundations.tex:592          q^L/l0 = n^{-.58a}                               claim=-0.000058 calc=-0.000058
+OK  foundations.tex:611          q^{-L/2} = n^{.29a}/sqrt(l0)                     claim=-0.333312 calc=-0.333312
+OK  foundations.tex:942          n^{.53a}/(α* sqrt l0) = n^{-.045a}               claim=-0.000005 calc=-0.000005
+OK  foundations.tex:934          b'||S_h|| = n^{(.125-.16)a}                      claim=-0.000003 calc=-0.000003
+OK  cleanup.tex:29               f_b sqrt(l0) = n^{.27a}                          claim=+0.000027 calc=+0.000027
+OK  cleanup.tex:32               α* sqrt(l0) = n^{.575a}                          claim=+0.000058 calc=+0.000058
+    cleanup.tex:30  f_b q^{L/2} = n^-0.000002 (needs η < +0.000002)
+    cleanup.tex:31  f_b n^v*/α* = n^-0.000018
+    cleanup.tex:28  b^{3/2}/l0 = n^-0.166630
+OK  repair.tex:153               B_B = n^{.40a}/sqrt(l2) with g+r=0 -> n^{-1/3+.325a} claim=-0.333301 calc=-0.333301
+    repair.tex:45,153  B_B = o(sqrt e) requires (g+r)/2 < +0.000017  i.e. g+r < .35a
+OK  repair.tex:507               M/(J_T n) = n^{-2/3+8.4a}                        claim=-0.665827 calc=-0.665827
+OK  repair.tex:573               sqrt(M) W_b^{3/2} = n^{-5/6+155a}                claim=-0.817833 calc=-0.817833
+OK  repair.tex:599               M/(sqrt n W_b^{1/4}) = n^{-15a}                  claim=-0.001500 calc=-0.001500
+OK  repair.tex:600               en/M = n^{-9a}                                   claim=-0.000900 calc=-0.000900
+OK  repair.tex:609               M^2/n = n^{-1/3+20a}                             claim=-0.331333 calc=-0.331333
+--- 表 repair.tex:626-631 (比の冪) ---
+OK  repair.tex:626               mean bias / e                                    claim=+0.000740 calc=+0.000740
+OK  repair.tex:627               conditioning error / e                           claim=-0.084100 calc=-0.084100
+OK  repair.tex:628               near fluctuation / e                             claim=-0.151267 calc=-0.151267
+OK  repair.tex:629               bulk fluctuation / (en/M)                        claim=-0.000600 calc=-0.000600
+OK  repair.tex:630               typical-block error / (en/M)                     claim=-0.019100 calc=-0.019100
+OK  repair.tex:631               collision prob                                   claim=-0.331333 calc=-0.331333
+--- Lemma 8.2 の例外割合 (repair.tex:263-277) ---
+    l0 (1+L)^6 / n = n^-0.333318 polylog; fraction with row^2 > n^-.03: n^-0.303318 polylog  (claimed <= n^-.2)
+    r_n = .08 log_q n: q^(-r_n/2) = n^-.04 ; n^.08 return-bad vertices / n = n^-.92
+--- n_0 の規模感 ---
+    n^{0.00074} >= 2  needs  n >= 10^407
+    n^{0.00060} >= 2  needs  n >= 10^502
+    n^{0.00000} >= 2  needs  n >= 10^602060
+    n^{0.00074} >= 10  needs  n >= 10^1351
+    n^{0.00060} >= 10  needs  n >= 10^1667
+    n^{0.00000} >= 10  needs  n >= 10^2000000
+    (比較: 可観測宇宙の原子数 ~ 10^80)

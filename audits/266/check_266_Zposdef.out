@@ -1,0 +1,10 @@
+shapes (lambda, m, e_lambda): [((1, 1, 1, 2), 5, 14), ((1, 1, 3), 21, 13), ((1, 2, 2), 11, 13), ((1, 4), 27, 14), ((2, 3), 22, 14), ((5,), 12, 15)]
+matches table in 04-mixed.tex:234-247: True
+lambda=(1, 1, 1, 2): m=5, pivots>40000: True, min pivot=1069676.0
+lambda=(1, 1, 3): m=21, pivots>40000: True, min pivot=41331.2
+lambda=(1, 2, 2): m=11, pivots>40000: True, min pivot=74937.6
+lambda=(1, 4): m=27, pivots>40000: True, min pivot=102520.3
+lambda=(2, 3): m=22, pivots>40000: True, min pivot=304783.6
+lambda=(5,): m=12, pivots>40000: True, min pivot=140019.8
+total pivots: 98 (paper: 98); min pivot: 41331.16906653723 ; all positive-definite: True
+numpy smallest eigenvalues: ['940309.9', '20936.0', '14000.0', '60191.6', '119984.1', '55579.8']

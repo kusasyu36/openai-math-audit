@@ -1,0 +1,28 @@
+JSON labels (first 5): [[1, 0, -1], [1, 0, 1], [1, 1, -1], [1, 1, 1], [1, 2, -1]]  tex order (first 5): [(1, -1), (1, 1), (2, -1), (2, 1), (3, -1)]
+A_s rebuilt from tex rules == matrix-data.json: True
+block dimensions by d-e: {-10: 1, -8: 8, -6: 32, -4: 80, -2: 136, 0: 162, 2: 136, 4: 80, 6: 32, 8: 8, 10: 1}
+match eq:trial-blocks: True
+off-block nonzeros in T, O: 0 0
+N=4: V_N=22975205960525898253776 vs |psi|^2=2.297521e+22 (rel diff 0.0e+00);  N U_N=-137851234864097615402880 vs <psi|H|psi>=-1.378512e+23 (rel diff 2.4e-16);  energy/site = -1.500000 >= E0/N = -1.500000: True
+N=6: V_N=795377896228728091610809845163632 vs |psi|^2=7.953779e+32 (rel diff 1.8e-16);  N U_N=-6854013196214322159921037103475264 vs <psi|H|psi>=-6.854013e+33 (rel diff 1.7e-16);  energy/site = -1.436217 >= E0/N = -1.436237: True
+
+N=72: V>0: True;  -c_N V <= 1e12 U < (-c_N+1) V: True;  U/V = -1.401482112600802;  U/V < -a: True;  margin per site -a - U/V = 1.126e-07;  shifted energy bound N(U/V + a) = -8.107e-06  [19s]
+   digits: V has 390 digits, U has 391 digits
+   JSON certificate72: raw integers match: V True, U True;  reduced ratio U/V matches: True;  floor(1e12 U/V) match: True;  gcd(U,V) has 3 digits, JSON V has 390 digits, own V 390 digits
+
+N=120: V>0: True;  -c_N V <= 1e12 U < (-c_N+1) V: True;  U/V = -1.401482105173255;  U/V < -a: True;  margin per site -a - U/V = 1.052e-07;  shifted energy bound N(U/V + a) = -1.262e-05  [46s]
+   digits: V has 650 digits, U has 651 digits
+   JSON certificate120: raw integers match: V True, U True;  reduced ratio U/V matches: True;  floor(1e12 U/V) match: True;  gcd(U,V) has 3 digits, JSON V has 650 digits, own V 650 digits
+
+MPS energy per bond e(N) = U_N/V_N (float, normalized transfer matrix):
+   N=   8: e(N) = -1.417086915899
+   N=  12: e(N) = -1.405792223462
+   N=  16: e(N) = -1.402923512471
+   N=  24: e(N) = -1.401689155906
+   N=  36: e(N) = -1.401496838448
+   N=  48: e(N) = -1.401483260547
+   N=  72: e(N) = -1.401482112601
+   N= 120: e(N) = -1.401482105173
+   N= 200: e(N) = -1.401482105173
+   N= 400: e(N) = -1.401482105173
+   -a = -1.401482000000;  White-Huse e_0(inf) = -1.401484039

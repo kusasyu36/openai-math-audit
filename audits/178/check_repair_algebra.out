@@ -1,0 +1,40 @@
+[1] m_c = sqrt(q)/(d-2) ? True
+[1] σF+2P_tree == (1/(d-2))[[s,σd],[σd,s]] ? True
+[1] det(ideal) == -1 ? True
+[1] ideal * K_σ == I ? True
+[1] Tr(K_σ M_i) + 2x/(d-2) == 0 ? True
+[1] Tr(K M K M) = 2*(d**4 + 4*d**3 + d**2*lambda**2 - 8*d**2*lambda*sigma*sqrt(d - 1) - 4*d**2 + 4*d*lambda**2 - 4*lambda**2)/(d**2*(d - 2)**2)
+    d=3: min Tr(KMKM) over |λ|<d = 0.1177489668455526
+    d=4: min Tr(KMKM) over |λ|<d = 0.2871870071020684
+    d=5: min Tr(KMKM) over |λ|<d = 0.4444443555559232
+    d=8: min Tr(KMKM) over |λ|<d = 0.8151063476598946
+[2] d=3 n=20: max|E[z_i z_k^T] - δ M_i/n| = 8.33e-17
+[2] d=3: A - A' = U F U^T for valid switches ? True
+[2] d=3 σ=1: tilt density sums to 1 ? 1.000000, min density 2.507e-04 (>0 ?)
+[2] d=3 σ=1: max|E_ν H - (8.68)| = 2.17e-16  (|E_ν H| max 2.66e-01)
+[2] d=3 σ=-1: tilt density sums to 1 ? 1.000000, min density 2.507e-04 (>0 ?)
+[2] d=3 σ=-1: max|E_ν H - (8.68)| = 2.36e-16  (|E_ν H| max 1.66e-01)
+[2] d=3: spec(sI-σA') via eigenbasis vs direct, max diff = 3.55e-15 (constant mode -0.172 removed)
+[2] d=3: near Schur complement (8.66) identity, max diff = 2.22e-16
+[2] d=3: In(D_B)=(16, 0, 0) In(-S_B)=(2, 2, 0) In(-C^-1)=(2, 2, 0) In(bulk_new)=(16, 0, 0)
+[2] d=3: Haynsworth inertia identity holds ? True
+[2] d=4 n=18: max|E[z_i z_k^T] - δ M_i/n| = 6.25e-17
+[2] d=4: A - A' = U F U^T for valid switches ? True
+[2] d=4 σ=1: tilt density sums to 1 ? 1.000000, min density 1.675e-04 (>0 ?)
+[2] d=4 σ=1: max|E_ν H - (8.68)| = 3.33e-16  (|E_ν H| max 1.72e-01)
+[2] d=4 σ=-1: tilt density sums to 1 ? 1.000000, min density 1.675e-04 (>0 ?)
+[2] d=4 σ=-1: max|E_ν H - (8.68)| = 3.47e-16  (|E_ν H| max 1.41e-01)
+[2] d=4: spec(sI-σA') via eigenbasis vs direct, max diff = 4.44e-15 (constant mode -0.536 removed)
+[2] d=4: near Schur complement (8.66) identity, max diff = 2.22e-16
+[2] d=4: In(D_B)=(14, 0, 0) In(-S_B)=(2, 2, 0) In(-C^-1)=(2, 2, 0) In(bulk_new)=(14, 0, 0)
+[2] d=4: Haynsworth inertia identity holds ? True
+[2] d=5 n=16: max|E[z_i z_k^T] - δ M_i/n| = 1.25e-16
+[2] d=5: A - A' = U F U^T for valid switches ? True
+[2] d=5 σ=1: tilt density sums to 1 ? 1.000000, min density 1.369e-04 (>0 ?)
+[2] d=5 σ=1: max|E_ν H - (8.68)| = 4.72e-16  (|E_ν H| max 2.09e-01)
+[2] d=5 σ=-1: tilt density sums to 1 ? 1.000000, min density 1.369e-04 (>0 ?)
+[2] d=5 σ=-1: max|E_ν H - (8.68)| = 1.39e-16  (|E_ν H| max 1.71e-01)
+[2] d=5: spec(sI-σA') via eigenbasis vs direct, max diff = 4.22e-15 (constant mode -1.000 removed)
+[2] d=5: near Schur complement (8.66) identity, max diff = 4.44e-16
+[2] d=5: In(D_B)=(12, 0, 0) In(-S_B)=(2, 2, 0) In(-C^-1)=(2, 2, 0) In(bulk_new)=(12, 0, 0)
+[2] d=5: Haynsworth inertia identity holds ? True

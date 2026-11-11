@@ -1,0 +1,38 @@
+Hadamard samples: 21 all verified Hadamard
+(1) Lemma contraction, p<=6: max |lhs-rhs| = 1.39e-17
+(1) 7-row relation sum_l m(A_0->l) = 2.78e-17 (should be 0)
+(2) Lemma partitions n=3: lhs=-0.000000000000 rhs=-0.000000000000 diff=1.04e-17;  n=2 example: diff=2.78e-17
+(3) pair certificate 3<|L|^2> + <|g(alpha)g(q)|^2> (should be 0 for every Hadamard):
+   F6(a,b)      3<|L|^2>=3.484e-31  total(q_cross)=4.026e-31  total(q_same)=4.389e-31
+   F6(a,b)      3<|L|^2>=4.009e-31  total(q_cross)=4.710e-31  total(q_same)=4.780e-31
+   F6(a,b)      3<|L|^2>=3.640e-31  total(q_cross)=4.265e-31  total(q_same)=4.406e-31
+   F6(a,b)      3<|L|^2>=3.090e-31  total(q_cross)=3.552e-31  total(q_same)=3.711e-31
+   F6(a,b)      3<|L|^2>=3.016e-31  total(q_cross)=3.522e-31  total(q_same)=3.673e-31
+   F6(a,b)      3<|L|^2>=4.271e-31  total(q_cross)=4.951e-31  total(q_same)=5.209e-31
+   F6(a,b)      3<|L|^2>=4.237e-31  total(q_cross)=5.021e-31  total(q_same)=5.022e-31
+   F6(a,b)      3<|L|^2>=3.590e-31  total(q_cross)=4.301e-31  total(q_same)=4.259e-31
+   D6(c)        3<|L|^2>=7.665e-32  total(q_cross)=7.865e-32  total(q_same)=8.173e-32
+   D6(c)        3<|L|^2>=5.910e-32  total(q_cross)=6.046e-32  total(q_same)=6.292e-32
+   D6(c)        3<|L|^2>=6.091e-32  total(q_cross)=6.296e-32  total(q_same)=6.455e-32
+   D6(c)        3<|L|^2>=5.504e-32  total(q_cross)=5.700e-32  total(q_same)=6.036e-32
+   C6           3<|L|^2>=7.438e-32  total(q_cross)=7.516e-32  total(q_same)=7.520e-32
+   S6 cubic     3<|L|^2>=8.223e-32  total(q_cross)=8.589e-32  total(q_same)=8.589e-32
+   equiv(F6)    3<|L|^2>=4.295e-31  total(q_cross)=4.985e-31  total(q_same)=5.225e-31
+   equiv(F6)    3<|L|^2>=2.697e-31  total(q_cross)=3.042e-31  total(q_same)=3.252e-31
+   equiv(F6)    3<|L|^2>=4.993e-31  total(q_cross)=5.895e-31  total(q_same)=5.806e-31
+   equiv(F6)    3<|L|^2>=4.387e-31  total(q_cross)=5.118e-31  total(q_same)=5.288e-31
+   equiv(F6)    3<|L|^2>=4.365e-31  total(q_cross)=5.069e-31  total(q_same)=5.332e-31
+   equiv(F6)    3<|L|^2>=3.594e-31  total(q_cross)=4.141e-31  total(q_same)=4.319e-31
+   equiv(S6)    3<|L|^2>=8.978e-32  total(q_cross)=9.675e-32  total(q_same)=9.675e-32
+(3) max |identity residual| over all samples = 5.90e-31
+(4) F6(a,b)     : max_pi |g(alpha)| = 1.280e-15 ; H∘2 Hadamard: False
+(4) D6(c)       : max_pi |g(alpha)| = 3.355e-16 ; H∘2 Hadamard: False
+(4) C6          : max_pi |g(alpha)| = 1.352e-16 ; H∘2 Hadamard: False
+(4) S6 cubic    : max_pi |g(alpha)| = 5.000e-01 ; H∘2 Hadamard: True
+(4) max over non-cubic samples of max_pi |g(pi alpha)| = 1.35e-15 (Theorem fourier predicts 0)
+(5) (eq:same-matrix) max residual = 5.33e-16
+(5) (eq:different-matrices) for the tensor MUB pair: |sum| = 1.88e-16
+(5) (eq:order-two) sum_(s!=r) g_s(a)=0 in d=3 complete family: max |sum| = 1.08e-15
+(5) (eq:order-two) sum_(s!=r) g_s(a)=0 in d=5 complete family: max |sum| = 9.02e-16
+(6) singleton reduction d=3: M((0,1);(a,-a))=-0.500000, -1/(d-1) M((0,0);(a,-a))=-0.500000, diff=0.00e+00
+(6) Lemma gram (d=3 analogue), 20 charge pairs all agree; largest nonzero case a=(2, -1, -1) v=(1, -2, 1): lhs=0.250000 rhs=0.250000

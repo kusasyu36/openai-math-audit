@@ -1,0 +1,33 @@
+T Hadamard (exact): True
+T∘2 Hadamard (exact): True ; T∘2 == conj(T): True
+plus-graph edges (5-cycle 1-2-3-4-5-1 expected): [(1, 2), (1, 5), (2, 3), (3, 4), (4, 5)]
+T_ij == S6[p(i),p(j)], p=(0,1,2,5,4,3), with recalled S_6 table: True (S_6 table recalled from memory, see report)
+orbit reps of balanced charges of order<=3: 11 ; equals table rows: True
+|O| = 180 (paper 180)
+parametrization A=e_p+e_q-e_h-e_i, C=e_q-e_p recovers O exactly: True
+j=0 w=(-3, 0, 0, 0, 0, 3): N=(6, 0, 0) table(6, 0, 0) | U=(0, 0, 0) table(0, 0, 0) | G=1 R=0 R/G=0
+j=1 w=(-3, 0, 0, 0, 1, 2): N=(2, 2, 2) table(2, 2, 2) | U=(0, 0, 0) table(0, 0, 0) | G=0 R=0 R/G=None
+j=2 w=(-3, 0, 0, 1, 1, 1): N=(3, 0, 3) table(3, 0, 3) | U=(0, 0, 0) table(0, 0, 0) | G=(0+-1/2w) R=0 R/G=0
+j=3 w=(-2, -1, 0, 0, 1, 2): N=(4, 1, 1) table(4, 1, 1) | U=(60, 42, 42) table(60, 42, 42) | G=1/2 R=1/4 R/G=1/2
+j=4 w=(-2, -1, 0, 1, 1, 1): N=(2, 2, 2) table(2, 2, 2) | U=(144, 144, 144) table(144, 144, 144) | G=0 R=0 R/G=None
+j=5 w=(-2, 0, 0, 0, 0, 2): N=(2, 2, 2) table(2, 2, 2) | U=(0, 0, 0) table(0, 0, 0) | G=0 R=0 R/G=None
+j=6 w=(-2, 0, 0, 0, 1, 1): N=(3, 3, 0) table(3, 3, 0) | U=(180, 180, 72) table(180, 180, 72) | G=(1/2+1/2w) R=(3/2+3/2w) R/G=3
+j=7 w=(-1, -1, -1, 1, 1, 1): N=(3, 3, 0) table(3, 3, 0) | U=(540, 540, 216) table(540, 540, 216) | G=(1/2+1/2w) R=(9/2+9/2w) R/G=9
+j=8 w=(-1, -1, 0, 0, 1, 1): N=(4, 1, 1) table(4, 1, 1) | U=(480, 336, 336) table(480, 336, 336) | G=1/2 R=2 R/G=4
+j=9 w=(-1, 0, 0, 0, 0, 1): N=(2, 2, 2) table(2, 2, 2) | U=(576, 576, 576) table(576, 576, 576) | G=0 R=0 R/G=None
+j=10 w=(0, 0, 0, 0, 0, 0): N=(6, 0, 0) table(6, 0, 0) | U=(0, 0, 0) table(0, 0, 0) | G=1 R=0 R/G=0
+Table cubic-counts: N column reproduced: True ; U column reproduced: True ; loop rule == direct formula (eq:cubic-R): True
+multipliers lambda_3,6,7,8 = [Fraction(1, 2), Fraction(3, 1), Fraction(9, 1), Fraction(4, 1)] (paper 1/2, 3, 9, 4); R=0 elsewhere: True
+G=0 on orbits 1,4,5,9: True ; |G|^2 at types 6,8: 1/4 1/4 (paper 1/4)
+|G(b)| constant on each orbit (all order<=3 charges): True
+R(b) = lambda_j G(b) pointwise for ALL order<=3 charges (not only reps): True
+orbit sizes: {3: 360, 6: 120, 7: 20, 8: 90} (paper 360,120,20,90); coefficients: {3: Fraction(180, 1), 6: Fraction(360, 1), 7: Fraction(180, 1), 8: Fraction(360, 1)} (paper 180,360,180,360); /180: {3: Fraction(1, 1), 6: Fraction(2, 1), 7: Fraction(1, 1), 8: Fraction(2, 1)}
+w5+D by orbit: {0: 1, 1: 8, 3: 12, 6: 8, 9: 1} (paper {0:1,1:8,3:12,6:8,9:1})
+w8+D by orbit: {3: 4, 4: 8, 6: 4, 7: 2, 8: 8, 9: 4} (paper {3:4,4:8,6:4,7:2,8:8,9:4})
+eq (first relation): S3 + S7 - 1/5 = 0   (paper S3+2S6+S7+2S8=0)
+eq from a=c=w5 : S0 + 12*S3 - 2/5 = 0   (paper: S0+12S3 = 2/5)
+eq from a=c=w8 : 4*S3 + 2*S7 - 3/5 = 0   (paper: 4S3+2S7 = 3/5)
+solution: {S0: -4/5, S3: 1/10, S7: 1/10} (paper S3=S7=1/10, S0=-4/5)
+E|sum z_i^3|^2 = 6 + 30*S0 = -18 (paper -18); contradiction: True
+orbit of 3(e5-e0) has size 30 = |D| = 30 -> True
+normalized symmetries (row perm, col perm, conj) found by brute force: 720 (paper: 720); row permutations realized: 720 of 720

@@ -1,0 +1,31 @@
+exact Hadamard test cases: 230
+OK   frame check m>1.24 (rounding.tex:374): 230/230
+OK   seed-norm: e1^2+b1^2+c1^2 <= ||s||^2 (completion:seed-norm): 230/230
+OK   ||E'||_op <= A_*: 230/230
+OK   P_B = G_B B_0 and P_C = G_C C_0^*: 230/230
+OK   ||G_B||=1/m_B, ||G_C||=1/m_C: 230/230
+OK   deficit identity (completion:deficit-identity): 230/230
+OK   tr(6I-Y*Y) <= b1^2 + (||E'|| b1 + sqrt6 c1)^2/mC^2 <= q: 230/230  (max observed ratio/value 0.2558)
+OK   q < .32 (rounding.tex:466): 230/230
+OK   ||Y - sqrt6 V||_F <= p (completion:polar-bound): 230/230
+OK   U(2) parametrization reproduces V: 230/230
+OK   ||V-U||_F <= sqrt6 h: 230/230
+OK   ||V-U-dU[theta]||_F <= sqrt42/2 h^2: 230/230
+OK   pieces orthogonal and sum to Z: 230/230
+OK   piece-B identity: 230/230
+OK   piece-C identity: 230/230
+OK   piece-K identity: 230/230
+OK   ||Z||_F <= z (completion:z-bound): 230/230  (max observed ratio/value 0.5988)
+OK   ||[C0 D]||_op <= L and ||D P_K||=sqrt6 and ||D|| <= max(sqrt6, ||C0|| A0/mB): 230/230
+OK   L < 6 and ||D|| < 4.6 (rounding.tex:442,461): 230/230
+OK   ||Z - J(s,theta)||_F <= E_r (completion:linear-remainder-bound): 230/230  (max observed ratio/value 0.199)
+OK   E_r < 1 (rounding.tex:466): 230/230
+OK   entrywise coefficient formulas == matrix J: 230/230
+OK   sum (|D_ij|-1)^2 <= z^2 (completion:norm-test): 230/230
+OK   flatness expansion identity (completion.tex:607-613): 230/230
+OK   seed sum Taylor: |rho_X|,|rho_Y| <= R_s^2/2: 230/230
+OK   directional test (completion:directional-test) holds for random y: 230/230
+OK   arc bounds: ||d|| <= arc, (sum m_j d_j^2)^1/2 <= weighted (phase:arc-weighted): 230/230
+OK   chord identity |D'-D|^2 = (m-1)^2 + m|D'-D°|^2: 230/230
+OK   Im(conj(D°)Z_j) = sin d_j and sum|d-sin d| <= arc^3/6: 230/230
+ALL OK

@@ -1,0 +1,17 @@
+Installed 2 packages in 185ms
+[    0.0s] building pair table
+[   27.5s] pair equations generated: 8871
+rank table: 8871 909 897
+[   39.8s] pair certificate with q_cross: nonzero coefficients after substitution = 0
+[   39.8s] pair certificate with q_same: nonzero coefficients after substitution = 0
+[   39.8s] pair certificate results (nonzero coefficient counts): {'q_cross': (0, 0), 'q_same': (0, 0)}
+[   39.8s] building mixed table
+[   62.1s] charge triples: 2821  mixed equations: 45996  zero-pair rows: 258
+rank table: 46041 3429 2767
+[  132.7s] positive pivots verified: 98
+-613302797399911/6480 179721388988719/6480 5000000000000000
+[  132.9s] constant f = -613302797399911/6480  residual sum = 179721388988719/6480  f+v = -2007321335237/30
+6480 f = -613302797399911 (paper: -613302797399911)
+6480 v = 179721388988719 (paper: 179721388988719)
+f + v < 0: True  f+v = -2007321335237/30 (paper: -2007321335237/30)
+[  132.9s] done
