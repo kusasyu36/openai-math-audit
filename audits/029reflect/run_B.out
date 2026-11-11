@@ -1,0 +1,128 @@
+=== B0: period of (lam/n)_3 on primary n (brute force) ===
+  primary n with N(n) <= 5000: 2005 ; residue classes mod 9 seen: 9 (expected 9) ; inconsistencies mod 9: 0
+  depends only on n mod 3*lam ? False   => exact period ideal is (9) [conductor of the twist]
+  agrees with the supplementary law DR (1.5): True
+  gamma_2^{003}((-2, -3)) - (lam/pi)_3 g~(pi) = 4.6e-16
+  gamma_2^{003}((4, 3)) - (lam/pi)_3 g~(pi) = 1.4e-15
+  gamma_2^{003}((-5, 0)) - (lam/pi)_3 g~(pi) = 6.7e-17
+  gamma_2^{003}((7, 3)) - (lam/pi)_3 g~(pi) = 6.3e-16
+
+=== B1: finite Fourier expansion at 3; translates z + lam^2 h/q, reduced denominators and cusp types ===
+  phi_P (Patterson's own, primary indices only): period 3, nonzero phi-hat(h): 9 of 9
+     N(c_0) =  1  cusp expansion I    :  3 translates, sum |phi-hat|^2 = 0.03704
+     N(c_0) =  1  cusp expansion g10  :  3 translates, sum |phi-hat|^2 = 0.03704
+     N(c_0) =  1  cusp expansion g19  :  3 translates, sum |phi-hat|^2 = 0.03704
+  phi_W (paper's combination: extra twist (lam/n)_3): period 9, nonzero phi-hat(h): 9 of 81
+     N(c_0) =  9  cusp expansion I    :  9 translates, sum |phi-hat|^2 = 0.11111
+
+=== B2: pointwise identity, direct twisted series = sum of translates through cusp expansions ===
+  Kubota exponents of the translates: phi_P [0] ; phi_W [0, 1, 2]
+  function values: error relative to the value.  d/dzbar at z=0: the value is small by cancellation, so the error is
+  measured against the sum of the absolute values of the direct terms (the first run used the value itself as the
+  denominator and flagged |diff| = 2.5e-13 on a value 1.0e-8 as a failure; that was a defect of my criterion).
+  phi_P function at w=(-0.006-0.019i, 0.052)         lhs= 1.7001281509e+01-7.7269869943e-10i  rhs= 1.7001281509e+01-7.7269833845e-10i  err=8.4e-16  OK
+  phi_P d/dzbar at z=0, v=0.052                      lhs= 1.0140068749e-08+4.2702821542e-15i  rhs= 1.0140087006e-08-6.8242400536e-24i  err=3.1e-17  OK
+  phi_P function at w=(-0.030+0.013i, 0.054)         lhs= 1.4786158522e+01+1.0742351458e-07i  rhs= 1.4786158522e+01+1.0742351862e-07i  err=1.0e-15  OK
+  phi_P d/dzbar at z=0, v=0.054                      lhs= 3.4511734749e-08-5.1541055520e-15i  rhs= 3.4511639744e-08-7.3205484211e-23i  err=1.8e-16  OK
+  phi_P function at w=(0.043+0.002i, 0.081)          lhs= 1.1728669317e+01+1.0813694510e-05i  rhs= 1.1728669317e+01+1.0813694510e-05i  err=1.8e-15  OK
+  phi_P d/dzbar at z=0, v=0.081                      lhs= 5.9313065943e-05+5.6625943232e-15i  rhs= 5.9313065979e-05-4.5739779152e-20i  err=1.5e-16  OK
+  phi_W function at w=(0.017+0.007i, 0.087)          lhs= 8.8983299279e+00+4.2497668978e-04i  rhs= 8.8983299279e+00+4.2497668979e-04i  err=1.9e-15  OK
+  phi_W d/dzbar at z=0, v=0.087                      lhs=-4.9482008285e-02-3.4551363912e-15i  rhs=-4.9482008285e-02+5.3290705182e-15i  err=5.3e-17  OK
+  phi_W function at w=(0.000-0.040i, 0.097)          lhs= 7.6912670943e+00+1.2579531360e-02i  rhs= 7.6912670943e+00+1.2579531360e-02i  err=1.4e-15  OK
+  phi_W d/dzbar at z=0, v=0.097                      lhs=-9.4283197031e-02-4.0148652883e-15i  rhs=-9.4283197031e-02+9.3258734069e-15i  err=2.3e-16  OK
+  phi_W function at w=(-0.017-0.041i, 0.112)         lhs= 7.0137387325e+00+2.9901266407e-02i  rhs= 7.0137387325e+00+2.9901266407e-02i  err=1.7e-15  OK
+  phi_W d/dzbar at z=0, v=0.112                      lhs=-2.0143078743e-01-8.9451102534e-15i  rhs=-2.0143078743e-01+1.0436096431e-14i  err=5.5e-16  OK
+  phi_W d/dzbar with conj(phi-hat)  [= twist by conj (lam/n)] lhs=-2.6586214515e-02-1.0847724979e-14i  rhs= 9.9495728479e+00-3.4416913763e-15i  err=4.0e-02  OK (negative control)
+  phi_W series against phi_P translates              lhs=-2.6586214515e-02-1.0847724979e-14i  rhs= 4.8989155103e-05-1.7787691892e-20i  err=1.1e-04  OK (negative control)
+  phi_P function with conj(chi_Kubota)               lhs= 1.2370436686e+01+3.6478498315e-06i  rhs= 1.2370436686e+01+3.6478498276e-06i  err=1.2e-15  OK
+
+=== B3: decay with the Bessel kernel.  J(v) = d/dzbar Theta_phi(0,v) = 3^{5/2} 2 pi i sum_A a(A) conj(mu_A) v K_{1/3}(4 pi |mu_A| v) ===
+  N_eff = 27/(4 pi v)^2 is the norm N(A) at which 4 pi |mu_A| v = 1.  'abs' = sum of absolute values of the direct terms.
+  The untwisted column is Theta_phi(0,v) (no angular factor): it grows, the angular sums collapse.
+        v     N_eff     abs        |J_P| direct   |J_P| dual     |J_W| direct   |J_W| dual     err_P/abs  err_W/abs   |Theta_P(0,v)|  |Theta_W(0,v)|
+  0.3000      1.9  1.824e+01   6.687715e-01   6.687715e-01   4.361691e-01   4.361691e-01   1.2e-15    1.2e-15     5.6636e+00      4.1121e+00
+  0.2000      4.3  4.026e+01   1.747575e-01   1.747575e-01   8.678174e-01   8.678174e-01   4.2e-16    3.0e-16     7.5803e+00      5.3065e+00
+  0.1400      8.7  8.164e+01   2.137459e-02   2.137459e-02   4.628469e-01   4.628469e-01   4.2e-16    1.8e-16     9.6351e+00      6.6904e+00
+  0.1000     17.1  1.598e+02   9.191651e-04   9.191651e-04   1.131216e-01   1.131216e-01   1.3e-16    3.1e-16     1.2059e+01      8.3625e+00
+  0.0750     30.4  2.842e+02   1.798662e-05   1.798662e-05   1.597820e-02   1.597820e-02   1.9e-16    7.6e-17     1.4609e+01      1.0129e+01
+  0.0600     47.5  4.442e+02   2.993889e-07   2.993889e-07   1.904699e-03   1.904699e-03   2.7e-17    7.3e-17     1.6952e+01      1.1754e+01
+  0.0500     68.4  6.396e+02   4.498835e-09   4.498819e-09   2.047395e-04   2.047395e-04   3.2e-17    8.7e-18     1.9143e+01      1.3273e+01
+  0.0425     94.7  8.853e+02   4.887057e-11   4.892264e-11   1.787663e-05   1.787663e-05   5.9e-17    5.4e-17     2.1333e+01      1.4792e+01
+  empirical exponent  -d log|J| / d(1/v)  between successive rows (dual values), compared with 4 pi |ell_min| / N(c_0):
+     v 0.3000 -> 0.2000 :  P 0.805   W -0.413
+     v 0.2000 -> 0.1400 :  P 0.981   W 0.293
+     v 0.1400 -> 0.1000 :  P 1.101   W 0.493
+     v 0.1000 -> 0.0750 :  P 1.180   W 0.587
+     v 0.0750 -> 0.0600 :  P 1.229   W 0.638
+     v 0.0600 -> 0.0500 :  P 1.259   W 0.669
+     v 0.0500 -> 0.0425 :  P 1.281   W 0.691
+
+=== B4: log-Gaussian weights W(t) = exp(-(log t)^2/(4w)) : dual formula against direct sums ===
+  dual support of P after aggregation over translates: 633254 frequencies, N(c) in [1], smallest N(ell) = 0.012346 (= 1/81),
+      so x = (2 pi)^4 N(ell) X / (27 N(c)^2) >= X / 1.403
+  dual support of W after aggregation over translates: 55590 frequencies, N(c) in [9], smallest N(ell) = 0.333333 (= 1/3),
+      so x = (2 pi)^4 N(ell) X / (27 N(c)^2) >= X / 4.210
+  size of the dual kernel |H|(x), x = (2 pi)^4 N(ell) X / (27 N(c)^2):
+    w=0.05 : x=1: 1.5e-01  x=10: 5.6e-01  x=100: 1.7e+00  x=1000: 2.5e+00  x=10000: 1.8e-01  x=100000: 3.2e-04  x=1e+06: 4.2e-12
+    w=0.10 : x=1: 1.9e-01  x=10: 6.5e-01  x=100: 1.5e+00  x=1000: 8.0e-01  x=10000: 1.2e-02  x=100000: 4.8e-07  x=1e+06: 1.7e-15
+    w=1.00 : x=1: 9.2e-02  x=10: 1.9e-01  x=100: 5.1e-02  x=1000: 1.5e-03  x=10000: 3.7e-05  x=100000: 1.3e-07  x=1e+06: 4.7e-11
+  w = 0.10   (dual terms kept: x <= 3.0e+05)
+       X    combo   T direct (re, im)               T dual (re, im)                 |diff|    |T|        old script |T|   #dual freq   x_min
+     125    P     -8.16243980e-02  7.94410929e-17   -8.16243980e-02 -2.48253415e-17   6.4e-13   8.1624e-02   8.162e-02      8456   89.1
+     125    W     -3.41471271e-01  2.38323279e-16   -3.41471271e-01  1.75203761e-16   8.3e-13   3.4147e-01   3.415e-01     25320   29.7
+     250    P     -1.65789049e-02  1.12346671e-16   -1.65789049e-02 -1.75541673e-17   1.9e-13   1.6579e-02   1.658e-02      4192   178
+     250    W      3.44497296e-02  0.00000000e+00    3.44497296e-02 -2.59062839e-16   4.8e-13   3.4450e-02   3.445e-02     12580   59.4
+     500    P      2.31034476e-02  1.58882186e-16    2.31034476e-02  4.96506831e-18   1.9e-13   2.3103e-02   2.310e-02      2120   356
+     500    W      1.23412378e-01 -3.37624645e-16    1.23412378e-01  3.78968241e-16   2.3e-13   1.2341e-01   1.234e-01      6336   119
+    1000    P     -6.36751865e-03  3.37040013e-16   -6.36751865e-03  0.00000000e+00   2.1e-13   6.3675e-03   6.368e-03      1046   713
+    1000    W     -8.57753535e-02  3.93213348e-16   -8.57753535e-02 -2.57803696e-16   8.3e-14   8.5775e-02   8.578e-02      3150   238
+    2000    P     -2.44101725e-03  1.58882186e-16   -2.44101725e-03 -2.94800931e-18   3.2e-14   2.4410e-03   2.441e-03       514   1.43e+03
+    2000    W      2.89064371e-02  2.38323279e-16    2.89064371e-02  7.00551053e-17   7.8e-14   2.8906e-02   2.891e-02      1594   475
+    4000    P      4.06705188e-03  4.49386684e-16    4.06705188e-03  1.97484383e-18   6.1e-14   4.0671e-03       -           274   2.85e+03
+    4000    W     -1.33478601e-02  3.37040013e-16   -1.33478601e-02 -2.47870162e-17   1.2e-13   1.3348e-02       -           796   950
+    8000    P     -3.25614852e-04  1.58882186e-16   -3.25614851e-04 -7.75791923e-20   1.4e-12   3.2561e-04       -           138   5.7e+03
+    8000    W      7.35999610e-03  3.17764372e-16    7.35999610e-03  1.24722688e-17   1.6e-12   7.3600e-03       -           408   1.9e+03
+  beyond the range of the direct sums (N(A) <= 200000): values from the dual formula only (a prediction, not a direct check)
+       X        |T_P| dual     |T_W| dual     x_min(P)   x_min(W)
+      32000   7.171e-06      3.078e-04      2.28e+04    7.6e+03
+     100000   4.914e-09      4.313e-06      7.13e+04    2.38e+04
+     320000   3.353e-12      7.823e-09      2.28e+05    7.6e+04
+    1000000   0.000e+00      2.246e-12      7.13e+05    2.38e+05
+    3200000   0.000e+00      0.000e+00      2.28e+06    7.6e+05
+   10000000   0.000e+00      0.000e+00      7.13e+06    2.38e+06
+  w = 0.05   (dual terms kept: x <= 1.2e+06)
+       X    combo   T direct (re, im)               T dual (re, im)                 |diff|    |T|        old script |T|   #dual freq   x_min
+     125    P     -2.79607436e-02  3.97205465e-17   -2.79607436e-02  1.56399652e-16   9.6e-13   2.7961e-02   2.796e-02     33638   89.1
+     125    W     -3.56159671e-01  1.98602732e-16   (dual table too short for this X; skipped)       3.5616e-01   3.562e-01
+     250    P     -6.95673773e-02  0.00000000e+00   -6.95673773e-02 -1.75541673e-17   3.0e-13   6.9567e-02   6.957e-02     16854   178
+     250    W      5.44626855e-03  0.00000000e+00    5.44626855e-03 -2.82360674e-16   3.1e-13   5.4463e-03   5.446e-03     50526   59.4
+     500    P      2.18103895e-03  7.94410929e-17    2.18103895e-03  2.32737577e-17   2.4e-13   2.1810e-03   2.181e-03      8456   356
+     500    W      2.25978690e-01 -3.57484918e-16    2.25978690e-01  1.00973767e-15   2.4e-13   2.2598e-01   2.260e-01     25320   119
+    1000    P      2.86264432e-02  1.68520006e-16    2.86264432e-02  3.51083347e-17   9.4e-15   2.8626e-02   2.863e-02      4192   713
+    1000    W     -1.72642492e-01  2.80866677e-16   -1.72642492e-01 -6.59880724e-16   1.2e-14   1.7264e-01   1.726e-01     12580   238
+    2000    P     -1.15250522e-02  2.38323279e-16   -1.15250522e-02 -1.24126708e-18   1.4e-14   1.1525e-02   1.153e-02      2120   1.43e+03
+    2000    W      3.35046185e-03  1.98602732e-16    3.35046185e-03  1.58004659e-16   5.5e-15   3.3505e-03   3.350e-03      6336   475
+    4000    P      3.29690779e-02  0.00000000e+00    3.29690779e-02  1.57987506e-17   1.4e-15   3.2969e-02   3.297e-02      1046   2.85e+03
+    4000    W     -3.34197038e-02  2.24693342e-16   -3.34197038e-02 -1.54802774e-17   9.5e-15   3.3420e-02   3.342e-02      3150   950
+    8000    P      1.00578427e-02  1.58882186e-16    1.00578427e-02  6.20633538e-18   1.4e-15   1.0058e-02   1.006e-02       514   5.7e+03
+    8000    W      3.96753221e-02  1.58882186e-16    3.96753221e-02  5.98916344e-17   4.9e-15   3.9675e-02   3.968e-02      1594   1.9e+03
+   16000    P      2.26361487e-03  2.24693342e-16    2.26361487e-03  5.48567729e-19   2.3e-15   2.2636e-03       -           274   1.14e+04
+   16000    W      1.44549319e-02  3.37040013e-16    1.44549319e-02  2.46218519e-17   4.7e-15   1.4455e-02       -           796   3.8e+03
+  beyond the range of the direct sums (N(A) <= 200000): values from the dual formula only (a prediction, not a direct check)
+       X        |T_P| dual     |T_W| dual     x_min(P)   x_min(W)
+      32000   5.088e-04      1.604e-03      2.28e+04    7.6e+03
+     100000   9.527e-07      2.932e-04      7.13e+04    2.38e+04
+     320000   4.004e-09      2.958e-06      2.28e+05    7.6e+04
+    1000000   1.697e-13      6.068e-10      7.13e+05    2.38e+05
+    3200000   0.000e+00      4.755e-14      2.28e+06    7.6e+05
+   10000000   0.000e+00      0.000e+00      7.13e+06    2.38e+06
+
+=== B5 (rung P3): phi_W combined with a moving sextic twist chi_p^j, brute-force layer ===
+  p=(-2, -3) j=1, 54 translates, v=0.1007            lhs= 3.2551252341e+00+1.7939130511e+00i  rhs= 3.2551252341e+00+1.7939130511e+00i  err=1.1e-14  OK
+  p=(4, 3) j=1, 108 translates, v=0.0785             lhs=-8.8856477059e-01+1.4924255733e+00i  rhs=-8.8856477059e-01+1.4924255733e+00i  err=5.2e-14  OK
+  p=(-2, -3) j=5, 54 translates, v=0.1022            lhs= 3.9028518806e+00+3.1740620100e-01i  rhs= 3.9028518806e+00+3.1740620100e-01i  err=4.1e-15  OK
+  p=(-5, 0) j=1, 216 translates, v=0.0558            lhs= 3.3027725909e+00-1.5753482637e-01i  rhs= 3.3027725909e+00-1.5753482637e-01i  err=8.7e-15  OK
+
+worst error among identities expected to hold: 1.62e-12
+TASK B checks: PASS  (failures: 0)
+UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with   -  10.12s user 1.49s system 79% cpu 14.670 total

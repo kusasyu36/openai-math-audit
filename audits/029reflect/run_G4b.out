@@ -1,0 +1,8 @@
+sum_h phi-hat(h) conj(chi_h) = 1.000000000000+0.000000000000i
+predicted constants: Patterson's own 0.109041 ; paper's combination 0.075605+0.000000i
+  X=  1000  measured 0.075798-0.000000i   ratio to prediction 1.0026     (old script: 0.0758 at 1000, 0.0751 at 4000, 0.0743 at 16000, 0.0753 at 32000)
+  X=  4000  measured 0.075087-0.000000i   ratio to prediction 0.9932     (old script: 0.0758 at 1000, 0.0751 at 4000, 0.0743 at 16000, 0.0753 at 32000)
+  X= 16000  measured 0.074253-0.000000i   ratio to prediction 0.9821     (old script: 0.0758 at 1000, 0.0751 at 4000, 0.0743 at 16000, 0.0753 at 32000)
+  X= 32000  measured 0.075291-0.000000i   ratio to prediction 0.9958     (old script: 0.0758 at 1000, 0.0751 at 4000, 0.0743 at 16000, 0.0753 at 32000)
+  X= 64000  measured 0.075577-0.000000i   ratio to prediction 0.9996     (old script: 0.0758 at 1000, 0.0751 at 4000, 0.0743 at 16000, 0.0753 at 32000)
+  X=100000  measured 0.075837-0.000000i   ratio to prediction 1.0031     (old script: 0.0758 at 1000, 0.0751 at 4000, 0.0743 at 16000, 0.0753 at 32000)

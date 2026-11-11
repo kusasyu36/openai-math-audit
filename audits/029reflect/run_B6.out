@@ -1,0 +1,24 @@
+Mellin transform of the bump times the gamma quotient, |U^(s) R(s)| on Re s = -0.5:
+   tau=     0  |U^|=2.687e-01  |U^ R|=6.159e-03
+   tau=    10  |U^|=2.512e-02  |U^ R|=2.155e+02
+   tau=    30  |U^|=1.564e-03  |U^ R|=1.076e+03
+   tau=   100  |U^|=4.200e-05  |U^ R|=3.565e+03
+   tau=   300  |U^|=2.049e-07  |U^ R|=1.409e+03
+   tau=  1000  |U^|=1.294e-11  |U^ R|=1.098e+01
+   tau=  1500  |U^|=1.227e-13  |U^ R|=5.271e-01
+dual kernel of the bump, |H_U|(x), x = (2 pi)^4 N(ell) X/(27 N(c)^2):
+   x=1: 5.0e-02  x=10: 2.0e-01  x=100: 7.9e-01  x=1000: 6.4e-01  x=10000: 2.0e+00  x=100000: 7.9e-01  x=1e+06: 2.5e+00  x=1e+07: 1.9e+00  x=1e+08: 4.7e-01  x=1e+09: 2.2e-01
+
+      X     T direct (re)      T dual (re)        |diff|     old script |T_ang|   dual freq used   largest x used   |H_U| there
+    1000    5.61939481e-02    5.64922202e-02   3.0e-04   5.619e-02             55590        5.28e+06      2.0e-01
+    2000    2.80034941e-02    2.74598354e-02   5.4e-04   2.800e-02             55590        1.06e+07      1.8e+00
+    4000   -2.19585892e-02   -2.21843313e-02   2.3e-04   2.196e-02             55590        2.11e+07      1.1e+00
+    8000   -1.17037394e-02   -1.18216633e-02   1.2e-04   1.170e-02             55590        4.22e+07      1.2e-01
+   16000   -4.10799749e-02   -4.11979947e-02   1.2e-04   4.108e-02             55590        8.45e+07      1.7e-01
+   32000   -1.13586141e-02   -1.13842408e-02   2.6e-05   1.136e-02             55590        1.69e+08      4.9e-01
+   64000    2.95938519e-03    2.95334009e-03   6.0e-06       -                 55590        3.38e+08      4.5e-01
+  100000    2.06464393e-02    2.06335716e-02   1.3e-05       -                 55590        5.28e+08      2.8e-01
+
+(The dual table stops at N(ell) = 7407; |diff| is the truncation of the dual series at 'largest x used'.
+ It shrinks as X grows because the same table then reaches larger x.)
+UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with   -  193.02s user 159.69s system 27% cpu 21:40.42 total

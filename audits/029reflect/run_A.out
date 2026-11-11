@@ -1,0 +1,156 @@
+=== A1/A2: single prime, all j.  layer 2 = closed form, layer 1 = brute-force translates ===
+p = (-2, -3), N(p) = 7, chi_p(-1) = -1, chi_p(lam) = zeta6^4
+  j=0 closed form, |const|=0.377964              lhs= 9.6427799325e+00-4.3994030105e-01i  rhs= 9.6427799325e+00-4.3994030105e-01i  relerr=3.5e-16  OK
+  j=0 brute force (7 translates)                 lhs= 9.6427799325e+00-4.3994030105e-01i  rhs= 9.6427799325e+00-4.3994030105e-01i  relerr=1.9e-15  OK
+  j=1 closed form, |const|=1.000000              lhs=-4.3761489708e+00-2.1174201648e+00i  rhs=-4.3761489708e+00-2.1174201648e+00i  relerr=2.0e-15  OK
+  j=1 brute force (6 translates)                 lhs=-4.3761489708e+00-2.1174201648e+00i  rhs=-4.3761489708e+00-2.1174201648e+00i  relerr=3.6e-15  OK
+  j=2 closed form, |const|=1.000000              lhs= 4.4985418026e+00+5.6111737446e-01i  rhs= 4.4985418026e+00+5.6111737446e-01i  relerr=1.5e-15  OK
+  j=2 brute force (6 translates)                 lhs= 4.4985418026e+00+5.6111737446e-01i  rhs= 4.4985418026e+00+5.6111737446e-01i  relerr=2.0e-16  OK
+  j=3 closed form, |const|=1.000000              lhs= 7.7651347133e-01-2.5036470177e+00i  rhs= 7.7651347133e-01-2.5036470177e+00i  relerr=1.5e-15  OK
+  j=3 brute force (6 translates)                 lhs= 7.7651347133e-01-2.5036470177e+00i  rhs= 7.7651347133e-01-2.5036470177e+00i  relerr=1.0e-14  OK
+  j=4 closed form, |const|=0.377964              lhs= 6.9504199081e+00-2.6556181346e+00i  rhs= 6.9504199081e+00-2.6556181346e+00i  relerr=4.0e-15  OK
+  j=4 brute force (6 translates)                 lhs= 6.9504199081e+00-2.6556181346e+00i  rhs= 6.9504199081e+00-2.6556181346e+00i  relerr=4.4e-15  OK
+  j=5 closed form, |const|=1.000000              lhs=-1.7086384642e+00+3.0643368809e+00i  rhs=-1.7086384642e+00+3.0643368809e+00i  relerr=9.2e-16  OK
+  j=5 brute force (6 translates)                 lhs=-1.7086384642e+00+3.0643368809e+00i  rhs=-1.7086384642e+00+3.0643368809e+00i  relerr=3.2e-15  OK
+p = (1, 3), N(p) = 7, chi_p(-1) = -1, chi_p(lam) = zeta6^5
+  j=0 closed form, |const|=0.377964              lhs= 1.1588656741e+01+4.0151972333e-01i  rhs= 1.1588656741e+01+4.0151972333e-01i  relerr=7.6e-16  OK
+  j=0 brute force (7 translates)                 lhs= 1.1588656741e+01+4.0151972333e-01i  rhs= 1.1588656741e+01+4.0151972333e-01i  relerr=2.6e-15  OK
+  j=1 closed form, |const|=1.000000              lhs= 3.1482977099e+00-1.6306927523e+00i  rhs= 3.1482977099e+00-1.6306927523e+00i  relerr=1.3e-15  OK
+  j=1 brute force (6 translates)                 lhs= 3.1482977099e+00-1.6306927523e+00i  rhs= 3.1482977099e+00-1.6306927523e+00i  relerr=2.3e-15  OK
+  j=2 closed form, |const|=1.000000              lhs= 4.1895790015e+00-8.0997174022e-01i  rhs= 4.1895790015e+00-8.0997174022e-01i  relerr=2.8e-15  OK
+  j=2 brute force (6 translates)                 lhs= 4.1895790015e+00-8.0997174022e-01i  rhs= 4.1895790015e+00-8.0997174022e-01i  relerr=4.7e-15  OK
+  j=3 closed form, |const|=1.000000              lhs=-9.3689425276e-01-1.7172918938e+00i  rhs=-9.3689425276e-01-1.7172918938e+00i  relerr=5.8e-15  OK
+  j=3 brute force (6 translates)                 lhs=-9.3689425276e-01-1.7172918938e+00i  rhs=-9.3689425276e-01-1.7172918938e+00i  relerr=6.8e-15  OK
+  j=4 closed form, |const|=0.377964              lhs= 5.4706793581e+00+2.2340459340e+00i  rhs= 5.4706793581e+00+2.2340459340e+00i  relerr=2.9e-15  OK
+  j=4 brute force (6 translates)                 lhs= 5.4706793581e+00+2.2340459340e+00i  rhs= 5.4706793581e+00+2.2340459340e+00i  relerr=1.1e-15  OK
+  j=5 closed form, |const|=1.000000              lhs=-4.8983937838e-01-9.7888019062e-01i  rhs=-4.8983937838e-01-9.7888019062e-01i  relerr=6.6e-15  OK
+  j=5 brute force (6 translates)                 lhs=-4.8983937838e-01-9.7888019062e-01i  rhs=-4.8983937838e-01-9.7888019062e-01i  relerr=1.5e-14  OK
+p = (4, 3), N(p) = 13, chi_p(-1) = +1, chi_p(lam) = zeta6^5
+  j=0 closed form, |const|=0.277350              lhs= 1.6915128993e+01-6.1526862382e-01i  rhs= 1.6915128993e+01-6.1526862382e-01i  relerr=4.6e-16  OK
+  j=0 brute force (13 translates)                lhs= 1.6915128993e+01-6.1526862382e-01i  rhs= 1.6915128993e+01-6.1526862382e-01i  relerr=6.6e-16  OK
+  j=1 closed form, |const|=1.000000              lhs= 5.2530451363e+00+2.2392197880e+00i  rhs= 5.2530451363e+00+2.2392197880e+00i  relerr=1.9e-15  OK
+  j=1 brute force (12 translates)                lhs= 5.2530451363e+00+2.2392197880e+00i  rhs= 5.2530451363e+00+2.2392197880e+00i  relerr=1.5e-15  OK
+  j=2 closed form, |const|=1.000000              lhs= 4.5490664466e+00+1.7801717214e+00i  rhs= 4.5490664466e+00+1.7801717214e+00i  relerr=4.8e-15  OK
+  j=2 brute force (12 translates)                lhs= 4.5490664466e+00+1.7801717214e+00i  rhs= 4.5490664466e+00+1.7801717214e+00i  relerr=1.5e-14  OK
+  j=3 closed form, |const|=1.000000              lhs= 5.6595885920e+00-3.8608981982e-01i  rhs= 5.6595885920e+00-3.8608981982e-01i  relerr=5.1e-15  OK
+  j=3 brute force (12 translates)                lhs= 5.6595885920e+00-3.8608981982e-01i  rhs= 5.6595885920e+00-3.8608981982e-01i  relerr=5.5e-15  OK
+  j=4 closed form, |const|=0.277350              lhs= 3.7101214087e+00-9.2666001141e+00i  rhs= 3.7101214087e+00-9.2666001141e+00i  relerr=3.5e-15  OK
+  j=4 brute force (12 translates)                lhs= 3.7101214087e+00-9.2666001141e+00i  rhs= 3.7101214087e+00-9.2666001141e+00i  relerr=3.1e-15  OK
+  j=5 closed form, |const|=1.000000              lhs= 8.3841081269e+00-2.3941867980e+00i  rhs= 8.3841081269e+00-2.3941867980e+00i  relerr=2.7e-15  OK
+  j=5 brute force (12 translates)                lhs= 8.3841081269e+00-2.3941867980e+00i  rhs= 8.3841081269e+00-2.3941867980e+00i  relerr=2.9e-15  OK
+p = (-2, 3), N(p) = 19, chi_p(-1) = -1, chi_p(lam) = zeta6^5
+  j=0 closed form, |const|=0.229416              lhs= 1.7155926564e+01-2.3079969890e-01i  rhs= 1.7155926564e+01-2.3079969890e-01i  relerr=7.2e-16  OK
+  j=0 brute force (19 translates)                lhs= 1.7155926564e+01-2.3079969890e-01i  rhs= 1.7155926564e+01-2.3079969890e-01i  relerr=3.0e-15  OK
+  j=1 closed form, |const|=1.000000              lhs= 2.7787257833e-01-2.4827443448e-01i  rhs= 2.7787257833e-01-2.4827443448e-01i  relerr=1.5e-14  OK
+  j=1 brute force (18 translates)                lhs= 2.7787257833e-01-2.4827443448e-01i  rhs= 2.7787257833e-01-2.4827443448e-01i  relerr=4.1e-15  OK
+  j=2 closed form, |const|=1.000000              lhs= 4.5574377695e+00+2.6259528986e+00i  rhs= 4.5574377695e+00+2.6259528986e+00i  relerr=1.2e-15  OK
+  j=2 brute force (18 translates)                lhs= 4.5574377695e+00+2.6259528986e+00i  rhs= 4.5574377695e+00+2.6259528986e+00i  relerr=1.2e-14  OK
+  j=3 closed form, |const|=1.000000              lhs= 2.5652748636e-01-2.7654647700e+00i  rhs= 2.5652748636e-01-2.7654647700e+00i  relerr=5.5e-15  OK
+  j=3 brute force (18 translates)                lhs= 2.5652748636e-01-2.7654647700e+00i  rhs= 2.5652748636e-01-2.7654647700e+00i  relerr=5.1e-15  OK
+  j=4 closed form, |const|=0.229416              lhs=-2.2060374538e+00-1.0636854518e+01i  rhs=-2.2060374538e+00-1.0636854518e+01i  relerr=3.7e-15  OK
+  j=4 brute force (18 translates)                lhs=-2.2060374538e+00-1.0636854518e+01i  rhs=-2.2060374538e+00-1.0636854518e+01i  relerr=6.6e-15  OK
+  j=5 closed form, |const|=1.000000              lhs= 3.7462546755e+00+2.7665818936e+00i  rhs= 3.7462546755e+00+2.7665818936e+00i  relerr=2.2e-15  OK
+  j=5 brute force (18 translates)                lhs= 3.7462546755e+00+2.7665818936e+00i  rhs= 3.7462546755e+00+2.7665818936e+00i  relerr=6.5e-15  OK
+p = (-5, 0), N(p) = 25, chi_p(-1) = +1, chi_p(lam) = zeta6^3
+  j=0 closed form, |const|=0.200000              lhs= 2.5040534544e+01-9.4281854552e-04i  rhs= 2.5040534544e+01-9.4281854552e-04i  relerr=1.4e-16  OK
+  j=0 brute force (25 translates)                lhs= 2.5040534544e+01-9.4281854552e-04i  rhs= 2.5040534544e+01-9.4281854551e-04i  relerr=1.9e-15  OK
+  j=1 closed form, |const|=1.000000              lhs= 8.3739422452e+00-4.7201460303e-01i  rhs= 8.3739422452e+00-4.7201460303e-01i  relerr=2.6e-15  OK
+  j=1 brute force (24 translates)                lhs= 8.3739422452e+00-4.7201460303e-01i  rhs= 8.3739422452e+00-4.7201460303e-01i  relerr=9.4e-16  OK
+  j=2 closed form, |const|=1.000000              lhs= 7.8539547419e+00+4.9507774139e-01i  rhs= 7.8539547419e+00+4.9507774139e-01i  relerr=1.5e-15  OK
+  j=2 brute force (24 translates)                lhs= 7.8539547419e+00+4.9507774139e-01i  rhs= 7.8539547419e+00+4.9507774139e-01i  relerr=1.0e-15  OK
+  j=3 closed form, |const|=1.000000              lhs= 6.5431345581e+00-5.7998818254e-02i  rhs= 6.5431345581e+00-5.7998818254e-02i  relerr=1.1e-15  OK
+  j=3 brute force (24 translates)                lhs= 6.5431345581e+00-5.7998818254e-02i  rhs= 6.5431345581e+00-5.7998818254e-02i  relerr=4.3e-15  OK
+  j=4 closed form, |const|=0.200000              lhs= 1.2983289732e+01+9.6323557664e-04i  rhs= 1.2983289732e+01+9.6323557664e-04i  relerr=1.9e-15  OK
+  j=4 brute force (24 translates)                lhs= 1.2983289732e+01+9.6323557664e-04i  rhs= 1.2983289732e+01+9.6323557663e-04i  relerr=1.8e-15  OK
+  j=5 closed form, |const|=1.000000              lhs= 1.2169523949e+01-6.0882385285e-03i  rhs= 1.2169523949e+01-6.0882385285e-03i  relerr=4.1e-16  OK
+  j=5 brute force (24 translates)                lhs= 1.2169523949e+01-6.0882385285e-03i  rhs= 1.2169523949e+01-6.0882385285e-03i  relerr=1.7e-16  OK
+p = (-5, -6), N(p) = 31, chi_p(-1) = -1, chi_p(lam) = zeta6^2
+  j=0 closed form, |const|=0.179605              lhs= 2.8230315703e+01-2.7060090955e-01i  rhs= 2.8230315703e+01-2.7060090955e-01i  relerr=1.8e-16  OK
+  j=0 brute force (31 translates)                lhs= 2.8230315703e+01-2.7060090955e-01i  rhs= 2.8230315703e+01-2.7060090955e-01i  relerr=5.3e-16  OK
+  j=1 closed form, |const|=1.000000              lhs=-3.3078320106e-01-4.1671785572e-01i  rhs=-3.3078320106e-01-4.1671785572e-01i  relerr=2.3e-14  OK
+  j=1 brute force (30 translates)                lhs=-3.3078320106e-01-4.1671785572e-01i  rhs=-3.3078320106e-01-4.1671785572e-01i  relerr=2.5e-13  OK
+  j=2 closed form, |const|=1.000000              lhs= 1.0925444711e+01+1.6255168876e+00i  rhs= 1.0925444711e+01+1.6255168876e+00i  relerr=8.0e-16  OK
+  j=2 brute force (30 translates)                lhs= 1.0925444711e+01+1.6255168876e+00i  rhs= 1.0925444711e+01+1.6255168876e+00i  relerr=2.8e-14  OK
+  j=3 closed form, |const|=1.000000              lhs= 1.9477516606e-01+6.4695219673e-01i  rhs= 1.9477516606e-01+6.4695219673e-01i  relerr=8.1e-15  OK
+  j=3 brute force (30 translates)                lhs= 1.9477516606e-01+6.4695219673e-01i  rhs= 1.9477516606e-01+6.4695219673e-01i  relerr=4.6e-14  OK
+  j=4 closed form, |const|=0.179605              lhs= 1.5453593855e+01-6.3359012811e+00i  rhs= 1.5453593855e+01-6.3359012811e+00i  relerr=2.9e-15  OK
+  j=4 brute force (30 translates)                lhs= 1.5453593855e+01-6.3359012811e+00i  rhs= 1.5453593855e+01-6.3359012811e+00i  relerr=1.2e-14  OK
+  j=5 closed form, |const|=1.000000              lhs=-1.9388727770e+00-3.8371584713e+00i  rhs=-1.9388727770e+00-3.8371584713e+00i  relerr=4.0e-15  OK
+  j=5 brute force (30 translates)                lhs=-1.9388727770e+00-3.8371584713e+00i  rhs=-1.9388727770e+00-3.8371584713e+00i  relerr=7.8e-14  OK
+p = (7, 3), N(p) = 37, chi_p(-1) = +1, chi_p(lam) = zeta6^2
+  j=0 closed form, |const|=0.164399              lhs= 2.4406078983e+01-3.3516559601e-01i  rhs= 2.4406078983e+01-3.3516559601e-01i  relerr=3.0e-16  OK
+  j=1 closed form, |const|=1.000000              lhs= 1.5099670274e+00-4.5419345069e+00i  rhs= 1.5099670274e+00-4.5419345069e+00i  relerr=5.9e-15  OK
+  j=2 closed form, |const|=1.000000              lhs= 4.4379182890e+00-2.5230179923e+00i  rhs= 4.4379182890e+00-2.5230179923e+00i  relerr=2.2e-15  OK
+  j=3 closed form, |const|=1.000000              lhs= 1.1638905210e+00+4.9819145062e+00i  rhs= 1.1638905210e+00+4.9819145062e+00i  relerr=2.6e-15  OK
+  j=4 closed form, |const|=0.164399              lhs= 5.8697775748e+00-1.0717400959e+01i  rhs= 5.8697775748e+00-1.0717400959e+01i  relerr=3.4e-15  OK
+  j=5 closed form, |const|=1.000000              lhs= 6.3479745622e+00+4.3199121143e+00i  rhs= 6.3479745622e+00+4.3199121143e+00i  relerr=5.6e-15  OK
+p = (-11, 0), N(p) = 121, chi_p(-1) = +1, chi_p(lam) = zeta6^0
+  j=0 closed form, |const|=0.090909              lhs= 3.4978560173e+01-1.5415617017e-03i  rhs= 3.4978560173e+01-1.5415617017e-03i  relerr=6.1e-16  OK
+  j=1 closed form, |const|=1.000000              lhs= 1.3896374724e+01-1.6255392690e-01i  rhs= 1.3896374724e+01-1.6255392690e-01i  relerr=9.0e-16  OK
+  j=2 closed form, |const|=1.000000              lhs= 8.0986399930e+00-2.3859351030e-01i  rhs= 8.0986399930e+00-2.3859351030e-01i  relerr=1.2e-15  OK
+  j=3 closed form, |const|=1.000000              lhs= 1.3990968449e+01+8.3710054856e-01i  rhs= 1.3990968449e+01+8.3710054856e-01i  relerr=6.5e-16  OK
+  j=4 closed form, |const|=0.090909              lhs= 1.8172172499e+01-2.6909455072e-03i  rhs= 1.8172172499e+01-2.6909455072e-03i  relerr=2.4e-15  OK
+  j=5 closed form, |const|=1.000000              lhs= 1.5879385372e+01+1.0288499266e-02i  rhs= 1.5879385372e+01+1.0288499266e-02i  relerr=1.1e-16  OK
+
+=== negative controls (single prime, j = 1; dual twist must be chi^3) ===
+  p=(-2, -3) dual twist chi^+3: lhs/rhs at 3 points = 1.0000+0.0000i 1.0000-0.0000i 1.0000-0.0000i  spread=2.4e-14  OK (the correct twist)
+  p=(-2, -3) dual twist chi^+1: lhs/rhs at 3 points = 0.8094+0.8922i 0.6179+0.8867i 0.8240-0.6409i  spread=1.3e+00  OK (negative control)
+  p=(-2, -3) dual twist chi^-1: lhs/rhs at 3 points = 1.2674-0.5408i 1.1854-0.4808i 0.8105-1.1184i  spread=5.3e-01  OK (negative control)
+  p=(-2, -3) dual twist chi^+2: lhs/rhs at 3 points = 0.0062+0.6151i -0.0072+0.5731i -0.0267-0.0368i  spread=1.1e+00  OK (negative control)
+  p=(-2, -3) dual twist chi^+4: lhs/rhs at 3 points = -0.1757+0.5476i -0.1979+0.4211i -0.0093-0.0380i  spread=1.1e+00  OK (negative control)
+  p=(-2, -3) dual twist chi^+0: lhs/rhs at 3 points = -0.0523+0.4322i -0.0563+0.3282i -0.0127-0.0246i  spread=1.1e+00  OK (negative control)
+  p=(-2, -3) inversion scale p instead of p^2    lhs=-2.5795545856e+00-1.3927068610e+00i  rhs=-1.3673214475e+00-5.7604987984e-01i  relerr=5.0e-01  OK (negative control)
+  p=(-2, -3) brute force with conj(chi_Kubota)   lhs=-2.5795545856e+00-1.3927068610e+00i  rhs=-1.6333926399e+00-1.8038812916e+00i  relerr=3.5e-01  OK (negative control)
+  p=(4, 3) dual twist chi^+3: lhs/rhs at 3 points = 1.0000+0.0000i 1.0000+0.0000i 1.0000+0.0000i  spread=3.2e-15  OK (the correct twist)
+  p=(4, 3) dual twist chi^+1: lhs/rhs at 3 points = 0.8539-0.4282i 0.8400-0.3907i 0.9115-0.3025i  spread=1.4e-01  OK (negative control)
+  p=(4, 3) dual twist chi^-1: lhs/rhs at 3 points = 0.7202-0.0155i 0.7096-0.0080i 0.7791+0.0739i  spread=1.5e-01  OK (negative control)
+  p=(4, 3) dual twist chi^+2: lhs/rhs at 3 points = 0.8725-0.6863i 0.8663-0.6803i 0.9886-0.3404i  spread=3.3e-01  OK (negative control)
+  p=(4, 3) dual twist chi^+4: lhs/rhs at 3 points = 0.7334+0.5175i 0.7558+0.4924i 0.9251+0.6435i  spread=2.6e-01  OK (negative control)
+  p=(4, 3) dual twist chi^+0: lhs/rhs at 3 points = 0.4750-0.0925i 0.4859-0.0922i 0.5702-0.0148i  spread=2.5e-01  OK (negative control)
+  p=(4, 3) inversion scale p instead of p^2      lhs= 5.4246764704e+00+1.7176311987e+00i  rhs= 1.3736983816e+00+8.2605783276e-01i  relerr=7.3e-01  OK (negative control)
+  p=(4, 3) brute force with conj(chi_Kubota)     lhs= 5.4246764704e+00+1.7176311987e+00i  rhs= 5.7930711268e+00+1.3874714667e+00i  relerr=8.3e-02  OK (negative control)
+  p=(-5, 0) dual twist chi^+3: lhs/rhs at 3 points = 1.0000-0.0000i 1.0000-0.0000i 1.0000+0.0000i  spread=2.5e-15  OK (the correct twist)
+  p=(-5, 0) dual twist chi^+1: lhs/rhs at 3 points = 1.0172-0.0042i 1.0201-0.1344i 1.0260-0.1401i  spread=1.3e-01  OK (negative control)
+  p=(-5, 0) dual twist chi^-1: lhs/rhs at 3 points = 0.7110-0.0051i 0.7121-0.1326i 0.6749-0.1270i  spread=1.8e-01  OK (negative control)
+  p=(-5, 0) dual twist chi^+2: lhs/rhs at 3 points = 1.0010-0.0156i 0.9818-0.4079i 0.9810-0.4116i  spread=4.0e-01  OK (negative control)
+  p=(-5, 0) dual twist chi^+4: lhs/rhs at 3 points = 1.0030-0.0086i 1.0251-0.2150i 1.0464-0.2302i  spread=2.3e-01  OK (negative control)
+  p=(-5, 0) dual twist chi^+0: lhs/rhs at 3 points = 0.5587-0.0040i 0.6289-0.1150i 0.5773-0.1079i  spread=2.4e-01  OK (negative control)
+  p=(-5, 0) inversion scale p instead of p^2     lhs= 6.6780028420e+00-4.7401021781e-02i  rhs=-2.0609588055e-01-2.3972311531e-04i  relerr=1.0e+00  OK (negative control)
+  p=(-5, 0) brute force with conj(chi_Kubota)    lhs= 6.6780028420e+00-4.7401021781e-02i  rhs= 6.5648854990e+00-1.9588503381e-02i  relerr=1.7e-02  OK (negative control)
+
+=== A3: two primes (cross terms) ===
+  r=(-2, -3)*(4, 3) j=(1, 1) closed              lhs= 7.9529548910e-01+1.1381767712e+00i  rhs= 7.9529548910e-01+1.1381767712e+00i  relerr=4.6e-15  OK
+  r=(-2, -3)*(4, 3) j=(1, 2) closed              lhs=-7.2280438862e-01+9.4753949413e-01i  rhs=-7.2280438862e-01+9.4753949413e-01i  relerr=9.1e-15  OK
+  r=(-2, -3)*(4, 3) j=(5, 3) closed              lhs=-5.5524076192e-01+2.6619636964e+00i  rhs=-5.5524076192e-01+2.6619636964e+00i  relerr=4.9e-15  OK
+  r=(-2, -3)*(4, 3) j=(4, 1) closed              lhs= 6.6484043662e+00-4.7214497453e+00i  rhs= 6.6484043662e+00-4.7214497453e+00i  relerr=4.2e-15  OK
+  r=(-2, -3)*(4, 3) j=(2, 5) closed              lhs= 1.2733523055e+01+5.5188495938e+00i  rhs= 1.2733523055e+01+5.5188495938e+00i  relerr=2.3e-15  OK
+  r=(-2, -3)*(4, 3) j=(0, 1) closed              lhs=-1.1351729486e-01-2.5157553526e+00i  rhs=-1.1351729486e-01-2.5157553526e+00i  relerr=5.5e-15  OK
+  r=(-2, -3)*(4, 3) j=(1,1) brute (72 translates) lhs= 1.2915797696e+00-2.7370930126e+00i  rhs= 1.2915797696e+00-2.7370930126e+00i  relerr=2.0e-14  OK
+     without the cross factor                    lhs= 1.2915797696e+00-2.7370930126e+00i  rhs=-3.0161819662e+00+2.5000561480e-01i  relerr=1.7e+00  OK (negative control)
+  r=(-2, -3)*(1, 3) j=(1, 1) closed              lhs= 1.2933180018e+01+2.7245890088e-02i  rhs= 1.2933180018e+01+2.7245890088e-02i  relerr=1.8e-15  OK
+  r=(-2, -3)*(1, 3) j=(1, 2) closed              lhs=-1.4460677574e+00-1.4393586023e+00i  rhs=-1.4460677574e+00-1.4393586023e+00i  relerr=2.0e-15  OK
+  r=(-2, -3)*(1, 3) j=(5, 3) closed              lhs= 1.9870972242e+00-1.9559795860e+00i  rhs= 1.9870972242e+00-1.9559795860e+00i  relerr=6.0e-15  OK
+  r=(-2, -3)*(1, 3) j=(4, 1) closed              lhs= 7.4326193364e-01-1.3395925641e-01i  rhs= 7.4326193364e-01-1.3395925641e-01i  relerr=9.6e-15  OK
+  r=(-2, -3)*(1, 3) j=(2, 5) closed              lhs=-7.9403383414e-01-4.1147104957e-01i  rhs=-7.9403383414e-01-4.1147104957e-01i  relerr=6.1e-15  OK
+  r=(-2, -3)*(1, 3) j=(0, 1) closed              lhs= 1.1789029367e+00-7.9130255761e-01i  rhs= 1.1789029367e+00-7.9130255761e-01i  relerr=3.4e-15  OK
+  r=(-2, -3)*(1, 3) j=(1,1) brute (36 translates) lhs= 1.2337667496e+01-2.3536718729e-01i  rhs= 1.2337667496e+01-2.3536718729e-01i  relerr=1.9e-15  OK
+   (cross factor happens to be 1 for this pair; no negative control)
+  r=(4, 3)*(-2, 3) j=(1, 1) closed               lhs=-6.3174500272e-01+2.6673985419e+00i  rhs=-6.3174500272e-01+2.6673985419e+00i  relerr=5.6e-15  OK
+  r=(4, 3)*(-2, 3) j=(1, 2) closed               lhs= 1.2834570132e+00-4.8439697464e+00i  rhs= 1.2834570132e+00-4.8439697464e+00i  relerr=8.4e-15  OK
+  r=(4, 3)*(-2, 3) j=(5, 3) closed               lhs= 2.3511973114e+00-1.0973169194e+00i  rhs= 2.3511973114e+00-1.0973169194e+00i  relerr=9.0e-15  OK
+  r=(4, 3)*(-2, 3) j=(4, 1) closed               lhs=-3.8250262799e+00-3.4233548529e+00i  rhs=-3.8250262799e+00-3.4233548529e+00i  relerr=2.5e-15  OK
+  r=(4, 3)*(-2, 3) j=(2, 5) closed               lhs= 6.2170811569e-01+7.0032506121e-02i  rhs= 6.2170811569e-01+7.0032506121e-02i  relerr=4.6e-15  OK
+  r=(4, 3)*(-2, 3) j=(0, 1) closed               lhs=-1.9619311565e+00+5.4820372493e-01i  rhs=-1.9619311565e+00+5.4820372493e-01i  relerr=1.3e-14  OK
+  r=(-2, -3)*(-5, 0) j=(1, 1) closed             lhs= 3.1335305896e+00-1.8722172830e+00i  rhs= 3.1335305896e+00-1.8722172830e+00i  relerr=1.7e-15  OK
+  r=(-2, -3)*(-5, 0) j=(1, 2) closed             lhs= 1.0420138451e+00+1.6641031964e+00i  rhs= 1.0420138451e+00+1.6641031964e+00i  relerr=5.1e-15  OK
+  r=(-2, -3)*(-5, 0) j=(5, 3) closed             lhs= 2.9249052556e-01+2.8199675897e+00i  rhs= 2.9249052556e-01+2.8199675897e+00i  relerr=1.8e-15  OK
+  r=(-2, -3)*(-5, 0) j=(4, 1) closed             lhs=-1.2329552396e+00-5.7643538624e+00i  rhs=-1.2329552396e+00-5.7643538624e+00i  relerr=6.1e-15  OK
+  r=(-2, -3)*(-5, 0) j=(2, 5) closed             lhs= 1.2112737970e+01+6.0219409311e+00i  rhs= 1.2112737970e+01+6.0219409311e+00i  relerr=4.8e-16  OK
+  r=(-2, -3)*(-5, 0) j=(0, 1) closed             lhs= 1.7684919716e+00+2.8191251661e-01i  rhs= 1.7684919716e+00+2.8191251661e-01i  relerr=8.8e-16  OK
+
+=== A3': three primes, j = (1,1,1) ===
+  r=(28, 21) N=637 closed                        lhs= 4.7575392656e+00-2.1826393754e+00i  rhs= 4.7575392656e+00-2.1826393754e+00i  relerr=7.2e-15  OK
+
+worst relative error among identities expected to hold: 2.50e-13
+TASK A (Q(omega) analogue): PASS  (failures: 0, tolerance 1e-08)
+UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with   -  3.25s user 0.10s system 64% cpu 5.165 total

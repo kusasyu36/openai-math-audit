@@ -1,0 +1,125 @@
+primary A = c d^3 with N(A) <= 200000: 72208 ; primes with Gauss sums: 18020
+max | |g~(pi)| - 1 | = 7.11e-15 ;  max | g~(pi)^3 + pi/|pi| | = 7.42e-14   (DR (1.8))
+  twisted multiplicativity vs brute force, c = (-2, -6), N = 28: diff 3.4e-15
+  twisted multiplicativity vs brute force, c = (-17, -27), N = 559: diff 2.8e-14
+  twisted multiplicativity vs brute force, c = (-11, -27), N = 553: diff 2.1e-14
+  twisted multiplicativity vs brute force, c = (10, 9), N = 91: diff 6.1e-15
+  twisted multiplicativity vs brute force, c = (-20, 6), N = 556: diff 6.8e-15
+  twisted multiplicativity vs brute force, c = (-14, 12), N = 508: diff 1.2e-14
+theta series: 200006 terms, |mu| <= 86.07 ; F10: 216624 terms, |mu| <= 49.69
+
+G1: SL2(Z) invariance and periods
+  theta(E w) = theta(w), w=(-0.067+0.562i, 0.742)            lhs= 6.806888330285+0.001903664186i  relerr=6.54e-16  OK
+  theta(w + 1) = theta(w)                                    lhs= 6.806888330285+0.001903664186i  relerr=1.39e-16  OK
+  theta(w + 3 omega) = theta(w)                              lhs= 6.806888330285+0.001903664186i  relerr=1.40e-16  OK
+  theta(E w) = theta(w), w=(-0.050+0.361i, 1.117)            lhs= 9.511867907352-0.000104693047i  relerr=1.14e-15  OK
+  theta(w + 1) = theta(w)                                    lhs= 9.511867907352-0.000104693047i  relerr=1.46e-18  OK
+  theta(w + 3 omega) = theta(w)                              lhs= 9.511867907352-0.000104693047i  relerr=1.87e-16  OK
+  theta(E w) = theta(w), w=(-0.467+0.304i, 0.530)            lhs= 7.923088023552-0.000886017426i  relerr=1.13e-15  OK
+  theta(w + 1) = theta(w)                                    lhs= 7.923088023552-0.000886017426i  relerr=2.80e-17  OK
+  theta(w + 3 omega) = theta(w)                              lhs= 7.923088023552-0.000886017426i  relerr=5.62e-16  OK
+  theta(E w) = theta(w), w=(-0.027-0.430i, 0.701)            lhs= 7.944244776581-0.000826832014i  relerr=1.12e-15  OK
+  theta(w + 1) = theta(w)                                    lhs= 7.944244776581-0.000826832014i  relerr=1.05e-17  OK
+  theta(w + 3 omega) = theta(w)                              lhs= 7.944244776581-0.000826832014i  relerr=1.01e-15  OK
+  theta(w + omega) = theta(w)   [not a period]               lhs= 5.231143140846+0.012418240877i  relerr=4.68e-01  OK (negative control: must mismatch)
+  G1 worst relative error: 1.14e-15
+
+G2: theta(gamma w) = chi(gamma) theta(w) for gamma in Gamma_1(3), chi = (c/a)_3
+  gamma=(((1,0),(0,-6)),((3,6),(37,18))) chi=omega^0 v=0.207 v'=0.169 lhs= 17.263795705648+0.000000000439i  relerr=1.24e-15  OK
+  gamma=(((1,0),(0,0)),((3,0),(1,0))) chi=omega^0 v=0.393 v'=0.267 lhs= 10.702587211324+0.000113029160i  relerr=2.05e-15  OK
+  gamma=(((1,0),(0,0)),((6,3),(1,0))) chi=omega^0 v=0.242 v'=0.143 lhs= 16.991237970005+0.000000002075i  relerr=1.06e-15  OK
+  gamma=(((1,0),(3,0)),((3,-6),(10,-18))) chi=omega^0 v=0.128 v'=0.115 lhs= 16.862119083019+0.000000002845i  relerr=1.84e-15  OK
+  G2 worst relative error: 2.05e-15  (chi values covered: {0: 4, 1: 0, 2: 0})
+
+G3: cusp expansions  theta(gamma_10 w) = F10*(w),  theta(gamma_19 w) = F19*(w)   (DR (5.13)-(5.15), App. A)
+  gamma_10, w=(-0.128+0.174i, 1.253)                         lhs= 5.409377655883+0.009359761094i  relerr=5.12e-15  OK
+  gamma_19                                                   lhs= 4.279803931127-0.040750907681i  relerr=9.02e-15  OK
+  gamma_10, w=(-0.295-0.117i, 0.969)                         lhs= 5.679609393132+0.034877865665i  relerr=3.92e-15  OK
+  gamma_19                                                   lhs= 6.667198354890-0.010874603252i  relerr=3.34e-15  OK
+  gamma_10, w=(-0.020+0.068i, 0.764)                         lhs= 8.943440061894+0.000421965826i  relerr=5.29e-16  OK
+  gamma_19                                                   lhs= 8.394670619940-0.000881186607i  relerr=2.69e-16  OK
+  gamma_10, w=(0.101-0.429i, 1.101)                          lhs= 3.785709293042-0.065138319274i  relerr=6.01e-15  OK
+  gamma_19                                                   lhs= 6.882319700268+0.000608793968i  relerr=2.34e-15  OK
+  gamma_10 against F19*   [swapped]                          lhs= 7.012292763959-0.011000739439i  relerr=1.85e-01  OK (negative control: must mismatch)
+  G3 worst relative error: 9.02e-15
+
+G1': negative control, the prefactors e^{-2 pi i/9}, e^{+2 pi i/9} in (5.7) exchanged
+  swapped-prefactor series under E                           lhs= 5.626596450213-0.037841628392i  relerr=5.47e-02  OK (negative control: must mismatch)
+  (note: replacing tau by conj(tau) is NOT a valid negative control: it gives conj(theta), also E-invariant)
+
+G5: translates  theta(z + a/c, v)  via coset decomposition  g = g1 * sigma * rep * T_t
+  a/c=(-1, -1)/(1, 0) rep=g10 t=(0, 0) chi=w^0               lhs= 6.720903384686+0.003097892410i  relerr=2.55e-15  OK
+  a/c=(3, 0)/(1, 0) rep=I t=(0, 0) chi=w^0                   lhs= 10.429857405879+0.000015589126i  relerr=2.23e-15  OK
+  a/c=(4, 1)/(1, 0) rep=g19 t=(0, 0) chi=w^0                 lhs= 5.190905237970+0.005376311935i  relerr=5.14e-15  OK
+  a/c=(-5, 5)/(1, 0) rep=g10 t=(0, 0) chi=w^0                lhs= 6.512267047205+0.017191047202i  relerr=3.16e-15  OK
+  a/c=(4, -1)/(1, 0) rep=g10 t=(0, 0) chi=w^0                lhs= 6.671411577834-0.008173370863i  relerr=2.82e-15  OK
+  a/c=(-2, -3)/(1, 0) rep=I t=(0, 0) chi=w^0                 lhs= 9.896005170039+0.000118885165i  relerr=1.80e-15  OK
+  a/c=(1, 5)/(0, 1) rep=g10 t=(1, 1) chi=w^0                 lhs= 4.423069824034-0.061297943677i  relerr=8.83e-15  OK
+  a/c=(6, -3)/(0, 1) rep=P t=(0, 0) chi=w^0                  lhs= 9.651340249234-0.000155198182i  relerr=3.32e-15  OK
+  a/c=(-3, -3)/(0, 1) rep=P t=(0, 0) chi=w^0                 lhs= 10.192912496301-0.000000021063i  relerr=5.23e-16  OK
+  a/c=(-1, -3)/(0, 1) rep=g19 t=(2, 2) chi=w^2               lhs= 4.488542044566-0.093377648048i  relerr=3.08e-15  OK
+     same with conj(chi)                                     lhs=-2.325138437638-3.840502612525i  relerr=1.73e+00  OK (negative control: must mismatch)
+  a/c=(-2, 3)/(0, 1) rep=g10 t=(1, 1) chi=w^0                lhs= 7.524849596923-0.005838520693i  relerr=3.31e-15  OK
+  a/c=(2, -6)/(0, 1) rep=g19 t=(2, 2) chi=w^2                lhs= 5.942331363666-0.016730517248i  relerr=5.10e-15  OK
+  a/c=(-1, 2)/(1, 2) rep=g19 t=(2, 0) chi=w^2                lhs= 0.180281507205-0.825183953822i  relerr=2.57e-14  OK
+  a/c=(-5, -5)/(1, 2) rep=g10 t=(1, 0) chi=w^1               lhs= 0.758924607079+0.239615440557i  relerr=1.10e-14  OK
+  a/c=(6, -2)/(1, 2) rep=g19 t=(2, 0) chi=w^2                lhs= 0.653576603352+0.553855862108i  relerr=1.71e-14  OK
+  a/c=(-1, 3)/(3, 0) rep=I t=(0, 1) chi=w^2                  lhs= 0.602617143234-0.545678826357i  relerr=1.97e-14  OK
+  a/c=(-5, 6)/(3, 0) rep=I t=(0, 2) chi=w^2                  lhs=-0.149514359879-0.263479440003i  relerr=3.77e-14  OK
+  a/c=(6, -5)/(3, 0) rep=P t=(2, 0) chi=w^1                  lhs=-0.910958193505+1.711440791458i  relerr=1.14e-14  OK
+  a/c=(-6, 1)/(3, 0) rep=P t=(0, 0) chi=w^0                  lhs= 8.916399022714-0.001893633326i  relerr=8.09e-16  OK
+  a/c=(-2, 6)/(3, 0) rep=I t=(0, 2) chi=w^2                  lhs= 0.826604478335-0.388702548494i  relerr=1.32e-14  OK
+  a/c=(-2, 4)/(3, 6) rep=P2 t=(0, 2) chi=w^0                 lhs=-0.174947694394+0.359078363827i  relerr=4.97e-14  OK
+  a/c=(2, 0)/(3, 6) rep=I t=(0, 0) chi=w^0                   lhs= 6.019723830242+0.005229349702i  relerr=1.32e-15  OK
+  a/c=(3, 2)/(3, 6) rep=P t=(2, 0) chi=w^1                   lhs= 3.278324881952+0.061910130345i  relerr=6.37e-15  OK
+  a/c=(1, 1)/(3, 6) rep=P2 t=(0, 0) chi=w^0                  lhs= 8.919648581977+0.002092506283i  relerr=1.83e-15  OK
+  a/c=(-5, 3)/(9, 0) rep=I t=(0, 2) chi=w^2                  lhs= 3.425653002720+0.133402544193i  relerr=3.11e-15  OK
+  a/c=(3, -2)/(9, 0) rep=P t=(0, 0) chi=w^1                  lhs= 3.513224607542+0.061616798908i  relerr=5.61e-15  OK
+  a/c=(-2, 3)/(9, 0) rep=I t=(0, 0) chi=w^2                  lhs= 0.165863259705-0.199215569041i  relerr=3.62e-14  OK
+  a/c=(1, -3)/(9, 0) rep=I t=(0, 1) chi=w^1                  lhs= 3.833570745157-0.029944060806i  relerr=1.93e-15  OK
+  a/c=(0, -5)/(9, 0) rep=P t=(2, 0) chi=w^1                  lhs=-0.495030570068-1.449810401758i  relerr=3.16e-14  OK
+  a/c=(-3, -5)/(-2, 0) rep=g19 t=(0, 2) chi=w^1              lhs= 4.952065651183+0.042784171009i  relerr=1.67e-15  OK
+  a/c=(3, 3)/(-2, 0) rep=I t=(0, 2) chi=w^2                  lhs=-0.519969479131-1.310251627185i  relerr=1.40e-14  OK
+  a/c=(-3, -6)/(-2, 0) rep=I t=(0, 0) chi=w^0                lhs= 10.624984328649-0.000013428556i  relerr=1.17e-15  OK
+  a/c=(5, 2)/(2, 3) rep=g19 t=(1, 0) chi=w^1                 lhs=-0.241879476874+0.030610566919i  relerr=3.15e-14  OK
+  a/c=(-4, 3)/(2, 3) rep=I t=(0, 0) chi=w^0                  lhs= 10.768838707803-0.000341325249i  relerr=1.82e-15  OK
+  a/c=(-2, 3)/(2, 3) rep=I t=(0, 2) chi=w^2                  lhs= 0.214098604001-0.565557374519i  relerr=2.14e-14  OK
+  a/c=(-4, -1)/(2, 3) rep=g19 t=(1, 0) chi=w^1               lhs=-1.838101723680+2.949676380239i  relerr=4.06e-15  OK
+  a/c=(-6, -6)/(2, 3) rep=I t=(0, 1) chi=w^1                 lhs= 1.906247247168+0.054424049737i  relerr=5.72e-15  OK
+  a/c=(4, 6)/(4, 3) rep=I t=(0, 1) chi=w^2                   lhs=-1.176389697461-2.148828029696i  relerr=9.34e-15  OK
+  a/c=(-3, 4)/(4, 3) rep=g19 t=(0, 1) chi=w^1                lhs=-1.065205496832-1.162953871361i  relerr=7.04e-15  OK
+  a/c=(-6, -1)/(4, 3) rep=g10 t=(0, 2) chi=w^0               lhs=-0.420210875876-0.262619629671i  relerr=1.26e-14  OK
+  a/c=(-6, 4)/(4, 3) rep=g19 t=(2, 0) chi=w^2                lhs= 2.156723471890-0.059275279203i  relerr=8.28e-15  OK
+  a/c=(1, -1)/(4, 3) rep=g10 t=(0, 2) chi=w^0                lhs= 2.767401661396+0.224095698433i  relerr=5.25e-15  OK
+  a/c=(-6, 5)/(4, 3) rep=g10 t=(0, 1) chi=w^0                lhs= 11.178086286533-0.000004273598i  relerr=1.14e-15  OK
+  a/c=(4, -6)/(-4, 1) rep=g10 t=(2, 1) chi=w^1               lhs=-1.381917093544-2.552735185156i  relerr=9.61e-15  OK
+  a/c=(0, 1)/(-4, 1) rep=g10 t=(1, 1) chi=w^0                lhs= 18.217255133965-0.000000001483i  relerr=3.91e-16  OK
+  a/c=(2, -3)/(-4, 1) rep=g19 t=(1, 2) chi=w^2               lhs= 7.082934470421-0.004387473324i  relerr=1.50e-15  OK
+  a/c=(2, -3)/(-4, 1) rep=g19 t=(1, 2) chi=w^2               lhs= 6.159280679276+0.018752361151i  relerr=2.76e-15  OK
+  a/c=(6, -1)/(-4, 1) rep=g19 t=(1, 1) chi=w^2               lhs= 7.314941034877+0.002699124631i  relerr=2.69e-15  OK
+  a/c=(-3, 1)/(-6, 0) rep=P t=(1, 0) chi=w^1                 lhs= 6.726387151396-0.002271698492i  relerr=4.40e-15  OK
+  a/c=(-5, -2)/(-6, 0) rep=P2 t=(0, 1) chi=w^2               lhs= 6.265566341192-0.026898516334i  relerr=5.83e-15  OK
+  a/c=(-5, 0)/(-6, 0) rep=I t=(0, 0) chi=w^0                 lhs= 17.201470463721-0.000000003546i  relerr=8.30e-16  OK
+  a/c=(3, -1)/(-6, 0) rep=P t=(2, 0) chi=w^1                 lhs= 3.235211904347-0.134705864355i  relerr=7.97e-15  OK
+  a/c=(6, -5)/(-5, 0) rep=g19 t=(1, 0) chi=w^1               lhs=-0.565444085642-0.981833795674i  relerr=5.38e-15  OK
+  a/c=(-1, -5)/(-5, 0) rep=g19 t=(2, 0) chi=w^0              lhs=-0.941382000281+1.590029724511i  relerr=1.23e-15  OK
+  a/c=(2, -3)/(-5, 0) rep=I t=(0, 0) chi=w^1                 lhs= 1.912887256937+0.453000074786i  relerr=3.92e-15  OK
+  a/c=(0, 3)/(-5, 0) rep=I t=(0, 1) chi=w^2                  lhs= 0.276133513259-0.973719189928i  relerr=1.75e-14  OK
+  a/c=(1, 1)/(-5, 0) rep=g19 t=(0, 2) chi=w^1                lhs= 16.688743577196+0.000000039172i  relerr=2.57e-15  OK
+  a/c=(0, -3)/(-5, 0) rep=I t=(0, 0) chi=w^2                 lhs= 0.495137393715-0.942781429888i  relerr=1.02e-14  OK
+  a/c=(0, -5)/(-1, 9) rep=g10 t=(0, 1) chi=w^0               lhs= 11.985127107964+0.000051835902i  relerr=2.19e-15  OK
+  a/c=(2, 6)/(-1, 9) rep=I t=(0, 2) chi=w^0                  lhs= 0.376879948607+0.740485947864i  relerr=9.63e-15  OK
+  a/c=(-1, 1)/(-1, 9) rep=g10 t=(1, 1) chi=w^0               lhs= 16.572621104464-0.000000056957i  relerr=1.54e-15  OK
+  a/c=(-3, -5)/(-1, 9) rep=g10 t=(2, 0) chi=w^1              lhs=-0.357210502630-0.023836099791i  relerr=3.80e-14  OK
+  G5 worst relative error: 4.97e-14 ; coset types used: {'g10': 14, 'I': 20, 'g19': 16, 'P': 9, 'P2': 3}
+
+G4: X^{1/3} constant of the untwisted completed sum  X^{-1/2} sum_A g~(c)|d| U(N(A)/X)
+  predicted constant  Res * U~(5/6) = 0.109041   (Res = 0.337846, U~(5/6) = 0.322753)
+  X=  1000   sum/X^(1/3) = 0.110659-0.000000i   ratio to prediction = 1.0148
+  X=  4000   sum/X^(1/3) = 0.106000-0.000000i   ratio to prediction = 0.9721
+  X= 16000   sum/X^(1/3) = 0.108516-0.000000i   ratio to prediction = 0.9952
+  X= 64000   sum/X^(1/3) = 0.109333-0.000000i   ratio to prediction = 1.0027
+  X=100000   sum/X^(1/3) = 0.109139-0.000000i   ratio to prediction = 1.0009
+
+GATE: PASS  (failures: 0, tolerance 1e-08)
+UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with   -  0.93s user 0.13s system 29% cpu 3.584 total
