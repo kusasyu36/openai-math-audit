@@ -1,0 +1,11 @@
+
+Stage 5: anchor for stage5_lib.py (a copy of the formulas of stage3_d_mellin.py with the weight as a parameter).
+Recomputes two runs of stage3_d_mellin.out and prints T_dir, T_dual to be compared digit by digit with that file:
+  A {p7: 1}, w = 0.05, X = 64000   and   B {p7: 1}, w = 0.1, X = 2000.
+Criterion (fixed before running): both numbers agree with the lines of stage3_d_mellin.out to all 13 printed digits.
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage5_lib_anchor.py > audits/003dual/stage5_lib_anchor.out 2>/dev/null
+
+  Psi_0=A P={7: 1} w=0.05 X=64000
+      T_dir =  2.026791679651e-01 +4.577516628326e-02i   T_dual =  2.026791679651e-01 +4.577516628326e-02i
+  Psi_0=B P={7: 1} w=0.10 X=2000
+      T_dir = -1.894152618457e-01 +2.042635846187e-01i   T_dual = -1.894152618457e-01 +2.042635846187e-01i

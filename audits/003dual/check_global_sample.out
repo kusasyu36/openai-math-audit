@@ -1,0 +1,22 @@
+003 audits/003dual: SAMPLE of the global construction behind eq:ray-local-transform
+not part of the stage-1 gate; criteria in the header (fixed before the first run)
+
+r = [(1, 3)] done, 972 configurations so far [1s]
+r = [(4, 3)] done, 1944 configurations so far [2s]
+r = [(-5, 0)] done, 2916 configurations so far [3s]
+r = [(1, 3), (4, 3)] done, 3888 configurations so far [4s]
+
+  S1   PASS  0 failures / 3888
+  S2   PASS  0 failures / 3888
+  S3   PASS  0 failures / 3888
+  S4   PASS  0 failures / 3888
+  S5   PASS  0 failures / 1296
+  S6   PASS  0 failures / 3888
+  NS2  PASS  control held (i.e. did NOT fail) in 0 / 3888 configurations (must be 0)
+  NS4  PASS  control held (i.e. did NOT fail) in 0 / 3888 configurations (must be 0)
+  NS5  PASS  without M^2: (c, delta' mod D_0) changed in [288, 288, 288, 288] of 324 (h_0) per r (must be > 0 for each r)
+  C    PASS  cases of H: {'3|c': 2592, 'v=1': 864, 'coprime': 432}
+
+configurations: 3888 ; x per configuration: 49
+SAMPLE (not a gate): all criteria met
+elapsed 4s

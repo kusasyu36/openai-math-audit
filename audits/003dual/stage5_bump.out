@@ -1,0 +1,126 @@
+
+Stage 5 (a), tools: a COMPACTLY SUPPORTED smooth weight, its transform V_*^sharp (eq:theta-weight, paper2.tex:1752-1757)
+and error bounds in the manner of stage4_bounds.py.  Importing runs nothing; running prints the planning tables
+(bounds only, no comparison) from which the parameter a and the runs of stage5_a_compact.py are chosen.
+
+WEIGHT (inside the hypothesis W in C_c^infty((0, inf)), :670, :1293):
+  W(y) = b(log(y)/a),  b(u) = exp(-(1-u^2)^-p) for |u| < 1, 0 otherwise (p = 1, 2, 3, ...);  support [e^-a, e^a].
+  V_*(y) = sqrt(y) W(y).   p = 1 is the standard bump.  [p > 1 was introduced after the first planning table (p = 1 only)
+  showed dual tail bounds >= 5e-2 per unit |C| for every candidate run: the transform of the p = 1 bump decays like
+  exp(-const |tau|^(1/2)) and V^sharp like exp(-const x^(1/8)).  For general p the rates are |tau|^(p/(p+1)), x^(p/(4(p+1))).
+  All these functions are in C_c^infty; the choice of (p, a) is made from the bounds alone, before any comparison.]
+  V_*-hat(s) = int V_*(x) x^s dx/x = a int_{-1}^{1} b(u) exp((s + 1/2) a u) du                                [exact formula]
+  V_*^sharp(x) = (1/2 pi) int V_*-hat(-i tau) Q(i tau) (c x)^(-i tau) d tau,  c = (2 pi)^4/27,  Q as in stage4_bounds.
+
+NUMERICS.  V_*-hat(-i tau): trapezoidal rule in u with NU nodes (b is smooth and flat at +-1; the aliasing error is the
+  transform itself at frequency >= pi NU - a|tau|, far below rounding).  V^sharp: trapezoidal rule in tau, step H, |tau| <= TM.
+
+BOUNDS (absolute errors).
+ (ENV) rigorous envelope of the transform.  b extends holomorphically off the real axis; by Cauchy's theorem the u-integral
+      may be taken along z = u - i eta (1 - u^2), sign(tau) eta > 0, for any eta (the integrand tends to 0 at +-1 inside the
+      sector |arg(1 -+ z)| < pi/(2p); on the path arg(1 - z^2) -> arctan(2 eta) at the ends, so eta < tan(pi/(2p))/2 is
+      required and the eta-grid is cut at 0.9 of that).  Hence for t = A + i tau
+        |V_*-hat(-t)| <= a * Env(A, |tau|),
+        Env(A, w) = min_eta int_{-1}^{1} exp( -Re (1 - z^2)^-p + (1/2 - A) a u - a w eta (1 - u^2) ) sqrt(1 + 4 eta^2 u^2) du.
+      The remaining integral (smooth, positive) is done by Gauss-Legendre with 800 nodes; eta runs over a grid (any eta
+      gives a valid bound, the grid only affects sharpness).  Non-rigorous step: that 1-D quadrature.
+ (V') |V_*^sharp(x)| <= (c x)^-A Mt(A),  Mt(A) = (a/pi) int_0^inf Env(A, tau) |Q(A + i tau)| d tau   (A > 0; no pole crossed).
+      Mt is integrated numerically on a log grid in tau up to TAUMAX (trapezoid in log tau), the integrand being below
+      1e-30 of its maximum at TAUMAX (checked; otherwise Mt = inf).  Non-rigorous step: this quadrature.
+ (T3') dual tail of a group beyond N(l) > R:  |C| Bmax 27 min_A { (c X/N(c)^2)^-A Mt(A) S(1/3 + A, R) }  (S as in stage4_bounds).
+ (Q')  quadrature of V^sharp: truncation <= (a/pi) int_TM^inf Env(0, tau) d tau ;
+      discretisation <= [ (c x)^a' Mt(-a') + (c x)^-a' Mt(a') ] / (e^{2 pi a'/H} - 1), a' = 0.8  (as (Q) of stage4_bounds).
+ The direct sum has NO truncation error when X e^a <= Nmax: W vanishes beyond.
+ Rounding is not bounded, only estimated (as in stage 4).
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage5_bump.py > audits/003dual/stage5_bump.out 2>/dev/null
+
+p = 1, a = 3 : largest X with X e^a <= 10^6: 49737 ; TM = 509.0 (truncation bound 7.0e-18), 25453 tau nodes ; max |V-hat| / envelope where envelope > 1e-9 max = 1.000 (must be <= 1)
+   Mt(A): A=1: 6.77e+02  A=2: 5.48e+10  A=3: 3.23e+20  A=4: 2.92e+31  A=6: 6.87e+55  A=8: 3.74e+82  A=10: 1.16e+111  A=12: 9.03e+140
+   x: |V^sharp| / bound (V') : 1: 4.3e-03 / 1.2e+01  100: 8.9e-04 / 1.2e-01  1000: 6.7e-04 / 1.2e-02  10000: 8.8e-05 / 1.2e-03  100000: 8.2e-06 / 1.2e-04  1e+06: 6.6e-07 / 6.8e-06  1e+07: 1.4e-08 / 1.6e-07  1e+08: 7.2e-11 / 1.1e-09
+   B {}         N(c) =   4: dual tail bound per unit |C| Bmax at X = 49737 : 7.2e-02 ; at X/4 : 1.3e+00
+   B {p7:1}     N(c) =  28: dual tail bound per unit |C| Bmax at X = 49737 : 9.1e+01 ; at X/4 : 6.3e+02
+   F {} / C {}  N(c) =  12: dual tail bound per unit |C| Bmax at X = 49737 : 5.9e+00 ; at X/4 : 5.8e+01
+   F {p7:1}     N(c) =  84: dual tail bound per unit |C| Bmax at X = 49737 : 1.7e+03 ; at X/4 : 9.1e+03
+   A {}         N(c) =  36: dual tail bound per unit |C| Bmax at X = 49737 : 7.8e+01 ; at X/4 : 6.2e+02
+   A {p7:1}     N(c) = 252: dual tail bound per unit |C| Bmax at X = 49737 : 1.4e+04 ; at X/4 : 5.7e+04
+   B {p13:1}    N(c) =  52: dual tail bound per unit |C| Bmax at X = 49737 : 5.2e+02 ; at X/4 : 3.0e+03
+p = 2, a = 2 : largest X with X e^a <= 10^6: 135199 ; TM = 241.9 (truncation bound 6.9e-18), 12099 tau nodes ; max |V-hat| / envelope where envelope > 1e-9 max = 1.000 (must be <= 1)
+   Mt(A): A=1: 5.18e+02  A=2: 1.03e+09  A=3: 7.49e+16  A=4: 4.57e+25  A=6: 1.29e+45  A=8: 2.38e+66  A=10: 9.80e+88  A=12: 4.73e+112
+   x: |V^sharp| / bound (V') : 1: 1.5e-02 / 9.0e+00  100: 2.8e-03 / 9.0e-02  1000: 4.2e-04 / 9.0e-03  10000: 8.1e-05 / 7.4e-04  100000: 2.0e-06 / 2.6e-05  1e+06: 2.5e-08 / 2.5e-07  1e+07: 3.2e-11 / 3.2e-10  1e+08: 1.0e-15 / 2.0e-14
+   B {}         N(c) =   4: dual tail bound per unit |C| Bmax at X = 135199 : 8.6e-08 ; at X/4 : 4.9e-05
+   B {p7:1}     N(c) =  28: dual tail bound per unit |C| Bmax at X = 135199 : 2.3e-01 ; at X/4 : 7.3e+00
+   F {} / C {}  N(c) =  12: dual tail bound per unit |C| Bmax at X = 135199 : 1.1e-03 ; at X/4 : 9.7e-02
+   F {p7:1}     N(c) =  84: dual tail bound per unit |C| Bmax at X = 135199 : 4.1e+01 ; at X/4 : 5.3e+02
+   A {}         N(c) =  36: dual tail bound per unit |C| Bmax at X = 135199 : 8.5e-02 ; at X/4 : 3.7e+00
+   A {p7:1}     N(c) = 252: dual tail bound per unit |C| Bmax at X = 135199 : 6.7e+02 ; at X/4 : 6.3e+03
+   B {p13:1}    N(c) =  52: dual tail bound per unit |C| Bmax at X = 135199 : 5.2e+00 ; at X/4 : 9.7e+01
+p = 2, a = 3 : largest X with X e^a <= 10^6: 49737 ; TM = 164.4 (truncation bound 6.0e-18), 8225 tau nodes ; max |V-hat| / envelope where envelope > 1e-9 max = 1.000 (must be <= 1)
+   Mt(A): A=1: 1.35e+02  A=2: 1.40e+08  A=3: 5.10e+15  A=4: 1.53e+24  A=6: 1.11e+43  A=8: 5.48e+63  A=10: 6.04e+85  A=12: 7.89e+108
+   x: |V^sharp| / bound (V') : 1: 4.2e-02 / 2.3e+00  100: 5.2e-04 / 2.3e-02  1000: 1.9e-04 / 2.3e-03  10000: 1.9e-05 / 1.6e-04  100000: 3.6e-08 / 4.2e-06  1e+06: 2.8e-09 / 2.4e-08  1e+07: 1.4e-12 / 1.4e-11  1e+08: 5.9e-17 / 2.8e-16
+   B {}         N(c) =   4: dual tail bound per unit |C| Bmax at X = 49737 : 2.1e-07 ; at X/4 : 8.9e-05
+   B {p7:1}     N(c) =  28: dual tail bound per unit |C| Bmax at X = 49737 : 2.9e-01 ; at X/4 : 7.9e+00
+   F {} / C {}  N(c) =  12: dual tail bound per unit |C| Bmax at X = 49737 : 1.7e-03 ; at X/4 : 1.2e-01
+   F {p7:1}     N(c) =  84: dual tail bound per unit |C| Bmax at X = 49737 : 4.1e+01 ; at X/4 : 4.9e+02
+   A {}         N(c) =  36: dual tail bound per unit |C| Bmax at X = 49737 : 1.2e-01 ; at X/4 : 4.3e+00
+   A {p7:1}     N(c) = 252: dual tail bound per unit |C| Bmax at X = 49737 : 6.2e+02 ; at X/4 : 5.3e+03
+   B {p13:1}    N(c) =  52: dual tail bound per unit |C| Bmax at X = 49737 : 5.7e+00 ; at X/4 : 9.2e+01
+p = 2, a = 4 : largest X with X e^a <= 10^6: 18297 ; TM = 123.5 (truncation bound 8.9e-18), 6175 tau nodes ; max |V-hat| / envelope where envelope > 1e-9 max = 1.000 (must be <= 1)
+   Mt(A): A=1: 5.91e+01  A=2: 4.94e+07  A=3: 1.40e+15  A=4: 3.37e+23  A=6: 1.64e+42  A=8: 5.50e+62  A=10: 4.17e+84  A=12: 3.78e+107
+   x: |V^sharp| / bound (V') : 1: 1.2e-03 / 1.0e+00  100: 6.2e-04 / 1.0e-02  1000: 6.9e-05 / 1.0e-03  10000: 6.9e-06 / 6.7e-05  100000: 1.9e-07 / 1.5e-06  1e+06: 8.6e-10 / 6.9e-09  1e+07: 1.2e-13 / 3.0e-12  1e+08: 1.1e-16 / 4.3e-17
+   B {}         N(c) =   4: dual tail bound per unit |C| Bmax at X = 18297 : 4.0e-06 ; at X/4 : 8.2e-04
+   B {p7:1}     N(c) =  28: dual tail bound per unit |C| Bmax at X = 18297 : 1.1e+00 ; at X/4 : 2.1e+01
+   F {} / C {}  N(c) =  12: dual tail bound per unit |C| Bmax at X = 18297 : 1.1e-02 ; at X/4 : 5.2e-01
+   F {p7:1}     N(c) =  84: dual tail bound per unit |C| Bmax at X = 18297 : 9.4e+01 ; at X/4 : 8.7e+02
+   A {}         N(c) =  36: dual tail bound per unit |C| Bmax at X = 18297 : 5.3e-01 ; at X/4 : 1.3e+01
+   A {p7:1}     N(c) = 252: dual tail bound per unit |C| Bmax at X = 18297 : 1.2e+03 ; at X/4 : 8.5e+03
+   B {p13:1}    N(c) =  52: dual tail bound per unit |C| Bmax at X = 18297 : 1.6e+01 ; at X/4 : 2.0e+02
+p = 3, a = 2 : largest X with X e^a <= 10^6: 135199 ; TM = 186.5 (truncation bound 7.5e-18), 9329 tau nodes ; max |V-hat| / envelope where envelope > 1e-9 max = 1.000 (must be <= 1)
+   Mt(A): A=1: 6.49e+02  A=2: 4.20e+08  A=3: 8.79e+15  A=4: 1.27e+24  A=6: 1.50e+42  A=8: 8.35e+61  A=10: 7.96e+82  A=12: 7.22e+104
+   x: |V^sharp| / bound (V') : 1: 3.7e-03 / 1.1e+01  100: 3.3e-03 / 1.1e-01  1000: 1.8e-04 / 1.1e-02  10000: 3.0e-05 / 6.5e-04  100000: 3.6e-07 / 1.3e-05  1e+06: 2.6e-09 / 4.6e-08  1e+07: 9.5e-13 / 1.0e-11  1e+08: 7.5e-18 / 3.3e-17
+   B {}         N(c) =   4: dual tail bound per unit |C| Bmax at X = 135199 : 1.2e-10 ; at X/4 : 5.0e-07
+   B {p7:1}     N(c) =  28: dual tail bound per unit |C| Bmax at X = 135199 : 2.4e-02 ; at X/4 : 1.7e+00
+   F {} / C {}  N(c) =  12: dual tail bound per unit |C| Bmax at X = 135199 : 2.8e-05 ; at X/4 : 8.1e-03
+   F {p7:1}     N(c) =  84: dual tail bound per unit |C| Bmax at X = 135199 : 1.4e+01 ; at X/4 : 2.7e+02
+   A {}         N(c) =  36: dual tail bound per unit |C| Bmax at X = 135199 : 5.8e-03 ; at X/4 : 6.4e-01
+   A {p7:1}     N(c) = 252: dual tail bound per unit |C| Bmax at X = 135199 : 3.1e+02 ; at X/4 : 4.1e+03
+   B {p13:1}    N(c) =  52: dual tail bound per unit |C| Bmax at X = 135199 : 1.1e+00 ; at X/4 : 3.6e+01
+p = 3, a = 3 : largest X with X e^a <= 10^6: 49737 ; TM = 124.7 (truncation bound 9.5e-18), 6237 tau nodes ; max |V-hat| / envelope where envelope > 1e-9 max = 1.000 (must be <= 1)
+   Mt(A): A=1: 1.52e+02  A=2: 4.75e+07  A=3: 4.47e+14  A=4: 3.01e+22  A=6: 8.14e+39  A=8: 1.07e+59  A=10: 2.44e+79  A=12: 5.38e+100
+   x: |V^sharp| / bound (V') : 1: 1.1e-02 / 2.6e+00  100: 2.1e-03 / 2.6e-02  1000: 2.1e-04 / 2.4e-03  10000: 6.3e-06 / 1.0e-04  100000: 1.6e-07 / 1.3e-06  1e+06: 1.1e-10 / 2.0e-09  1e+07: 1.2e-14 / 1.4e-13  1e+08: 2.0e-17 / 8.1e-20
+   B {}         N(c) =   4: dual tail bound per unit |C| Bmax at X = 49737 : 3.2e-10 ; at X/4 : 8.8e-07
+   B {p7:1}     N(c) =  28: dual tail bound per unit |C| Bmax at X = 49737 : 2.7e-02 ; at X/4 : 1.7e+00
+   F {} / C {}  N(c) =  12: dual tail bound per unit |C| Bmax at X = 49737 : 4.1e-05 ; at X/4 : 9.3e-03
+   F {p7:1}     N(c) =  84: dual tail bound per unit |C| Bmax at X = 49737 : 1.2e+01 ; at X/4 : 2.2e+02
+   A {}         N(c) =  36: dual tail bound per unit |C| Bmax at X = 49737 : 7.0e-03 ; at X/4 : 6.5e-01
+   A {p7:1}     N(c) = 252: dual tail bound per unit |C| Bmax at X = 49737 : 2.6e+02 ; at X/4 : 3.2e+03
+   B {p13:1}    N(c) =  52: dual tail bound per unit |C| Bmax at X = 49737 : 1.1e+00 ; at X/4 : 3.2e+01
+p = 3, a = 4 : largest X with X e^a <= 10^6: 18297 ; TM = 96.3 (truncation bound 6.1e-18), 4815 tau nodes ; max |V-hat| / envelope where envelope > 1e-9 max = 1.000 (must be <= 1)
+   Mt(A): A=1: 6.00e+01  A=2: 1.42e+07  A=3: 9.44e+13  A=4: 4.78e+21  A=6: 7.61e+38  A=8: 6.04e+57  A=10: 8.17e+77  A=12: 1.01e+99
+   x: |V^sharp| / bound (V') : 1: 3.0e-02 / 1.0e+00  100: 1.2e-03 / 1.0e-02  1000: 4.9e-05 / 8.8e-04  10000: 5.4e-06 / 3.5e-05  100000: 5.1e-08 / 3.4e-07  1e+06: 2.7e-11 / 3.7e-10  1e+07: 2.1e-15 / 1.6e-14  1e+08: 7.4e-17 / 4.9e-21
+   B {}         N(c) =   4: dual tail bound per unit |C| Bmax at X = 18297 : 1.2e-08 ; at X/4 : 1.3e-05
+   B {p7:1}     N(c) =  28: dual tail bound per unit |C| Bmax at X = 18297 : 1.2e-01 ; at X/4 : 5.0e+00
+   F {} / C {}  N(c) =  12: dual tail bound per unit |C| Bmax at X = 18297 : 3.9e-04 ; at X/4 : 4.9e-02
+   F {p7:1}     N(c) =  84: dual tail bound per unit |C| Bmax at X = 18297 : 3.1e+01 ; at X/4 : 4.2e+02
+   A {}         N(c) =  36: dual tail bound per unit |C| Bmax at X = 18297 : 4.1e-02 ; at X/4 : 2.4e+00
+   A {p7:1}     N(c) = 252: dual tail bound per unit |C| Bmax at X = 18297 : 5.3e+02 ; at X/4 : 5.0e+03
+   B {p13:1}    N(c) =  52: dual tail bound per unit |C| Bmax at X = 18297 : 3.5e+00 ; at X/4 : 7.2e+01
+p = 4, a = 3 : largest X with X e^a <= 10^6: 49737 ; TM = 119.1 (truncation bound 5.7e-18), 5955 tau nodes ; max |V-hat| / envelope where envelope > 1e-9 max = 1.000 (must be <= 1)
+   Mt(A): A=1: 3.18e+02  A=2: 5.80e+07  A=3: 2.85e+14  A=4: 9.96e+21  A=6: 6.12e+38  A=8: 1.53e+57  A=10: 5.89e+76  A=12: 1.97e+97
+   x: |V^sharp| / bound (V') : 1: 6.4e-03 / 5.5e+00  100: 1.5e-03 / 5.5e-02  1000: 2.7e-04 / 4.8e-03  10000: 8.8e-07 / 1.6e-04  100000: 9.7e-08 / 1.2e-06  1e+06: 6.5e-11 / 8.8e-10  1e+07: 2.3e-16 / 1.6e-14  1e+08: 3.3e-17 / 9.9e-22
+   B {}         N(c) =   4: dual tail bound per unit |C| Bmax at X = 49737 : 1.1e-11 ; at X/4 : 1.0e-07
+   B {p7:1}     N(c) =  28: dual tail bound per unit |C| Bmax at X = 49737 : 1.2e-02 ; at X/4 : 1.2e+00
+   F {} / C {}  N(c) =  12: dual tail bound per unit |C| Bmax at X = 49737 : 8.2e-06 ; at X/4 : 3.8e-03
+   F {p7:1}     N(c) =  84: dual tail bound per unit |C| Bmax at X = 49737 : 1.1e+01 ; at X/4 : 2.7e+02
+   A {}         N(c) =  36: dual tail bound per unit |C| Bmax at X = 49737 : 2.5e-03 ; at X/4 : 4.0e-01
+   A {p7:1}     N(c) = 252: dual tail bound per unit |C| Bmax at X = 49737 : 3.1e+02 ; at X/4 : 4.7e+03
+   B {p13:1}    N(c) =  52: dual tail bound per unit |C| Bmax at X = 49737 : 7.7e-01 ; at X/4 : 3.2e+01
+p = 6, a = 3 : largest X with X e^a <= 10^6: 49737 ; TM = 136.7 (truncation bound 5.8e-18), 6839 tau nodes ; max |V-hat| / envelope where envelope > 1e-9 max = 1.000 (must be <= 1)
+   Mt(A): A=1: 1.41e+03  A=2: 4.16e+08  A=3: 2.05e+15  A=4: 6.43e+22  A=6: 2.49e+39  A=8: 3.07e+57  A=10: 4.82e+76  A=12: 5.68e+96
+   x: |V^sharp| / bound (V') : 1: 4.5e-03 / 2.4e+01  100: 2.6e-03 / 2.4e-01  1000: 3.3e-04 / 2.4e-02  10000: 1.1e-05 / 1.1e-03  100000: 8.8e-08 / 8.7e-06  1e+06: 4.1e-11 / 5.8e-09  1e+07: 3.8e-16 / 6.7e-14  1e+08: 4.6e-17 / 1.1e-21
+   B {}         N(c) =   4: dual tail bound per unit |C| Bmax at X = 49737 : 2.6e-11 ; at X/4 : 4.3e-07
+   B {p7:1}     N(c) =  28: dual tail bound per unit |C| Bmax at X = 49737 : 8.2e-02 ; at X/4 : 8.6e+00
+   F {} / C {}  N(c) =  12: dual tail bound per unit |C| Bmax at X = 49737 : 4.2e-05 ; at X/4 : 2.5e-02
+   F {p7:1}     N(c) =  84: dual tail bound per unit |C| Bmax at X = 49737 : 8.1e+01 ; at X/4 : 2.0e+03
+   A {}         N(c) =  36: dual tail bound per unit |C| Bmax at X = 49737 : 1.6e-02 ; at X/4 : 2.8e+00
+   A {p7:1}     N(c) = 252: dual tail bound per unit |C| Bmax at X = 49737 : 2.3e+03 ; at X/4 : 3.2e+04
+   B {p13:1}    N(c) =  52: dual tail bound per unit |C| Bmax at X = 49737 : 5.5e+00 ; at X/4 : 2.4e+02

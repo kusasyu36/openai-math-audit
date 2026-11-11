@@ -1,0 +1,34 @@
+
+Stage 5 (a), second planning table (bounds only, no comparison), written after stage5_a_compact.out showed that with
+(p, a) = (4, 3) the one-prime runs B {p7: j} are guaranteed to only 1.5-2.2 digits.  Question: is there a (p, a) in the
+family of stage5_bump.py whose (T3') bound for B {p7: 1} (N(c) = 28 and 7, cusp tables, R = 111.11^2) is at least 10 times
+smaller relative to X-independent scale?  Printed: the bound per unit |C| Bmax at the largest admissible X = 0.999e6 e^-a.
+Decision rule (fixed before running): rerun the one-prime runs with another (p, a) only if its bound for N(c) = 28 is
+below 1.2e-3 (10 times better than (4, 3): 1.2e-2).  Otherwise nothing is rerun and the digits of stage5_a_compact stand.
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage5_bump_sweep.py > audits/003dual/stage5_bump_sweep.out 2>/dev/null
+
+  p = 3  a = 1.0  X = 367511 : N(c) = 28: 8.91e-01   N(c) = 7: 2.57e-05   N(c) = 84: 2.23e+02   N(c) = 36 (theta table): 2.92e-01
+  p = 3  a = 1.5  X = 222907 : N(c) = 28: 7.21e-02   N(c) = 7: 5.53e-07   N(c) = 84: 3.18e+01   N(c) = 36 (theta table): 1.88e-02
+  p = 3  a = 2.0  X = 135199 : N(c) = 28: 2.41e-02   N(c) = 7: 1.18e-07   N(c) = 84: 1.36e+01   N(c) = 36 (theta table): 5.76e-03
+  p = 3  a = 2.5  X =  82002 : N(c) = 28: 1.93e-02   N(c) = 7: 1.04e-07   N(c) = 84: 1.07e+01   N(c) = 36 (theta table): 4.66e-03
+  p = 3  a = 3.0  X =  49737 : N(c) = 28: 2.68e-02   N(c) = 7: 2.21e-07   N(c) = 84: 1.22e+01   N(c) = 36 (theta table): 6.99e-03
+  p = 4  a = 1.0  X = 367511 : N(c) = 28: 1.08e+00   N(c) = 7: 1.02e-05   N(c) = 84: 4.50e+02   N(c) = 36 (theta table): 2.94e-01
+  p = 4  a = 1.5  X = 222907 : N(c) = 28: 5.66e-02   N(c) = 7: 1.12e-07   N(c) = 84: 4.69e+01   N(c) = 36 (theta table): 1.18e-02
+  p = 4  a = 2.0  X = 135199 : N(c) = 28: 1.44e-02   N(c) = 7: 1.58e-08   N(c) = 84: 1.59e+01   N(c) = 36 (theta table): 2.70e-03
+  p = 4  a = 2.5  X =  82002 : N(c) = 28: 9.76e-03   N(c) = 7: 1.11e-08   N(c) = 84: 1.07e+01   N(c) = 36 (theta table): 1.84e-03
+  p = 4  a = 3.0  X =  49737 : N(c) = 28: 1.23e-02   N(c) = 7: 2.15e-08   N(c) = 84: 1.11e+01   N(c) = 36 (theta table): 2.52e-03
+  p = 5  a = 1.0  X = 367511 : N(c) = 28: 4.62e+00   N(c) = 7: 3.77e-05   N(c) = 84: 1.82e+03   N(c) = 36 (theta table): 1.25e+00
+  p = 5  a = 1.5  X = 222907 : N(c) = 28: 1.92e-01   N(c) = 7: 2.80e-07   N(c) = 84: 1.69e+02   N(c) = 36 (theta table): 3.89e-02
+  p = 5  a = 2.0  X = 135199 : N(c) = 28: 3.99e-02   N(c) = 7: 2.79e-08   N(c) = 84: 4.87e+01   N(c) = 36 (theta table): 7.11e-03
+  p = 5  a = 2.5  X =  82002 : N(c) = 28: 2.24e-02   N(c) = 7: 1.47e-08   N(c) = 84: 2.84e+01   N(c) = 36 (theta table): 3.96e-03
+  p = 5  a = 3.0  X =  49737 : N(c) = 28: 2.43e-02   N(c) = 7: 2.28e-08   N(c) = 84: 2.66e+01   N(c) = 36 (theta table): 4.50e-03
+  p = 6  a = 1.0  X = 367511 : N(c) = 28: 2.58e+01   N(c) = 7: 2.94e-04   N(c) = 84: 7.11e+03   N(c) = 36 (theta table): 7.35e+00
+  p = 6  a = 1.5  X = 222907 : N(c) = 28: 9.91e-01   N(c) = 7: 1.94e-06   N(c) = 84: 6.90e+02   N(c) = 36 (theta table): 2.10e-01
+  p = 6  a = 2.0  X = 135199 : N(c) = 28: 1.80e-01   N(c) = 7: 1.56e-07   N(c) = 84: 1.84e+02   N(c) = 36 (theta table): 3.36e-02
+  p = 6  a = 2.5  X =  82002 : N(c) = 28: 8.86e-02   N(c) = 7: 6.55e-08   N(c) = 84: 9.81e+01   N(c) = 36 (theta table): 1.60e-02
+  p = 6  a = 3.0  X =  49737 : N(c) = 28: 8.25e-02   N(c) = 7: 8.10e-08   N(c) = 84: 8.11e+01   N(c) = 36 (theta table): 1.57e-02
+  p = 8  a = 1.0  X = 367511 : N(c) = 28: 5.07e+02   N(c) = 7: 2.07e-02   N(c) = 84: 5.71e+04   N(c) = 36 (theta table): 1.91e+02
+  p = 8  a = 1.5  X = 222907 : N(c) = 28: 2.31e+01   N(c) = 7: 1.47e-04   N(c) = 84: 7.39e+03   N(c) = 36 (theta table): 6.21e+00
+  p = 8  a = 2.0  X = 135199 : N(c) = 28: 3.87e+00   N(c) = 7: 1.01e-05   N(c) = 84: 2.03e+03   N(c) = 36 (theta table): 8.92e-01
+  p = 8  a = 2.5  X =  82002 : N(c) = 28: 1.61e+00   N(c) = 7: 3.18e-06   N(c) = 84: 1.00e+03   N(c) = 36 (theta table): 3.50e-01
+  p = 8  a = 3.0  X =  49737 : N(c) = 28: 1.22e+00   N(c) = 7: 2.79e-06   N(c) = 84: 7.35e+02   N(c) = 36 (theta table): 2.73e-01

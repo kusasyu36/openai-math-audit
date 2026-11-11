@@ -1,0 +1,112 @@
+
+Stage 3, layer B (floating point, ONE translate at a time): eq:theta-cusp-automorphy (paper2.tex:3161-3170)
+with kappa(g_1) taken from the right side of eq:ray-multiplier (:3175-3183) and the cusp expansion (:3134-3139).
+
+  conj theta(z + a/c, v)  ==  conj kappa(g_1) * [ (3^{5/2}/2) 1_{sigma=0} v'^{2/3} + sum_l d_sigma(l) v' K_{1/3}(4 pi |l| v') e~(l z') ],
+  (z', v') = g^-1(z + a/c, v) = (-delta'/c - conj(z)/(c^2 (v^2+|z|^2)),  v/(N(c)(v^2+|z|^2))).
+
+Left: the Fourier series of conj theta (DR (5.7) as transcribed in kubota.py) at the translated point; the
+rational shift a/c enters through exact phases.  Right: kappa from stage2_lib.kappa_formula (the paper's three
+cases), sigma from H by the rule  [3 | c: 0;  v_lambda(c) = 1: u_0 = lambda -> '-', u_0 = -lambda -> '+';
+(c, lambda) = 1: u_0 = x + y omega with y = 0, 1, 2 mod 3 -> 0, '-', '+'], d_+ = conj-series of
+theta(gamma_10 w), d_- of theta(gamma_19 w) (kubota.py; gamma_+ = [[1,0],[omega,1]], :1773).  The phase
+e~(-delta' l/c) is exact.  The rule H -> sigma is my reading of :3090-3101; it is tested separately in B0.
+
+CRITERIA (fixed before the first run):
+  B0  theta(H w) == theta(gamma_sigma w) for H = [[1,0],[u_0,1]], u_0 = +-lambda, and H = [[u_0,-1],[1,0]],
+      u_0 in the 9 representatives {x + y omega : 0 <= x, y <= 2}; 2 random points each, relative difference
+      <= 1e-9.  Control: with '+' and '-' exchanged the relative difference must exceed 1e-4 whenever sigma != 0.
+  B1  [CRITERION CHANGED AFTER THE FIRST OFFICIAL RUN -- see "HISTORY" below.]
+      v2 (in force):  |lhs - rhs| <= 1e-9 * S,  S = sum of the absolute values of the terms of the series of
+      conj theta at the left point (constant mode included).  ABSOLUTE difference against a sum of absolute values.
+      Reported besides: cond = |lhs| / S for every configuration; the number of configurations with cond < 1e-3
+      ("ill-conditioned": theta is small there and the check says little about phases), the worst relative
+      difference |lhs - rhs| / max(|lhs|, |rhs|) among the well-conditioned ones (cond >= 1e-3) and among all.
+      v1 (as first registered, NOT met):  |lhs - rhs| / max(|lhs|, |rhs|) <= 1e-9.
+      One random point per configuration: v = t/|c|, z = zeta/|c| with t in [0.9, 1.1], |Re zeta|, |Im zeta| <= 0.3
+      when the tables allow it (slack >= 1.27, slack = (complete range of the shorter table)/(T |c|/(4 pi))),
+      otherwise t in [0.97, 1.03], |Re zeta|, |Im zeta| <= 0.1 (needs slack >= 1.05; else the script stops).
+      Configurations: L = 18, EVERY h_0 in O/(18) (324 classes, including (h_0, L) != 1 and phi-hat = 0),
+      r in {1, p7, p13, -5, p7*p13}, one tuple (k_p) per (h_0, r) chosen at random from 4 (3) tuples.
+      Truncation 4 pi |l| v <= T = 40 on both sides (bound for the tail: stage4_bounds).
+  HISTORY (the outputs of the first official run are kept as stage3_b_translate_run1.out / _run1.err.txt):
+      (a) Debug run on the small table (r in {1, p7}): T was 36; worst relative difference 4.3e-10.  I attributed
+          it to the truncation and raised T to 40.  That diagnosis was WRONG (see (b)); T = 40 is kept.
+      (b) First official run (criterion v1): worst relative difference 3.3e-10 (r = p7), 6.9e-10 (r = p13),
+          7.0e-4 (r = -5): v1 NOT met at r = -5.  Cause, found by printing the worst configurations: at those
+          points |theta| itself is tiny (e.g. 4.3e-8 with S about 30) and |lhs - rhs| is about 6e-15, i.e.
+          rounding of a sum of terms of size S.  A criterion relative to the value was the defect (the same
+          defect that the Codex review found in audits/029reflect).  v2 measures against S, as layers D, E0 and
+          stage 2 did from the start.  This is a change of criterion AFTER seeing data.
+      (c) The same run then stopped at r = p7*p13 (|c| = 57.24): my threshold 'slack >= 1.06' was miscomputed
+          (the narrow rule needs slack >= 1.0494; the largest |c| has slack 1.0563).  Threshold now 1.05.  The
+          series evaluator itself refuses to run beyond the complete range of a table, independently of this.
+  COV every (case, sigma) that the construction can produce occurs, with kappa != 1 somewhere in each case.
+  Negative controls (a control is counted only on configurations where it is live AND well-conditioned,
+  cond >= 1e-3 [this restriction belongs to the change v1 -> v2]; the thresholds, relative difference > 1e-4,
+  are unchanged):
+  NB1 kappa instead of conj kappa: live where kappa != 1; relative difference must be > 1e-4 on all of them.
+  NB2 d_+ <-> d_-: live where sigma != 0; must be > 1e-4 on all of them.
+  NB3 delta' replaced by delta' + 1 (another solution of nothing): live everywhere; > 1e-4 on at least 95%
+      (the phase e~(-l/c) could be nearly invisible at a few points; the fraction is reported).
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage3_b_translate.py > audits/003dual/stage3_b_translate.out 2>/dev/null
+
+  theta tables: N(A) <= 1000000 ; complete to |l| <= 192.45 (theta), 111.11 (cusp series)  [1s]
+    H: v=1      u_0 = (1, 2)   -> sigma = -
+    H: v=1      u_0 = (-1, -2) -> sigma = +
+    H: coprime  u_0 = (0, 0)   -> sigma = 0
+    H: coprime  u_0 = (0, 1)   -> sigma = -
+    H: coprime  u_0 = (0, 2)   -> sigma = +
+    H: coprime  u_0 = (1, 0)   -> sigma = 0
+    H: coprime  u_0 = (1, 1)   -> sigma = -
+    H: coprime  u_0 = (1, 2)   -> sigma = +
+    H: coprime  u_0 = (2, 0)   -> sigma = 0
+    H: coprime  u_0 = (2, 1)   -> sigma = -
+    H: coprime  u_0 = (2, 2)   -> sigma = +
+  B0   PASS  worst relative difference 1.20e-14 over 22 points ; control (+ <-> -): smallest 3.45e-03 over 16 points
+    r = [] done: 324 configurations so far, worst 3.72e-15  [4s]
+    r = [7] done: 648 configurations so far, worst 3.72e-15  [24s]
+    r = [13] done: 972 configurations so far, worst 3.72e-15  [61s]
+    r = [25] done: 1296 configurations so far, worst 3.72e-15  [134s]
+    r = [7, 13] done: 1620 configurations so far, worst 3.72e-15  [391s]
+
+    case      sigma  kappa-exp   #configurations   worst |lhs-rhs|/S   worst rel (well-conditioned)   #ill-conditioned   smallest cond
+    3|c       0      0             346             1.15e-15            6.74e-14                         20               6.2e-06
+    3|c       0      1             363             1.14e-15            1.59e-13                         17               3.9e-10
+    3|c       0      2             371             1.37e-15            7.65e-14                         14               8.9e-14
+    coprime   +      0              22             2.79e-15            2.71e-13                          0               1.1e-03
+    coprime   +      1              22             2.00e-15            8.24e-14                          1               6.9e-04
+    coprime   +      2              16             1.15e-15            2.01e-14                          0               7.3e-03
+    coprime   -      0              23             1.94e-15            1.72e-13                          1               2.4e-04
+    coprime   -      1              22             8.53e-16            3.35e-14                          0               1.1e-02
+    coprime   -      2              15             1.31e-15            3.23e-14                          0               1.1e-02
+    coprime   0      0              28             5.31e-16            4.51e-14                          1               2.4e-04
+    coprime   0      1              20             1.48e-15            3.36e-14                          1               5.9e-04
+    coprime   0      2              12             1.32e-15            1.65e-14                          0               2.3e-02
+    v=1       +      0              67             3.72e-15            7.24e-14                          0               1.3e-03
+    v=1       +      1              61             2.50e-15            1.32e-13                          3               2.2e-05
+    v=1       +      2              52             1.53e-15            4.46e-14                          1               2.3e-05
+    v=1       -      0              57             1.42e-15            7.13e-14                          2               4.1e-04
+    v=1       -      1              68             1.94e-15            7.71e-14                          1               1.5e-04
+    v=1       -      2              55             1.64e-15            2.28e-14                          1               3.4e-06
+
+    ill-conditioned configurations (cond = |lhs|/S < 1e-3): 63 of 1620.  The 10 with the smallest cond:
+      cond       rel        |lhs-rhs|   r         h_0        case     sigma kappa-exp
+      8.90e-14   7.02e-04   1.19e-14    [25]      (17, 17)   3|c      0     2
+      3.29e-12   1.83e-05   1.07e-14    [25]      (11, 17)   3|c      0     2
+      3.91e-10   2.26e-07   1.71e-14    [25]      (11, 5)    3|c      0     1
+      5.84e-08   4.79e-10   4.99e-15    [25]      (13, 12)   3|c      0     1
+      1.44e-07   6.94e-10   1.27e-14    [13]      (3, 14)    3|c      0     1
+      3.37e-07   3.31e-10   1.00e-14    [7]       (1, 4)     3|c      0     2
+      5.67e-07   1.44e-10   1.07e-14    [13]      (3, 2)     3|c      0     2
+      1.24e-06   2.90e-11   3.18e-15    [7]       (14, 9)    3|c      0     1
+      1.38e-06   4.20e-12   6.01e-16    [7]       (15, 1)    3|c      0     2
+      1.58e-06   4.05e-11   5.54e-15    [7]       (13, 4)    3|c      0     2
+  B1   PASS  [criterion v2] 0 failures / 1620 configurations ; worst |lhs-rhs|/S = 3.72e-15 (tolerance 1e-09) ; worst relative difference: 2.71e-13 among the 1557 well-conditioned, 7.02e-04 among all ; narrow point rule used in 216 configurations
+       criterion v1 (relative difference <= 1e-9 everywhere) would be: NOT met
+  COV  PASS  sigma and kappa exponents seen per case: {'coprime': (['+', '-', '0'], [0, 1, 2]), '3|c': (['0'], [0, 1, 2]), 'v=1': (['+', '-'], [0, 1, 2])}
+  NB1  PASS  live in 1038 configurations, rejected in 1038, smallest relative difference 1.73e+00
+  NB2  FAIL  live in 470 configurations, rejected in 469, smallest relative difference 1.26e-07
+  NB3  PASS  live in 1557 configurations, rejected in 1554, smallest relative difference 3.46e-18
+
+LAYER B: SOME CRITERIA NOT MET: NB2   [391s]

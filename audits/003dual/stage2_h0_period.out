@@ -1,0 +1,21 @@
+
+Counting check (written after all official runs; it changes no criterion).  Purpose: not to inflate counts.
+For L = 18 the classes h_0, h_0 + 6, h_0 + 12 give shifts lambda^2 h_0/L differing by lambda^2*6/18 = -1 in Z,
+a period of theta.  Checked here, exactly or to 1e-13:
+  (1) phi-hat(h_0 + 6) = phi-hat(h_0) for all h_0 and every Psi_0 in A..F        (so the three classes are one translate
+      with one coefficient; "324 classes" = 108 distinct translates, "36 classes in the support" = 12)
+  (2) h_0 -> h_0 + 6*omega is NOT such a symmetry (shift -omega is not a period): number of h_0 with a different phi-hat
+  (3) for the three classes the construction gives the same c, the same case and sigma, the same kappa_0, and
+      a differing by a multiple of c (r in {1, p7}); delta' may differ
+  (4) relation between Psi_0 = C and Psi_0 = F for P = {} (their |T| agree in stage3_d_mellin.out):
+      is phi_F(n) = conj phi_C(n)?  is phi-hat_F(h) = conj phi-hat_C(-h)?
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage2_h0_period.py > audits/003dual/stage2_h0_period.out 2>/dev/null
+
+  Psi_0 = A: (1) max |phi-hat(h_0+6) - phi-hat(h_0)| = 0.0e+00 ; support 36 classes = 12 orbits under h_0 -> h_0+6 ; (2) h_0 with phi-hat(h_0+6w) != phi-hat(h_0): 36
+  Psi_0 = B: (1) max |phi-hat(h_0+6) - phi-hat(h_0)| = 0.0e+00 ; support 36 classes = 12 orbits under h_0 -> h_0+6 ; (2) h_0 with phi-hat(h_0+6w) != phi-hat(h_0): 36
+  Psi_0 = C: (1) max |phi-hat(h_0+6) - phi-hat(h_0)| = 0.0e+00 ; support 36 classes = 12 orbits under h_0 -> h_0+6 ; (2) h_0 with phi-hat(h_0+6w) != phi-hat(h_0): 36
+  Psi_0 = D: (1) max |phi-hat(h_0+6) - phi-hat(h_0)| = 0.0e+00 ; support 27 classes = 9 orbits under h_0 -> h_0+6 ; (2) h_0 with phi-hat(h_0+6w) != phi-hat(h_0): 27
+  Psi_0 = E: (1) max |phi-hat(h_0+6) - phi-hat(h_0)| = 0.0e+00 ; support 27 classes = 9 orbits under h_0 -> h_0+6 ; (2) h_0 with phi-hat(h_0+6w) != phi-hat(h_0): 27
+  Psi_0 = F: (1) max |phi-hat(h_0+6) - phi-hat(h_0)| = 0.0e+00 ; support 36 classes = 12 orbits under h_0 -> h_0+6 ; (2) h_0 with phi-hat(h_0+6w) != phi-hat(h_0): 36
+  (3) orbits {h_0, h_0+6, h_0+12} (r in {1, p7}): 216 ; with different (c, case, sigma, kappa_0) or a not congruent mod c: 48 ; with different delta': 210
+  (4) max |phi_F - conj phi_C| = 5.1e-16 ; max |phi-hat_F(h) - conj phi-hat_C(-h)| = 2.3e-17

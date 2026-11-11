@@ -1,0 +1,110 @@
+
+Stage 3, layer D (floating point, one GROUP (h_0, active set) at a time): the closed dual form of
+paper2.tex:3272-3282 with the scalar of :3420-3424 except its archimedean part.
+
+For a fixed Psi_0, primes P with exponents j_p, a class h_0 with phi-hat(h_0) != 0 and an admissible active
+set A ({p : j_p != 0} <= A <= P):
+
+  LEFT   sum over h_p != 0 (p in A), h_p = 0 (p not in A) of  c_F(h) conj theta(z + z_h, v),
+         c_F(h) = phi-hat(h_0) prod_p C_{p,j_p}(h_p)  with C_{p,j} from its definition (:2945),
+         conj theta(z + z_h, v) from its own Fourier series (exact rational phases for z_h).
+  RIGHT  C' * [ (3^{5/2}/2) 1_{sigma=0} v'^{2/3} prod_{p in A} B_{p,j_p}(0)
+               + sum_l d_sigma(l) psi(lambda^4 l) prod_{p in A} B_{p,j_p}(lambda^4 l) v' K_{1/3}(4 pi |l| v') e~(l z'') ],
+         C' = phi-hat(h_0) conj(kappa_0) prod_{p not in A}(1 - 1/N(p)) prod_{p in A} chi_p(sigma_p)^-2 omega_{p,j_p},
+         z'' = -conj(z)/(c^2 (v^2 + |z|^2)),  v' = v/(N(c)(v^2 + |z|^2)),
+         psi(x) = e(-delta'_0 r^-1 x / D_0), D_0 = lambda^3 c_0, c_0 = c/r,  kappa_0 from eq:ray-multiplier,
+         sigma_p, eps_p, omega_{p,j} from :3209-3246, B_{p,j} from :1735-1742.
+  So C of :3420 is  -(i/81) conj(alpha(c))^2 C'.  The factor -(i/81) conj(alpha(c))^2 and V^sharp are NOT
+  tested here (stage3_d).  The constant mode is the l = 0 instance of the same local identity; the paper
+  removes it by differentiating (:3363).  It matters only when every active prime has j = 4.
+  The representatives h_p = M^2 k_p of :3039 are used to build a, c, delta', kappa_0 (k_p = 1); on the left
+  the h_p run over small representatives of O/p (theta is 3O-periodic).
+  NOT independent: chi_p, gamma_j on both sides come from check_local.Local; tau, d_sigma from kubota.py.
+
+CRITERIA (fixed before the first run):
+  D1  |LEFT - RIGHT| <= 1e-9 * scale,  scale = (sum_h |c_F(h)|) * (sum of absolute values of the terms of the
+      series of conj theta at (z, v))   [ABSOLUTE difference against a sum of absolute values].
+      Also printed: rel = |LEFT - RIGHT| / max(|LEFT|, |RIGHT|).  If rel > 1e-6 in any group although D1 holds,
+      the group is listed (it would mean heavy cancellation, where D1 is weak).
+      One random point per group: v = t/|c|, z = zeta/|c| with t in [0.9, 1.1], |Re zeta|, |Im zeta| <= 0.3 when
+      the tables allow it (slack >= 1.27, slack = (complete range of the shorter table)/(T |c|/(4 pi))), otherwise
+      t in [0.97, 1.03], |Re zeta|, |Im zeta| <= 0.1 (needs slack >= 1.05; else the script stops).
+      [The first official run stopped at the first two-prime configuration with N(c) = 3276 because this
+      threshold was 1.06 (miscomputed: the narrow rule needs 1.0494, the largest |c| = 57.24 has slack 1.0563).
+      Its output, complete for the configurations with no prime or one prime, is kept as
+      stage3_c_groups_run1.out.  Criteria unchanged.  This file is a full rerun with the same seed.]
+      Truncation 4 pi |l| v <= T = 40 on both sides.  [CHANGED after the debug runs: T was 36 with the wide
+      rule only; see the note in stage3_b_translate.py.  Tolerances unchanged.]
+  COV printed table of what was exercised: (case of H, sigma, j, active/inactive).
+  Negative controls; each is counted only on groups where it is live, and must give rel > 1e-3 on EVERY live group:
+  ND1 kappa_0 in place of conj(kappa_0)                    live: kappa_0 != 1
+  ND2 psi without r^-1                                     live: D_0 does not divide delta'(r^-1 - 1)
+  ND3 chi_p^{+(j+2)} in B_{p,j}                            live: some active p with j in {2, 3, 5}
+  ND4 chi_p(sigma_p)^-2 omitted                            live: prod chi_p(sigma_p)^2 != 1
+  ND5 eps_p replaced by -eps_p in omega_{p,j}              live: prod over active p with j != 4 of chi_p(-1)^(j+2) = -1
+  ND6 d_+ <-> d_-                                          live: sigma != 0
+  ND7 c_0 replaced by c_0 * zeta6 (other unit) in psi and kappa_0, same c
+      live: kappa_0 or the character psi actually changes.  [CHANGED after a debug run on the first 36
+      configurations with the small table: the header said 'live: always'; in the 72 groups with c_0 = 1
+      (psi trivial, (a/c_0)_3 = 1) the replacement changes nothing, so the control was dead there.  D1 and the
+      other controls were not touched.]
+  ND8 (1 - 1/N) for an inactive prime replaced by 1        live: some inactive prime
+Configurations: see CONF below (written before running).
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage3_c_groups.py > audits/003dual/stage3_c_groups.out 2>/dev/null
+
+  L = 36 ; 12 configurations (Psi_0, twists)
+  theta tables: N(A) <= 200000 ; complete to |l| <= 86.07 (theta), 49.69 (cusp series)  [0s]
+
+  Psi_0  twists {N(p): j}        #groups  #translates/group   worst diff/scale   worst rel   N(c) values
+  A      {}                          36    [1]                 9.90e-16           2.89e-14    [9, 36]   [1s]
+  A      {7: 1}                      36    [6]                 1.66e-16           2.66e-14    [63, 252]   [4s]
+  A      {7: 0}                      72    [1, 6]              7.02e-16           9.16e-14    [9, 36, 63, 252]   [8s]
+  A      {7: 4}                      36    [6]                 2.15e-16           3.17e-14    [63, 252]   [11s]
+  B      {}                          36    [1]                 2.02e-15           1.90e-14    [1, 4]   [12s]
+  B      {7: 1}                      36    [6]                 6.32e-16           1.74e-14    [7, 28]   [12s]
+  B      {7: 0}                      72    [1, 6]              1.67e-15           1.88e-14    [1, 4, 7, 28]   [14s]
+  B      {7: 4}                      36    [6]                 4.67e-16           9.19e-15    [7, 28]   [15s]
+  F      {}                          36    [1]                 2.35e-15           4.42e-14    [3, 12]   [15s]
+  F      {7: 1}                      36    [6]                 4.65e-16           7.26e-14    [21, 84]   [19s]
+  F      {7: 0}                      72    [1, 6]              3.45e-15           4.11e-14    [3, 12, 21, 84]   [23s]
+  F      {7: 4}                      36    [6]                 3.28e-16           1.00e-14    [21, 84]   [27s]
+
+  coverage (case of H, sigma, j, role): number of (group, prime) incidences
+    3|c      sigma=0  j=-  no prime  : 36
+    3|c      sigma=0  j=0  active    : 36
+    3|c      sigma=0  j=0  inactive  : 36
+    3|c      sigma=0  j=1  active    : 36
+    3|c      sigma=0  j=4  active    : 36
+    coprime  sigma=+  j=-  no prime  : 12
+    coprime  sigma=+  j=0  active    : 12
+    coprime  sigma=+  j=0  inactive  : 12
+    coprime  sigma=+  j=1  active    : 12
+    coprime  sigma=+  j=4  active    : 12
+    coprime  sigma=-  j=-  no prime  : 12
+    coprime  sigma=-  j=0  active    : 12
+    coprime  sigma=-  j=0  inactive  : 12
+    coprime  sigma=-  j=1  active    : 12
+    coprime  sigma=-  j=4  active    : 12
+    coprime  sigma=0  j=-  no prime  : 12
+    coprime  sigma=0  j=0  active    : 12
+    coprime  sigma=0  j=0  inactive  : 12
+    coprime  sigma=0  j=1  active    : 12
+    coprime  sigma=0  j=4  active    : 12
+    v=1      sigma=-  j=-  no prime  : 36
+    v=1      sigma=-  j=0  active    : 36
+    v=1      sigma=-  j=0  inactive  : 36
+    v=1      sigma=-  j=1  active    : 36
+    v=1      sigma=-  j=4  active    : 36
+
+  D1   PASS  0 failures / 540 groups ; worst |L-R|/scale = 3.45e-15 (tolerance 1e-09) ; worst |L-R|/max(|L|,|R|) = 9.16e-14 ; narrow point rule in 0 groups
+       no group has rel > 1e-6
+  ND1  PASS  live in 344 groups, rejected (rel > 1e-03) in 344, smallest rel 1.73e+00
+  ND2  PASS  live in 297 groups, rejected (rel > 1e-03) in 297, smallest rel 4.54e-02
+  ND3  FAIL  live in 0 groups, rejected (rel > 1e-03) in 0, smallest rel 1.00e+09
+  ND4  PASS  live in 207 groups, rejected (rel > 1e-03) in 207, smallest rel 1.73e+00
+  ND5  PASS  live in 108 groups, rejected (rel > 1e-03) in 108, smallest rel 2.00e+00
+  ND6  PASS  live in 300 groups, rejected (rel > 1e-03) in 300, smallest rel 3.71e-03
+  ND7  PASS  live in 495 groups, rejected (rel > 1e-03) in 495, smallest rel 2.14e-03
+  ND8  PASS  live in 108 groups, rejected (rel > 1e-03) in 108, smallest rel 1.43e-01
+
+LAYER D: SOME CRITERIA NOT MET: ND3   [27s]

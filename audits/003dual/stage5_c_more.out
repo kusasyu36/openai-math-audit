@@ -1,0 +1,60 @@
+
+Stage 5 (c): the (case, sigma, j) combinations that stage3_d_mellin did not run end to end and that the tables reach.
+Same comparison, same weight family (log-Gaussian, NOT compactly supported), same bounds and same criteria as layer E:
+  E1  |T_direct - T_dual| <= Btot (Btot = (T2) + (T3) + (Q) + rounding allowance (estimate), stage4_bounds.py);
+      informative iff Btot <= 1e-7 |T_direct|.
+  Controls NE1-NE7 on informative runs where live: |T_direct - T_ctl| > max(100 Btot, 1e-3 |T_direct|).
+Runs (fixed before running; (w, X) are those already used for the same N(c) in stage3_d_mellin):
+  3|c, sigma=0:      A {p7: 2}, {p7: 3}, {p7: 5}                       (w=0.05, X=64000)
+  v=1, sigma=+:      C {p7: 0}, {p7: 3}, {p7: 4}, {p7: 5}              (w=0.1,  X=16000)
+  v=1, sigma=-:      F {p7: 2}, {p7: 3}                                (w=0.1,  X=16000)
+Still not reachable (and not run): two primes with N(c) >= 364.
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage5_c_more.py > audits/003dual/stage5_c_more.out 2>/dev/null
+
+  Psi_0=A P={7: 2} w=0.05 X=64000 #groups=36 N(c) in [63, 252] cases [('3|c', '0', 'active')]
+      T_dir =  1.328568804803e-01 +5.471572900611e-02i   T_dual =  1.328568804803e-01 +5.471572900611e-02i
+      |T_dir| = 1.4368e-01  |diff| = 3.61e-16 (abs)  2.51e-15 (rel)   Btot = 1.07e-11 = direct tail 6.5e-13 + dual tail 7.6e-13 + quadrature 3.2e-17 + rounding allowance (estimate) 9.3e-12   PASS
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.4e-01  NE3 1.2e+00  NE4 9.6e-01  NE5 7.5e-01  NE6 1.4e+00  NE7 1.3e+00
+  Psi_0=A P={7: 3} w=0.05 X=64000 #groups=36 N(c) in [63, 252] cases [('3|c', '0', 'active')]
+      T_dir = -3.024966073978e-03 -6.340394741171e-02i   T_dual = -3.024966073978e-03 -6.340394741171e-02i
+      |T_dir| = 6.3476e-02  |diff| = 9.10e-16 (abs)  1.43e-14 (rel)   Btot = 1.07e-11 = direct tail 6.5e-13 + dual tail 7.6e-13 + quadrature 3.2e-17 + rounding allowance (estimate) 9.3e-12   PASS
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.4e-01  NE3 2.2e+00  NE4 1.1e+00  NE5 7.2e-01  NE6 6.6e+00  NE7 6.4e-02
+  Psi_0=A P={7: 5} w=0.05 X=64000 #groups=36 N(c) in [63, 252] cases [('3|c', '0', 'active')]
+      T_dir = -6.943274421609e-02 +6.075693379219e-02i   T_dual = -6.943274421609e-02 +6.075693379219e-02i
+      |T_dir| = 9.2262e-02  |diff| = 7.40e-16 (abs)  8.02e-15 (rel)   Btot = 1.07e-11 = direct tail 6.5e-13 + dual tail 7.6e-13 + quadrature 3.2e-17 + rounding allowance (estimate) 9.3e-12   PASS
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.4e-01  NE3 1.0e+00  NE4 1.0e+00  NE5 1.6e-01  NE6 7.4e+00  NE7 9.2e-01
+  Psi_0=C P={7: 0} w=0.10 X=16000 #groups=72 N(c) in [3, 12, 21, 84] cases [('v=1', '+', 'active'), ('v=1', '+', 'inactive')]
+      T_dir =  1.244351339400e-02 -5.729470874633e-02i   T_dual =  1.244351339400e-02 -5.729470874633e-02i
+      |T_dir| = 5.8630e-02  |diff| = 9.75e-16 (abs)  1.66e-14 (rel)   Btot = 5.92e-12 = direct tail 9.1e-15 + dual tail 2.7e-13 + quadrature 4.2e-18 + rounding allowance (estimate) 5.6e-12   PASS
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 1.3e+00  NE5 3.5e+00  NE6 1.7e+00  NE7 7.6e-01
+  Psi_0=C P={7: 3} w=0.10 X=16000 #groups=36 N(c) in [21, 84] cases [('v=1', '+', 'active')]
+      T_dir =  1.196753435180e-01 +5.329306154878e-02i   T_dual =  1.196753435180e-01 +5.329306154878e-02i
+      |T_dir| = 1.3101e-01  |diff| = 1.27e-15 (abs)  9.71e-15 (rel)   Btot = 7.91e-12 = direct tail 9.1e-15 + dual tail 6.1e-13 + quadrature 8.1e-18 + rounding allowance (estimate) 7.3e-12   PASS
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 1.2e+00  NE5 2.2e+00  NE6 1.6e+00  NE7 3.4e-01
+  Psi_0=C P={7: 4} w=0.10 X=16000 #groups=36 N(c) in [21, 84] cases [('v=1', '+', 'active')]
+      T_dir = -2.425103447297e-01 -1.447897121701e-01i   T_dual = -2.425103447297e-01 -1.447897121701e-01i
+      |T_dir| = 2.8245e-01  |diff| = 1.08e-15 (abs)  3.83e-15 (rel)   Btot = 7.71e-12 = direct tail 9.1e-15 + dual tail 1.4e-12 + quadrature 5.8e-18 + rounding allowance (estimate) 6.3e-12   PASS
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 1.2e+00  NE5 5.0e-01  NE6 5.6e-01  NE7 9.6e-01
+  Psi_0=C P={7: 5} w=0.10 X=16000 #groups=36 N(c) in [21, 84] cases [('v=1', '+', 'active')]
+      T_dir =  6.287739480561e-03 +2.896405516336e-01i   T_dual =  6.287739480562e-03 +2.896405516336e-01i
+      |T_dir| = 2.8971e-01  |diff| = 1.59e-15 (abs)  5.50e-15 (rel)   Btot = 7.91e-12 = direct tail 9.1e-15 + dual tail 6.1e-13 + quadrature 8.1e-18 + rounding allowance (estimate) 7.3e-12   PASS
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 1.5e+00  NE5 5.6e-01  NE6 1.2e+00  NE7 3.2e-01
+  Psi_0=F P={7: 2} w=0.10 X=16000 #groups=36 N(c) in [21, 84] cases [('v=1', '-', 'active')]
+      T_dir = -2.868503533542e-01 -2.387602768801e-01i   T_dual = -2.868503533542e-01 -2.387602768801e-01i
+      |T_dir| = 3.7322e-01  |diff| = 5.27e-16 (abs)  1.41e-15 (rel)   Btot = 7.91e-12 = direct tail 9.1e-15 + dual tail 6.1e-13 + quadrature 8.1e-18 + rounding allowance (estimate) 7.3e-12   PASS
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 9.7e-01  NE5 5.6e-01  NE6 1.7e+00  NE7 1.5e+00
+  Psi_0=F P={7: 3} w=0.10 X=16000 #groups=36 N(c) in [21, 84] cases [('v=1', '-', 'active')]
+      T_dir = -4.056415070787e-01 -2.616468569040e-01i   T_dual = -4.056415070787e-01 -2.616468569040e-01i
+      |T_dir| = 4.8270e-01  |diff| = 5.55e-16 (abs)  1.15e-15 (rel)   Btot = 7.91e-12 = direct tail 9.1e-15 + dual tail 6.1e-13 + quadrature 8.1e-18 + rounding allowance (estimate) 7.3e-12   PASS
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 1.3e+00  NE5 3.7e-01  NE6 9.3e-01  NE7 4.7e-01
+
+  E1 PASS: 0 failures / 9 informative runs (0 not informative) ; worst |diff| = 1.59e-15 (ABSOLUTE), 1.66e-14 (RELATIVE)
+  NE1 PASS: live in 9 runs, rejected in 9, smallest |T_dir - T_ctl|/|T_dir| = 2.00e+00
+  NE2 PASS: live in 9 runs, rejected in 9, smallest |T_dir - T_ctl|/|T_dir| = 7.42e-01
+  NE3 PASS: live in 9 runs, rejected in 9, smallest |T_dir - T_ctl|/|T_dir| = 1.00e+00
+  NE4 PASS: live in 9 runs, rejected in 9, smallest |T_dir - T_ctl|/|T_dir| = 9.60e-01
+  NE5 PASS: live in 9 runs, rejected in 9, smallest |T_dir - T_ctl|/|T_dir| = 1.61e-01
+  NE6 PASS: live in 9 runs, rejected in 9, smallest |T_dir - T_ctl|/|T_dir| = 5.58e-01
+  NE7 PASS: live in 9 runs, rejected in 9, smallest |T_dir - T_ctl|/|T_dir| = 6.44e-02
+
+STAGE 5 (c): all criteria met   [40s]

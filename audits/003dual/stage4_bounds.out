@@ -1,0 +1,124 @@
+
+Stage 4: error bounds used by stages 2-3, written as UPPER BOUNDS (not estimates), and the weight transform
+V_*^sharp of eq:theta-weight (paper2.tex:1752-1757).  Importing this file runs nothing; running it prints
+the tables used to choose (X, w, cut-offs) for stage3_d BEFORE any comparison is made.
+
+WEIGHT.  W(y) = exp(-(log y)^2/(4w)),  V_*(y) = sqrt(y) W(y)  (:1293).  DEVIATION FROM THE TEXT: the paper
+assumes W smooth with COMPACT support in (0, inf) (:670, :1869); the log-Gaussian is not compactly supported.
+The proof (:3284-3436) only uses that V_*-hat decays fast on vertical lines, which holds here, but this is
+my reading, and the statement tested in stage3_d is the identity for this W, not for a compactly supported one.
+  V_*-hat(s) = int V_*(x) x^s dx/x = sqrt(4 pi w) exp(w (s + 1/2)^2)                         [exact]
+  V_*^sharp(x) = (1/2 pi i) int_(0) V_*-hat(-t) Q(t) (c x)^-t dt,   c = (2 pi)^4/27,
+  Q(t) = Gamma(7/6+t) Gamma(5/6+t) / (Gamma(7/6-t) Gamma(5/6-t)),   |Q(i tau)| = 1.
+
+BOUNDS (all are absolute errors).
+ (K)  K_{1/3}(x) <= K_{1/2}(x) = sqrt(pi/(2x)) e^-x  (x > 0; K_nu increases with nu >= 0).
+ (D)  |d_sigma(l)| <= 27 N(l)^{1/6} for all three sequences (derived from the formulas implemented in
+      kubota.build_series: 3^{n/2+5/2}|d|, 3^{n/2+2}|d|, 9|d| with |g~| = 1; cf. eq:theta-coefficient-bound :1867).
+      CHECKED on the tables below (max of |d(l)|/N(l)^{1/6}); it is an input, proved by hand, verified on the table.
+ (L)  lattice count: a lattice with hexagonal cell of minimal distance d has at most
+      U(t) = pi (sqrt t + d/sqrt 3)^2 / (sqrt 3 d^2/2) points l with N(l) = |l|^2 <= t.
+      (each point owns its Voronoi hexagon, of circumradius d/sqrt 3, inside the disc of radius sqrt t + d/sqrt 3)
+      d = 3 for primary elements 1 + 3O,  d = 1/9 for lambda^-4 O,  d = 1/sqrt 27 for lambda^-3 O.
+ (S)  Abel summation: for f >= 0 decreasing on [R, inf):  sum_{N(l) > R} f(N(l)) <= int_R^inf U(t) (-f'(t)) dt
+      = U(R) f(R) + int_R^inf U'(t) f(t) dt.
+ (T1) tail of a theta-type series at height v beyond 4 pi |l| v > T (T >= 2):
+      sum |d(l)| v K_{1/3}(4 pi |l| v) <= 27 v * sum_{N(l) > R} N^{1/6} sqrt(pi/(8 pi v sqrt N)) exp(-4 pi v sqrt N),
+      R = (T/(4 pi v))^2, bounded by (S); the summand is a constant times N^{-1/12} exp(-4 pi v sqrt N), decreasing in N.
+      The integral in (S) is cut at 400 R, i.e. 4 pi |l| v = 20 T, where the integrand is below e^{-700}.
+ (T2) direct sum of stage3_d: sum_{N(A) > Nmax} |a(A)| W(N(A)/X) X^-1/2, |a(A)| = |d| <= N(A)^{1/6}; by (S) with
+      f(t) = t^{1/6} exp(-(log(t/X))^2/(4w)), decreasing for t > X e^{w/3}.
+ (V)  for every A > 0 (no pole of the integrand in 0 <= Re t <= A; the poles of Q are at t = -5/6 - k, -7/6 - k):
+      |V_*^sharp(x)| <= (c x)^-A M(A),  M(A) = (sqrt(4 pi w)/(2 pi)) int exp(w((1/2 - A)^2 - tau^2)) |Q(A + i tau)| d tau.
+      M(A) is computed by numerical quadrature (scipy quad, relative accuracy requested 1e-10): this number is
+      an ESTIMATE of a quantity that enters an upper bound; it is the only non-rigorous step of (V).
+ (T3) dual sum of a group beyond N(l) > R:  |C| Bmax 27 sum_{N(l) > R} N^{1/6 - 1/2} |V^sharp(N X / N(c)^2)|
+      <= |C| Bmax 27 min_A { (c X/N(c)^2)^-A M(A) * S(1/3 + A, R) },  S(s, R) = bound (S) for f(t) = t^-s:
+      S(s, R) = (pi/cov) s [ R^{1-s}/(s-1) + 2 rho R^{1/2-s}/(s-1/2) + rho^2 R^-s / s ],  s > 1, rho = d/sqrt 3.
+ (Q)  quadrature of V^sharp by the trapezoidal rule with step h on [-Tm, Tm]:
+      truncation <= (sqrt(4 pi w)/(2 pi)) e^{w/4} * 2 int_Tm^inf e^{-w tau^2} d tau     (|Q| = 1 on the line)
+      discretisation <= [ (c x)^{a} M(-a) + (c x)^{-a} M(a) ] / (e^{2 pi a/h} - 1)  for 0 < a < 5/6
+      (the integrand is analytic in |Im tau| < 5/6; Trefethen-Weideman, SIAM Rev. 56 (2014), Thm 5.1).
+ (R)  floating-point rounding is NOT bounded; it is ESTIMATED as 1e-13 times the sum of the absolute values of
+      the terms (labelled 'rounding allowance (estimate)' wherever it is used).
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage4_bounds.py > audits/003dual/stage4_bounds.out 2>/dev/null
+
+(V) M(A) and the bound min_A (c x)^-A M(A), against |V^sharp(x)| computed by quadrature
+    (the quadrature value has a rounding floor of about 3e-16 ABSOLUTE: it is a sum of ~2000 terms of size <= 4e-4;
+     the check is  |V^sharp| <= bound(V) + (Q) + 2e-15,  the 2e-15 being a rounding allowance (estimate))
+  w = 0.05:  M(A): A=0.5: 1.03e+01  A=1: 3.14e+02  A=2: 1.28e+06  A=4: 5.00e+14  A=8: 9.41e+34  A=12: 9.42e+57  A=16: 1.14e+83  A=20: 8.07e+109
+     x = 0.01      |V^sharp| = 3.200e-01   bound (V) = 3.013e+00 (A = 0.25)   quadrature error bound (Q): truncation 2.1e-20, discretisation 8.2e-108  
+     x = 0.1       |V^sharp| = 3.198e-01   bound (V) = 1.695e+00 (A = 0.25)   quadrature error bound (Q): truncation 2.1e-20, discretisation 2.0e-108  
+     x = 1         |V^sharp| = 1.538e-01   bound (V) = 9.529e-01 (A = 0.25)   quadrature error bound (Q): truncation 2.1e-20, discretisation 4.8e-108  
+     x = 10        |V^sharp| = 2.043e-01   bound (V) = 4.274e-01 (A = 0.5)   quadrature error bound (Q): truncation 2.1e-20, discretisation 2.9e-107  
+     x = 100       |V^sharp| = 1.950e-02   bound (V) = 3.674e-02 (A = 1.75)   quadrature error bound (Q): truncation 2.1e-20, discretisation 1.8e-106  
+     x = 1000      |V^sharp| = 1.361e-05   bound (V) = 4.125e-05 (A = 4.5)   quadrature error bound (Q): truncation 2.1e-20, discretisation 1.1e-105  
+     x = 3000      |V^sharp| = 5.355e-08   bound (V) = 8.639e-08 (A = 6.75)   quadrature error bound (Q): truncation 2.1e-20, discretisation 2.8e-105  
+     x = 10000     |V^sharp| = 5.089e-13   bound (V) = 3.734e-12 (A = 10)   quadrature error bound (Q): truncation 2.1e-20, discretisation 7.3e-105  
+     x = 30000     |V^sharp| = 2.622e-16   bound (V) = 8.594e-18 (A = 13.75)   quadrature error bound (Q): truncation 2.1e-20, discretisation 1.7e-104  
+     x = 100000    |V^sharp| = 2.678e-16   bound (V) = 3.618e-26 (A = 18.5)   quadrature error bound (Q): truncation 2.1e-20, discretisation 4.6e-104  
+  w = 0.10:  M(A): A=0.5: 5.26e+00  A=1: 8.23e+01  A=2: 9.74e+04  A=4: 4.77e+12  A=8: 6.63e+31  A=12: 3.69e+54  A=16: 1.78e+80  A=20: 3.48e+108
+     x = 0.01      |V^sharp| = 4.433e-01   bound (V) = 2.200e+00 (A = 0.25)   quadrature error bound (Q): truncation 6.1e-21, discretisation 2.9e-108  
+     x = 0.1       |V^sharp| = 4.276e-01   bound (V) = 1.237e+00 (A = 0.25)   quadrature error bound (Q): truncation 6.1e-21, discretisation 1.5e-108  
+     x = 1         |V^sharp| = 1.075e-01   bound (V) = 6.930e-01 (A = 0.5)   quadrature error bound (Q): truncation 6.1e-21, discretisation 7.1e-108  
+     x = 10        |V^sharp| = 9.248e-02   bound (V) = 1.426e-01 (A = 1)   quadrature error bound (Q): truncation 6.1e-21, discretisation 4.4e-107  
+     x = 100       |V^sharp| = 4.536e-04   bound (V) = 2.152e-03 (A = 2.75)   quadrature error bound (Q): truncation 6.1e-21, discretisation 2.8e-106  
+     x = 1000      |V^sharp| = 1.189e-07   bound (V) = 1.444e-07 (A = 5.75)   quadrature error bound (Q): truncation 6.1e-21, discretisation 1.8e-105  
+     x = 3000      |V^sharp| = 5.373e-11   bound (V) = 8.149e-11 (A = 7.75)   quadrature error bound (Q): truncation 6.1e-21, discretisation 4.2e-105  
+     x = 10000     |V^sharp| = 3.249e-16   bound (V) = 1.491e-15 (A = 10.25)   quadrature error bound (Q): truncation 6.1e-21, discretisation 1.1e-104  
+     x = 30000     |V^sharp| = 3.474e-16   bound (V) = 4.250e-21 (A = 13)   quadrature error bound (Q): truncation 6.1e-21, discretisation 2.7e-104  
+     x = 100000    |V^sharp| = 2.124e-16   bound (V) = 1.170e-28 (A = 16)   quadrature error bound (Q): truncation 6.1e-21, discretisation 7.0e-104  
+  w = 0.20:  M(A): A=0.5: 2.76e+00  A=1: 2.25e+01  A=2: 8.97e+03  A=4: 1.08e+11  A=8: 1.85e+30  A=12: 6.00e+54  A=16: 7.02e+83  A=20: 1.25e+117
+     x = 0.01      |V^sharp| = 5.910e-01   bound (V) = 1.643e+00 (A = 0.25)   quadrature error bound (Q): truncation 1.1e-21, discretisation 1.3e-108  
+     x = 0.1       |V^sharp| = 5.084e-01   bound (V) = 9.240e-01 (A = 0.25)   quadrature error bound (Q): truncation 1.1e-21, discretisation 2.0e-108  
+     x = 1         |V^sharp| = 5.122e-02   bound (V) = 3.387e-01 (A = 0.75)   quadrature error bound (Q): truncation 1.1e-21, discretisation 1.2e-107  
+     x = 10        |V^sharp| = 1.841e-02   bound (V) = 2.491e-02 (A = 1.75)   quadrature error bound (Q): truncation 1.1e-21, discretisation 7.3e-107  
+     x = 100       |V^sharp| = 2.743e-05   bound (V) = 8.130e-05 (A = 3.5)   quadrature error bound (Q): truncation 1.1e-21, discretisation 4.6e-106  
+     x = 1000      |V^sharp| = 2.085e-09   bound (V) = 2.205e-09 (A = 5.75)   quadrature error bound (Q): truncation 1.1e-21, discretisation 2.9e-105  
+     x = 3000      |V^sharp| = 2.458e-13   bound (V) = 1.763e-12 (A = 7.25)   quadrature error bound (Q): truncation 1.1e-21, discretisation 7.0e-105  
+     x = 10000     |V^sharp| = 1.103e-16   bound (V) = 1.197e-16 (A = 8.75)   quadrature error bound (Q): truncation 1.1e-21, discretisation 1.8e-104  
+     x = 30000     |V^sharp| = 3.600e-16   bound (V) = 3.303e-21 (A = 10.25)   quadrature error bound (Q): truncation 1.1e-21, discretisation 4.4e-104  
+     x = 100000    |V^sharp| = 1.828e-16   bound (V) = 4.361e-27 (A = 12.25)   quadrature error bound (Q): truncation 1.1e-21, discretisation 1.2e-103  
+
+(T2) direct tail bound, Nmax = 1e6
+  w = 0.05: X=4000: 4.1e-62  X=8000: 1.1e-46  X=16000: 2.4e-33  X=24000: 1.7e-26  X=32000: 4.4e-22  X=48000: 1.8e-16  X=64000: 6.5e-13
+  w = 0.10: X=4000: 5.3e-29  X=8000: 2.3e-21  X=16000: 9.1e-15  X=24000: 2.2e-11  X=32000: 3.3e-09  X=48000: 1.9e-06  X=64000: 1.1e-04
+  w = 0.20: X=4000: 1.9e-12  X=8000: 1.1e-08  X=16000: 1.8e-05  X=24000: 8.2e-04  X=32000: 9.4e-03  X=48000: 2.1e-01  X=64000: 1.5e+00
+
+(T3) dual tail bound per unit |C| Bmax, cut at R = N(l) limit of the tables (192.4^2 for sigma = 0, 111.1^2 for the cusps)
+  w = 0.05  N(c) =   36 : X=4000: 2.8e-20/1.3e-12  X=8000: 1.8e-26/2.1e-17  X=16000: 1.3e-33/4.6e-23  X=32000: 8.8e-42/1.2e-29  X=64000: 5.1e-51/3.4e-37
+  w = 0.05  N(c) =   63 : X=4000: 3.8e-12/1.8e-06  X=8000: 6.3e-17/4.8e-10  X=16000: 1.5e-22/2.4e-14  X=32000: 4.2e-29/1.8e-19  X=64000: 1.2e-36/1.8e-25
+  w = 0.05  N(c) =  252 : X=4000: 4.6e+00/6.7e+02  X=8000: 3.4e-02/2.4e+01  X=16000: 7.3e-05/3.3e-01  X=32000: 3.7e-08/1.5e-03  X=64000: 3.8e-12/1.8e-06
+  w = 0.05  N(c) =   28 : X=4000: 1.1e-24/5.3e-16  X=8000: 1.5e-31/2.0e-21  X=16000: 2.0e-39/9.8e-28  X=32000: 2.3e-48/5.1e-35  X=64000: 2.1e-58/2.5e-43
+  w = 0.05  N(c) =   84 : X=4000: 8.8e-09/5.3e-04  X=8000: 6.6e-13/5.0e-07  X=16000: 8.0e-18/1.0e-10  X=32000: 1.3e-23/3.6e-15  X=64000: 2.6e-30/2.0e-20
+  w = 0.05  N(c) =   52 : X=4000: 1.1e-14/2.3e-08  X=8000: 6.2e-20/2.5e-12  X=16000: 4.6e-26/4.4e-17  X=32000: 3.7e-33/1.1e-22  X=64000: 3.0e-41/3.3e-29
+  w = 0.05  N(c) =  100 : X=4000: 5.5e-07/1.0e-02  X=8000: 9.7e-11/2.0e-05  X=16000: 3.0e-15/8.9e-09  X=32000: 1.4e-20/7.8e-13  X=64000: 8.1e-27/1.1e-17
+  w = 0.05  N(c) =  156 : X=4000: 3.8e-03/5.2e+00  X=8000: 4.8e-06/4.8e-02  X=16000: 1.3e-09/1.3e-04  X=32000: 6.9e-14/9.3e-08  X=64000: 5.5e-19/1.3e-11
+  w = 0.05  N(c) =  468 : X=4000: 2.5e+03/4.4e+04  X=8000: 1.0e+02/5.4e+03  X=16000: 1.8e+00/3.5e+02  X=32000: 1.0e-02/1.0e+01  X=64000: 1.6e-05/1.2e-01
+  w = 0.10  N(c) =   36 : X=4000: 1.3e-22/8.2e-16  X=8000: 7.6e-28/3.8e-20  X=16000: 1.2e-33/4.9e-25  X=32000: 4.7e-40/1.7e-30  X=64000: 4.3e-47/1.5e-36
+  w = 0.10  N(c) =   63 : X=4000: 2.3e-15/6.9e-10  X=8000: 1.1e-19/2.1e-13  X=16000: 1.4e-24/2.0e-17  X=32000: 5.2e-30/5.7e-22  X=64000: 4.8e-36/4.5e-27
+  w = 0.10  N(c) =  252 : X=4000: 5.6e-03/3.0e+00  X=8000: 2.1e-05/4.6e-02  X=16000: 3.0e-08/3.0e-04  X=32000: 1.4e-11/7.5e-07  X=64000: 2.3e-15/6.9e-10
+  w = 0.10  N(c) =   28 : X=4000: 2.4e-26/6.6e-19  X=8000: 5.4e-32/1.2e-23  X=16000: 3.1e-38/6.1e-29  X=32000: 4.3e-45/7.9e-35  X=64000: 1.3e-52/2.5e-41
+  w = 0.10  N(c) =   84 : X=4000: 3.5e-12/2.5e-07  X=8000: 4.6e-16/1.9e-10  X=16000: 1.7e-20/4.8e-14  X=32000: 1.9e-25/3.7e-18  X=64000: 5.4e-31/8.5e-23
+  w = 0.10  N(c) =   52 : X=4000: 1.1e-17/8.9e-12  X=8000: 2.5e-22/1.5e-15  X=16000: 1.7e-27/7.2e-20  X=32000: 2.8e-33/1.0e-24  X=64000: 1.2e-39/3.8e-30
+  w = 0.10  N(c) =  100 : X=4000: 2.1e-10/6.1e-06  X=8000: 4.8e-14/8.0e-09  X=16000: 3.4e-18/3.5e-12  X=32000: 7.0e-23/5.1e-16  X=64000: 3.9e-28/2.2e-20
+  w = 0.10  N(c) =  156 : X=4000: 1.9e-06/7.4e-03  X=8000: 1.8e-09/3.3e-05  X=16000: 5.8e-13/5.8e-08  X=32000: 5.8e-17/3.5e-11  X=64000: 1.7e-21/7.0e-15
+  w = 0.10  N(c) =  468 : X=4000: 1.3e+01/9.0e+02  X=8000: 2.4e-01/4.9e+01  X=16000: 1.8e-03/1.3e+00  X=32000: 5.6e-06/1.7e-02  X=64000: 6.4e-09/8.9e-05
+  w = 0.20  N(c) =   36 : X=4000: 8.2e-21/1.2e-15  X=8000: 1.1e-24/5.2e-19  X=16000: 6.4e-29/1.0e-22  X=32000: 1.8e-33/9.9e-27  X=64000: 2.2e-38/4.3e-31
+  w = 0.20  N(c) =   63 : X=4000: 3.2e-15/8.1e-11  X=8000: 1.4e-18/1.0e-13  X=16000: 2.8e-22/6.8e-17  X=32000: 2.8e-26/2.1e-20  X=64000: 1.2e-30/3.2e-24
+  w = 0.20  N(c) =  252 : X=4000: 1.1e-04/4.7e-02  X=8000: 6.6e-07/7.5e-04  X=16000: 2.2e-09/6.6e-06  X=32000: 3.7e-12/3.2e-08  X=64000: 3.2e-15/8.1e-11
+  w = 0.20  N(c) =   28 : X=4000: 1.3e-23/4.7e-18  X=8000: 1.0e-27/1.2e-21  X=16000: 3.5e-32/1.4e-25  X=32000: 5.4e-37/7.4e-30  X=64000: 3.8e-42/1.8e-34
+  w = 0.20  N(c) =   84 : X=4000: 1.2e-12/1.2e-08  X=8000: 9.1e-16/2.7e-11  X=16000: 3.4e-19/3.2e-14  X=32000: 6.2e-23/1.8e-17  X=64000: 5.3e-27/5.0e-21
+  w = 0.20  N(c) =   52 : X=4000: 4.8e-17/2.2e-12  X=8000: 1.4e-20/2.0e-15  X=16000: 1.9e-24/8.5e-19  X=32000: 1.2e-28/1.8e-22  X=64000: 3.5e-33/1.8e-26
+  w = 0.20  N(c) =  100 : X=4000: 3.4e-11/2.0e-07  X=8000: 3.7e-14/6.4e-10  X=16000: 2.0e-17/1.0e-12  X=32000: 5.2e-21/8.4e-16  X=64000: 6.5e-25/3.4e-19
+  w = 0.20  N(c) =  156 : X=4000: 8.0e-08/1.3e-04  X=8000: 2.1e-10/9.3e-07  X=16000: 2.7e-13/3.5e-09  X=32000: 1.8e-16/6.8e-12  X=64000: 5.8e-20/6.8e-15
+  w = 0.20  N(c) =  468 : X=4000: 2.1e-01/2.0e+01  X=8000: 3.7e-03/8.3e-01  X=16000: 3.8e-05/2.0e-02  X=32000: 2.0e-07/2.9e-04  X=64000: 5.9e-10/2.2e-06
+
+(T1) theta tail bound at T = 36 and T = 40 (to be compared with the size of the functions, O(1)/sqrt v):
+  (stage2 uses T = 40 with 0.05 <= v <= 0.35; layers B, D, E0 use T = 40 with v >= 0.97/|c| >= 0.0169 and v' >= 1/(1.051 |c|) >= 0.0166)
+  v = 0.0166  T=36: 1.12e-09   T=40: 2.47e-11
+  v = 0.02   T=36: 8.73e-10   T=40: 1.93e-11
+  v = 0.05   T=36: 2.58e-10   T=40: 5.69e-12
+  v = 0.1    T=36: 1.02e-10   T=40: 2.26e-12
+  v = 0.3    T=36: 2.39e-11   T=40: 5.27e-13
+  v = 1      T=36: 4.94e-12   T=40: 1.09e-13

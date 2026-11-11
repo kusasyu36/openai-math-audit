@@ -1,0 +1,49 @@
+
+Stage 5 (b): the translates for which layer B / B2 found no point where theta is not tiny (so the PHASE kappa of
+eq:theta-cusp-automorphy, paper2.tex:3161-3183, was not tested by a relative comparison).
+
+Same identity as stage3_b_translate:  conj theta(z + a/c, v) = conj kappa(g_1) [d_sigma-expansion at g^-1(z + a/c, v)].
+Configurations: the 540 (orbit representative h_0 = (x0, x1), 0 <= x0 < 6, 0 <= x1 < 18; r in {1, p7, p13, -5, p7*p13}),
+k_p = 1 for every active prime (deterministic; B2 drew k_p at random, so the set of hard translates need not be the same 50).
+
+PROCEDURE (fixed before the first run).  Points: v = t/|c|, z = zeta/|c|, (t, zeta) from the fixed list
+  t in {1, 0.6, 1.6, 2.5},  zeta in {0} + {rho e^{i(0.2 + k pi/2)} : rho in {0.5, 1.2, 2.5}, k = 0..3}   (52 points, this order: zeta outer).
+Truncation levels T in (40, 34, 28, 22), tried in this order.  At level T a point is ADMISSIBLE if both series are inside
+the complete part of the tables (T/(4 pi v) and T/(4 pi v')).  For an admissible point:
+  cond = |lhs|/S (S = sum of |terms| of the left series, truncated at T),
+  tol  = 10 * (tb(v, T) + tb(v', T)) / |lhs|,   tb = rigorous tail bound (T1) of stage4_bounds (absolute, per series).
+The first point (in list order, at the largest T) with cond >= 1e-2 and tol <= 1e-2 is SELECTED.
+CRITERIA at the selected point:
+  G1  |lhs - rhs| / |lhs| <= tol + 1e-9        (RELATIVE; tol is an upper bound for the truncation, 1e-9 covers rounding)
+  NG1 (kappa in place of conj kappa; live where kappa != 1): |lhs - rhs_ctl| / |lhs| > 0.5 at every selected live point
+      (the true deviation is |1 - omega^(+-2)| = 1.73).
+A configuration with no selected point at any T is UNRESOLVED; for it the script prints N(c), the best cond per T and
+the reason in numbers: (i) the reach limits, i.e. the largest value of (v^2 + |z|^2)/v * N(c) = 1/v' and of 1/v that the
+tables allow at each T; (ii) the nearest cusps p/q with N(q) <= 13 and the height v_q = v/(N(q)(v^2 + |a/c - p/q|^2)) of
+the base point (zeta = 0, t = 1) in their horoballs.  (ii) is a diagnostic; the interpretation is an inference.
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage5_b_unresolved.py > audits/003dual/stage5_b_unresolved.out 2>/dev/null
+
+    r = [] done: selected per T so far {40: 108, 34: 0, 28: 0, 22: 0}, unresolved 0  [2s]
+    r = [7] done: selected per T so far {40: 214, 34: 0, 28: 2, 22: 0}, unresolved 0  [16s]
+    r = [13] done: selected per T so far {40: 322, 34: 0, 28: 2, 22: 0}, unresolved 0  [32s]
+    r = [25] done: selected per T so far {40: 429, 34: 0, 28: 3, 22: 0}, unresolved 0  [65s]
+    r = [7, 13] done: selected per T so far {40: 507, 34: 0, 28: 13, 22: 13}, unresolved 7  [202s]
+
+  selected at T = 40/34/28/22: [507, 0, 13, 13] ; worst relative difference per T: ['6.2e-14', '0.0e+00', '1.6e-11', '2.3e-09'] ; largest tol per T: ['3.5e-10', '0.0e+00', '8.0e-05', '6.3e-03']
+  G1 PASS: 0 failures / 533 selected configurations (of 540) ; 7 unresolved
+  NG1 PASS: live at 346 selected points, rejected (> 0.5) at 346
+
+  reach limits: at level T the tables allow 1/v <= ['60.5', '71.1', '86.4', '109.9'] (theta), 1/v' <= the same for sigma = 0 and <= ['34.9', '41.1', '49.9', '63.5'] for sigma = +-
+  since (1/v)(1/v') = N(c)(1 + |z|^2/v^2) >= N(c), both points fit only if N(c)(1 + |z/v|^2) <= (product of the two limits).
+
+  UNRESOLVED configurations (best cond per T; three deepest horoballs at the base point: v_q, N(q), |a/c - p/q| |c|):
+    r        h_0       case     sigma kappa  N(c)   best cond at T=40/34/28/22            horoballs
+    [7, 13]  (1, 13)   3|c      0     0       3276  1.5e-03 1.5e-03 7.4e-03 9.4e-03   v_q=2.2 N(q)=13 d|c|=1.00 ; v_q=0.3 N(q)=12 d|c|=3.61 ; v_q=0.3 N(q)=7 d|c|=5.57
+    [7, 13]  (2, 5)    3|c      0     2       3276  6.3e-06 6.3e-06 1.7e-04 9.0e-04   v_q=7.2 N(q)=7 d|c|=0.38 ; v_q=0.1 N(q)=7 d|c|=7.81 ; v_q=0.1 N(q)=12 d|c|=6.08
+    [7, 13]  (2, 11)   3|c      0     1       3276  6.3e-06 6.3e-06 1.1e-04 9.2e-04   v_q=7.2 N(q)=7 d|c|=0.38 ; v_q=0.1 N(q)=7 d|c|=7.81 ; v_q=0.1 N(q)=3 d|c|=12.29
+    [7, 13]  (3, 7)    3|c      0     1       3276  2.2e-03 2.2e-03 9.4e-03 9.4e-03   v_q=1.5 N(q)=1 d|c|=6.08 ; v_q=0.0 N(q)=13 d|c|=9.85 ; v_q=0.0 N(q)=13 d|c|=10.46
+    [7, 13]  (3, 8)    3|c      0     0       3276  8.1e-05 8.1e-05 1.1e-03 2.5e-03   v_q=4.1 N(q)=1 d|c|=3.61 ; v_q=0.0 N(q)=13 d|c|=12.27 ; v_q=0.0 N(q)=12 d|c|=13.11
+    [7, 13]  (3, 14)   3|c      0     1       3276  4.7e-04 4.7e-04 6.8e-04 3.0e-03   v_q=4.1 N(q)=1 d|c|=3.61 ; v_q=0.0 N(q)=13 d|c|=12.27 ; v_q=0.0 N(q)=12 d|c|=13.11
+    [7, 13]  (5, 6)    3|c      0     2       3276  1.3e-03 1.3e-03 7.2e-03 8.7e-03   v_q=1.4 N(q)=3 d|c|=3.61 ; v_q=0.1 N(q)=13 d|c|=5.57 ; v_q=0.1 N(q)=13 d|c|=6.34
+
+STAGE 5 (b): criteria met on the selected configurations   [202s]

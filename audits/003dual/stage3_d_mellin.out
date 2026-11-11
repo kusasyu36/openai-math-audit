@@ -1,0 +1,270 @@
+
+Stage 3, layer E (end to end, with the weight): T(X; Psi) of eq:T (paper2.tex:1287-1293) against the sum over the
+groups (h_0, active set) of the terms eq:reflection (:1806-1812)
+
+    C * sum_{l in lambda^-4 O, l != 0}  d(l) alpha(l) N(l)^-1/2  psi(lambda^4 l)  prod_{p active} B_{p,j_p}(lambda^4 l)
+          * V_*^sharp( N(l) X / N(c)^2 ),
+    C = -(i/81) conj(alpha(c))^2 phi-hat(h_0) conj(kappa_0) prod_{inactive}(1 - 1/N(p)) prod_{active} chi_p(sigma_p)^-2 omega_{p,j_p}
+                                                                                            (:3420-3424, as printed)
+    V_*^sharp from eq:theta-weight (:1752-1757, as printed), alpha(x) = x/|x| (:323).
+
+LEFT (direct):  X^-1/2 sum over primary A = n b^3 prime to 2 (n squarefree) of
+                conj(alpha(A)) gamma_2(n) |b| Psi(A) W(N(A)/X),   Psi = Psi_0 prod_p chi_p^{j_p}   [= eq:T with V_*(y) = sqrt(y) W(y)]
+                gamma_2(n) = (lambda/n)_3 g~(n) from kubota.ThetaData (brute-force cubic Gauss sums), all A with N(A) <= Nmax.
+RIGHT (dual):   the display above, all table entries with N(l) <= R_g (R_g printed), d_sigma from kubota.py.
+WEIGHT: W(y) = exp(-(log y)^2/(4w)).  NOT compactly supported: a deviation from the hypothesis of the proposition
+        (see stage4_bounds.py); what is tested is the identity for this W.
+
+E0 (intermediate gate, pointwise, per group): d/dzbar at z = 0 of the left side of layer D equals
+        -(c v)^-2 * C' * d/dz' [dual series] at (z', v') = (0-part, 1/(N(c) v))   (:3347-3358),
+        i.e. the factor -1/c^2 = -conj(alpha(c))^2/N(c) before any Mellin transform.
+
+CRITERIA (fixed before the first run; the bounds are those of stage4_bounds.py and do not use the data):
+  E0  |lhs - rhs| <= 1e-9 * scale, scale = (sum_h |c_F|) * (sum of |terms| of the differentiated series of conj theta);
+      Psi_0 in {A, B, F}, P = {p7: 1}, every group, v = 1/|c| (T = 40).
+  E1  for each run (Psi_0, P, j, w, X):  |T_direct - T_dual| <= Btot, where
+        Btot = (T2) direct tail + sum over groups of (T3) dual tails + (Q) quadrature bound * sum|coefficients|
+               + rounding allowance (ESTIMATE, not a bound): 1e-13 * (sum |direct terms| + sum |dual terms|) + 2e-15 * sum |dual coefficients|.
+      The run counts only if it is INFORMATIVE:  Btot <= 1e-7 * |T_direct|  (otherwise it is listed as 'not informative',
+      which is a failure of my choice of (X, w), not a statement about the paper).
+      Reported for every run: |diff| (ABSOLUTE), |diff|/|T_direct| (RELATIVE), each part of Btot.
+  Negative controls, run on every informative run where live; each must give |T_direct - T_ctl| > max(100 Btot, 1e-3 |T_direct|):
+  NE1 +i/81 in place of -i/81                                   live: always
+  NE2 alpha(c)^2 in place of conj(alpha(c))^2                   live: alpha(c)^4 != 1 in some group
+  NE3 conj(alpha(l)) in place of alpha(l)                       live: always
+  NE4 V^sharp(N(l) X / N(c)) (N(c) not squared)                 live: N(c) != 1 in some group
+  NE5 phi-hat from phi WITHOUT the condition at 2               live: always (Psi_0 in A, B, C, F)
+  NE6 kappa_0 in place of conj(kappa_0)                         live: kappa_0 != 1 in some group
+  NE7 the gamma quotient of eq:theta-weight inverted            live: always
+Runs: RUNS below, chosen from the tables of stage4_bounds.out (bounds only) before any comparison.
+Two primes are NOT run here: with tables up to N(A) <= 10^6 the bounds cannot be met for N(c) >= 364 (stage4_bounds.out).
+[Added later: with STAGE_EXTRA=1 the script runs six two-prime configurations {p7, conj p7} with Psi_0 = B instead
+ (output stage3_d_mellin_extra.out); see the comment at RUNS.]
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage3_d_mellin.py > audits/003dual/stage3_d_mellin.out 2>/dev/null
+
+  theta tables: N(A) <= 1000000 ; complete to |l| <= 192.45 (theta), 111.11 (cusp series)  [1s]
+  bound (D): max |d_0(l)| / N(l)^(1/6) over the complete part of the table = 27.0000  (bound 27)
+  bound (D): max |d_+(l)| / N(l)^(1/6) over the complete part of the table = 18.7208  (bound 27)
+  bound (D): max |d_-(l)| / N(l)^(1/6) over the complete part of the table = 18.7208  (bound 27)
+  E0   PASS  0 failures / 108 groups ; worst |lhs-rhs|/scale = 4.37e-16 ; (control: sign of -(cv)^-2 flipped, smallest diff/scale 1.52e-02)
+
+  columns: |T_dir|, |T_dir - T_dual| (ABSOLUTE), the same divided by |T_dir| (RELATIVE), Btot and its parts
+  Psi_0=A  P={}         w=0.10 X=500     #groups= 36 N(c) in [9, 36] cases [('3|c', '0')]
+      T_dir = -2.397738937798e-01 +0.000000000000e+00i   T_dual = -2.397738937798e-01 -7.161127820505e-17i
+      |T_dir| = 2.3977e-01  |diff| = 4.50e-16 (abs)  1.88e-15 (rel)   Btot = 9.00e-12 = direct tail 3.5e-58 + dual tail 3.1e-12 + quadrature 1.2e-17 + rounding allowance (estimate) 5.9e-12 ; sum|direct terms| = 7.99e+00, sum|dual terms| = 1.07e+01   PASS  [6s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 dead  NE3 1.8e+00  NE4 1.2e+00  NE5 1.5e+00  NE6 4.2e+00  NE7 1.4e+00
+  Psi_0=A  P={}         w=0.10 X=2000    #groups= 36 N(c) in [9, 36] cases [('3|c', '0')]
+      T_dir =  2.055227291170e-01 +5.551115123126e-17i   T_dual =  2.055227291170e-01 +1.082604241264e-16i
+      |T_dir| = 2.0552e-01  |diff| = 9.17e-16 (abs)  4.46e-15 (rel)   Btot = 4.90e-12 = direct tail 1.1e-37 + dual tail 7.9e-13 + quadrature 6.2e-18 + rounding allowance (estimate) 4.1e-12 ; sum|direct terms| = 1.61e+01, sum|dual terms| = 4.73e+00   PASS  [2s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 dead  NE3 7.3e-01  NE4 9.2e-01  NE5 8.6e-01  NE6 1.9e+00  NE7 8.1e-01
+  Psi_0=B  P={}         w=0.10 X=500     #groups= 36 N(c) in [1, 4] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')]
+      T_dir =  1.479219195960e-01 +0.000000000000e+00i   T_dual =  1.479219195960e-01 +1.179611963664e-16i
+      |T_dir| = 1.4792e-01  |diff| = 3.80e-16 (abs)  2.57e-15 (rel)   Btot = 1.73e-12 = direct tail 3.5e-58 + dual tail 1.1e-13 + quadrature 2.1e-18 + rounding allowance (estimate) 1.6e-12 ; sum|direct terms| = 7.99e+00, sum|dual terms| = 1.26e+00   PASS  [0s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 dead  NE3 1.8e+00  NE4 2.2e+00  NE5 8.4e-01  NE6 5.8e-02  NE7 1.9e-01
+  Psi_0=B  P={}         w=0.10 X=2000    #groups= 36 N(c) in [1, 4] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')]
+      T_dir = -1.943562478284e-01 +5.551115123126e-16i   T_dual = -1.943562478284e-01 -1.179611963664e-16i
+      |T_dir| = 1.9436e-01  |diff| = 6.82e-16 (abs)  3.51e-15 (rel)   Btot = 2.07e-12 = direct tail 1.1e-37 + dual tail 4.3e-14 + quadrature 1.1e-18 + rounding allowance (estimate) 2.0e-12 ; sum|direct terms| = 1.61e+01, sum|dual terms| = 6.77e-01   PASS  [0s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 dead  NE3 1.4e+00  NE4 1.2e+00  NE5 9.9e-01  NE6 7.1e-01  NE7 1.2e+00
+  Psi_0=C  P={}         w=0.10 X=500     #groups= 36 N(c) in [3, 12] cases [('v=1', '+')]
+      T_dir =  2.640428564764e-01 -3.136381096222e-01i   T_dual =  2.640428564764e-01 -3.136381096222e-01i
+      |T_dir| = 4.0998e-01  |diff| = 2.78e-16 (abs)  6.77e-16 (rel)   Btot = 4.29e-12 = direct tail 3.5e-58 + dual tail 4.6e-13 + quadrature 7.5e-18 + rounding allowance (estimate) 3.8e-12 ; sum|direct terms| = 7.99e+00, sum|dual terms| = 5.61e+00   PASS  [2s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 1.3e+00  NE5 2.7e-01  NE6 1.1e+00  NE7 7.8e-01
+  Psi_0=C  P={}         w=0.10 X=2000    #groups= 36 N(c) in [3, 12] cases [('v=1', '+')]
+      T_dir = -2.598655178156e-01 -3.033198725791e-02i   T_dual = -2.598655178156e-01 -3.033198725791e-02i
+      |T_dir| = 2.6163e-01  |diff| = 7.83e-16 (abs)  2.99e-15 (rel)   Btot = 3.33e-12 = direct tail 1.1e-37 + dual tail 1.8e-13 + quadrature 3.7e-18 + rounding allowance (estimate) 3.1e-12 ; sum|direct terms| = 1.61e+01, sum|dual terms| = 3.05e+00   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 3.5e-01  NE5 6.5e-01  NE6 9.2e-01  NE7 1.6e+00
+  Psi_0=D  P={}         w=0.10 X=500     #groups= 27 N(c) in [36] cases [('3|c', '0')]
+      T_dir = -3.151086931862e-01 -6.938893903907e-17i   T_dual = -3.151086931862e-01 +3.337712560671e-17i
+      |T_dir| = 3.1511e-01  |diff| = 1.17e-16 (abs)  3.71e-16 (rel)   Btot = 1.47e-11 = direct tail 3.5e-58 + dual tail 5.7e-12 + quadrature 1.9e-17 + rounding allowance (estimate) 8.9e-12 ; sum|direct terms| = 7.99e+00, sum|dual terms| = 1.77e+01   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 dead  NE3 4.3e-01  NE4 1.6e+00  NE5 dead  NE6 4.8e-01  NE7 2.5e+00
+  Psi_0=D  P={}         w=0.10 X=2000    #groups= 27 N(c) in [36] cases [('3|c', '0')]
+      T_dir =  3.245348452726e-01 -1.387778780781e-17i   T_dual =  3.245348452726e-01 +5.873200791600e-17i
+      |T_dir| = 3.2453e-01  |diff| = 2.34e-16 (abs)  7.20e-16 (rel)   Btot = 7.03e-12 = direct tail 1.1e-37 + dual tail 1.4e-12 + quadrature 9.9e-18 + rounding allowance (estimate) 5.7e-12 ; sum|direct terms| = 1.61e+01, sum|dual terms| = 8.08e+00   PASS  [0s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 dead  NE3 6.4e-01  NE4 8.3e-01  NE5 dead  NE6 1.2e+00  NE7 3.9e-01
+  Psi_0=E  P={}         w=0.10 X=500     #groups= 27 N(c) in [12] cases [('v=1', '+')]
+      T_dir =  1.756110148724e-01 -1.214691640253e-01i   T_dual =  1.756110148724e-01 -1.214691640253e-01i
+      |T_dir| = 2.1353e-01  |diff| = 1.88e-15 (abs)  8.83e-15 (rel)   Btot = 6.38e-12 = direct tail 3.5e-58 + dual tail 7.9e-13 + quadrature 1.2e-17 + rounding allowance (estimate) 5.6e-12 ; sum|direct terms| = 7.99e+00, sum|dual terms| = 8.23e+00   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 5.7e-01  NE5 dead  NE6 1.0e+00  NE7 1.3e+00
+  Psi_0=E  P={}         w=0.10 X=2000    #groups= 27 N(c) in [12] cases [('v=1', '+')]
+      T_dir = -3.692492709789e-01 +5.606041417130e-02i   T_dual = -3.692492709789e-01 +5.606041417130e-02i
+      |T_dir| = 3.7348e-01  |diff| = 8.35e-16 (abs)  2.23e-15 (rel)   Btot = 4.44e-12 = direct tail 1.1e-37 + dual tail 3.2e-13 + quadrature 6.0e-18 + rounding allowance (estimate) 4.1e-12 ; sum|direct terms| = 1.61e+01, sum|dual terms| = 5.40e+00   PASS  [0s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 4.3e-01  NE5 dead  NE6 9.0e-01  NE7 1.7e+00
+  Psi_0=F  P={}         w=0.10 X=500     #groups= 36 N(c) in [3, 12] cases [('v=1', '-')]
+      T_dir =  2.640428564764e-01 +3.136381096222e-01i   T_dual =  2.640428564764e-01 +3.136381096222e-01i
+      |T_dir| = 4.0998e-01  |diff| = 1.67e-16 (abs)  4.06e-16 (rel)   Btot = 4.29e-12 = direct tail 3.5e-58 + dual tail 4.6e-13 + quadrature 7.5e-18 + rounding allowance (estimate) 3.8e-12 ; sum|direct terms| = 7.99e+00, sum|dual terms| = 5.61e+00   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 1.3e+00  NE5 2.7e-01  NE6 1.2e+00  NE7 7.8e-01
+  Psi_0=F  P={}         w=0.10 X=2000    #groups= 36 N(c) in [3, 12] cases [('v=1', '-')]
+      T_dir = -2.598655178156e-01 +3.033198725791e-02i   T_dual = -2.598655178156e-01 +3.033198725791e-02i
+      |T_dir| = 2.6163e-01  |diff| = 7.76e-16 (abs)  2.97e-15 (rel)   Btot = 3.33e-12 = direct tail 1.1e-37 + dual tail 1.8e-13 + quadrature 3.7e-18 + rounding allowance (estimate) 3.1e-12 ; sum|direct terms| = 1.61e+01, sum|dual terms| = 3.05e+00   PASS  [0s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 3.5e-01  NE5 6.5e-01  NE6 1.7e+00  NE7 1.6e+00
+  Psi_0=A  P={7: 1}     w=0.05 X=64000   #groups= 36 N(c) in [63, 252] cases [('3|c', '0')]
+      T_dir =  2.026791679651e-01 +4.577516628326e-02i   T_dual =  2.026791679651e-01 +4.577516628326e-02i
+      |T_dir| = 2.0778e-01  |diff| = 9.87e-16 (abs)  4.75e-15 (rel)   Btot = 1.07e-11 = direct tail 6.5e-13 + dual tail 7.6e-13 + quadrature 3.2e-17 + rounding allowance (estimate) 9.3e-12 ; sum|direct terms| = 5.28e+01, sum|dual terms| = 9.05e+00   PASS  [7s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.4e-01  NE3 1.5e+00  NE4 1.0e+00  NE5 5.4e-01  NE6 2.0e+00  NE7 1.0e+00
+  Psi_0=A  P={7: 1}     w=0.10 X=22000   #groups= 36 N(c) in [63, 252] cases [('3|c', '0')]
+      T_dir = -2.412094634803e-01 +2.974516521951e-02i   T_dual = -2.412094634803e-01 +2.974516521951e-02i
+      |T_dir| = 2.4304e-01  |diff| = 3.17e-16 (abs)  1.30e-15 (rel)   Btot = 2.32e-11 = direct tail 4.4e-12 + dual tail 9.7e-12 + quadrature 1.1e-17 + rounding allowance (estimate) 9.1e-12 ; sum|direct terms| = 4.60e+01, sum|dual terms| = 1.00e+01   PASS  [6s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.4e-01  NE3 3.5e-01  NE4 1.0e+00  NE5 6.3e-01  NE6 2.2e+00  NE7 1.1e+00
+  Psi_0=A  P={7: 0}     w=0.05 X=64000   #groups= 72 N(c) in [9, 36, 63, 252] cases [('3|c', '0')]
+      T_dir = -4.621654059133e-02 -7.754984055064e-02i   T_dual = -4.621654059133e-02 -7.754984055064e-02i
+      |T_dir| = 9.0277e-02  |diff| = 2.84e-16 (abs)  3.15e-15 (rel)   Btot = 8.32e-12 = direct tail 6.5e-13 + dual tail 3.3e-13 + quadrature 1.7e-17 + rounding allowance (estimate) 7.3e-12 ; sum|direct terms| = 5.28e+01, sum|dual terms| = 4.50e+00   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 9.3e-01  NE3 3.6e-01  NE4 1.0e+00  NE5 4.1e-01  NE6 9.5e-01  NE7 9.1e-01
+  Psi_0=A  P={7: 0}     w=0.10 X=22000   #groups= 72 N(c) in [9, 36, 63, 252] cases [('3|c', '0')]
+      T_dir =  1.256917104208e-01 +3.144757685067e-02i   T_dual =  1.256917104208e-01 +3.144757685067e-02i
+      |T_dir| = 1.2957e-01  |diff| = 8.47e-16 (abs)  6.53e-15 (rel)   Btot = 1.52e-11 = direct tail 4.4e-12 + dual tail 3.8e-12 + quadrature 5.6e-18 + rounding allowance (estimate) 7.0e-12 ; sum|direct terms| = 4.60e+01, sum|dual terms| = 5.04e+00   PASS  [2s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 6.3e-01  NE3 1.0e+00  NE4 1.0e+00  NE5 1.9e-01  NE6 4.5e-01  NE7 1.0e+00
+  Psi_0=A  P={7: 4}     w=0.05 X=64000   #groups= 36 N(c) in [63, 252] cases [('3|c', '0')]
+      T_dir = -7.042950636547e-02 +2.686411156286e-02i   T_dual = -7.042950636547e-02 +2.686411156286e-02i
+      |T_dir| = 7.5379e-02  |diff| = 1.94e-16 (abs)  2.58e-15 (rel)   Btot = 1.05e-11 = direct tail 6.5e-13 + dual tail 1.7e-12 + quadrature 2.3e-17 + rounding allowance (estimate) 8.2e-12 ; sum|direct terms| = 5.28e+01, sum|dual terms| = 6.39e+00   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.4e-01  NE3 2.6e+00  NE4 1.0e+00  NE5 9.3e-01  NE6 2.2e+00  NE7 9.6e-01
+  Psi_0=A  P={7: 4}     w=0.10 X=22000   #groups= 36 N(c) in [63, 252] cases [('3|c', '0')]
+      T_dir =  5.416208445792e-02 +1.096616334273e-02i   T_dual =  5.416208445792e-02 +1.096616334273e-02i
+      |T_dir| = 5.5261e-02  |diff| = 4.54e-16 (abs)  8.22e-15 (rel)   Btot = 3.42e-11 = direct tail 4.4e-12 + dual tail 2.2e-11 + quadrature 7.7e-18 + rounding allowance (estimate) 7.8e-12 ; sum|direct terms| = 4.60e+01, sum|dual terms| = 6.79e+00   PASS  [2s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.4e-01  NE3 5.0e+00  NE4 9.8e-01  NE5 1.7e+00  NE6 5.3e+00  NE7 9.6e-01
+  Psi_0=B  P={7: 0}     w=0.10 X=2000    #groups= 72 N(c) in [1, 4, 7, 28] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')]
+      T_dir = -5.659406128645e-02 +4.637193997353e-02i   T_dual = -5.659406128645e-02 +4.637193997353e-02i
+      |T_dir| = 7.3166e-02  |diff| = 4.66e-16 (abs)  6.37e-15 (rel)   Btot = 3.02e-12 = direct tail 1.1e-37 + dual tail 2.5e-13 + quadrature 3.3e-18 + rounding allowance (estimate) 2.8e-12 ; sum|direct terms| = 1.39e+01, sum|dual terms| = 2.69e+00   PASS  [4s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.2e+00  NE3 3.7e+00  NE4 1.4e+00  NE5 2.6e+00  NE6 9.3e-01  NE7 1.2e+00
+  Psi_0=B  P={7: 0}     w=0.10 X=8000    #groups= 72 N(c) in [1, 4, 7, 28] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')]
+      T_dir =  1.631745190833e-03 -7.859412866724e-02i   T_dual =  1.631745190833e-03 -7.859412866724e-02i
+      |T_dir| = 7.8611e-02  |diff| = 1.67e-16 (abs)  2.12e-15 (rel)   Btot = 3.55e-12 = direct tail 2.3e-21 + dual tail 1.0e-13 + quadrature 1.7e-18 + rounding allowance (estimate) 3.5e-12 ; sum|direct terms| = 2.77e+01, sum|dual terms| = 1.25e+00   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.9e-01  NE3 2.6e+00  NE4 1.1e+00  NE5 1.2e+00  NE6 1.9e+00  NE7 1.3e+00
+  Psi_0=B  P={7: 1}     w=0.10 X=2000    #groups= 36 N(c) in [7, 28] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')]
+      T_dir = -1.894152618457e-01 +2.042635846187e-01i   T_dual = -1.894152618457e-01 +2.042635846187e-01i
+      |T_dir| = 2.7857e-01  |diff| = 8.99e-16 (abs)  3.23e-15 (rel)   Btot = 4.65e-12 = direct tail 1.1e-37 + dual tail 5.6e-13 + quadrature 6.5e-18 + rounding allowance (estimate) 4.1e-12 ; sum|direct terms| = 1.39e+01, sum|dual terms| = 5.58e+00   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.4e-01  NE3 1.9e+00  NE4 6.0e-01  NE5 5.9e-01  NE6 1.4e+00  NE7 4.3e-01
+  Psi_0=B  P={7: 1}     w=0.10 X=8000    #groups= 36 N(c) in [7, 28] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')]
+      T_dir =  1.891547901893e-01 -1.169756221087e-01i   T_dual =  1.891547901893e-01 -1.169756221087e-01i
+      |T_dir| = 2.2240e-01  |diff| = 2.08e-16 (abs)  9.36e-16 (rel)   Btot = 4.37e-12 = direct tail 2.3e-21 + dual tail 2.2e-13 + quadrature 3.2e-18 + rounding allowance (estimate) 4.1e-12 ; sum|direct terms| = 2.77e+01, sum|dual terms| = 3.06e+00   PASS  [0s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.4e-01  NE3 1.8e+00  NE4 1.2e+00  NE5 7.9e-01  NE6 1.3e+00  NE7 1.6e+00
+  Psi_0=B  P={7: 2}     w=0.10 X=2000    #groups= 36 N(c) in [7, 28] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')]
+      T_dir =  1.454763656559e-02 +1.684068922019e-01i   T_dual =  1.454763656559e-02 +1.684068922019e-01i
+      |T_dir| = 1.6903e-01  |diff| = 1.13e-15 (abs)  6.70e-15 (rel)   Btot = 4.65e-12 = direct tail 1.1e-37 + dual tail 5.6e-13 + quadrature 6.5e-18 + rounding allowance (estimate) 4.1e-12 ; sum|direct terms| = 1.39e+01, sum|dual terms| = 5.58e+00   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.4e-01  NE3 2.3e+00  NE4 7.2e-01  NE5 1.8e+00  NE6 5.0e-01  NE7 1.2e+00
+  Psi_0=B  P={7: 2}     w=0.10 X=8000    #groups= 36 N(c) in [7, 28] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')]
+      T_dir =  1.778487591251e-01 -2.950936791510e-01i   T_dual =  1.778487591251e-01 -2.950936791510e-01i
+      |T_dir| = 3.4454e-01  |diff| = 6.21e-16 (abs)  1.80e-15 (rel)   Btot = 4.37e-12 = direct tail 2.3e-21 + dual tail 2.2e-13 + quadrature 3.2e-18 + rounding allowance (estimate) 4.1e-12 ; sum|direct terms| = 2.77e+01, sum|dual terms| = 3.06e+00   PASS  [0s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.4e-01  NE3 8.4e-01  NE4 1.2e+00  NE5 4.2e-01  NE6 9.3e-02  NE7 1.4e+00
+  Psi_0=B  P={7: 3}     w=0.10 X=2000    #groups= 36 N(c) in [7, 28] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')]
+      T_dir =  1.215605482637e-01 +1.887433195041e-01i   T_dual =  1.215605482637e-01 +1.887433195041e-01i
+      |T_dir| = 2.2450e-01  |diff| = 1.34e-15 (abs)  5.98e-15 (rel)   Btot = 4.65e-12 = direct tail 1.1e-37 + dual tail 5.6e-13 + quadrature 6.5e-18 + rounding allowance (estimate) 4.1e-12 ; sum|direct terms| = 1.39e+01, sum|dual terms| = 5.58e+00   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.4e-01  NE3 7.2e-01  NE4 6.3e-01  NE5 4.7e-01  NE6 1.1e+00  NE7 1.6e+00
+  Psi_0=B  P={7: 3}     w=0.10 X=8000    #groups= 36 N(c) in [7, 28] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')]
+      T_dir =  1.102010836324e-02 -7.019826874728e-02i   T_dual =  1.102010836324e-02 -7.019826874728e-02i
+      |T_dir| = 7.1058e-02  |diff| = 1.18e-15 (abs)  1.67e-14 (rel)   Btot = 4.37e-12 = direct tail 2.3e-21 + dual tail 2.2e-13 + quadrature 3.2e-18 + rounding allowance (estimate) 4.1e-12 ; sum|direct terms| = 2.77e+01, sum|dual terms| = 3.06e+00   PASS  [0s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.4e-01  NE3 1.6e+00  NE4 1.2e+00  NE5 1.6e+00  NE6 2.3e+00  NE7 1.3e+00
+  Psi_0=B  P={7: 4}     w=0.10 X=2000    #groups= 36 N(c) in [7, 28] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')]
+      T_dir =  1.851472265613e-01 -1.432884480034e-01i   T_dual =  1.851472265613e-01 -1.432884480034e-01i
+      |T_dir| = 2.3412e-01  |diff| = 7.73e-16 (abs)  3.30e-15 (rel)   Btot = 4.58e-12 = direct tail 1.1e-37 + dual tail 1.3e-12 + quadrature 4.7e-18 + rounding allowance (estimate) 3.3e-12 ; sum|direct terms| = 1.39e+01, sum|dual terms| = 3.69e+00   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.4e-01  NE3 1.6e+00  NE4 8.1e-01  NE5 6.6e-01  NE6 1.2e+00  NE7 8.8e-01
+  Psi_0=B  P={7: 4}     w=0.10 X=8000    #groups= 36 N(c) in [7, 28] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')]
+      T_dir = -1.829660634258e-01 +1.649265318715e-02i   T_dual = -1.829660634258e-01 +1.649265318715e-02i
+      |T_dir| = 1.8371e-01  |diff| = 7.22e-16 (abs)  3.93e-15 (rel)   Btot = 4.23e-12 = direct tail 2.3e-21 + dual tail 5.1e-13 + quadrature 2.3e-18 + rounding allowance (estimate) 3.7e-12 ; sum|direct terms| = 2.77e+01, sum|dual terms| = 1.76e+00   PASS  [0s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.4e-01  NE3 2.0e+00  NE4 1.2e+00  NE5 6.8e-01  NE6 1.0e+00  NE7 1.5e+00
+  Psi_0=B  P={7: 5}     w=0.10 X=2000    #groups= 36 N(c) in [7, 28] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')]
+      T_dir =  1.531268310580e-01 +9.472978830746e-02i   T_dual =  1.531268310580e-01 +9.472978830746e-02i
+      |T_dir| = 1.8006e-01  |diff| = 9.49e-16 (abs)  5.27e-15 (rel)   Btot = 4.65e-12 = direct tail 1.1e-37 + dual tail 5.6e-13 + quadrature 6.5e-18 + rounding allowance (estimate) 4.1e-12 ; sum|direct terms| = 1.39e+01, sum|dual terms| = 5.58e+00   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.4e-01  NE3 4.3e-01  NE4 7.8e-01  NE5 4.3e-01  NE6 1.6e+00  NE7 5.0e-01
+  Psi_0=B  P={7: 5}     w=0.10 X=8000    #groups= 36 N(c) in [7, 28] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')]
+      T_dir = -1.464457868542e-01 -1.359296125231e-01i   T_dual = -1.464457868542e-01 -1.359296125231e-01i
+      |T_dir| = 1.9981e-01  |diff| = 1.08e-15 (abs)  5.40e-15 (rel)   Btot = 4.37e-12 = direct tail 2.3e-21 + dual tail 2.2e-13 + quadrature 3.2e-18 + rounding allowance (estimate) 4.1e-12 ; sum|direct terms| = 2.77e+01, sum|dual terms| = 3.06e+00   PASS  [0s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 7.4e-01  NE3 2.0e-01  NE4 1.0e+00  NE5 5.5e-01  NE6 3.9e-01  NE7 1.7e+00
+  Psi_0=F  P={7: 1}     w=0.10 X=10000   #groups= 36 N(c) in [21, 84] cases [('v=1', '-')]
+      T_dir = -2.330060368062e-01 +1.964540864633e-01i   T_dual = -2.330060368062e-01 +1.964540864633e-01i
+      |T_dir| = 3.0477e-01  |diff| = 1.43e-15 (abs)  4.70e-15 (rel)   Btot = 8.13e-12 = direct tail 4.0e-19 + dual tail 8.4e-13 + quadrature 1.0e-17 + rounding allowance (estimate) 7.3e-12 ; sum|direct terms| = 3.10e+01, sum|dual terms| = 8.29e+00   PASS  [5s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 1.2e+00  NE5 1.3e+00  NE6 8.5e-01  NE7 4.9e-01
+  Psi_0=F  P={7: 1}     w=0.10 X=16000   #groups= 36 N(c) in [21, 84] cases [('v=1', '-')]
+      T_dir = -5.404781456925e-01 -4.132131455433e-02i   T_dual = -5.404781456925e-01 -4.132131455432e-02i
+      |T_dir| = 5.4206e-01  |diff| = 9.82e-16 (abs)  1.81e-15 (rel)   Btot = 7.91e-12 = direct tail 9.1e-15 + dual tail 6.1e-13 + quadrature 8.1e-18 + rounding allowance (estimate) 7.3e-12 ; sum|direct terms| = 3.92e+01, sum|dual terms| = 7.08e+00   PASS  [3s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 1.3e+00  NE5 2.0e-01  NE6 9.9e-01  NE7 5.4e-01
+  Psi_0=F  P={7: 0}     w=0.10 X=10000   #groups= 72 N(c) in [3, 12, 21, 84] cases [('v=1', '-')]
+      T_dir =  1.137424420810e-01 -1.064325926605e-01i   T_dual =  1.137424420810e-01 -1.064325926605e-01i
+      |T_dir| = 1.5577e-01  |diff| = 1.69e-16 (abs)  1.08e-15 (rel)   Btot = 5.61e-12 = direct tail 4.0e-19 + dual tail 3.7e-13 + quadrature 5.3e-18 + rounding allowance (estimate) 5.2e-12 ; sum|direct terms| = 3.10e+01, sum|dual terms| = 4.00e+00   PASS  [2s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 1.5e+00  NE5 8.5e-01  NE6 1.2e+00  NE7 5.3e-01
+  Psi_0=F  P={7: 0}     w=0.10 X=16000   #groups= 72 N(c) in [3, 12, 21, 84] cases [('v=1', '-')]
+      T_dir = -1.380341348983e-01 +1.426067204562e-02i   T_dual = -1.380341348983e-01 +1.426067204562e-02i
+      |T_dir| = 1.3877e-01  |diff| = 4.03e-16 (abs)  2.90e-15 (rel)   Btot = 5.92e-12 = direct tail 9.1e-15 + dual tail 2.7e-13 + quadrature 4.2e-18 + rounding allowance (estimate) 5.6e-12 ; sum|direct terms| = 3.92e+01, sum|dual terms| = 3.41e+00   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 1.3e+00  NE5 5.5e-01  NE6 1.4e+00  NE7 1.6e+00
+  Psi_0=F  P={7: 4}     w=0.10 X=10000   #groups= 36 N(c) in [21, 84] cases [('v=1', '-')]
+      T_dir = -2.428694961526e-01 +2.696322785588e-01i   T_dual = -2.428694961526e-01 +2.696322785588e-01i
+      |T_dir| = 3.6289e-01  |diff| = 7.47e-16 (abs)  2.06e-15 (rel)   Btot = 8.08e-12 = direct tail 4.0e-19 + dual tail 1.9e-12 + quadrature 7.4e-18 + rounding allowance (estimate) 6.2e-12 ; sum|direct terms| = 3.10e+01, sum|dual terms| = 6.63e+00   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 9.8e-01  NE5 3.6e-01  NE6 1.5e+00  NE7 1.1e+00
+  Psi_0=F  P={7: 4}     w=0.10 X=16000   #groups= 36 N(c) in [21, 84] cases [('v=1', '-')]
+      T_dir = -2.656705246331e-01 +5.147045266472e-02i   T_dual = -2.656705246331e-01 +5.147045266472e-02i
+      |T_dir| = 2.7061e-01  |diff| = 6.11e-16 (abs)  2.26e-15 (rel)   Btot = 7.71e-12 = direct tail 9.1e-15 + dual tail 1.4e-12 + quadrature 5.8e-18 + rounding allowance (estimate) 6.3e-12 ; sum|direct terms| = 3.92e+01, sum|dual terms| = 4.74e+00   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 1.2e+00  NE5 6.7e-01  NE6 1.4e+00  NE7 1.2e+00
+  Psi_0=C  P={7: 1}     w=0.10 X=16000   #groups= 36 N(c) in [21, 84] cases [('v=1', '+')]
+      T_dir = -1.922491467551e-01 +4.259019738936e-01i   T_dual = -1.922491467551e-01 +4.259019738936e-01i
+      |T_dir| = 4.6728e-01  |diff| = 4.58e-16 (abs)  9.80e-16 (rel)   Btot = 7.91e-12 = direct tail 9.1e-15 + dual tail 6.1e-13 + quadrature 8.1e-18 + rounding allowance (estimate) 7.3e-12 ; sum|direct terms| = 3.92e+01, sum|dual terms| = 7.08e+00   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 1.3e+00  NE5 2.4e-01  NE6 9.2e-01  NE7 5.2e-01
+  Psi_0=E  P={7: 1}     w=0.10 X=16000   #groups= 27 N(c) in [84] cases [('v=1', '+')]
+      T_dir = -7.384305966752e-02 +6.404327028706e-02i   T_dual = -7.384305966752e-02 +6.404327028707e-02i
+      |T_dir| = 9.7746e-02  |diff| = 7.51e-16 (abs)  7.68e-15 (rel)   Btot = 1.04e-11 = direct tail 9.1e-15 + dual tail 1.1e-12 + quadrature 1.3e-17 + rounding allowance (estimate) 9.3e-12 ; sum|direct terms| = 3.92e+01, sum|dual terms| = 1.12e+01   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 2.6e+00  NE5 dead  NE6 1.9e+00  NE7 5.2e+00
+  Psi_0=E  P={7: 2}     w=0.10 X=16000   #groups= 27 N(c) in [84] cases [('v=1', '+')]
+      T_dir =  5.308557803322e-03 +1.277381766322e-01i   T_dual =  5.308557803322e-03 +1.277381766322e-01i
+      |T_dir| = 1.2785e-01  |diff| = 1.15e-15 (abs)  8.98e-15 (rel)   Btot = 1.04e-11 = direct tail 9.1e-15 + dual tail 1.1e-12 + quadrature 1.3e-17 + rounding allowance (estimate) 9.3e-12 ; sum|direct terms| = 3.92e+01, sum|dual terms| = 1.12e+01   PASS  [1s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 2.5e+00  NE5 dead  NE6 2.6e+00  NE7 1.6e+00
+  Psi_0=B  P={13: 1}    w=0.10 X=8000    #groups= 36 N(c) in [13, 52] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')]
+      T_dir = -1.521567945494e-01 +2.674501344509e-01i   T_dual = -1.521567945494e-01 +2.674501344509e-01i
+      |T_dir| = 3.0770e-01  |diff| = 1.10e-15 (abs)  3.57e-15 (rel)   Btot = 6.12e-12 = direct tail 2.3e-21 + dual tail 5.1e-13 + quadrature 6.4e-18 + rounding allowance (estimate) 5.6e-12 ; sum|direct terms| = 2.96e+01, sum|dual terms| = 5.32e+00   PASS  [3s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 2.0e+00  NE3 1.7e+00  NE4 1.7e+00  NE5 2.4e-01  NE6 5.7e-01  NE7 1.7e-01
+  Psi_0=B  P={25: 1}    w=0.10 X=16000   #groups= 36 N(c) in [25, 100] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')]
+      T_dir = -1.592215833881e-01 +3.183217578417e-16i   T_dual = -1.592215833881e-01 -6.938893903907e-18i
+      |T_dir| = 1.5922e-01  |diff| = 3.44e-16 (abs)  2.16e-15 (rel)   Btot = 8.85e-12 = direct tail 9.1e-15 + dual tail 7.7e-13 + quadrature 9.0e-18 + rounding allowance (estimate) 8.1e-12 ; sum|direct terms| = 4.34e+01, sum|dual terms| = 7.51e+00   PASS  [4s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 dead  NE3 1.4e+00  NE4 2.5e+00  NE5 1.4e+00  NE6 1.2e+00  NE7 2.3e+00
+  Psi_0=F  P={13: 5}    w=0.05 X=64000   #groups= 36 N(c) in [39, 156] cases [('v=1', '-')]
+      T_dir = -3.224846860908e-01 +2.798209240828e-01i   T_dual = -3.224846860908e-01 +2.798209240828e-01i
+      |T_dir| = 4.2696e-01  |diff| = 9.04e-16 (abs)  2.12e-15 (rel)   Btot = 1.16e-11 = direct tail 6.5e-13 + dual tail 4.0e-13 + quadrature 3.8e-17 + rounding allowance (estimate) 1.1e-11 ; sum|direct terms| = 5.64e+01, sum|dual terms| = 1.16e+01   PASS  [8s]
+      controls, |T_dir - T_ctl|/|T_dir|: NE1 2.0e+00  NE2 1.0e+00  NE3 1.0e+00  NE4 6.4e-01  NE5 2.8e-01  NE6 6.9e-01  NE7 5.7e-01
+
+  coverage of the informative runs (case of H, sigma, j, role): number of (group, prime) incidences
+    3|c      sigma=0  j=-  no prime  : 126
+    3|c      sigma=0  j=0  active    : 72
+    3|c      sigma=0  j=0  inactive  : 72
+    3|c      sigma=0  j=1  active    : 72
+    3|c      sigma=0  j=4  active    : 72
+    coprime  sigma=+  j=-  no prime  : 24
+    coprime  sigma=+  j=0  active    : 24
+    coprime  sigma=+  j=0  inactive  : 24
+    coprime  sigma=+  j=1  active    : 48
+    coprime  sigma=+  j=2  active    : 24
+    coprime  sigma=+  j=3  active    : 24
+    coprime  sigma=+  j=4  active    : 24
+    coprime  sigma=+  j=5  active    : 24
+    coprime  sigma=-  j=-  no prime  : 24
+    coprime  sigma=-  j=0  active    : 24
+    coprime  sigma=-  j=0  inactive  : 24
+    coprime  sigma=-  j=1  active    : 48
+    coprime  sigma=-  j=2  active    : 24
+    coprime  sigma=-  j=3  active    : 24
+    coprime  sigma=-  j=4  active    : 24
+    coprime  sigma=-  j=5  active    : 24
+    coprime  sigma=0  j=-  no prime  : 24
+    coprime  sigma=0  j=0  active    : 24
+    coprime  sigma=0  j=0  inactive  : 24
+    coprime  sigma=0  j=1  active    : 48
+    coprime  sigma=0  j=2  active    : 24
+    coprime  sigma=0  j=3  active    : 24
+    coprime  sigma=0  j=4  active    : 24
+    coprime  sigma=0  j=5  active    : 24
+    v=1      sigma=+  j=-  no prime  : 126
+    v=1      sigma=+  j=1  active    : 63
+    v=1      sigma=+  j=2  active    : 27
+    v=1      sigma=-  j=-  no prime  : 72
+    v=1      sigma=-  j=0  active    : 72
+    v=1      sigma=-  j=0  inactive  : 72
+    v=1      sigma=-  j=1  active    : 72
+    v=1      sigma=-  j=4  active    : 72
+    v=1      sigma=-  j=5  active    : 36
+
+  E1   PASS  0 failures / 42 informative runs (0 runs not informative, 42 runs in all) ; worst |diff| = 1.88e-15 (ABSOLUTE), worst |diff|/|T| = 1.67e-14 (RELATIVE), worst |diff|/Btot = 3.30e-04
+  NE1  PASS  live in 42 runs, rejected in 42, smallest |T_dir - T_ctl|/|T_dir| = 2.00e+00
+  NE2  PASS  live in 35 runs, rejected in 35, smallest |T_dir - T_ctl|/|T_dir| = 6.30e-01
+  NE3  PASS  live in 42 runs, rejected in 42, smallest |T_dir - T_ctl|/|T_dir| = 2.02e-01
+  NE4  PASS  live in 42 runs, rejected in 42, smallest |T_dir - T_ctl|/|T_dir| = 3.48e-01
+  NE5  PASS  live in 36 runs, rejected in 36, smallest |T_dir - T_ctl|/|T_dir| = 1.86e-01
+  NE6  PASS  live in 42 runs, rejected in 42, smallest |T_dir - T_ctl|/|T_dir| = 5.82e-02
+  NE7  PASS  live in 42 runs, rejected in 42, smallest |T_dir - T_ctl|/|T_dir| = 1.74e-01
+
+LAYER E: all criteria met   [187s]

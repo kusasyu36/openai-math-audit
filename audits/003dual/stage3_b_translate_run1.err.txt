@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "./audits/003dual/stage3_b_translate.py", line 93, in <module>
+    else: raise RuntimeError("tables too short for |c| = %.2f" % ca)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: tables too short for |c| = 57.24

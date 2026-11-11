@@ -1,0 +1,18 @@
+
+Follow-up to stage3_c_groups (layer D), written AFTER its official run.  No criterion of layer D is changed.
+In that run the control ND2 (psi without r^-1) was not rejected in 72 of the 2169 groups where my registered
+liveness test ("D_0 does not divide delta'(r^-1 - 1)", i.e. the two characters differ somewhere on O) said it
+was live; in those 72 groups the control gave the SAME value (relative difference 1e-16).
+Question examined here: do the two characters coincide on the SUPPORT of d_sigma (the only place where psi is
+evaluated)?  For every group of the same configuration list: compare psi and psi-without-r^-1 on the first
+20000 support points m = lambda^4 l of the table of d_sigma.
+Expected if my explanation is right: 'live on O but identical on the support' in exactly 72 groups, and those
+are the groups not rejected.  This is a diagnosis of a dead control, not a test of the paper.
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage3_c_nd2_liveness.py > audits/003dual/stage3_c_nd2_liveness.out 2>/dev/null
+
+groups: 3015 ; live by the registered test (characters differ on O): 2169 ; of these, identical on the support of d_sigma: 72
+where (Psi_0, twists, active primes, case, N(c_0)) : #groups dead-on-support
+    ('A', '{25: 1}', '[25]', '3|c', 9) : 9 of 9
+    ('A', '{25: 1}', '[25]', '3|c', 36) : 27 of 27
+    ('A', '{25: 2}', '[25]', '3|c', 9) : 9 of 9
+    ('A', '{25: 2}', '[25]', '3|c', 36) : 27 of 27

@@ -1,0 +1,83 @@
+
+Stage 5 (a): the end-to-end comparison of layer E with a COMPACTLY SUPPORTED smooth weight, i.e. inside the hypothesis
+of Proposition lem:reflection (W in C_c^infty((0, inf)), paper2.tex:670, :1293).
+
+  W(y) = b(log(y)/a),  b(u) = exp(-(1-u^2)^-p) on |u| < 1,   p = 4, a = 3   (support [e^-3, e^3]).
+  LEFT  T(X; Psi) of eq:T (:1287), a FINITE sum (W(N/X) = 0 for N >= X e^3; X e^3 <= 10^6 = table size, so no truncation).
+  RIGHT sum over the groups of C * sum_l d(l) alpha(l) N(l)^-1/2 psi prod B V_*^sharp(N(l) X/N(c)^2)  (:1806, C of :3420,
+        V^sharp of :1752), all table entries with N(l) <= R_g = min(table limit, 3e7 N(c)^2/X).
+  The choice (p, a) and the runs were made from stage5_bump.out (bounds only).  p = 1 (the usual bump) was the first
+  plan; its bounds were useless (>= 5e-2 per unit |C|), see stage5_bump.py.
+
+CRITERIA (fixed before the first run of this script):
+  F1  |T_direct - T_dual| <= Btot,  Btot = sum over groups of (T3') [upper bound; its ingredients Mt(A) are numerical
+      quadratures of explicit envelopes] + (Q') quadrature of V^sharp [upper bound, same remark]
+      + rounding allowance [ESTIMATE]: 1e-13 (sum|direct terms| + sum|dual terms|) + 2e-15 sum|dual coefficients|.
+      A run is INFORMATIVE iff Btot <= 1e-2 |T_direct|.  For every run the number of digits log10(|T|/Btot) guaranteed by
+      the bound is printed next to the observed |diff| (ABSOLUTE) and |diff|/|T| (RELATIVE).  The claim made for a run is
+      "agreement within Btot", not within the observed difference.
+  Controls (same definitions as NE1-NE7 of stage3_d_mellin), on informative runs where live; rejected iff
+      |T_direct - T_ctl| > 10 Btot.   Required (chosen beforehand from the sizes seen with the log-Gaussian weight:
+      NE1 2.0, NE2-NE5 >= 0.15, NE6/NE7 >= 0.058 relative):
+        Btot <= 1e-2 |T|: NE1 ;   Btot <= 1e-3 |T|: also NE2, NE3, NE4, NE5 ;   Btot <= 1e-4 |T|: also NE6, NE7.
+      Controls outside the required set are computed and printed but do not enter the verdict.
+Runs (X = 49737 = the largest X with X e^3 <= 10^6, unless stated):
+  expected informative from the bounds: B {} (X = 49737 and 20000), F {}, E {}, A {}, B {p7: 1}, B {p7: 4}, B {p7: 0}, B {p7: 2}
+  expected NOT informative (run for the record; only the observed difference is reported): F {p7: 1}, A {p7: 1}, B {p13: 1}
+  (C {} is the complex conjugate of F {} and is not run.)
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage5_a_compact.py > audits/003dual/stage5_a_compact.out 2>/dev/null
+
+  weight: bump p=4 a=3 ; V^sharp quadrature: |tau| <= 119.1, step 0.04, 5955 nodes ; truncation bound 5.7e-18 ; max |V-hat|/envelope = 1.000  [1s]
+  Psi_0=B P={} X=49737 #groups=36 N(c) in [1, 4] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')] ; dual terms: 17951562
+      T_dir =  2.034503040989e-03 +4.440892098501e-16i   T_dual =  2.034503040990e-03 -2.927345865711e-17i
+      |T_dir| = 2.0345e-03  |diff| = 5.94e-16 (abs)  2.92e-13 (rel)   Btot = 9.96e-12 = dual tail 6.3e-13 + quadrature 9.0e-15 + rounding allowance (estimate) 9.3e-12 (direct tail 0) ; digits guaranteed by the bound: 8.3   within Btot  [19s]
+      controls (* = required in this run), |T_dir - T_ctl|/|T_dir|: NE1* 2.0e+00  NE2 dead  NE3* 1.2e+00  NE4* 4.2e-01  NE5* 9.8e-01  NE6* 4.1e-01  NE7* 3.0e-01
+  Psi_0=B P={} X=20000 #groups=36 N(c) in [1, 4] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')] ; dual terms: 26239578
+      T_dir =  1.356264383555e-03 -1.110223024625e-16i   T_dual =  1.356264383553e-03 -2.905661822261e-17i
+      |T_dir| = 1.3563e-03  |diff| = 1.66e-15 (abs)  1.22e-12 (rel)   Btot = 4.51e-11 = dual tail 3.7e-11 + quadrature 1.2e-14 + rounding allowance (estimate) 8.0e-12 (direct tail 0) ; digits guaranteed by the bound: 7.5   within Btot  [20s]
+      controls (* = required in this run), |T_dir - T_ctl|/|T_dir|: NE1* 2.0e+00  NE2 dead  NE3* 7.1e-01  NE4* 1.4e+00  NE5* 1.5e+00  NE6* 7.5e-01  NE7* 3.0e+00
+  Psi_0=F P={} X=49737 #groups=36 N(c) in [3, 12] cases [('v=1', '-')] ; dual terms: 33532002
+      T_dir = -1.149486719642e-02 +5.753319308672e-03i   T_dual = -1.149486719642e-02 +5.753319308670e-03i
+      |T_dir| = 1.2854e-02  |diff| = 3.18e-15 (abs)  2.47e-13 (rel)   Btot = 7.60e-08 = dual tail 7.6e-08 + quadrature 1.6e-14 + rounding allowance (estimate) 1.2e-11 (direct tail 0) ; digits guaranteed by the bound: 5.2   within Btot  [16s]
+      controls (* = required in this run), |T_dir - T_ctl|/|T_dir|: NE1* 2.0e+00  NE2* 1.0e+00  NE3* 1.0e+00  NE4* 1.2e+00  NE5* 9.0e-01  NE6* 1.3e+00  NE7* 1.8e+00
+  Psi_0=E P={} X=49737 #groups=27 N(c) in [12] cases [('v=1', '+')] ; dual terms: 29245104
+      T_dir = -2.018602141469e-02 +1.246559201695e-02i   T_dual = -2.018602141471e-02 +1.246559201696e-02i
+      |T_dir| = 2.3725e-02  |diff| = 2.31e-14 (abs)  9.74e-13 (rel)   Btot = 1.52e-07 = dual tail 1.5e-07 + quadrature 1.9e-14 + rounding allowance (estimate) 1.3e-11 (direct tail 0) ; digits guaranteed by the bound: 5.2   within Btot  [1s]
+      controls (* = required in this run), |T_dir - T_ctl|/|T_dir|: NE1* 2.0e+00  NE2* 1.0e+00  NE3* 1.0e+00  NE4* 1.2e+00  NE5 dead  NE6* 6.4e-01  NE7* 1.8e+00
+  Psi_0=A P={} X=49737 #groups=36 N(c) in [9, 36] cases [('3|c', '0')] ; dual terms: 35995608
+      T_dir =  2.215056250455e-03 +1.110223024625e-16i   T_dual =  2.215056250975e-03 +9.557594255460e-18i
+      |T_dir| = 2.2151e-03  |diff| = 5.21e-13 (abs)  2.35e-10 (rel)   Btot = 2.33e-05 = dual tail 2.3e-05 + quadrature 1.8e-14 + rounding allowance (estimate) 1.3e-11 (direct tail 0) ; digits guaranteed by the bound: 2.0   within Btot  (NOT INFORMATIVE: Btot > 1e-2 |T|)  [27s]
+  Psi_0=B P={7: 1} X=49737 #groups=36 N(c) in [7, 28] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')] ; dual terms: 37387944
+      T_dir = -3.122068846770e-03 +3.646189116204e-03i   T_dual = -3.122068849395e-03 +3.646189109834e-03i
+      |T_dir| = 4.8002e-03  |diff| = 6.89e-12 (abs)  1.44e-09 (rel)   Btot = 7.70e-05 = dual tail 7.7e-05 + quadrature 1.6e-14 + rounding allowance (estimate) 1.1e-11 (direct tail 0) ; digits guaranteed by the bound: 1.8   within Btot  (NOT INFORMATIVE: Btot > 1e-2 |T|)  [48s]
+  Psi_0=B P={7: 4} X=49737 #groups=36 N(c) in [7, 28] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')] ; dual terms: 37387944
+      T_dir =  5.011567860993e-03 +2.008524047237e-03i   T_dual =  5.011567858699e-03 +2.008524048633e-03i
+      |T_dir| = 5.3991e-03  |diff| = 2.69e-12 (abs)  4.97e-10 (rel)   Btot = 1.75e-04 = dual tail 1.7e-04 + quadrature 1.2e-14 + rounding allowance (estimate) 9.4e-12 (direct tail 0) ; digits guaranteed by the bound: 1.5   within Btot  (NOT INFORMATIVE: Btot > 1e-2 |T|)  [2s]
+  Psi_0=B P={7: 0} X=49737 #groups=72 N(c) in [1, 4, 7, 28] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')] ; dual terms: 55339506
+      T_dir =  1.759214863454e-03 +1.786228712690e-03i   T_dual =  1.759214867644e-03 +1.786228714208e-03i
+      |T_dir| = 2.5071e-03  |diff| = 4.46e-12 (abs)  1.78e-09 (rel)   Btot = 2.91e-05 = dual tail 2.9e-05 + quadrature 1.4e-14 + rounding allowance (estimate) 1.0e-11 (direct tail 0) ; digits guaranteed by the bound: 1.9   within Btot  (NOT INFORMATIVE: Btot > 1e-2 |T|)  [3s]
+  Psi_0=B P={7: 2} X=49737 #groups=36 N(c) in [7, 28] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')] ; dual terms: 37387944
+      T_dir = -6.573705198106e-03 +1.138020003286e-02i   T_dual = -6.573705176937e-03 +1.138020003000e-02i
+      |T_dir| = 1.3142e-02  |diff| = 2.14e-11 (abs)  1.63e-09 (rel)   Btot = 7.70e-05 = dual tail 7.7e-05 + quadrature 1.6e-14 + rounding allowance (estimate) 1.1e-11 (direct tail 0) ; digits guaranteed by the bound: 2.2   within Btot  [2s]
+      controls (* = required in this run), |T_dir - T_ctl|/|T_dir|: NE1* 2.0e+00  NE2 7.4e-01  NE3 8.0e-01  NE4 1.4e+00  NE5 2.2e-01  NE6 4.2e-01  NE7 1.5e+00
+  Psi_0=F P={7: 1} X=49737 #groups=36 N(c) in [21, 84] cases [('v=1', '-')] ; dual terms: 38993472
+      T_dir =  9.324359397206e-02 -8.441029254140e-02i   T_dual =  9.324357752085e-02 -8.441029050380e-02i
+      |T_dir| = 1.2578e-01  |diff| = 1.66e-08 (abs)  1.32e-07 (rel)   Btot = 1.02e-01 = dual tail 1.0e-01 + quadrature 1.7e-14 + rounding allowance (estimate) 1.1e-11 (direct tail 0) ; digits guaranteed by the bound: 0.1   within Btot  (NOT INFORMATIVE: Btot > 1e-2 |T|)  [24s]
+  Psi_0=A P={7: 1} X=49737 #groups=36 N(c) in [63, 252] cases [('3|c', '0')] ; dual terms: 35995608
+      T_dir = -2.369585807213e-02 +1.038609497818e-03i   T_dual = -2.369583276283e-02 +1.038478868465e-03i
+      |T_dir| = 2.3719e-02  |diff| = 1.33e-07 (abs)  5.61e-06 (rel)   Btot = 2.86e+00 = dual tail 2.9e+00 + quadrature 1.6e-14 + rounding allowance (estimate) 1.1e-11 (direct tail 0) ; digits guaranteed by the bound: -2.1   within Btot  (NOT INFORMATIVE: Btot > 1e-2 |T|)  [26s]
+  Psi_0=B P={13: 1} X=49737 #groups=36 N(c) in [13, 52] cases [('coprime', '+'), ('coprime', '-'), ('coprime', '0')] ; dual terms: 37994184
+      T_dir =  1.313177821467e-02 -2.749036391564e-02i   T_dual =  1.313177859369e-02 -2.749036382185e-02i
+      |T_dir| = 3.0466e-02  |diff| = 3.90e-10 (abs)  1.28e-08 (rel)   Btot = 4.87e-03 = dual tail 4.9e-03 + quadrature 1.8e-14 + rounding allowance (estimate) 1.2e-11 (direct tail 0) ; digits guaranteed by the bound: 0.8   within Btot  (NOT INFORMATIVE: Btot > 1e-2 |T|)  [44s]
+
+  F1 PASS: 0 runs exceed Btot / 5 informative runs (7 of 12 runs not informative)
+      non-informative runs, observed only: A {}: |diff|/|T| = 2.4e-10, Btot/|T| = 1.1e-02 ; B {7: 1}: |diff|/|T| = 1.4e-09, Btot/|T| = 1.6e-02 ; B {7: 4}: |diff|/|T| = 5.0e-10, Btot/|T| = 3.2e-02 ; B {7: 0}: |diff|/|T| = 1.8e-09, Btot/|T| = 1.2e-02 ; F {7: 1}: |diff|/|T| = 1.3e-07, Btot/|T| = 8.1e-01 ; A {7: 1}: |diff|/|T| = 5.6e-06, Btot/|T| = 1.2e+02 ; B {13: 1}: |diff|/|T| = 1.3e-08, Btot/|T| = 1.6e-01
+  NE1 PASS: required in 5 runs, rejected (> 10 Btot) in 5, smallest |T_dir - T_ctl|/Btot = 3.4e+02
+  NE2 PASS: required in 2 runs, rejected (> 10 Btot) in 2, smallest |T_dir - T_ctl|/Btot = 1.6e+05
+  NE3 PASS: required in 4 runs, rejected (> 10 Btot) in 4, smallest |T_dir - T_ctl|/Btot = 1.6e+05
+  NE4 PASS: required in 4 runs, rejected (> 10 Btot) in 4, smallest |T_dir - T_ctl|/Btot = 1.8e+05
+  NE5 PASS: required in 3 runs, rejected (> 10 Btot) in 3, smallest |T_dir - T_ctl|/Btot = 1.5e+05
+  NE6 PASS: required in 4 runs, rejected (> 10 Btot) in 4, smallest |T_dir - T_ctl|/Btot = 1.0e+05
+  NE7 PASS: required in 4 runs, rejected (> 10 Btot) in 4, smallest |T_dir - T_ctl|/Btot = 2.8e+05
+
+STAGE 5 (a): all criteria met   [422s]

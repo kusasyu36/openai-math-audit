@@ -1,0 +1,193 @@
+
+Stage 3, layer D (floating point, one GROUP (h_0, active set) at a time): the closed dual form of
+paper2.tex:3272-3282 with the scalar of :3420-3424 except its archimedean part.
+
+For a fixed Psi_0, primes P with exponents j_p, a class h_0 with phi-hat(h_0) != 0 and an admissible active
+set A ({p : j_p != 0} <= A <= P):
+
+  LEFT   sum over h_p != 0 (p in A), h_p = 0 (p not in A) of  c_F(h) conj theta(z + z_h, v),
+         c_F(h) = phi-hat(h_0) prod_p C_{p,j_p}(h_p)  with C_{p,j} from its definition (:2945),
+         conj theta(z + z_h, v) from its own Fourier series (exact rational phases for z_h).
+  RIGHT  C' * [ (3^{5/2}/2) 1_{sigma=0} v'^{2/3} prod_{p in A} B_{p,j_p}(0)
+               + sum_l d_sigma(l) psi(lambda^4 l) prod_{p in A} B_{p,j_p}(lambda^4 l) v' K_{1/3}(4 pi |l| v') e~(l z'') ],
+         C' = phi-hat(h_0) conj(kappa_0) prod_{p not in A}(1 - 1/N(p)) prod_{p in A} chi_p(sigma_p)^-2 omega_{p,j_p},
+         z'' = -conj(z)/(c^2 (v^2 + |z|^2)),  v' = v/(N(c)(v^2 + |z|^2)),
+         psi(x) = e(-delta'_0 r^-1 x / D_0), D_0 = lambda^3 c_0, c_0 = c/r,  kappa_0 from eq:ray-multiplier,
+         sigma_p, eps_p, omega_{p,j} from :3209-3246, B_{p,j} from :1735-1742.
+  So C of :3420 is  -(i/81) conj(alpha(c))^2 C'.  The factor -(i/81) conj(alpha(c))^2 and V^sharp are NOT
+  tested here (stage3_d).  The constant mode is the l = 0 instance of the same local identity; the paper
+  removes it by differentiating (:3363).  It matters only when every active prime has j = 4.
+  The representatives h_p = M^2 k_p of :3039 are used to build a, c, delta', kappa_0 (k_p = 1); on the left
+  the h_p run over small representatives of O/p (theta is 3O-periodic).
+  NOT independent: chi_p, gamma_j on both sides come from check_local.Local; tau, d_sigma from kubota.py.
+
+CRITERIA (fixed before the first run):
+  D1  |LEFT - RIGHT| <= 1e-9 * scale,  scale = (sum_h |c_F(h)|) * (sum of absolute values of the terms of the
+      series of conj theta at (z, v))   [ABSOLUTE difference against a sum of absolute values].
+      Also printed: rel = |LEFT - RIGHT| / max(|LEFT|, |RIGHT|).  If rel > 1e-6 in any group although D1 holds,
+      the group is listed (it would mean heavy cancellation, where D1 is weak).
+      One random point per group: v = t/|c|, z = zeta/|c| with t in [0.9, 1.1], |Re zeta|, |Im zeta| <= 0.3 when
+      the tables allow it (slack >= 1.27, slack = (complete range of the shorter table)/(T |c|/(4 pi))), otherwise
+      t in [0.97, 1.03], |Re zeta|, |Im zeta| <= 0.1 (needs slack >= 1.05; else the script stops).
+      [The first official run stopped at the first two-prime configuration with N(c) = 3276 because this
+      threshold was 1.06 (miscomputed: the narrow rule needs 1.0494, the largest |c| = 57.24 has slack 1.0563).
+      Its output, complete for the configurations with no prime or one prime, is kept as
+      stage3_c_groups_run1.out.  Criteria unchanged.  This file is a full rerun with the same seed.]
+      Truncation 4 pi |l| v <= T = 40 on both sides.  [CHANGED after the debug runs: T was 36 with the wide
+      rule only; see the note in stage3_b_translate.py.  Tolerances unchanged.]
+  COV printed table of what was exercised: (case of H, sigma, j, active/inactive).
+  Negative controls; each is counted only on groups where it is live, and must give rel > 1e-3 on EVERY live group:
+  ND1 kappa_0 in place of conj(kappa_0)                    live: kappa_0 != 1
+  ND2 psi without r^-1                                     live: D_0 does not divide delta'(r^-1 - 1)
+  ND3 chi_p^{+(j+2)} in B_{p,j}                            live: some active p with j in {2, 3, 5}
+  ND4 chi_p(sigma_p)^-2 omitted                            live: prod chi_p(sigma_p)^2 != 1
+  ND5 eps_p replaced by -eps_p in omega_{p,j}              live: prod over active p with j != 4 of chi_p(-1)^(j+2) = -1
+  ND6 d_+ <-> d_-                                          live: sigma != 0
+  ND7 c_0 replaced by c_0 * zeta6 (other unit) in psi and kappa_0, same c
+      live: kappa_0 or the character psi actually changes.  [CHANGED after a debug run on the first 36
+      configurations with the small table: the header said 'live: always'; in the 72 groups with c_0 = 1
+      (psi trivial, (a/c_0)_3 = 1) the replacement changes nothing, so the control was dead there.  D1 and the
+      other controls were not touched.]
+  ND8 (1 - 1/N) for an inactive prime replaced by 1        live: some inactive prime
+Configurations: see CONF below (written before running).
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage3_c_groups.py > audits/003dual/stage3_c_groups.out 2>/dev/null
+
+  L = 18 ; 72 configurations (Psi_0, twists)
+  theta tables: N(A) <= 1000000 ; complete to |l| <= 192.45 (theta), 111.11 (cusp series)  [1s]
+
+  Psi_0  twists {N(p): j}        #groups  #translates/group   worst diff/scale   worst rel   N(c) values
+  A      {}                          36    [1]                 9.90e-16           3.09e-14    [9, 36]   [1s]
+  B      {}                          36    [1]                 2.24e-15           1.54e-14    [1, 4]   [1s]
+  C      {}                          36    [1]                 2.71e-15           1.75e-14    [3, 12]   [1s]
+  D      {}                          27    [1]                 5.67e-16           1.72e-13    [36]   [2s]
+  E      {}                          27    [1]                 1.20e-15           2.61e-14    [12]   [2s]
+  F      {}                          36    [1]                 2.78e-15           2.29e-14    [3, 12]   [2s]
+  A      {7: 0}                      72    [1, 6]              1.06e-15           3.81e-13    [9, 36, 63, 252]   [5s]
+  A      {7: 1}                      36    [6]                 2.73e-16           1.18e-14    [63, 252]   [7s]
+  A      {7: 2}                      36    [6]                 1.72e-16           6.23e-15    [63, 252]   [10s]
+  A      {7: 3}                      36    [6]                 3.15e-16           2.26e-14    [63, 252]   [13s]
+  A      {7: 4}                      36    [6]                 2.29e-16           4.31e-14    [63, 252]   [15s]
+  A      {7: 5}                      36    [6]                 2.57e-16           9.55e-15    [63, 252]   [18s]
+  B      {7: 0}                      72    [1, 6]              2.11e-15           1.81e-14    [1, 4, 7, 28]   [19s]
+  B      {7: 1}                      36    [6]                 7.00e-16           1.77e-14    [7, 28]   [20s]
+  B      {7: 2}                      36    [6]                 6.84e-16           1.30e-14    [7, 28]   [21s]
+  B      {7: 3}                      36    [6]                 5.30e-16           7.05e-14    [7, 28]   [22s]
+  B      {7: 4}                      36    [6]                 4.40e-16           1.42e-14    [7, 28]   [22s]
+  B      {7: 5}                      36    [6]                 4.71e-16           2.29e-14    [7, 28]   [23s]
+  C      {7: 0}                      72    [1, 6]              2.45e-15           5.35e-14    [3, 12, 21, 84]   [26s]
+  C      {7: 1}                      36    [6]                 2.48e-16           5.13e-14    [21, 84]   [29s]
+  C      {7: 2}                      36    [6]                 4.82e-16           4.55e-14    [21, 84]   [33s]
+  C      {7: 3}                      36    [6]                 3.22e-16           2.79e-14    [21, 84]   [36s]
+  C      {7: 4}                      36    [6]                 3.18e-16           1.25e-14    [21, 84]   [39s]
+  C      {7: 5}                      36    [6]                 5.29e-16           1.38e-14    [21, 84]   [42s]
+  E      {7: 0}                      54    [1, 6]              1.22e-15           2.08e-14    [12, 84]   [45s]
+  E      {7: 1}                      27    [6]                 2.11e-16           4.75e-14    [84]   [48s]
+  E      {7: 2}                      27    [6]                 2.65e-16           2.54e-14    [84]   [51s]
+  E      {7: 3}                      27    [6]                 2.82e-16           2.28e-14    [84]   [54s]
+  E      {7: 4}                      27    [6]                 2.07e-16           8.63e-15    [84]   [56s]
+  E      {7: 5}                      27    [6]                 4.64e-16           2.28e-14    [84]   [59s]
+  F      {7: 0}                      72    [1, 6]              2.88e-15           3.92e-14    [3, 12, 21, 84]   [63s]
+  F      {7: 1}                      36    [6]                 4.14e-16           3.36e-14    [21, 84]   [65s]
+  F      {7: 2}                      36    [6]                 4.72e-16           2.98e-14    [21, 84]   [69s]
+  F      {7: 3}                      36    [6]                 3.31e-16           3.85e-14    [21, 84]   [72s]
+  F      {7: 4}                      36    [6]                 3.49e-16           1.01e-14    [21, 84]   [75s]
+  F      {7: 5}                      36    [6]                 6.32e-16           1.86e-14    [21, 84]   [78s]
+  A      {13: 1}                     36    [12]                1.39e-16           2.57e-14    [117, 468]   [84s]
+  A      {13: 4}                     36    [12]                1.09e-16           8.37e-15    [117, 468]   [89s]
+  A      {13: 0}                     72    [1, 12]             7.90e-16           3.71e-14    [9, 36, 117, 468]   [94s]
+  A      {25: 1}                     36    [24]                3.15e-17           8.91e-15    [225, 900]   [105s]
+  A      {25: 2}                     36    [24]                6.12e-17           2.17e-13    [225, 900]   [119s]
+  A      {19: 3}                     36    [18]                8.54e-17           1.16e-14    [171, 684]   [129s]
+  A      {19: 5}                     36    [18]                1.16e-16           9.73e-15    [171, 684]   [138s]
+  B      {13: 1}                     36    [12]                3.68e-16           2.01e-14    [13, 52]   [140s]
+  B      {13: 4}                     36    [12]                5.39e-16           8.26e-15    [13, 52]   [141s]
+  B      {13: 0}                     72    [1, 12]             1.75e-15           1.65e-14    [1, 4, 13, 52]   [143s]
+  B      {25: 1}                     36    [24]                1.53e-16           9.56e-14    [25, 100]   [145s]
+  B      {25: 2}                     36    [24]                1.69e-16           1.03e-13    [25, 100]   [148s]
+  B      {19: 3}                     36    [18]                1.85e-16           2.94e-14    [19, 76]   [150s]
+  B      {19: 5}                     36    [18]                1.91e-16           6.50e-14    [19, 76]   [153s]
+  F      {13: 1}                     36    [12]                2.24e-16           2.45e-14    [39, 156]   [158s]
+  F      {13: 4}                     36    [12]                2.45e-16           3.46e-14    [39, 156]   [164s]
+  F      {13: 0}                     72    [1, 12]             3.18e-15           3.01e-14    [3, 12, 39, 156]   [169s]
+  F      {25: 1}                     36    [24]                7.95e-17           1.65e-14    [75, 300]   [181s]
+  F      {25: 2}                     36    [24]                9.49e-17           1.20e-13    [75, 300]   [195s]
+  F      {19: 3}                     36    [18]                1.89e-16           2.32e-14    [57, 228]   [205s]
+  F      {19: 5}                     36    [18]                1.59e-16           1.63e-14    [57, 228]   [215s]
+  A      {7: 1, 13: 5}               36    [72]                2.24e-17           1.15e-14    [819, 3276]   [294s]
+  A      {7: 0, 13: 4}               72    [12, 72]            1.38e-16           2.59e-14    [117, 468, 819, 3276]   [367s]
+  A      {7: 2, 13: 0}               72    [6, 72]             2.19e-16           1.61e-14    [63, 252, 819, 3276]   [444s]
+  A      {7: 4, 13: 4}               36    [72]                2.22e-17           5.70e-15    [819, 3276]   [512s]
+  A      {7: 1, 13: 1}               36    [72]                1.93e-17           1.33e-14    [819, 3276]   [577s]
+  B      {7: 1, 13: 5}               36    [72]                6.07e-17           1.76e-14    [91, 364]   [590s]
+  B      {7: 0, 13: 4}               72    [12, 72]            6.72e-16           1.18e-14    [13, 52, 91, 364]   [602s]
+  B      {7: 2, 13: 0}               72    [6, 72]             5.28e-16           1.27e-13    [7, 28, 91, 364]   [616s]
+  B      {7: 4, 13: 4}               36    [72]                5.74e-17           9.18e-15    [91, 364]   [627s]
+  B      {7: 1, 13: 1}               36    [72]                4.17e-17           1.67e-14    [91, 364]   [638s]
+  C      {7: 1, 13: 5}               36    [72]                5.39e-17           2.44e-14    [273, 1092]   [690s]
+  C      {7: 0, 13: 4}               72    [12, 72]            2.31e-16           5.38e-13    [39, 156, 273, 1092]   [739s]
+  C      {7: 2, 13: 0}               72    [6, 72]             4.85e-16           2.74e-14    [21, 84, 273, 1092]   [796s]
+  C      {7: 4, 13: 4}               36    [72]                2.46e-17           3.81e-14    [273, 1092]   [848s]
+  C      {7: 1, 13: 1}               36    [72]                5.44e-17           2.78e-14    [273, 1092]   [900s]
+
+  coverage (case of H, sigma, j, role): number of (group, prime) incidences
+    3|c      sigma=0  j=-  no prime  : 63
+    3|c      sigma=0  j=0  active    : 144
+    3|c      sigma=0  j=0  inactive  : 144
+    3|c      sigma=0  j=1  active    : 216
+    3|c      sigma=0  j=2  active    : 144
+    3|c      sigma=0  j=3  active    : 72
+    3|c      sigma=0  j=4  active    : 216
+    3|c      sigma=0  j=5  active    : 108
+    coprime  sigma=+  j=-  no prime  : 12
+    coprime  sigma=+  j=0  active    : 48
+    coprime  sigma=+  j=0  inactive  : 48
+    coprime  sigma=+  j=1  active    : 72
+    coprime  sigma=+  j=2  active    : 48
+    coprime  sigma=+  j=3  active    : 24
+    coprime  sigma=+  j=4  active    : 72
+    coprime  sigma=+  j=5  active    : 36
+    coprime  sigma=-  j=-  no prime  : 12
+    coprime  sigma=-  j=0  active    : 48
+    coprime  sigma=-  j=0  inactive  : 48
+    coprime  sigma=-  j=1  active    : 72
+    coprime  sigma=-  j=2  active    : 48
+    coprime  sigma=-  j=3  active    : 24
+    coprime  sigma=-  j=4  active    : 72
+    coprime  sigma=-  j=5  active    : 36
+    coprime  sigma=0  j=-  no prime  : 12
+    coprime  sigma=0  j=0  active    : 48
+    coprime  sigma=0  j=0  inactive  : 48
+    coprime  sigma=0  j=1  active    : 72
+    coprime  sigma=0  j=2  active    : 48
+    coprime  sigma=0  j=3  active    : 24
+    coprime  sigma=0  j=4  active    : 72
+    coprime  sigma=0  j=5  active    : 36
+    v=1      sigma=+  j=-  no prime  : 63
+    v=1      sigma=+  j=0  active    : 135
+    v=1      sigma=+  j=0  inactive  : 135
+    v=1      sigma=+  j=1  active    : 171
+    v=1      sigma=+  j=2  active    : 135
+    v=1      sigma=+  j=3  active    : 63
+    v=1      sigma=+  j=4  active    : 207
+    v=1      sigma=+  j=5  active    : 99
+    v=1      sigma=-  j=-  no prime  : 36
+    v=1      sigma=-  j=0  active    : 72
+    v=1      sigma=-  j=0  inactive  : 72
+    v=1      sigma=-  j=1  active    : 108
+    v=1      sigma=-  j=2  active    : 72
+    v=1      sigma=-  j=3  active    : 72
+    v=1      sigma=-  j=4  active    : 72
+    v=1      sigma=-  j=5  active    : 72
+
+  D1   PASS  0 failures / 3015 groups ; worst |L-R|/scale = 3.18e-15 (tolerance 1e-09) ; worst |L-R|/max(|L|,|R|) = 5.38e-13 ; narrow point rule in 270 groups
+       no group has rel > 1e-6
+  ND1  PASS  live in 1877 groups, rejected (rel > 1e-03) in 1877, smallest rel 1.73e+00
+  ND2  FAIL  live in 2169 groups, rejected (rel > 1e-03) in 2097, smallest rel 1.35e-16
+  ND3  PASS  live in 1161 groups, rejected (rel > 1e-03) in 1161, smallest rel 5.32e-02
+  ND4  PASS  live in 1563 groups, rejected (rel > 1e-03) in 1563, smallest rel 1.73e+00
+  ND5  PASS  live in 945 groups, rejected (rel > 1e-03) in 945, smallest rel 2.00e+00
+  ND6  PASS  live in 1884 groups, rejected (rel > 1e-03) in 1884, smallest rel 2.11e-03
+  ND7  PASS  live in 2808 groups, rejected (rel > 1e-03) in 2808, smallest rel 3.77e-03
+  ND8  PASS  live in 495 groups, rejected (rel > 1e-03) in 495, smallest rel 7.69e-02
+
+LAYER D: SOME CRITERIA NOT MET: ND2   [900s]

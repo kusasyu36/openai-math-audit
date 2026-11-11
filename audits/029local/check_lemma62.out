@@ -1,0 +1,58 @@
+== K0: the prime (zeta12 - 2) of Q(zeta12) ==
+OK   Phi_12(2) = 13, so N(zeta12 - 2) = prod over embeddings (2 - zeta12^k) = 13 and (zeta12 - 2) is a prime of degree 1 containing 13
+OK   norm recomputed from the 4 complex embeddings = 13   [13.000000000000]
+OK   zeta12 -> 2 mod p; 2 has order 12 mod 13, so mu_12 reduces injectively
+OK   q = 13 = 1 mod 12 and chi_p(-1) = (-1)^((q-1)/6) = 1  (02-arithmetic.tex:406-408)
+OK   mu_6 = <zeta12^2> reduces to {4^k}: 6 distinct residues, and x^2 lies in it for every unit x
+OK   the residue symbol equals the character of 029core Part D (2^k -> zeta6^k): the character itself is not new
+info: for the generator p = zeta12 - 2,  v/p = 11*v/13 mod Z_13 (Phi12'(2) = 2 mod 13); with psi_p(x) = e(-+{x}) this is c = 2 or 11 below.
+info: the paper's allowed generator may differ by a unit, so every c in F_13^x is run.
+== K1..K7 over all conventions: o in {+1,-1}, c in 1..12; j = 0..5, e = 0..9, all 12 units t ==
+  convention o=+1 c= 1 done: 0 failing keys, omega = +0.859543+0.511064i
+  convention o=+1 c= 2 done: 0 failing keys, omega = -0.872366+0.488854i
+  convention o=+1 c= 3 done: 0 failing keys, omega = -0.872366+0.488854i
+  convention o=+1 c= 4 done: 0 failing keys, omega = +0.012823-0.999918i
+  convention o=+1 c= 5 done: 0 failing keys, omega = +0.859543+0.511064i
+  convention o=+1 c= 6 done: 0 failing keys, omega = +0.012823-0.999918i
+  convention o=+1 c= 7 done: 0 failing keys, omega = +0.012823-0.999918i
+  convention o=+1 c= 8 done: 0 failing keys, omega = +0.859543+0.511064i
+  convention o=+1 c= 9 done: 0 failing keys, omega = +0.012823-0.999918i
+  convention o=+1 c=10 done: 0 failing keys, omega = -0.872366+0.488854i
+  convention o=+1 c=11 done: 0 failing keys, omega = -0.872366+0.488854i
+  convention o=+1 c=12 done: 0 failing keys, omega = +0.859543+0.511064i
+  convention o=-1 c= 1 done: 0 failing keys, omega = +0.859543-0.511064i
+  convention o=-1 c= 2 done: 0 failing keys, omega = -0.872366-0.488854i
+  convention o=-1 c= 3 done: 0 failing keys, omega = -0.872366-0.488854i
+  convention o=-1 c= 4 done: 0 failing keys, omega = +0.012823+0.999918i
+  convention o=-1 c= 5 done: 0 failing keys, omega = +0.859543-0.511064i
+  convention o=-1 c= 6 done: 0 failing keys, omega = +0.012823+0.999918i
+  convention o=-1 c= 7 done: 0 failing keys, omega = +0.012823+0.999918i
+  convention o=-1 c= 8 done: 0 failing keys, omega = +0.859543-0.511064i
+  convention o=-1 c= 9 done: 0 failing keys, omega = +0.012823+0.999918i
+  convention o=-1 c=10 done: 0 failing keys, omega = -0.872366-0.488854i
+  convention o=-1 c=11 done: 0 failing keys, omega = -0.872366-0.488854i
+  convention o=-1 c=12 done: 0 failing keys, omega = +0.859543-0.511064i
+OK   K1 tau*conj(tau) = 13  (24 conventions)
+OK   K1 |g_2| = 1  (24 conventions)
+OK   K2 mask identity  (24 conventions)
+OK   K3 definition via rules = eq:reflection-local-formula  (24 conventions)
+OK   K4 monomial R(t) = s chi(t)^b, b_{j,0} = 8-j, b_{j,e} = 4+2e  (24 conventions)
+OK   K5 e>0: s = 0 unless j = 4  (24 conventions)
+OK   K5 e = 2 mod 3: s = 0  (24 conventions)
+OK   K6 j = 1: vanishes for e > 0  (24 conventions)
+OK   K6 R_{p,1,0}(t) = omega chi(t)  (24 conventions)
+OK   K6 omega = (sum chi^3(x) psi(x/p)) / tau_1  (24 conventions)
+OK   K6 |omega| = 1 exactly  (24 conventions)
+OK   K7 |s_{j,0}| <= 1  (24 conventions)
+OK   K7x |s_{j,0}|^2 = 1 (j=1,2,3,5), 1/13 (j=0,4), exact  (24 conventions)
+OK   K7 e>0: |s| <= q^(1/2) |W_e| = beta_p(e)  (24 conventions)
+== G: the 24 conventions are Galois conjugates of one ==
+OK   G: omega(o,c) = sigma_m(omega(1,1)) for the automorphism z -> z^m, m = o mod 6, m = c mod 13 (so the exact equalities in the 24 runs are ONE computation and its conjugates, not 24 independent confirmations)
+== negative controls ==
+OK   N1: chi(v)^4 -> chi(v)^2 in eq:reflection-local-formula is detected (K3 fails) in every convention
+OK   N2: exponents b -> b - 2 (i.e. -j at e=0, 2e at e>0) are detected (K4 fails) in every convention
+info N3 (exploratory): torus law with the opposite orientation relative to the W unit rule -> K3 fails in 24 of 24 conventions
+info: for j = 4 and e > 0 with e != 2 mod 3 the value s is nonzero in every convention: True (the lemma only claims 'zero unless')
+info: omega takes 6 distinct values over the 24 conventions (it depends on the convention; only |omega| = 1 and the formula are claimed)
+
+SUMMARY: 23 checks, 23 OK, 0 FAIL

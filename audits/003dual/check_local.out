@@ -1,0 +1,162 @@
+003 stage 1: local character transformation, exhaustive over O/(p)
+criteria: see the header of this file (fixed before the first run)
+
+p = 1+3*omega   N(p) = 7   [0s]
+  K0   PASS  N=7 q=7 split chi_p(-1)=-1
+  A    PASS  chi_p = kubota.Prime.sext (all residues); max |gamma_j - kubota.gauss_gamma| = 4.2e-16
+  G1   PASS  g_j conj(g_j) = N, j=1..5
+  G2   PASS  g_1 g_5 = chi_p(-1) N
+  F1   PASS  eq:ray-fourier, 42 pairs (j,h)
+  F2   PASS  sum chi^j(y) e(-y/p) = chi(-1)^j g_j, j=1..5
+  F3   PASS  Fourier inversion, 42 pairs (j,x)
+  J4   PASS  sum_{y!=0} e(xy/p) = -1 + N[p|x]
+  T1   PASS  j=1,2,3,5: 0 mismatches / 1008 triples (sigma,eps,x)
+  T2   PASS  j=4: 0 / 252
+  T3   PASS  j=0: 0 / 252
+  B1   PASS  chi^-3 = chi^3
+  N1   PASS  chi(a)^+2: mismatches per j=0..5: [216, 216, 252, 216, 252, 216] (must all be > 0)
+  N2   PASS  no chi(-1)^j: mismatches {1: 216, 2: 0, 3: 216, 5: 216} ; expected to fail for j in [1, 3, 5]
+  N3   PASS  omega_{p,0} with +: 216 mismatches (must be > 0)
+  D0   PASS  plain-loop recomputation of the left side agrees with the table
+
+p = 4+3*omega   N(p) = 13   [0s]
+  K0   PASS  N=13 q=13 split chi_p(-1)=+1
+  A    PASS  chi_p = kubota.Prime.sext (all residues); max |gamma_j - kubota.gauss_gamma| = 2.3e-15
+  G1   PASS  g_j conj(g_j) = N, j=1..5
+  G2   PASS  g_1 g_5 = chi_p(-1) N
+  F1   PASS  eq:ray-fourier, 78 pairs (j,h)
+  F2   PASS  sum chi^j(y) e(-y/p) = chi(-1)^j g_j, j=1..5
+  F3   PASS  Fourier inversion, 78 pairs (j,x)
+  J4   PASS  sum_{y!=0} e(xy/p) = -1 + N[p|x]
+  T1   PASS  j=1,2,3,5: 0 mismatches / 7488 triples (sigma,eps,x)
+  T2   PASS  j=4: 0 / 1872
+  T3   PASS  j=0: 0 / 1872
+  B1   PASS  chi^-3 = chi^3
+  N1   PASS  chi(a)^+2: mismatches per j=0..5: [1728, 1728, 1872, 1728, 1872, 1728] (must all be > 0)
+  N2   PASS  no chi(-1)^j: mismatches {1: 0, 2: 0, 3: 0, 5: 0} ; expected to fail for j in []
+  N3   PASS  omega_{p,0} with +: 1728 mismatches (must be > 0)
+  D0   PASS  plain-loop recomputation of the left side agrees with the table
+
+p = -2+3*omega   N(p) = 19   [1s]
+  K0   PASS  N=19 q=19 split chi_p(-1)=-1
+  A    PASS  chi_p = kubota.Prime.sext (all residues); max |gamma_j - kubota.gauss_gamma| = 6.7e-16
+  G1   PASS  g_j conj(g_j) = N, j=1..5
+  G2   PASS  g_1 g_5 = chi_p(-1) N
+  F1   PASS  eq:ray-fourier, 114 pairs (j,h)
+  F2   PASS  sum chi^j(y) e(-y/p) = chi(-1)^j g_j, j=1..5
+  F3   PASS  Fourier inversion, 114 pairs (j,x)
+  J4   PASS  sum_{y!=0} e(xy/p) = -1 + N[p|x]
+  T1   PASS  j=1,2,3,5: 0 mismatches / 24624 triples (sigma,eps,x)
+  T2   PASS  j=4: 0 / 6156
+  T3   PASS  j=0: 0 / 6156
+  B1   PASS  chi^-3 = chi^3
+  N1   PASS  chi(a)^+2: mismatches per j=0..5: [5832, 5832, 6156, 5832, 6156, 5832] (must all be > 0)
+  N2   PASS  no chi(-1)^j: mismatches {1: 5832, 2: 0, 3: 5832, 5: 5832} ; expected to fail for j in [1, 3, 5]
+  N3   PASS  omega_{p,0} with +: 5832 mismatches (must be > 0)
+
+p = 1+6*omega   N(p) = 31   [1s]
+  K0   PASS  N=31 q=31 split chi_p(-1)=-1
+  A    PASS  chi_p = kubota.Prime.sext (all residues); max |gamma_j - kubota.gauss_gamma| = 5.6e-16
+  G1   PASS  g_j conj(g_j) = N, j=1..5
+  G2   PASS  g_1 g_5 = chi_p(-1) N
+  F1   PASS  eq:ray-fourier, 186 pairs (j,h)
+  F2   PASS  sum chi^j(y) e(-y/p) = chi(-1)^j g_j, j=1..5
+  F3   PASS  Fourier inversion, 186 pairs (j,x)
+  J4   PASS  sum_{y!=0} e(xy/p) = -1 + N[p|x]
+  T1   PASS  j=1,2,3,5: 0 mismatches / 111600 triples (sigma,eps,x)
+  T2   PASS  j=4: 0 / 27900
+  T3   PASS  j=0: 0 / 27900
+  B1   PASS  chi^-3 = chi^3
+  N1   PASS  chi(a)^+2: mismatches per j=0..5: [27000, 27000, 27900, 27000, 27900, 27000] (must all be > 0)
+  N2   PASS  no chi(-1)^j: mismatches {1: 27000, 2: 0, 3: 27000, 5: 27000} ; expected to fail for j in [1, 3, 5]
+  N3   PASS  omega_{p,0} with +: 27000 mismatches (must be > 0)
+
+p = 7+3*omega   N(p) = 37   [2s]
+  K0   PASS  N=37 q=37 split chi_p(-1)=+1
+  A    PASS  chi_p = kubota.Prime.sext (all residues); max |gamma_j - kubota.gauss_gamma| = 1.8e-15
+  G1   PASS  g_j conj(g_j) = N, j=1..5
+  G2   PASS  g_1 g_5 = chi_p(-1) N
+  F1   PASS  eq:ray-fourier, 222 pairs (j,h)
+  F2   PASS  sum chi^j(y) e(-y/p) = chi(-1)^j g_j, j=1..5
+  F3   PASS  Fourier inversion, 222 pairs (j,x)
+  J4   PASS  sum_{y!=0} e(xy/p) = -1 + N[p|x]
+  T1   PASS  j=1,2,3,5: 0 mismatches / 191808 triples (sigma,eps,x)
+  T2   PASS  j=4: 0 / 47952
+  T3   PASS  j=0: 0 / 47952
+  B1   PASS  chi^-3 = chi^3
+  N1   PASS  chi(a)^+2: mismatches per j=0..5: [46656, 46656, 47952, 46656, 47952, 46656] (must all be > 0)
+  N2   PASS  no chi(-1)^j: mismatches {1: 0, 2: 0, 3: 0, 5: 0} ; expected to fail for j in []
+  N3   PASS  omega_{p,0} with +: 46656 mismatches (must be > 0)
+
+p = 7+6*omega   N(p) = 43   [3s]
+  K0   PASS  N=43 q=43 split chi_p(-1)=-1
+  A    PASS  chi_p = kubota.Prime.sext (all residues); max |gamma_j - kubota.gauss_gamma| = 2.7e-15
+  G1   PASS  g_j conj(g_j) = N, j=1..5
+  G2   PASS  g_1 g_5 = chi_p(-1) N
+  F1   PASS  eq:ray-fourier, 258 pairs (j,h)
+  F2   PASS  sum chi^j(y) e(-y/p) = chi(-1)^j g_j, j=1..5
+  F3   PASS  Fourier inversion, 258 pairs (j,x)
+  J4   PASS  sum_{y!=0} e(xy/p) = -1 + N[p|x]
+  T1   PASS  j=1,2,3,5: 0 mismatches / 303408 triples (sigma,eps,x)
+  T2   PASS  j=4: 0 / 75852
+  T3   PASS  j=0: 0 / 75852
+  B1   PASS  chi^-3 = chi^3
+  N1   PASS  chi(a)^+2: mismatches per j=0..5: [74088, 74088, 75852, 74088, 75852, 74088] (must all be > 0)
+  N2   PASS  no chi(-1)^j: mismatches {1: 74088, 2: 0, 3: 74088, 5: 74088} ; expected to fail for j in [1, 3, 5]
+  N3   PASS  omega_{p,0} with +: 74088 mismatches (must be > 0)
+
+p = -5+0*omega   N(p) = 25   [5s]
+  K0   PASS  N=25 q=5 inert chi_p(-1)=+1
+  A    PASS  chi_p = kubota.Prime.sext (all residues); max |gamma_j - kubota.gauss_gamma| = 4.7e-16
+  G1   PASS  g_j conj(g_j) = N, j=1..5
+  G2   PASS  g_1 g_5 = chi_p(-1) N
+  F1   PASS  eq:ray-fourier, 150 pairs (j,h)
+  F2   PASS  sum chi^j(y) e(-y/p) = chi(-1)^j g_j, j=1..5
+  F3   PASS  Fourier inversion, 150 pairs (j,x)
+  J4   PASS  sum_{y!=0} e(xy/p) = -1 + N[p|x]
+  T1   PASS  j=1,2,3,5: 0 mismatches / 57600 triples (sigma,eps,x)
+  T2   PASS  j=4: 0 / 14400
+  T3   PASS  j=0: 0 / 14400
+  B1   PASS  chi^-3 = chi^3
+  N1   PASS  chi(a)^+2: mismatches per j=0..5: [9216, 9216, 14400, 9216, 14400, 9216] (must all be > 0)
+  N2   PASS  no chi(-1)^j: mismatches {1: 0, 2: 0, 3: 0, 5: 0} ; expected to fail for j in []
+  N3   PASS  omega_{p,0} with +: 13824 mismatches (must be > 0)
+
+p = -11+0*omega   N(p) = 121   [6s]
+  K0   PASS  N=121 q=11 inert chi_p(-1)=+1
+  A    PASS  chi_p = kubota.Prime.sext (all residues); max |gamma_j - kubota.gauss_gamma| = 4.7e-16
+  G1   PASS  g_j conj(g_j) = N, j=1..5
+  G2   PASS  g_1 g_5 = chi_p(-1) N
+  F1   PASS  eq:ray-fourier, 726 pairs (j,h)
+  F2   PASS  sum chi^j(y) e(-y/p) = chi(-1)^j g_j, j=1..5
+  F3   PASS  Fourier inversion, 726 pairs (j,x)
+  J4   PASS  sum_{y!=0} e(xy/p) = -1 + N[p|x]
+  T1   PASS  j=1,2,3,5: 0 mismatches / 6969600 triples (sigma,eps,x)
+  T2   PASS  j=4: 0 / 1742400
+  T3   PASS  j=0: 0 / 1742400
+  B1   PASS  chi^-3 = chi^3
+  N1   PASS  chi(a)^+2: mismatches per j=0..5: [1152000, 1152000, 1742400, 1152000, 1742400, 1152000] (must all be > 0)
+  N2   PASS  no chi(-1)^j: mismatches {1: 0, 2: 0, 3: 0, 5: 0} ; expected to fail for j in []
+  N3   PASS  omega_{p,0} with +: 1728000 mismatches (must be > 0)
+
+summary by check (over 8 primes):
+  A    8 / 8
+  B1   8 / 8
+  D0   2 / 2
+  F1   8 / 8
+  F2   8 / 8
+  F3   8 / 8
+  G1   8 / 8
+  G2   8 / 8
+  J4   8 / 8
+  K0   8 / 8
+  N1   8 / 8
+  N2   8 / 8
+  N3   8 / 8
+  T1   8 / 8
+  T2   8 / 8
+  T3   8 / 8
+
+triples (j, sigma, eps, x) compared in T1-T3: 11500704 ; informative cases (j, t = eps x): about 1776
+checks: 122 passed / 122   =>  STAGE 1 GATE: PASS
+elapsed 28s

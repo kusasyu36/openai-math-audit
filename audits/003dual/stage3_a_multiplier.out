@@ -1,0 +1,71 @@
+
+Stage 3, layer A (EXACT, no floating point): eq:ray-multiplier (paper2.tex:3175-3183) against the matrix g_1.
+
+What is compared.  For a configuration (L, h_0, active primes r, representatives h_p = M^2 k_p) the
+construction of :3039-3089 gives a, c, delta', b_g, H, g_1 = g H^-1.  Left: kappa(g_1) = (c_1/a_1)_3 computed
+from the entries of g_1 (:3152-3154).  Right: the three cases of eq:ray-multiplier.  Both are exponents mod 3.
+Both sides use the same routine jacobi3 (cubic reciprocity + supplementary laws calibrated by brute force);
+jacobi3 itself is validated in J0 against kubota.cubic_symbol (factorisation + Euler criterion).  What is
+NOT tested here: that kappa is the multiplier of theta (that is layer B, stage3_b) -- this layer only tests
+the algebraic identity "(c_1/a_1)_3 of this particular g_1 equals the displayed product of symbols".
+
+CRITERIA (fixed before the first run):
+  J0  jacobi3(al, be) == kubota.cubic_symbol(al, be) for every primary non-unit be with N(be) <= 400 and
+      every al in the box [-8, 8]^2 (None = not coprime must also agree).  0 mismatches.
+  A1  kappa_literal == kappa_formula in every configuration.  0 mismatches.
+  A2  kappa_0 (formula) and kappa_literal - (a/r)_3 are both constant when the k_p vary with (L, h_0, r) fixed. 0 violations.
+  A3  (a/r)_3 == prod_p chi_p(a)^2 with chi_p from check_local.Local (another table). 0 mismatches.
+  A4  in the case (c, lambda) = 1, replacing u_0 by u_0 + 3t (t in {1, omega, -1-omega}) does not change
+      kappa_literal ("a fixed set of representatives modulo 3", :3087).  0 changes.
+  COV all three cases of H occur, and in each case kappa takes at least two different values (otherwise
+      the comparison is vacuous there).
+  Configurations: L in {18, 36, 54}; every h_0 in O/(L); r in {1, p7, p13, -5, p19, p7*p13}; 4 tuples (k_p)
+      for one prime, 3 for two primes (1 for r = 1).
+  Negative controls (expected to FAIL; a control counts only if it is "live", i.e. changes something):
+  NU  the other unit reading: c_0' := denominator of lambda^2 h_0 / L normalised by the rule of :3047
+      applied to lambda^2 h_0 / L alone (so c = unit * c_0' * r).  Expected: mismatches > 0 among the
+      configurations where c_0' != c/r.  (If it showed 0 mismatches the two readings would be
+      indistinguishable at this layer; that would be reported, not hidden.)
+  NU2 c_0' = c_0 * u for each unit u != 1: mismatches > 0 for each u != -1... (-1 is a cube: (-1/a)_3 = 1,
+      so u = -1 is expected to give 0 mismatches in the case 3 | c; reported per case).
+  NM  representatives h_p = k_p without the factor M^2: expected A2 violations > 0 (kappa_0 not fixed).
+  ND  case v_lambda(c) = 1 with the first factor (-u_0/(a - u_0 b_g))_3 dropped: mismatches > 0.
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage3_a_multiplier.py > audits/003dual/stage3_a_multiplier.out 2>/dev/null
+
+  J0   PASS  0 mismatches / 44506 pairs (al, be)
+    L = 18, r = [] done [0s]
+    L = 18, r = [(1, 3)] done [1s]
+    L = 18, r = [(4, 3)] done [2s]
+    L = 18, r = [(-5, 0)] done [3s]
+    L = 18, r = [(-2, 3)] done [3s]
+    L = 18, r = [(1, 3), (4, 3)] done [4s]
+    L = 36, r = [] done [4s]
+    L = 36, r = [(1, 3)] done [8s]
+    L = 36, r = [(4, 3)] done [12s]
+    L = 36, r = [(-5, 0)] done [16s]
+    L = 36, r = [(-2, 3)] done [21s]
+    L = 36, r = [(1, 3), (4, 3)] done [24s]
+    L = 54, r = [] done [25s]
+    L = 54, r = [(1, 3)] done [33s]
+    L = 54, r = [(4, 3)] done [41s]
+    L = 54, r = [(-5, 0)] done [49s]
+    L = 54, r = [(-2, 3)] done [57s]
+    L = 54, r = [(1, 3), (4, 3)] done [64s]
+
+  A1   PASS  0 mismatches / 90720 configurations
+  A2   PASS  0 violations / 22680 (L, h_0, r)
+  A3   PASS  0 mismatches / 90720
+  A4   PASS  0 changes / 12960
+  COV  PASS  configurations per case: {'3|c': 77760, 'v=1': 8640, 'coprime': 4320} ; values of kappa (exponents) seen per case: {'3|c': [0, 1, 2], 'v=1': [0, 1, 2], 'coprime': [0, 1, 2]}
+  negative controls:
+  NU   FAIL  alternative unit reading: live (c_0' != c/r) in 0 configurations, mismatches in 0 ; per case live/bad: {'3|c': (0, 0), 'v=1': (0, 0), 'coprime': (0, 0)}
+       NU2 c_0 * zeta6^1 : mismatches/total per case: {'3|c': (51840, 77760), 'v=1': (5760, 8640), 'coprime': (0, 4320)}
+       NU2 c_0 * zeta6^2 : mismatches/total per case: {'3|c': (51840, 77760), 'v=1': (5760, 8640), 'coprime': (0, 4320)}
+       NU2 c_0 * zeta6^3 : mismatches/total per case: {'3|c': (0, 77760), 'v=1': (0, 8640), 'coprime': (0, 4320)}
+       NU2 c_0 * zeta6^4 : mismatches/total per case: {'3|c': (51840, 77760), 'v=1': (5760, 8640), 'coprime': (0, 4320)}
+       NU2 c_0 * zeta6^5 : mismatches/total per case: {'3|c': (51840, 77760), 'v=1': (5760, 8640), 'coprime': (0, 4320)}
+  NU2  PASS  units zeta6^k, k = 1,2,4,5, give mismatches in the case 3 | c (k = 3 is -1, a cube)
+  NM   PASS  without M^2: (c, kappa_0) not constant in 2160 / 22680 (L, h_0, r)
+  ND   PASS  case v=1 without the first factor: 5760 mismatches / 8640
+
+LAYER A: SOME CRITERIA NOT MET: NU   [64s]

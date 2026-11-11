@@ -1,0 +1,35 @@
+
+Stage 5 (a), POST-HOC re-evaluation with a tightened tail bound.  Written AFTER stage5_a_compact.out was seen: there the
+one-prime runs B {p7: 1}, {p7: 4}, {p7: 0} missed the registered threshold "informative iff Btot <= 1e-2 |T|" by factors
+1.2-3.2 (guaranteed digits 1.5-1.9), while the observed differences were 5e-10 to 2e-9 relative.  The registered verdict of
+stage5_a_compact ("not informative") stands and is not replaced by this file.
+
+What is tightened (two facts about the sequences d_+, d_- as implemented in kubota.build_series, both checked below on
+the tables):  (i) d_+-(l) != 0 only for lambda^4 l in  -u (1 + 3O),  u in {1, omega, omega^2}: three translates of a
+lattice of minimal distance 1/3 after division by 9 (the bound (L) of stage4_bounds used all of lambda^-4 O, minimal
+distance 1/9: 3 times more points);  (ii) |d_+-(l)| <= 9 * 81^(1/6) N(l)^(1/6) = 18.7208 N(l)^(1/6)  (instead of 27).
+For groups with sigma = +-:  tail <= |C| Bmax 18.7208 * min_A { (c X/N(c)^2)^-A Mt(A) * 3 S(1/3 + A, R; d = 1/3) }.
+Groups with sigma = 0 keep the old bound.  Everything else (weight p = 4, a = 3, X = 49737, V^sharp, rounding allowance)
+is as in stage5_a_compact.py.
+
+CRITERIA (fixed before this script was run, but after stage5_a_compact):
+  F1' |T_direct - T_dual| <= Btot' ; informative iff Btot' <= 1e-2 |T_direct| ; control NE1 (+i/81) rejected iff
+      |T_direct - T_ctl| > 10 Btot' (the only control required at this precision, as registered in stage5_a_compact);
+      NE2-NE5 are required if Btot' <= 1e-3 |T|.
+Runs: B {p7: 1}, B {p7: 4}, B {p7: 0}, B {p7: 2}, B {p13: 1}, F {p7: 1}.
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage5_a2_tight.py > audits/003dual/stage5_a2_tight.out 2>/dev/null
+
+  d_+: 1083152 table entries ; in -u(1+3O): 0 ; in +u(1+3O): 1083152 ; max |d|/N^(1/6) = 18.7208
+  d_-: 1083152 table entries ; in -u(1+3O): 1083152 ; in +u(1+3O): 0 ; max |d|/N^(1/6) = 18.7208
+  Psi_0=B P={7: 1} X=49737 : |T_dir| = 4.8002e-03  |diff| = 6.89e-12 (abs) 1.44e-09 (rel) ; dual tail: registered 7.70e-05 -> tightened 1.85e-05 ; Btot' = 1.85e-05 ; digits guaranteed 2.4 ; within Btot'
+      NE1: |T - T_ctl|/Btot' = 5.2e+02 (rejected)
+  Psi_0=B P={7: 4} X=49737 : |T_dir| = 5.3991e-03  |diff| = 2.69e-12 (abs) 4.97e-10 (rel) ; dual tail: registered 1.75e-04 -> tightened 4.20e-05 ; Btot' = 4.20e-05 ; digits guaranteed 2.1 ; within Btot'
+      NE1: |T - T_ctl|/Btot' = 2.6e+02 (rejected)
+  Psi_0=B P={7: 0} X=49737 : |T_dir| = 2.5071e-03  |diff| = 4.46e-12 (abs) 1.78e-09 (rel) ; dual tail: registered 2.91e-05 -> tightened 7.00e-06 ; Btot' = 7.00e-06 ; digits guaranteed 2.6 ; within Btot'
+      NE1: |T - T_ctl|/Btot' = 7.2e+02 (rejected)
+  Psi_0=B P={7: 2} X=49737 : |T_dir| = 1.3142e-02  |diff| = 2.14e-11 (abs) 1.63e-09 (rel) ; dual tail: registered 7.70e-05 -> tightened 1.85e-05 ; Btot' = 1.85e-05 ; digits guaranteed 2.9 ; within Btot'
+      NE1: |T - T_ctl|/Btot' = 1.4e+03 (rejected)
+  Psi_0=B P={13: 1} X=49737 : |T_dir| = 3.0466e-02  |diff| = 3.90e-10 (abs) 1.28e-08 (rel) ; dual tail: registered 4.87e-03 -> tightened 1.23e-03 ; Btot' = 1.23e-03 ; digits guaranteed 1.4 ; within Btot' (NOT INFORMATIVE)
+  Psi_0=F P={7: 1} X=49737 : |T_dir| = 1.2578e-01  |diff| = 1.66e-08 (abs) 1.32e-07 (rel) ; dual tail: registered 1.02e-01 -> tightened 2.37e-02 ; Btot' = 2.37e-02 ; digits guaranteed 0.7 ; within Btot' (NOT INFORMATIVE)
+
+STAGE 5 (a), post-hoc tightened bound: done   [151s]
