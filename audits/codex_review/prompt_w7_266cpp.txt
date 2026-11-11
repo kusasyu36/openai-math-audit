@@ -1,0 +1,20 @@
+You are an independent reviewer with expertise in C++, IEEE-754 floating point and computer-assisted proofs. Another AI (Claude) read (without compiling or running) the C++ sources of an unrefereed OpenAI computer-assisted proof (result 266, "The maximum number of mutually unbiased bases in dimension six", claiming N(6) = 3) and concluded that it found no soundness-breaking bug. Your job is to try to find one it missed, and to check whether its statements are overstated. Do not trust the report; read the sources and the paper.
+
+Working directory is the project root. Read-only. Do not compile, build or run any code from data/openai_math (reading is fine).
+- Report: audits/266cpp/REPORT.md (section 2 correspondence table, section 3 soundness direction for 32 decisions, section 4 floating point, section 5 constants, section 6 findings)
+- Sources: data/openai_math/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/compiled-build/source/*.cpp and ../build.sh, and verification/saved-run/execution/commands.json
+- Paper: same directory, build/sections/{seed,completion,phase-cover,refinement,exclusion,execution,rounding}.tex
+- Earlier report on the mathematics: audits/266/REPORT.md
+
+The dangerous direction is: a region that is not actually excluded gets recorded as excluded, or silently dropped. Questions:
+(1) Pick at least eight of the 32 decisions in report section 3, including every one in stage C (stageC.cpp) and the ones with the smallest margin/error ratio, and check independently: inequality direction, sign of the rounding margin, and that failure (including NaN, since comparisons with NaN are false) falls to the unresolved side. Report any decision where a NaN or an out-of-range value would make the code take the "excluded" branch.
+(2) Coverage. Check loop bounds, index arithmetic and the symmetry reductions for off-by-one or missed boundary cells in: the seed bin enumeration, the U(2) grid, the stage B lattice, the stage C N^5 enumeration and its 32-way split. Check the items the report itself flags: stageB.cpp:188 (ignored return value) and stageC.cpp:433 (u.del only at the root, n==6).
+(3) Hand-off between stages: can a record be lost between writing and reading (counts, truncated files, partial reads treated as end of data, exit codes ignored)? Compare with commands.json.
+(4) Floating point. Verify by grep and reading: no libm sin/cos/atan2/exp/log in certifying paths (the report says cos/sin come from a hand-written Taylor routine expair, and atan2 is proposal-only), pow only at covout.cpp:100-101, no fma, no long double, -ffp-contract=off on every build line, no -ffast-math. With -O3 -march=native, is there any transformation GCC may legally do that breaks the paper's Appendix A assumptions (vectorized reductions reordering sums, x87, reciprocal tricks)? Is the report's remark that the pow(x,2) concern is "less fragile than the paper suggests" justified?
+(5) Undefined behaviour: signed overflow, out-of-bounds indexing, uninitialized reads, strict-aliasing or type-punning in the binary record I/O, reliance on static initialization order.
+(6) Constants: sample at least fifteen numeric literals in the sources and check them against the TeX; in particular any literal the report says has no value stated in the TeX (.092, 4.35, 5.9): are they really only on the failing/proposal side?
+(7) Overstatement check: the report says it read all 2,316 lines and gives 90% confidence that the C++ soundly implements the lemmas, explicitly not a confidence in N(6) = 3. Given what you found, is 90% defensible, and is anything stated as verified that was only read?
+
+If you find a concrete bug, give file:line, the input or condition that triggers it, and why it breaks soundness (or why it is harmless). If you cannot, say so plainly; do not manufacture one.
+
+Output in Japanese, plain language, concise: for each of (1)-(7) give 判定（正しい / 一部正しい / 誤り / 確認できず）, 根拠（file:line you actually read）, then 公開する場合の文面への注意, then a short overall summary.

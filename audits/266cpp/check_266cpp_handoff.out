@@ -1,0 +1,19 @@
+children: 100
+[OK] 88 initial C invocations 
+[OK] all 88 argv[0:10] identical {('./build/crun', '12', '4', '1', '.042', '1', '1', '5000000', '0', '1')}
+[OK]   == crun 12 4 1 .042 1 1 5000000 0 1 
+[OK] each batch j: output batches/bad<j>.bin, single input batches/f<j>.bin 
+[OK] each batch: logged done == records in f<j>.bin, logged bad == records in bad<j>.bin 
+[OK] each batch: return code 1 iff bad>0, completed 
+[OK] fdone.txt == (88, total batch records) and total == fine.bin count total=22379 bad=163
+[OK] fallback argv = brun .011 .0038 fb1.bin fb1bad.bin - + all nonempty bad files in C-locale order 15 files
+[OK] fallback: parents == initial C bad total, output == fb1.bin count, bad 0 result 1127 bad 0 parent163
+[OK] final C: argv parts i/4 over fb1.bin, done == modulo-class size, bad 0, rc 0; sum == fb1 count sum=1127
+[OK] A: argv parts i/4, done == modulo-class size of centers, failedBalls 0, global == coarse count, bad txt empty centers=249878 coarse total=3083
+[OK] Bmid argv 
+[OK] Bfine argv 
+[OK] Bmid: parents == input count, result == mid.bin count, bad 0, rc 0 result 600 bad 0 parent3083
+[OK] Bfine: parents == input count, result == fine.bin count, bad 0, rc 0 result 22379 bad 0 parent600
+[OK] covrun argv 
+
+ALL OK

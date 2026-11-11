@@ -1,0 +1,180 @@
+Downloading sympy (6.0MiB)
+Downloading numpy (5.2MiB)
+ Downloaded numpy
+ Downloaded sympy
+Installed 3 packages in 36ms
+total source lines 2316
+
+== floating literals: 91 distinct, 411 occurrences ==
+                      0.  x10  seed.cpp:36 ub.cpp:23 ub.cpp:226 ub.cpp:226 patchx.cpp:207 patchx.cpp:248 patchx.cpp:248 stageB.cpp:104 stageB.cpp:126 stageB.cpp:158
+ 0x0.0000000000002p-1022  x1   abi-fp-probe.cpp:45
+             0x0.8p-1022  x1   abi-fp-probe.cpp:45
+                  1e-300  x1   stageC.cpp:141
+                  1e-100  x5   ub.cpp:239 ub.cpp:297 stageC.cpp:114 stageC.cpp:342 stageC.cpp:346
+                   1e-30  x1   ub.cpp:280
+                   1e-20  x1   patchx.cpp:84
+                   1e-18  x2   patchx.cpp:106 patchx.cpp:110
+                   1e-14  x1   patchx.cpp:238
+                   1e-13  x1   patchx.cpp:23
+                   1e-12  x6   ub.cpp:230 patchx.cpp:34 stageC.cpp:43 stageC.cpp:44 stageC.cpp:44 stageC.cpp:44
+                   1e-10  x10  seed.cpp:65 seed.cpp:65 ub.cpp:132 patchx.cpp:207 patchx.cpp:230 patchx.cpp:269 patchx.cpp:270 patchx.cpp:270 stageC.cpp:183 stageC.cpp:371
+                    1e-9  x11  ub.cpp:132 ub.cpp:140 patchx.cpp:183 patchx.cpp:183 patchx.cpp:205 patchx.cpp:251 patchx.cpp:309 stageB.cpp:48 stageC.cpp:209 stageC.cpp:504 stageC.cpp:505
+                    1e-8  x47  seed.cpp:46 seed.cpp:88 covout.cpp:122 ub.cpp:132 ub.cpp:132 ub.cpp:133 ub.cpp:134 ub.cpp:145 patchx.cpp:141 patchx.cpp:141 patchx.cpp:141 patchx.cpp:161 patchx.cpp:182 patchx.cpp:182 patchx.cpp:208 patchx.cpp:211 patchx.cpp:212 patchx.cpp:213 patchx.cpp:248 patchx.cpp:283 patchx.cpp:389 patchx.cpp:390 patchx.cpp:405 patchx.cpp:406 atlas.cpp:92 atlas.cpp:99 atlas.cpp:100 atlas.cpp:161 stageB.cpp:28 stageB.cpp:49 stageB.cpp:49 stageB.cpp:51 stageB.cpp:52 stageB.cpp:53 stageB.cpp:54 stageB.cpp:59 stageB.cpp:77 stageB.cpp:78 stageB.cpp:79 stageB.cpp:80 stageB.cpp:98 stageB.cpp:104 stageB.cpp:109 stageB.cpp:126 stageB.cpp:133 stageB.cpp:145 stageB.cpp:173
+                    2e-8  x7   atlas.cpp:160 stageB.cpp:27 stageB.cpp:47 stageB.cpp:140 stageB.cpp:184 stageC.cpp:388 stageC.cpp:396
+                    5e-8  x3   stageB.cpp:147 stageB.cpp:147 stageB.cpp:147
+                    1e-7  x33  covout.cpp:19 ub.cpp:133 ub.cpp:133 ub.cpp:135 ub.cpp:137 ub.cpp:138 ub.cpp:139 ub.cpp:141 ub.cpp:142 ub.cpp:143 ub.cpp:144 ub.cpp:146 patchx.cpp:143 patchx.cpp:202 patchx.cpp:210 patchx.cpp:308 patchx.cpp:308 patchx.cpp:336 patchx.cpp:343 atlas.cpp:130 atlas.cpp:134 atlas.cpp:140 atlas.cpp:150 atlas.cpp:151 stageB.cpp:67 stageB.cpp:81 stageB.cpp:98 stageB.cpp:102 stageB.cpp:105 stageB.cpp:124 stageB.cpp:152 stageB.cpp:185 stageB.cpp:205
+                    2e-7  x16  patchx.cpp:230 atlas.cpp:140 atlas.cpp:140 stageB.cpp:18 stageB.cpp:19 stageB.cpp:103 stageC.cpp:63 stageC.cpp:63 stageC.cpp:70 stageC.cpp:85 stageC.cpp:138 stageC.cpp:378 stageC.cpp:385 stageC.cpp:389 stageC.cpp:394 stageC.cpp:397
+                    3e-7  x2   atlas.cpp:140 stageC.cpp:364
+                    1e-6  x16  seed.cpp:61 covout.cpp:16 patchx.cpp:205 patchx.cpp:205 patchx.cpp:252 patchx.cpp:281 stageB.cpp:64 stageB.cpp:73 stageB.cpp:277 stageB.cpp:277 stageC.cpp:108 stageC.cpp:108 stageC.cpp:351 stageC.cpp:358 stageC.cpp:359 stageC.cpp:363
+                 .000001  x3   patchx.cpp:273 patchx.cpp:275 stageC.cpp:336
+                    2e-6  x3   patchx.cpp:182 patchx.cpp:250 stageB.cpp:221
+                    1e-5  x11  covout.cpp:20 covout.cpp:20 ub.cpp:261 patchx.cpp:184 patchx.cpp:184 patchx.cpp:207 patchx.cpp:424 stageB.cpp:278 stageB.cpp:278 stageC.cpp:139 stageC.cpp:140
+                  .00001  x4   patchx.cpp:164 patchx.cpp:307 atlas.cpp:122 stageB.cpp:221
+                  .00002  x3   patchx.cpp:280 patchx.cpp:338 patchx.cpp:346
+                   .0001  x5   covout.cpp:100 ub.cpp:250 patchx.cpp:307 stageB.cpp:289 stageB.cpp:289
+                    1e-4  x2   patchx.cpp:184 stageB.cpp:278
+                  .00015  x2   patchx.cpp:338 patchx.cpp:346
+                   .0002  x1   patchx.cpp:164
+                    .001  x2   ub.cpp:296 ub.cpp:298
+                     .01  x2   covout.cpp:71 ub.cpp:296
+                    .012  x1   stageC.cpp:541
+                     .02  x3   covout.cpp:67 ub.cpp:281 patchx.cpp:99
+                     .03  x4   covout.cpp:68 patchx.cpp:250 stageB.cpp:298 stageC.cpp:497
+                    .032  x1   covout.cpp:140
+                .0320001  x1   atlas.cpp:221
+                     .04  x1   stageC.cpp:227
+                     .05  x1   stageB.cpp:289
+                    .061  x1   stageB.cpp:240
+                     .08  x2   atlas.cpp:153 stageB.cpp:21
+                     .09  x1   stageC.cpp:541
+                    .092  x2   patchx.cpp:315 patchx.cpp:315
+                      .1  x2   patchx.cpp:164 stageC.cpp:220
+                    .103  x1   atlas.cpp:221
+                     .12  x1   patchx.cpp:87
+                    .125  x1   atlas.cpp:221
+                    .126  x3   atlas.cpp:114 stageB.cpp:274 stageB.cpp:289
+                    .145  x4   patchx.cpp:293 patchx.cpp:293 patchx.cpp:377 patchx.cpp:377
+                     .15  x2   patchx.cpp:200 patchx.cpp:379
+                      .2  x3   covout.cpp:48 covout.cpp:48 ub.cpp:254
+                     .22  x1   stageC.cpp:455
+                     .23  x1   stageB.cpp:64
+                    .249  x1   stageB.cpp:64
+                     .25  x3   seed.cpp:24 ub.cpp:48 patchx.cpp:95
+                     .28  x1   patchx.cpp:249
+                     .45  x3   ub.cpp:61 ub.cpp:61 patchx.cpp:336
+                      .5  x27  seed.cpp:78 seed.cpp:84 covout.cpp:13 covout.cpp:13 covout.cpp:18 ub.cpp:47 ub.cpp:89 ub.cpp:91 ub.cpp:92 ub.cpp:144 ub.cpp:144 ub.cpp:152 ub.cpp:161 ub.cpp:207 ub.cpp:227 ub.cpp:248 ub.cpp:249 ub.cpp:254 ub.cpp:254 ub.cpp:284 ub.cpp:289 ub.cpp:290 ub.cpp:296 patchx.cpp:102 stageC.cpp:43 stageC.cpp:48 stageC.cpp:190
+                 .500001  x1   stageB.cpp:251
+                     .51  x2   covout.cpp:102 patchx.cpp:202
+                     .58  x1   patchx.cpp:249
+                     .64  x1   patchx.cpp:122
+                      .8  x1   patchx.cpp:343
+                      1.  x64  seed.cpp:25 seed.cpp:25 seed.cpp:27 seed.cpp:27 seed.cpp:36 seed.cpp:84 seed.cpp:88 seed.cpp:103 covout.cpp:48 covout.cpp:48 covout.cpp:48 covout.cpp:48 covout.cpp:48 covout.cpp:48 covout.cpp:48 covout.cpp:48 covout.cpp:48 covout.cpp:59 covout.cpp:68 covout.cpp:122 ub.cpp:23 ub.cpp:27 ub.cpp:42 ub.cpp:89 ub.cpp:101 ub.cpp:103 ub.cpp:133 ub.cpp:196 ub.cpp:261 ub.cpp:268 patchx.cpp:7 patchx.cpp:7 patchx.cpp:7 patchx.cpp:25 patchx.cpp:26 patchx.cpp:95 patchx.cpp:99 patchx.cpp:169 patchx.cpp:169 patchx.cpp:169 patchx.cpp:169 patchx.cpp:195 patchx.cpp:205 patchx.cpp:210 patchx.cpp:210 patchx.cpp:249 patchx.cpp:258 patchx.cpp:321 patchx.cpp:321 atlas.cpp:21 atlas.cpp:21 atlas.cpp:95 atlas.cpp:95 atlas.cpp:175 stageB.cpp:6 stageB.cpp:6 stageB.cpp:198 stageB.cpp:198 stageC.cpp:5 stageC.cpp:22 stageC.cpp:43 stageC.cpp:44 stageC.cpp:454 stageC.cpp:454
+                 1.00001  x1   stageC.cpp:502
+                    1.01  x2   stageB.cpp:101 stageB.cpp:281
+                    1.11  x1   stageC.cpp:183
+                    1.25  x1   ub.cpp:41
+                   1.251  x1   covout.cpp:47
+    0x1.6a09e667f3bcdp+0  x1   abi-fp-probe.cpp:46
+                    1.45  x1   patchx.cpp:336
+                     1.5  x2   covout.cpp:101 stageC.cpp:44
+                     1.8  x1   patchx.cpp:343
+                      2.  x10  ub.cpp:134 patchx.cpp:7 patchx.cpp:130 patchx.cpp:131 patchx.cpp:135 patchx.cpp:142 patchx.cpp:154 stageB.cpp:95 stageC.cpp:219 abi-fp-probe.cpp:41
+                  2.0001  x1   seed.cpp:103
+                    2.25  x2   covout.cpp:82 covout.cpp:85
+    0x1.921fb54442d18p+1  x1   seed.cpp:12
+                     3.8  x1   patchx.cpp:209
+                      4.  x2   ub.cpp:48 patchx.cpp:51
+                    4.35  x1   patchx.cpp:144
+                      5.  x3   seed.cpp:41 seed.cpp:58 covout.cpp:12
+                     5.9  x1   ub.cpp:136
+                      6.  x3   ub.cpp:24 ub.cpp:143 stageC.cpp:5
+                      8.  x1   patchx.cpp:143
+                     10.  x6   patchx.cpp:244 patchx.cpp:245 patchx.cpp:279 patchx.cpp:293 patchx.cpp:315 stageB.cpp:46
+                     16.  x1   seed.cpp:22
+                    100.  x2   patchx.cpp:244 patchx.cpp:245
+                     1e4  x1   covout.cpp:63
+                     1e8  x1   patchx.cpp:262
+                    1e10  x4   covout.cpp:49 ub.cpp:136 ub.cpp:136 patchx.cpp:196
+                    1e80  x1   ub.cpp:280
+                   1e100  x3   ub.cpp:239 stageC.cpp:114 stageC.cpp:342
+
+== integer literals >= 7 (smaller ones are loop bounds/indices): ==
+           7  x11  covout.cpp:78 covout.cpp:81 ub.cpp:373 patchx.cpp:190 atlas.cpp:11 atlas.cpp:11 atlas.cpp:211 stageB.cpp:286 stageC.cpp:538 abi-fp-probe.cpp:37 abi-fp-probe.cpp:37
+           8  x21  covout.cpp:78 covout.cpp:81 ub.cpp:154 ub.cpp:307 patchx.cpp:190 patchx.cpp:370 atlas.cpp:8 atlas.cpp:109 atlas.cpp:114 atlas.cpp:195 atlas.cpp:199 atlas.cpp:207 atlas.cpp:210 stageB.cpp:298 stageC.cpp:539 abi-fp-probe.cpp:21 abi-fp-probe.cpp:22 abi-fp-probe.cpp:22 abi-fp-probe.cpp:23 abi-fp-probe.cpp:23 abi-fp-probe.cpp:25
+           9  x29  seed.cpp:26 covout.cpp:40 covout.cpp:43 covout.cpp:48 covout.cpp:52 covout.cpp:68 covout.cpp:77 ub.cpp:83 ub.cpp:86 ub.cpp:194 ub.cpp:204 ub.cpp:205 ub.cpp:247 ub.cpp:247 ub.cpp:255 ub.cpp:256 ub.cpp:282 ub.cpp:286 ub.cpp:287 ub.cpp:287 ub.cpp:287 patchx.cpp:190 patchx.cpp:190 patchx.cpp:195 patchx.cpp:298 patchx.cpp:321 patchx.cpp:335 patchx.cpp:342 stageC.cpp:539
+          10  x10  ub.cpp:382 patchx.cpp:3 patchx.cpp:190 patchx.cpp:279 patchx.cpp:470 stageC.cpp:538 stageC.cpp:541 stageC.cpp:542 stageC.cpp:564 abi-fp-probe.cpp:38
+          11  x4   ub.cpp:382 patchx.cpp:190 patchx.cpp:470 stageC.cpp:548
+          12  x10  stageC.cpp:310 stageC.cpp:320 stageC.cpp:329 stageC.cpp:330 stageC.cpp:336 stageC.cpp:348 stageC.cpp:354 stageC.cpp:474 stageC.cpp:492 stageC.cpp:535
+          13  x4   ub.cpp:74 patchx.cpp:190 atlas.cpp:11 abi-fp-probe.cpp:36
+          14  x3   patchx.cpp:301 patchx.cpp:326 atlas.cpp:112
+          15  x2   atlas.cpp:11 abi-fp-probe.cpp:36
+          16  x24  ub.cpp:42 ub.cpp:86 ub.cpp:86 ub.cpp:86 ub.cpp:177 ub.cpp:177 ub.cpp:177 ub.cpp:177 ub.cpp:180 ub.cpp:201 ub.cpp:315 ub.cpp:334 ub.cpp:346 ub.cpp:359 patchx.cpp:193 patchx.cpp:243 patchx.cpp:290 patchx.cpp:320 patchx.cpp:338 patchx.cpp:423 patchx.cpp:435 patchx.cpp:444 patchx.cpp:448 stageB.cpp:298
+          19  x1   patchx.cpp:190
+          20  x4   ub.cpp:74 patchx.cpp:184 patchx.cpp:279 stageB.cpp:277
+          22  x1   atlas.cpp:112
+          24  x3   patchx.cpp:81 patchx.cpp:106 stageC.cpp:540
+          25  x8   patchx.cpp:3 patchx.cpp:5 patchx.cpp:190 atlas.cpp:91 atlas.cpp:93 atlas.cpp:98 atlas.cpp:102 stageB.cpp:103
+          27  x1   atlas.cpp:112
+          30  x4   patchx.cpp:3 patchx.cpp:282 patchx.cpp:466 stageB.cpp:50
+          31  x1   patchx.cpp:190
+          32  x2   stageC.cpp:154 stageC.cpp:282
+          36  x69  patchx.cpp:3 patchx.cpp:5 patchx.cpp:15 patchx.cpp:41 patchx.cpp:41 patchx.cpp:41 patchx.cpp:47 patchx.cpp:48 patchx.cpp:63 patchx.cpp:80 patchx.cpp:89 patchx.cpp:89 patchx.cpp:90 patchx.cpp:98 patchx.cpp:111 patchx.cpp:115 patchx.cpp:115 patchx.cpp:120 patchx.cpp:121 patchx.cpp:124 patchx.cpp:130 patchx.cpp:133 patchx.cpp:135 patchx.cpp:138 patchx.cpp:150 patchx.cpp:168 patchx.cpp:168 patchx.cpp:168 patchx.cpp:169 patchx.cpp:169 patchx.cpp:170 patchx.cpp:170 patchx.cpp:171 patchx.cpp:171 patchx.cpp:178 patchx.cpp:179 patchx.cpp:180 patchx.cpp:192 patchx.cpp:192 patchx.cpp:217
+          40  x1   patchx.cpp:19
+          42  x2   seed.cpp:99 ub.cpp:143
+          49  x1   stageB.cpp:324
+          50  x1   stageB.cpp:324
+          53  x2   seed.cpp:14 abi-fp-probe.cpp:26
+          63  x7   atlas.cpp:11 atlas.cpp:11 stageC.cpp:403 abi-fp-probe.cpp:37 abi-fp-probe.cpp:37 abi-fp-probe.cpp:38 abi-fp-probe.cpp:38
+          64  x9   ub.cpp:76 patchx.cpp:418 stageC.cpp:284 stageC.cpp:284 stageC.cpp:285 stageC.cpp:285 stageC.cpp:294 stageC.cpp:403 abi-fp-probe.cpp:13
+         100  x2   stageC.cpp:543 stageC.cpp:552
+         112  x2   covout.cpp:138 atlas.cpp:175
+         120  x1   stageB.cpp:317
+         123  x1   atlas.cpp:176
+         256  x2   stageB.cpp:302 stageB.cpp:303
+         512  x1   patchx.cpp:433
+        1000  x2   seed.cpp:97 atlas.cpp:233
+        1024  x2   stageC.cpp:510 abi-fp-probe.cpp:27
+        2048  x1   stageC.cpp:204
+       10000  x1   covout.cpp:130
+     1000000  x1   patchx.cpp:418
+     2000000  x6   atlas.cpp:164 atlas.cpp:175 atlas.cpp:205 stageB.cpp:31 stageC.cpp:35 stageC.cpp:559
+     5000000  x1   stageC.cpp:303
+     8000000  x2   stageB.cpp:293 stageC.cpp:559
+    50000000  x1   stageB.cpp:254
+  1000000000  x1   stageC.cpp:543
+
+== small integer literal counts (0..6) ==
+{'0': 435, '1': 288, '2': 182, '3': 38, '4': 162, '5': 54, '6': 128}
+
+== math/library call sites ==
+                   pow x2   covout.cpp:100 covout.cpp:101
+                  sqrt x105 seed.cpp:32 covout.cpp:101 ub.cpp:19 ub.cpp:24 ub.cpp:40 ub.cpp:40 ub.cpp:48 ub.cpp:62 ub.cpp:102 ub.cpp:103 ub.cpp:133 ub.cpp:138 ub.cpp:139 ub.cpp:143 ub.cpp:206 ub.cpp:206 ub.cpp:226 ub.cpp:226 ub.cpp:226 ub.cpp:230 ub.cpp:230 ub.cpp:248 ub.cpp:248 ub.cpp:279 ub.cpp:283 ub.cpp:292 ub.cpp:317 ub.cpp:320 patchx.cpp:7 patchx.cpp:25 patchx.cpp:26 patchx.cpp:95 patchx.cpp:141 patchx.cpp:143 patchx.cpp:161 patchx.cpp:164 patchx.cpp:182 patchx.cpp:182 patchx.cpp:182 patchx.cpp:183 patchx.cpp:199 patchx.cpp:210 patchx.cpp:211 patchx.cpp:212 patchx.cpp:230 patchx.cpp:230 patchx.cpp:239 patchx.cpp:248 patchx.cpp:248 patchx.cpp:248 patchx.cpp:270 patchx.cpp:270 patchx.cpp:273 patchx.cpp:283 patchx.cpp:305 patchx.cpp:305 patchx.cpp:306 patchx.cpp:306 patchx.cpp:307 patchx.cpp:338 patchx.cpp:423 atlas.cpp:140 stageB.cpp:48 stageB.cpp:52 stageB.cpp:54 stageB.cpp:72 stageB.cpp:77 stageB.cpp:98 stageB.cpp:109 stageB.cpp:124 stageB.cpp:140 stageC.cpp:5 stageC.cpp:44 stageC.cpp:64 stageC.cpp:83 stageC.cpp:108 stageC.cpp:134 stageC.cpp:135 stageC.cpp:136 stageC.cpp:136 stageC.cpp:137 stageC.cpp:137 stageC.cpp:139 stageC.cpp:140 stageC.cpp:141 stageC.cpp:183 stageC.cpp:209 stageC.cpp:255 stageC.cpp:258 stageC.cpp:275 stageC.cpp:276 stageC.cpp:276 stageC.cpp:277 stageC.cpp:349 stageC.cpp:351 stageC.cpp:357 stageC.cpp:358 stageC.cpp:359 stageC.cpp:362 stageC.cpp:363 stageC.cpp:376 stageC.cpp:389 stageC.cpp:397 stageC.cpp:504 abi-fp-probe.cpp:44
+             nearbyint x6   seed.cpp:23 patchx.cpp:38 patchx.cpp:195 patchx.cpp:218 atlas.cpp:13 stageC.cpp:171
+                 floor x2   atlas.cpp:14 stageB.cpp:155
+                  ceil x4   atlas.cpp:122 stageB.cpp:156 stageB.cpp:221 stageB.cpp:251
+                 atan2 x1   patchx.cpp:189
+              copysign x1   patchx.cpp:25
+              isfinite x5   ub.cpp:238 patchx.cpp:83 patchx.cpp:119 stageC.cpp:113 stageC.cpp:341
+            fesetround x2   seed.cpp:15 abi-fp-probe.cpp:30
+            fegetround x2   seed.cpp:15 abi-fp-probe.cpp:47
+                  atof x6   ub.cpp:370 patchx.cpp:456 patchx.cpp:456 stageB.cpp:288 stageB.cpp:288 stageC.cpp:537
+                  atoi x19  seed.cpp:118 ub.cpp:370 ub.cpp:370 ub.cpp:373 ub.cpp:373 ub.cpp:373 ub.cpp:373 patchx.cpp:456 patchx.cpp:456 patchx.cpp:458 atlas.cpp:220 atlas.cpp:220 stageC.cpp:536 stageC.cpp:536 stageC.cpp:536 stageC.cpp:537 stageC.cpp:537 stageC.cpp:539 stageC.cpp:539
+              strtoull x1   stageC.cpp:538
+         __builtin_ctz x1   ub.cpp:162
+       __builtin_ctzll x1   stageC.cpp:294
+  __builtin_popcountll x1   stageC.cpp:290
+            _mm_getcsr x2   atlas.cpp:10 abi-fp-probe.cpp:31
+                   abs x66
+                   min x37
+                   max x75
+
+== keywords (long double / float / pragma / volatile / casts) ==
+seed.cpp:9: #pragma STDC FENV_ACCESS ON
+abi-fp-probe.cpp:33: __asm__ volatile("fnstcw %0" : "=m"(x87_control));
+abi-fp-probe.cpp:35: const bool little = *reinterpret_cast<const unsigned char*>(&one) == 1;
+abi-fp-probe.cpp:39: volatile double minimum = std::numeric_limits<double>::min();
+abi-fp-probe.cpp:40: volatile double subnormal = std::numeric_limits<double>::denorm_min();
+abi-fp-probe.cpp:41: volatile double two = 2.;
+abi-fp-probe.cpp:42: volatile double half_minimum = minimum / two;
+abi-fp-probe.cpp:43: volatile double twice_subnormal = subnormal * two;
+abi-fp-probe.cpp:44: volatile double square_root = std::sqrt(two);
