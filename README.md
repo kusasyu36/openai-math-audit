@@ -97,7 +97,7 @@ This code is not intended for Mathlib. Mathlib's policy on AI use closes AI-gene
 
 ## Citation
 
-Please cite the archived release on Zenodo: kusasyu36, *Independent audit of OpenAI's October 2026 AI-generated mathematics*, Zenodo, [doi:10.5281/zenodo.23826762](https://doi.org/10.5281/zenodo.23826762). This DOI always resolves to the latest version; v1.0.0 (30 October 2026, 14 audits) is [doi:10.5281/zenodo.23826763](https://doi.org/10.5281/zenodo.23826763); v1.1.0 (6 November 2026, 18 audits and the second Codex review) is [doi:10.5281/zenodo.23992825](https://doi.org/10.5281/zenodo.23992825). See also `CITATION.cff`.
+Please cite the archived release on Zenodo: kusasyu36, *Independent audit of OpenAI's October 2026 AI-generated mathematics*, Zenodo, [doi:10.5281/zenodo.23826762](https://doi.org/10.5281/zenodo.23826762). This DOI always resolves to the latest version; v1.0.0 (30 October 2026, 14 audits) is [doi:10.5281/zenodo.23826763](https://doi.org/10.5281/zenodo.23826763); v1.1.0 (6 November 2026, 18 audits and the second Codex review) is [doi:10.5281/zenodo.23992825](https://doi.org/10.5281/zenodo.23992825); v1.2.0 (12 November 2026, 22 audits, six second passes and follow-ups, and seven further Codex reviews) is [doi:10.5281/zenodo.24152440](https://doi.org/10.5281/zenodo.24152440). See also `CITATION.cff`.
 
 ## Licence
 
