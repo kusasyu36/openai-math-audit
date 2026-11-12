@@ -1,0 +1,22 @@
+You are an independent reviewer with expertise in automorphic forms on hyperbolic 3-space (Kubota's cubic theta function over Q(omega), Kubota's character, cusp expansions, Hejhal's method) and numerical verification. You reviewed stages 6-8 of our audit of the coefficient table of the cubic theta function (audits/codex_review/review_w10_003stage678.md). Claude (lead) then ran stages 9 and 10 overnight, alone. Find what they missed, whether they are circular, and whether the report overstates. Do not trust the report; read the scripts.
+
+Working directory is the project root. Read-only. Do not run any code from data/openai_math. You may read our scripts; you need not run them.
+- Report: audits/003dual/REPORT.md sections 15 (stage 9) and 16 (stage 10, incl. the post-hoc part at its end). Section 14 is your previous review as reflected.
+- Stage 9: audits/003dual/stage9_k4b_valid.py/.out (your proposed valid multiplier control), and part (2) of stage10_posthoc.py/.out (the same on unused points).
+- Stage 10: audits/003dual/stage10_lib.py (joint solve of theta and the cusp functions F_10(w) = theta(G10 w), F_19(w) = theta(G19 w)), stage10_probe.py (a table code check run BEFORE tuning -- disclosed), stage10_tune.py/.out and stage10_tune_run1.out, stage10_frozen.py/.out, stage10_posthoc.py/.out.
+- Table: audits/029reflect/kubota.py (build_series: transcription of Dunn-Radziwill arXiv:2109.07463 (5.7), (5.13), (5.14), App. A; COSET_REPS; decompose).
+- Paper: data/openai_math/preprints/The-Quasi-Riemann-Hypothesis-October-5-2026/build/paper2.tex (:1762-1780 cusp expansions; :3095-3170 cusp coefficients).
+
+Questions:
+(1) Index sets. stage10_lib.cusp_indices derives the coset of the cusp coefficients from decompose(R T_t) for t = 3, 3 omega (char_of). Is the argument F_R(w + t) = omega^{k(t)} F_R(w) correct, is 3O the full period lattice, and is "no constant term" justified? Is enumerating lambda^{-6} O a safe superset?
+(2) Equations. In System.rows: F_X(w) = theta(R_X w) = omega^k F_rep(w'' + t) with w'' = g R_X w and decompose(g^{-1}) = (k, rep, t). Check the code, the right-hand side (sigma terms only for theta-family reps and X = I), and the reduction/candidate enumeration (reduce_pt, candidates).
+(3) Independence. Does the joint solve use any of DR (5.13)/(5.14)/App. A? Which inputs are shared with the table (decompose, G10/G19, K_{1/3}, sigma, ring arithmetic)? Could a transcription error in G10/G19 be shared so that table and solve agree wrongly? What does the agreement show about the RELATIVE normalisation of tau and d_+- (your w9 (8))?
+(4) Circularity / pre-registration. The probe saw the table residual before tuning; E3 is largely implied by E0 + E2 (REPORT section 16 disclosure). Is the disclosure adequate? What, precisely, is the new evidence?
+(5) Conditioning. The joint system has sv_min/sv_max 0.32 while the theta-only system at the same setting has several singular values ~1e-12 (and drops 42% of points). Is the lead's caution (part of the conditioning comes from each function having its own sample grid; this does not explain the stage 7 isolated direction) right? Anything stronger or weaker to say?
+(6) Controls. E4a failed (swap9 does not touch the cusp table). E4b (sqrt(3) x cusp table) passed. Is E4b a meaningful power check? Propose one valid cusp-side control.
+(7) Stage 9. Are V1-V5 and H1-H3 valid as a multiplier control now? Any remaining gap?
+(8) Overstatement check over sections 15-16 and the README entries of 11-13. Propose a one-paragraph public wording for stages 9-10, to be appended to the existing public paragraph on stages 6-8.
+
+If you find a concrete error in our scripts, reports or the paper, give the exact file:line and why. If you cannot, say so plainly; do not manufacture one.
+
+Output in Japanese, plain language, concise: for each of (1)-(8) give 判定（正しい / 一部正しい / 誤り / 確認できず）, 根拠（file:line you actually read）, then 公開する場合の文面への注意, then a short overall summary.

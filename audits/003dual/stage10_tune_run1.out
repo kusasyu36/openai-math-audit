@@ -1,0 +1,16 @@
+
+003dual stage 10, TABLE-BLIND tuning (lead, 2026-11-13).  Solves theta + F_10 + F_19 jointly (stage10_lib.py) in two
+settings and prints only solved quantities: rank, singular values, residual, spread between the two solves.
+The DR table is NOT read here.
+
+S1 {'v0': 0.45, 'M_th': 5.0, 'M_cu': 4.2, 'n_th': 16, 'n_cu': 22, 'shift': (0.0, 0.0)}: unknowns 4258 [808, 1725, 1725], rows 6382, chi [3719, 1330, 1333], skipped 0, rank 4258, sv max 94.9, smallest 6 [8.143e-11 6.746e-11 5.449e-11 4.412e-11 3.531e-11 2.501e-11], rel residual 2.07e-13, 117s
+S2 {'v0': 0.42, 'M_th': 5.4, 'M_cu': 4.5, 'n_th': 17, 'n_cu': 24, 'shift': (0.37, 0.61)}: unknowns 4916 [950, 1983, 1983], rows 7604, chi [4332, 1607, 1665], skipped 0, rank 4916, sv max 103, smallest 6 [4.625e-11 4.051e-11 3.703e-11 2.915e-11 2.531e-11 2.154e-11], rel residual 3.87e-13, 233s
+spread th   |mu| in (0,1]: n=  32 max|S1-S2| 4.08e-08  max|coef| 27
+spread th   |mu| in (1,2]: n= 102 max|S1-S2| 8.07e-06  max|coef| 31.2
+spread th   |mu| in (2,3]: n= 166 max|S1-S2| 1.39e-03  max|coef| 27
+spread g10  |mu| in (0,1]: n= 102 max|S1-S2| 1.57e-03  max|coef| 18
+spread g10  |mu| in (1,2]: n= 288 max|S1-S2| 8.55e+02  max|coef| 504
+spread g10  |mu| in (2,3]: n= 498 max|S1-S2| 1.16e+07  max|coef| 6.64e+06
+spread g19  |mu| in (0,1]: n= 102 max|S1-S2| 5.17e-07  max|coef| 18
+spread g19  |mu| in (1,2]: n= 288 max|S1-S2| 1.44e-02  max|coef| 18
+spread g19  |mu| in (2,3]: n= 498 max|S1-S2| 4.69e+01  max|coef| 32.1

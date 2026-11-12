@@ -1,0 +1,14 @@
+
+003dual stage 11 (lead, 2026-11-13): the cusp-side control proposed by Codex (w11 (6)), replacing the failed E4a.
+Modified table: in d_10 ONLY, the additive phase e(mu) (kubota.build_series, ecek) is replaced by e(-mu);
+indices, theta and d_19 unchanged.  Nothing is re-solved for the modified table.
+CRITERIA (written before running):
+  P1 the modified d_10 differs from the S1-solved d_10 (stage 10 frozen S1) by > 1 somewhere in |mu| <= 2;
+  P2 in the S2 system of stage 10 (rows never used for S1): unmodified table relative residual <= 1e-8,
+     modified table >= 1e-3.
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy python -B -u audits/003dual/stage11_cusp_phase_control.py > audits/003dual/stage11_cusp_phase_control.out
+
+P1 modified d_10 vs S1-solved, |mu| <= 2: max diff 35.5
+P2 S2 system: unmodified table 4.74e-11, modified table 1.32e+00
+  P1: PASS
+  P2: PASS

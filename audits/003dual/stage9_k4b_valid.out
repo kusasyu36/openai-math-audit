@@ -1,0 +1,34 @@
+
+003dual stage 9 (lead, Claude Opus 5.5, 2026-11-13): a VALID multiplier control replacing K4b (stage 7).
+K4b solved the conjugate-multiplier system and found it consistent: its solution is tau(conj mu)
+(= theta reflected in z), see stage7_k4b_diag.out.  So "is the conj-chi system solvable" does not test the multiplier.
+Valid version (Codex w10 (4)): FIX the coefficients and test the transformation rows themselves.
+Same rows as stage 7 S1 (v0 0.30, M 8, grid 30, per_point 4, N(c) <= 40); only the factor f = omega^k changes.
+
+CRITERIA (written before the first run of this script):
+  V1 (code check) table tau, chi rows:                 relative residual <= 1e-10    (= K0)
+  V2 table tau, conj-chi rows (f = omega^{-k}):         relative residual >= 1e-2
+  V3 S1-solved tau (table never used), conj-chi rows:   relative residual >= 1e-2
+  V4 table tau, trivial multiplier (f = 1 on all rows): relative residual >= 1e-2
+  V5 the failure in V2 sits in the chi != 1 rows: on chi = 1 rows alone the residual is <= 1e-10,
+     and on chi = omega, omega^2 rows it is >= 1e-2
+  reported, no criterion: tau(conj mu) fixed in the conj-chi rows (should be small, consistent with the diagnosis).
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy python -B -u audits/003dual/stage9_k4b_valid.py > audits/003dual/stage9_k4b_valid.out
+
+rows 8690, chi exponents [5110, 1798, 1782]
+S1 solve: rank 2074/2074, residual 1.04e-13
+V1 table, chi rows: 1.20e-13
+V2 table, conj-chi rows: 3.31e-01
+V3 S1-solved, conj-chi rows: 3.31e-01
+V4 table, trivial multiplier: 4.82e-01
+V5 table, conj-chi rows split: chi=1 rows 1.42e-13, chi!=1 rows 4.44e-01
+reported: tau(conj mu) in conj-chi rows 1.20e-13, in chi rows 3.31e-01
+reported: S1-solved in chi rows split: chi=1 1.25e-13, chi!=1 8.42e-14
+
+VERDICT:
+  V1: PASS
+  V2: PASS
+  V3: PASS
+  V4: PASS
+  V5: PASS
+ALL PASS

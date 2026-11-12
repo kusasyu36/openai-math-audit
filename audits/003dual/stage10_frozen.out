@@ -1,0 +1,97 @@
+
+003dual stage 10 (lead, Claude Opus 5.5, 2026-11-13): theta AND the cusp functions F_10, F_19 solved jointly from
+automorphy (stage10_lib.py), then compared ONCE with the DR table (kubota.build_series: (5.7), (5.13), (5.14), App. A).
+This is the first check of d_10, d_19 (= d_+-) that does not use DR's cusp formulas, so it also tests the RELATIVE
+normalisation of direct and cusp coefficients (Codex w9 (8), w10 (10)).
+
+Tuning (stage10_tune.py/.out, table-blind; run 1 kept in stage10_tune_run1.out): run 1 had F_10 unstable because the
+cusp grid was below the Nyquist spacing; run 2 fixed the sampling and gave sv_min/sv_max 0.32-0.34 and spreads
+theta 5e-9 / 1.1e-5 / 8.2e-3, cusps 5.5e-9 / 5.9e-6 / 2.1e-2  (|mu| in (0,1] / (1,2] / (2,3]).
+FROZEN = run 2:  S1 v0 0.55, M_th 4.0, M_cu 3.5, grid 18 / 46, per_point 4 (theta) / 2 (cusps), shift (0, 0)
+                 S2 v0 0.52, M_th 4.3, M_cu 3.7, grid 19 / 48, same, shift (0.37, 0.61)
+CRITERIA (written before the first comparison with the table):
+  E0 (code check, not evidence): the DR table (theta, d_10, d_19) plugged into the S1 system: relative residual <= 1e-8
+     (the truncation e^{-4 pi M_cu v0} ~ 3e-11 times the coefficient size).
+  E1 (code check): every table entry of d_10, d_19 inside the range lies in the group-derived index set (stage10_lib).
+  E2 (observed in tuning, so a property, not a test): both solves have full rank and sv_min / sv_max >= 1e-3.
+  E3 comparison, all unknowns with |mu| <= 3 (table extended by 0 off its support), both solves, tolerances
+     ~10 x the tuning spread:  theta  1e-7 / 1e-4 / 8e-2 ;  d_10, d_19  1e-7 / 6e-5 / 2e-1  for (0,1] / (1,2] / (2,3].
+  E4 controls (power of the comparison, expected to pass trivially):
+     (a) the swap9 table differs from S1 by > 1 somewhere in |mu| <= 2 for theta AND for d_10;
+     (b) d_10, d_19 of the table multiplied by sqrt(3) (a wrong relative normalisation) differ from S1 by > 1.
+  Reported, no criterion: the theta-only system of stage 7 type at the S1 setting (theta unknowns, theta sample points,
+  rows only through reps I, P, P2): rank, skipped points, smallest singular values -- to see whether the isolated
+  small singular value of stage 7 appears there and not in the joint system.
+Tolerances are error estimates from the two-solve spread, not bounds.
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy python -B -u audits/003dual/stage10_frozen.py > audits/003dual/stage10_frozen.out
+
+
+== S1: unknowns 2934, rows 10964, chi [6696, 2162, 2106], rank 2934, sv max 91.2 min 29.2 (ratio 3.20e-01), rel residual 4.35e-11, 45s
+   rows by (sample function, rep reached): {('I', 'I'): 520, ('I', 'P'): 330, ('I', 'P2'): 341, ('I', 'g10'): 782, ('I', 'g19'): 1179, ('g10', 'I'): 904, ('g10', 'P'): 351, ('g10', 'P2'): 45, ('g10', 'g10'): 1308, ('g10', 'g19'): 1298, ('g19', 'I'): 936, ('g19', 'P'): 342, ('g19', 'P2'): 24, ('g19', 'g10'): 1302, ('g19', 'g19'): 1302}
+E0 table in S1 system: 4.41e-11;  E1 table entries outside the index set: {'th': 0, 'g10': 0, 'g19': 0}
+E3 S1 th: worst diff/tol 0.114
+     off (0,1]      n=   6 max|solved-table| 3.45e-09  max diff/tol 0.034  max|table| 0
+     off (1,2]      n=  14 max|solved-table| 6.34e-06  max diff/tol 0.063  max|table| 0
+     off (2,3]      n=  30 max|solved-table| 9.42e-04  max diff/tol 0.012  max|table| 0
+     on (0,1]       n=  26 max|solved-table| 4.17e-09  max diff/tol 0.042  max|table| 27
+     on (1,2]       n=  82 max|solved-table| 1.14e-05  max diff/tol 0.114  max|table| 31.2
+     on (2,3]       n= 130 max|solved-table| 6.88e-03  max diff/tol 0.086  max|table| 27
+E3 S1 g10: worst diff/tol 0.110
+     off (0,1]      n=   9 max|solved-table| 3.80e-10  max diff/tol 0.004  max|table| 0
+     off (1,2]      n=  30 max|solved-table| 2.81e-06  max diff/tol 0.047  max|table| 0
+     off (2,3]      n=  54 max|solved-table| 5.67e-03  max diff/tol 0.028  max|table| 0
+     on (0,1]       n=  93 max|solved-table| 4.57e-09  max diff/tol 0.046  max|table| 18
+     on (1,2]       n= 258 max|solved-table| 5.34e-06  max diff/tol 0.089  max|table| 18
+     on (2,3]       n= 444 max|solved-table| 2.19e-02  max diff/tol 0.110  max|table| 23.8
+E3 S1 g19: worst diff/tol 0.089
+     off (0,1]      n=   9 max|solved-table| 2.90e-10  max diff/tol 0.003  max|table| 0
+     off (1,2]      n=  30 max|solved-table| 3.18e-06  max diff/tol 0.053  max|table| 0
+     off (2,3]      n=  54 max|solved-table| 3.95e-03  max diff/tol 0.020  max|table| 0
+     on (0,1]       n=  93 max|solved-table| 3.20e-09  max diff/tol 0.032  max|table| 18
+     on (1,2]       n= 258 max|solved-table| 4.14e-06  max diff/tol 0.069  max|table| 18
+     on (2,3]       n= 444 max|solved-table| 1.78e-02  max diff/tol 0.089  max|table| 23.8
+E4a swap9 vs S1 (|mu|<=2): theta 20, d_10 5.34e-06;  E4b sqrt(3) x cusp table vs S1: 13.2
+
+== S2: unknowns 3292, rows 12285, chi [7511, 2440, 2334], rank 3292, sv max 96.3 min 32.1 (ratio 3.33e-01), rel residual 4.70e-11, 58s
+   rows by (sample function, rep reached): {('I', 'I'): 593, ('I', 'P'): 384, ('I', 'P2'): 403, ('I', 'g10'): 890, ('I', 'g19'): 1375, ('g10', 'I'): 989, ('g10', 'P'): 405, ('g10', 'P2'): 46, ('g10', 'g10'): 1440, ('g10', 'g19'): 1440, ('g19', 'I'): 1031, ('g19', 'P'): 388, ('g19', 'P2'): 20, ('g19', 'g10'): 1440, ('g19', 'g19'): 1441}
+E3 S2 th: worst diff/tol 0.031
+     off (0,1]      n=   6 max|solved-table| 1.52e-09  max diff/tol 0.015  max|table| 0
+     off (1,2]      n=  14 max|solved-table| 3.03e-06  max diff/tol 0.030  max|table| 0
+     off (2,3]      n=  30 max|solved-table| 3.30e-04  max diff/tol 0.004  max|table| 0
+     on (0,1]       n=  26 max|solved-table| 3.10e-09  max diff/tol 0.031  max|table| 27
+     on (1,2]       n=  82 max|solved-table| 8.43e-07  max diff/tol 0.008  max|table| 31.2
+     on (2,3]       n= 130 max|solved-table| 1.56e-03  max diff/tol 0.020  max|table| 27
+E3 S2 g10: worst diff/tol 0.042
+     off (0,1]      n=   9 max|solved-table| 9.54e-10  max diff/tol 0.010  max|table| 0
+     off (1,2]      n=  30 max|solved-table| 1.03e-06  max diff/tol 0.017  max|table| 0
+     off (2,3]      n=  54 max|solved-table| 1.56e-03  max diff/tol 0.008  max|table| 0
+     on (0,1]       n=  93 max|solved-table| 2.02e-09  max diff/tol 0.020  max|table| 18
+     on (1,2]       n= 258 max|solved-table| 2.49e-06  max diff/tol 0.042  max|table| 18
+     on (2,3]       n= 444 max|solved-table| 4.66e-03  max diff/tol 0.023  max|table| 23.8
+E3 S2 g19: worst diff/tol 0.038
+     off (0,1]      n=   9 max|solved-table| 9.22e-10  max diff/tol 0.009  max|table| 0
+     off (1,2]      n=  30 max|solved-table| 1.85e-06  max diff/tol 0.031  max|table| 0
+     off (2,3]      n=  54 max|solved-table| 1.56e-03  max diff/tol 0.008  max|table| 0
+     on (0,1]       n=  93 max|solved-table| 3.19e-09  max diff/tol 0.032  max|table| 18
+     on (1,2]       n= 258 max|solved-table| 2.28e-06  max diff/tol 0.038  max|table| 18
+     on (2,3]       n= 444 max|solved-table| 4.92e-03  max diff/tol 0.025  max|table| 23.8
+S1 vs S2 th |mu|<=3: max diff 7.12e-03 (284)
+S1 vs S2 g10 |mu|<=3: max diff 2.06e-02 (888)
+S1 vs S2 g19 |mu|<=3: max diff 1.83e-02 (888)
+
+reported: theta-only (stage 7 type) at S1: rows 1340, skipped points 408, rank 516/516, smallest 5 sv [1.210e-11 6.953e-12 6.475e-12 2.818e-12 7.785e-13], sv max 63.9, rel residual 5.67e-14
+
+VERDICT:
+  E2 S1: PASS
+  E0: PASS
+  E1: PASS
+  E3 S1 th: PASS
+  E3 S1 g10: PASS
+  E3 S1 g19: PASS
+  E4a: FAIL
+  E4b: PASS
+  E2 S2: PASS
+  E3 S2 th: PASS
+  E3 S2 g10: PASS
+  E3 S2 g19: PASS
+NOT ALL PASS

@@ -1,0 +1,15 @@
+
+003dual stage 10 POST-HOC (lead, 2026-11-13), after stage10_frozen.out.  Not part of the pre-registered criteria.
+(1) Odd part (tau(mu) - tau(-mu))/2 of the theta coefficients from the JOINT solve (S1, S2 of stage 10), |mu| <= 3,
+    to compare with the odd weak direction of stages 7-8 (stage8_evenodd_k3.out: odd part 8.3e-6 (S1), 3.9e-4 (S2)).
+(2) Stage 9 on UNUSED points (Codex w10 (4)): tau solved in stage 7 S1 (v0 0.30, M 8) is fixed and put into the rows of
+    stage 7 S2 (v0 0.26, other grid and shift; none of these rows were used in the S1 solve).
+    Criteria written before running (2): H1 chi rows: relative residual <= 1e-3; H2 conj-chi rows: >= 1e-2;
+    H3 trivial multiplier: >= 1e-2.
+
+(1) joint S1: max odd part of theta over |mu| <= 3: 1.50e-03
+(1) joint S2: max odd part of theta over |mu| <= 3: 2.48e-04
+(2) S1-solved tau in S2 rows (10648 rows): chi 1.89e-11, conj chi 4.08e-01, trivial 5.93e-01
+  H1: PASS
+  H2: PASS
+  H3: PASS
