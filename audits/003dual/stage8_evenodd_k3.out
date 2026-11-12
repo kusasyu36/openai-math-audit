@@ -1,0 +1,10 @@
+
+003dual stage 8b (lead, Claude Opus 5.5, 2026-11-12, POST HOC, after Codex w10 (5)): K3 compared each coefficient;
+an odd perturbation changes individual coefficients, so "the odd direction does not affect K3" (REPORT 13.3) was a
+non sequitur.  Here the stage-7 solutions S1, S2 (exact frozen settings, re-solved) are split into
+even part (tau(mu)+tau(-mu))/2 and odd part (tau(mu)-tau(-mu))/2 over |mu| <= 3, and reported:
+  max |even part - table|, max |odd part| (the table is even, so the odd part should be ~0).
+Not pre-registered; reported against the K3 tolerances only for orientation.
+
+S1: rows 8690 (same as stage 7: yes); |mu|<=3: max |even - table| 5.14e-05 (max/tol 0.013), max |odd part| 8.30e-06
+S2: rows 10648 (same as stage 7: yes); |mu|<=3: max |even - table| 8.08e-06 (max/tol 0.002), max |odd part| 3.88e-04

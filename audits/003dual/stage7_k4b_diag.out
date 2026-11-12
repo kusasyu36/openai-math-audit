@@ -1,0 +1,12 @@
+
+003dual stage 7, POST-HOC diagnostic of the failed control K4b (lead, Claude Opus 5.5, 2026-11-12).
+K4b expected the system with the conjugate multiplier (chi -> conj chi, same reps and translations) to be
+inconsistent; it was consistent (residual 1e-13).  Hypothesis written before running this script:
+the solution is theta reflected in z, f(z, v) = theta(conj z, v), whose coefficient at mu is tau(conj mu),
+because conj((c/a)_3) = (conj c / conj a)_3 and the reflection maps the group and the rep set {I, P, P2} to itself.
+This is a diagnosis after the fact; it does not turn K4b into a pass.
+
+conj-multiplier solution vs tau(mu)           : max |diff| over |mu| <= 2 = 3.12e+01
+conj-multiplier solution vs tau(conj mu)      : max |diff| over |mu| <= 2 = 2.06e-06
+conj-multiplier solution vs conj tau(conj mu) : max |diff| over |mu| <= 2 = 3.12e+01
+conj-multiplier solution vs conj tau(-mu)     : max |diff| over |mu| <= 2 = 2.06e-06

@@ -1,0 +1,86 @@
+
+003dual stage 7 (lead, Claude Opus 5.5, 2026-11-12): the theta coefficients ABOVE 3, by a route that does not use
+DR (5.7)-(5.8).
+
+Why: stage 6 (REPORT section 11) tied the coefficients prime to 3 to the paper's own formula, but the coefficients at
+mu = +-lambda^{3n-3} c d^3 (n >= 1) and +-omega^k lambda^{3n-4} c d^3 (n >= 1) -- which the dual side of the
+reflection uses through t_0 = tau (paper2.tex:3105-3115) -- were tied only indirectly (automorphy checks with the
+DR table plugged in: 029reflect G1/G3/G5, layer B).
+Here the coefficients are SOLVED from automorphy + constant term (Hejhal-type least squares, stage7_lib.py) and only
+then compared with the DR table (kubota.build_series).  See stage7_lib.py for exactly which inputs are used.
+
+Parameters were tuned beforehand on table-blind diagnostics only (rank, residual, agreement of two solves); the
+tuning run (two solves, per_point = 4) gave max |S1 - S2| = 9.7e-7 (|mu| <= 1), 3.2e-5 (<= 2), 4.1e-4 (<= 3).
+FROZEN:  S1: v0 = 0.30, M = 8.0, grid 30 x 90, shift (0, 0),      per_point 4, N(c) <= 40
+         S2: v0 = 0.26, M = 9.0, grid 32 x 96, shift (0.37, 0.61), per_point 4, N(c) <= 40
+CRITERIA (fixed before the first comparison with the table):
+  K0 (code check, not evidence): the DR table plugged into the S1 system has relative residual <= 1e-10.
+  K1 multiplier coverage: in each solve, rows with chi = omega and with chi = omega^2 are each >= 500.
+  K2 no near-null direction: in each solve, full rank and sv_min / sv_max >= 1e-9.
+  K3 comparison, for every mu in L* with |mu| <= 3 (table extended by 0 off its support), in both solves:
+       |solved - table| <= 1e-5 (|mu| <= 1), 3e-4 (1 < |mu| <= 2), 4e-3 (2 < |mu| <= 3).
+     Reported per class: (lambda-valuation of lambda^3 mu, unit class), off-support separately.
+  K4 controls:  (a) the swap9 table (e^{+-2 pi i/9} exchanged) differs from S1 by > 1 somewhere in |mu| <= 2;
+                (b) the system with the conjugate multiplier (chi -> conj chi) has relative residual >= 1e-6.
+  Reported, no criterion: the system with chi = 1 rows only (rank, sv, max deviation from the table).
+Tolerances are error estimates from the two-solve spread, not bounds.
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy python -B -u audits/003dual/stage7_hejhal.py > audits/003dual/stage7_hejhal.out
+
+
+== S1 {'v0': 0.3, 'M': 8.0, 'n_side': 30, 'shift': (0.0, 0.0)}: unknowns 2074, rows 8690, chi exponents [5110, 1798, 1782], reps {'I': 2920, 'P': 2844, 'P2': 2926}, points skipped 112 {'g19': 56, 'g10': 56}, rank 2074, sv max 152 min 7.64e-06 (ratio 5.02e-08), smallest 5 sv [1.877e-02 1.856e-02 2.917e-03 2.899e-03 7.639e-06], rel. residual 1.04e-13, 14s
+K0 code check: DR table plugged into the S1 system, relative residual 1.20e-13
+K4a swap9 table vs S1, max |diff| over |mu| <= 2: 20
+K3 S1: per class (lambda-valuation v of lambda^3 mu, unit k), count, max |solved - table|, max diff/tol, |mu| range
+   v=0 k=0      case 4, n=0      n=  85  max diff 4.43e-05  max diff/tol 0.011  |mu| in [0.192, 2.988]
+   v=0 k=3      case 4, n=0      n=  85  max diff 3.68e-05  max diff/tol 0.009  |mu| in [0.192, 2.988]
+   v=2 k=0      cases 1-3, n=1   n=   9  max diff 1.37e-05  max diff/tol 0.003  |mu| in [0.577, 2.887]
+   v=2 k=1      cases 1-3, n=1   n=   9  max diff 4.31e-05  max diff/tol 0.011  |mu| in [0.577, 2.887]
+   v=2 k=2      cases 1-3, n=1   n=   9  max diff 1.27e-05  max diff/tol 0.003  |mu| in [0.577, 2.887]
+   v=2 k=3      cases 1-3, n=1   n=   9  max diff 2.21e-05  max diff/tol 0.006  |mu| in [0.577, 2.887]
+   v=2 k=4      cases 1-3, n=1   n=   9  max diff 4.00e-05  max diff/tol 0.010  |mu| in [0.577, 2.887]
+   v=2 k=5      cases 1-3, n=1   n=   9  max diff 9.05e-06  max diff/tol 0.002  |mu| in [0.577, 2.887]
+   v=3 k=0      case 4, n=1      n=   4  max diff 1.00e-05  max diff/tol 0.003  |mu| in [1.000, 2.646]
+   v=3 k=3      case 4, n=1      n=   4  max diff 1.51e-05  max diff/tol 0.006  |mu| in [1.000, 2.646]
+   v=5 k=0      cases 1-3, n=2   n=   1  max diff 4.62e-05  max diff/tol 0.012  |mu| in [3.000, 3.000]
+   v=5 k=1      cases 1-3, n=2   n=   1  max diff 4.24e-05  max diff/tol 0.011  |mu| in [3.000, 3.000]
+   v=5 k=2      cases 1-3, n=2   n=   1  max diff 4.98e-05  max diff/tol 0.012  |mu| in [3.000, 3.000]
+   v=5 k=3      cases 1-3, n=2   n=   1  max diff 5.66e-05  max diff/tol 0.014  |mu| in [3.000, 3.000]
+   v=5 k=4      cases 1-3, n=2   n=   1  max diff 5.41e-05  max diff/tol 0.014  |mu| in [3.000, 3.000]
+   v=5 k=5      cases 1-3, n=2   n=   1  max diff 4.91e-05  max diff/tol 0.012  |mu| in [3.000, 3.000]
+   off-support                   n=  50  max diff 1.95e-05  max diff/tol 0.006  |mu| in [0.770, 2.776]
+
+== S2 {'v0': 0.26, 'M': 9.0, 'n_side': 32, 'shift': (0.37, 0.61)}: unknowns 2630, rows 10648, chi exponents [5516, 2558, 2574], reps {'I': 3544, 'P': 3474, 'P2': 3630}, points skipped 61 {'g19': 31, 'g10': 30}, rank 2630, sv max 167 min 8.02e-05 (ratio 4.82e-07), smallest 5 sv [1.094e-01 8.277e-02 2.540e-02 1.998e-02 8.021e-05], rel. residual 2.81e-13, 25s
+K3 S2: per class (lambda-valuation v of lambda^3 mu, unit k), count, max |solved - table|, max diff/tol, |mu| range
+   v=0 k=0      case 4, n=0      n=  85  max diff 3.88e-04  max diff/tol 0.105  |mu| in [0.192, 2.988]
+   v=0 k=3      case 4, n=0      n=  85  max diff 3.88e-04  max diff/tol 0.106  |mu| in [0.192, 2.988]
+   v=2 k=0      cases 1-3, n=1   n=   9  max diff 2.00e-04  max diff/tol 0.050  |mu| in [0.577, 2.887]
+   v=2 k=1      cases 1-3, n=1   n=   9  max diff 1.04e-04  max diff/tol 0.026  |mu| in [0.577, 2.887]
+   v=2 k=2      cases 1-3, n=1   n=   9  max diff 1.02e-04  max diff/tol 0.025  |mu| in [0.577, 2.887]
+   v=2 k=3      cases 1-3, n=1   n=   9  max diff 1.99e-04  max diff/tol 0.050  |mu| in [0.577, 2.887]
+   v=2 k=4      cases 1-3, n=1   n=   9  max diff 1.06e-04  max diff/tol 0.026  |mu| in [0.577, 2.887]
+   v=2 k=5      cases 1-3, n=1   n=   9  max diff 1.09e-04  max diff/tol 0.027  |mu| in [0.577, 2.887]
+   v=3 k=0      case 4, n=1      n=   4  max diff 1.23e-04  max diff/tol 0.065  |mu| in [1.000, 2.646]
+   v=3 k=3      case 4, n=1      n=   4  max diff 1.22e-04  max diff/tol 0.064  |mu| in [1.000, 2.646]
+   v=5 k=0      cases 1-3, n=2   n=   1  max diff 2.60e-04  max diff/tol 0.065  |mu| in [3.000, 3.000]
+   v=5 k=1      cases 1-3, n=2   n=   1  max diff 3.00e-04  max diff/tol 0.075  |mu| in [3.000, 3.000]
+   v=5 k=2      cases 1-3, n=2   n=   1  max diff 2.96e-04  max diff/tol 0.074  |mu| in [3.000, 3.000]
+   v=5 k=3      cases 1-3, n=2   n=   1  max diff 2.49e-04  max diff/tol 0.062  |mu| in [3.000, 3.000]
+   v=5 k=4      cases 1-3, n=2   n=   1  max diff 2.84e-04  max diff/tol 0.071  |mu| in [3.000, 3.000]
+   v=5 k=5      cases 1-3, n=2   n=   1  max diff 2.92e-04  max diff/tol 0.073  |mu| in [3.000, 3.000]
+   off-support                   n=  50  max diff 2.48e-04  max diff/tol 0.110  |mu| in [0.770, 2.776]
+S1 vs S2 over |mu| <= 3: max |diff| 4.10e-04 (288 coefficients)
+
+K4b conjugate multiplier: rel. residual 1.04e-13 (rank 2074)
+chi = 1 rows only (report, no criterion): rows 5110, rank 1830/2074, sv min/max 4.70e-17, rel. residual 5.46e-15, max |solved - table| over |mu| <= 2: 2.38e+01
+
+VERDICT:
+  K1 S1: PASS
+  K2 S1: PASS
+  K0: PASS
+  K4a: PASS
+  K3 S1: PASS
+  K1 S2: PASS
+  K2 S2: PASS
+  K3 S2: PASS
+  K4b: FAIL
+NOT ALL PASS

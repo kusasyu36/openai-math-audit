@@ -1,0 +1,23 @@
+You are an independent reviewer with expertise in automorphic forms on hyperbolic 3-space (Kubota's cubic theta function over Q(omega), Kubota's character, Hejhal's method) and numerical verification. Another AI (Claude, lead) ran three follow-up stages on the coefficient table of the cubic theta function used to check result 003 ("The Quasi-Riemann Hypothesis", unrefereed OpenAI preprint). You reviewed the earlier stages (audits/codex_review/review_w9_003dual.md) and pointed out that a wrong RELATIVE normalisation between direct and cusp coefficients could hide a wrong constant C. Your job now is to find what these stages missed, whether they are circular, and whether the reports overstate. Do not trust the reports; read the scripts and the TeX.
+
+Working directory is the project root. Read-only. Do not run any code from data/openai_math. You may read our scripts; you do not need to run them.
+- Report: audits/003dual/REPORT.md sections 11 (stage 6), 12 (stage 7), 13 (stage 8). Section 10 is your previous review as reflected.
+- Stage 6: audits/003dual/stage6_lead_normalization.py, .out (absolute normalisation of tau tied to paper2.tex eq:intro-theta-coefficients :362-366 and the constant term :1650-1656)
+- Stage 7: audits/003dual/stage7_lib.py, stage7_hejhal.py, stage7_hejhal.out, stage7_tune.py/.out, stage7_k4b_diag.py/.out, stage7_minsv_diag.py/.out. The coefficients are SOLVED from automorphy + constant term (least squares, columns scaled), then compared with the table of audits/029reflect/kubota.py (transcription of Dunn-Radziwill arXiv:2109.07463 (5.7), (5.13), (5.14), App. A).
+- Stage 8: audits/003dual/stage8_tune.py, stage8_vec_diag.py/.out, stage8_parity.py/.out (table-blind diagnosis of the isolated smallest singular value).
+- Source: data/openai_math/preprints/The-Quasi-Riemann-Hypothesis-October-5-2026/build/paper2.tex (:1646-1660 theta; :1762-1780 cusp expansions; :3095-3170 cusp coefficients and automorphy)
+
+Questions:
+(1) Stage 7 independence. Which inputs does the solve really use (check stage7_lib.py line by line)? Is it true that DR (5.7)-(5.8) enters only in the comparison? Is the use of kubota.decompose (DR (5.4), coset reps I, P, P2, the SL2(Z) lifts) legitimate, and could an error there be shared by the table and the solve so that they agree wrongly?
+(2) Equations. Is the equation theta(w) = omega^k F_rep(R(z''+t), v'') with w = h^{-1} w'' and decompose(h^{-1}) = (k, rep, t) correct, including the rotation R for P and P2 (stage7_lib.py ROT and kubota.Kubota.F)? Is the period lattice Z + 3 omega Z and its dual the right index set?
+(3) Pre-registration and tuning. Were parameters tuned only on table-blind quantities (stage7_tune.py prints only solved values, never the table)? Are the tolerances in K3 reasonable error estimates? Is the K3 pass (max diff/tol 0.014 and 0.11) meaningful given the coefficients' size?
+(4) K4b. The pre-registered control "conjugate multiplier gives no consistent solution" failed because conj theta trivially solves it. Is keeping it as FAIL with the post-hoc diagnosis the right handling? Propose a valid multiplier control.
+(5) Stage 8 parity argument (REPORT section 13 item 3). Is it correct that iota: z -> -z (conjugation by diag(i,-i)) preserves Gamma(3), SL2(Z), chi and the rep set, so that odd forms cannot affect the even coefficients? Is it true that the DR table is even? Any gap (e.g. the reps g10/g19, the multiplier on SL2(Z), the action of diag(i,-i) on H^3)?
+(6) What do stages 7-8 say about one-dimensionality (the space of forms with this multiplier and constant term)? Is the wording in sections 12-13 narrow enough?
+(7) DR's two-variable Gauss sum g(r,c) in (5.7) is not defined in DR's text (as far as the lead found). kubota.py reads it as sum_x (x/c)_3 e(r x / c). Is this the standard reading (Patterson 1977)? Does stage 7 support it?
+(8) Stage 6. Any remaining issue beyond what section 11 lists?
+(9) Overstatement check over sections 11-13 and the README entries of 11-12. Propose a one-paragraph public wording for stages 6-8 together.
+
+If you find a concrete error in our scripts, reports or the paper, give the exact file:line and why. If you cannot, say so plainly; do not manufacture one.
+
+Output in Japanese, plain language, concise: for each of (1)-(9) give 判定（正しい / 一部正しい / 誤り / 確認できず）, 根拠（file:line you actually read）, then 公開する場合の文面への注意, then a short overall summary.

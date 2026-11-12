@@ -1,0 +1,32 @@
+entries A = n b^3 prime to 2 with N(A) <= 700: 196 ; by number of prime factors of n: {0: 3, 1: 122, 2: 69, 3: 2} ; with b != 1: 2
+G2   PASS  max |aW - gamma_2(n)|b|| = 1.15e-14 (tolerance 1e-10)
+NG2  PASS  control gamma_4: max difference 2.00e+00 (must be > 1e-3)
+
+003dual stage 6 (lead, Claude Opus 5.5, 2026-11-12): anchors for the NORMALIZATION of the theta-coefficient tables.
+
+Why: both sides of layers D/E use the same tables (kubota.py).  Codex (review_w9_003dual (5)) noted that a common
+scale on both sides cannot hide a wrong C, but a wrong RELATIVE normalization between direct coefficients and cusp
+coefficients could.  The relative normalization tau <-> d_+- is tested pointwise in layer B (automorphy).  What was
+not tested against the paper's own statements is the ABSOLUTE normalization of tau.  This script ties it to two
+statements of the paper itself, without using Patterson 1977 or a second transcription of DR:
+
+  N1  eq:intro-theta-coefficients (paper2.tex:362-366): the coefficient of conj(theta) at lambda^-3 n b^3
+      (n squarefree primary, (nb, 6) = 1) equals 3^{5/2} |b| conj(chi_n(lambda)^2) gamma_2(n).
+      gamma_2 by brute force from :310-313 and the cubic symbol by Euler's criterion (own code, as in
+      lead_gamma2_anchor.py).  Table: kubota.Kubota(...).theta.conj(), all entries with N(lambda^3 l) <= 700.
+  N2  eq:cubic-theta-definition (:1650-1656): constant term 3^{5/2}/2 v^{2/3}.  Automorphy under
+      E = [[0,-1],[1,0]] mixes the constant term with the coefficients, so it fixes their RATIO.  Test: with the
+      table as is, theta(E w) = theta(w) at 6 points; with every coefficient scaled by 1.001 (constant kept),
+      and with the constant scaled by 1.001 (coefficients kept), the identity must fail at some point.
+      This shows the table's scale is the one forced by the paper's constant term, IF the automorphic form with
+      this multiplier and this constant term is unique (assumed, not tested: one-dimensionality of the space).
+
+CRITERIA (fixed before running):  N1 max |table - formula| <= 1e-10, over >= 100 entries, including n with 2 prime
+  factors and some b != 1;  control (gamma_4 instead of gamma_2) differs by > 1e-3.
+  N2 relative error <= 1e-9 at all 6 points for the table;  each scaled version has relative error > 1e-6 at >= 1 point.
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy python -B -u audits/003dual/stage6_lead_normalization.py > audits/003dual/stage6_lead_normalization.out
+
+N1   PASS  entries 196 (by number of prime factors of n: {0: 3, 1: 122, 2: 69, 3: 2} ; b != 1: 2) ; max |table - 3^{5/2}|b| conj(chi_n(lambda)^2) gamma_2(n)| = 1.78e-13
+NC1  PASS  control gamma_4: max difference 3.12e+01 (must be > 1e-3)
+N2   PASS  theta(E w) = theta(w): max relative error 4.43e-16 at 6 points ; coefficients x1.001: max 1.37e-04 ; constant x1.001: max 1.37e-04 (both must be > 1e-6)
+STAGE 6: all criteria met

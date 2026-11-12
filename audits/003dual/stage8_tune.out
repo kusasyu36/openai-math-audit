@@ -1,0 +1,12 @@
+
+003dual stage 8 tuning (lead, Claude Opus 5.5, 2026-11-12, TABLE-BLIND): does the isolated smallest singular value of
+the stage-7 systems disappear when points near the cusps 10/19 are brought back?  Variant: for every point, also
+allow pullbacks (rep I, P, P2) whose height is only >= g_low * v0 (g_low < 1), so that points whose best pullback was
+g10/g19 still give equations (both sides expanded at infinity; truncation at the lower height is checked by M).
+Prints: rows, skipped points, rank, the smallest 4 singular values, residual, and two-solve agreement.
+
+g_low=0.85 v0=0.3 M=9.0 unk=2630 rows=10792 (low-height rows 590) chi=[6559, 2120, 2113] skipped=0 rank=2630 sv max 3.88e+03 smallest4 [1.775e-02 2.063e-03 2.057e-03 3.085e-06] resid=2.62e-14 28s
+g_low=0.85 v0=0.26 M=10.0 unk=3242 rows=12288 (low-height rows 329) chi=[6821, 2730, 2737] skipped=0 rank=3242 sv max 1.52e+03 smallest4 [2.908e-04 2.542e-04 1.934e-04 5.514e-06] resid=1.50e-14 47s
+  |mu|<=1.0: n=32 max|S1-S2|=3.67e-07
+  |mu|<=2.0: n=128 max|S1-S2|=1.06e-05
+  |mu|<=3.0: n=288 max|S1-S2|=1.30e-04

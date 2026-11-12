@@ -1,0 +1,21 @@
+
+003dual stage 8 tuning (lead, Claude Opus 5.5, 2026-11-12, TABLE-BLIND): does the isolated smallest singular value of
+the stage-7 systems disappear when points near the cusps 10/19 are brought back?  Variant: for every point, also
+allow pullbacks (rep I, P, P2) whose height is only >= g_low * v0 (g_low < 1), so that points whose best pullback was
+g10/g19 still give equations (both sides expanded at infinity; truncation at the lower height is checked by M).
+Prints: rows, skipped points, rank, the smallest 4 singular values, residual, and two-solve agreement.
+
+
+003dual stage 8, TABLE-BLIND (lead, Claude Opus 5.5, 2026-11-12): split the stage-8 system by parity.
+iota: (z, v) -> (-z, v) is conjugation by diag(i, -i); it maps [[a,b],[c,d]] to [[a,-b],[-c,d]], preserves Gamma(3),
+SL2(Z) and chi ((-c/a)_3 = (c/a)_3), so the solution space splits into even (delta(-mu) = delta(mu)) and odd parts.
+An odd automorphic form has zero constant term and cannot change the even (= table-type) coefficients.
+(i) even subsystem: columns phi_mu + phi_{-mu}; (ii) odd subsystem: phi_mu - phi_{-mu}, homogeneous.
+Smallest singular values vs truncation M at v0 = 0.30 (g_low = 0.85).  If the odd minimum decreases like the
+truncation error as M grows, it points to a genuine odd form; if it stays put, the odd direction is weak but not null.
+
+M=7.0: unknown pairs 797; EVEN sv max 1.91e+03 min3 [2.565 2.18  0.312] resid 6.5e-12; ODD sv max 1.87e+03 min3 [2.258e+00 3.210e-01 1.682e-03]  (14s)
+M=8.0: unknown pairs 1037; EVEN sv max 3.23e+03 min3 [0.456 0.34  0.044] resid 1.4e-13; ODD sv max 3.17e+03 min3 [3.470e-01 4.575e-02 1.215e-04]  (17s)
+M=9.0: unknown pairs 1315; EVEN sv max 5.49e+03 min3 [0.027 0.025 0.003] resid 1.9e-14; ODD sv max 5.49e+03 min3 [2.530e-02 2.910e-03 4.363e-06]  (21s)
+M=10.0: unknown pairs 1621; EVEN sv max 9.81e+03 min3 [4.856e-05 3.879e-05 3.056e-06] resid 1.2e-13; ODD sv max 9.84e+03 min3 [3.674e-05 3.457e-06 2.841e-09]  (26s)
+M=11.0: unknown pairs 1968; EVEN sv max 1.77e+04 min3 [1.111e-08 2.720e-09 2.841e-10] resid 5.3e-14; ODD sv max 1.77e+04 min3 [4.081e-09 9.450e-10 8.841e-12]  (37s)

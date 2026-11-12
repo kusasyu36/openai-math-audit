@@ -1,0 +1,28 @@
+
+003dual stage 8 tuning (lead, Claude Opus 5.5, 2026-11-12, TABLE-BLIND): does the isolated smallest singular value of
+the stage-7 systems disappear when points near the cusps 10/19 are brought back?  Variant: for every point, also
+allow pullbacks (rep I, P, P2) whose height is only >= g_low * v0 (g_low < 1), so that points whose best pullback was
+g10/g19 still give equations (both sides expanded at infinity; truncation at the lower height is checked by M).
+Prints: rows, skipped points, rank, the smallest 4 singular values, residual, and two-solve agreement.
+
+
+003dual stage 8, TABLE-BLIND diagnostic (lead, Claude Opus 5.5, 2026-11-12): shape of the right singular vector of
+the isolated smallest singular value (system of stage8_tune with g_low = 0.85, v0 = 0.30, M = 9).
+Reports, in unscaled coordinates delta tau(mu) (normalised to max 1 on |mu| <= 3):
+  parity: || delta(mu) + delta(-mu) || vs || delta(mu) - delta(-mu) ||;
+  rotation by omega: delta(omega mu) vs delta(mu);  reflection: delta(conj mu)...;
+  weight per lambda-valuation class;  and how big the function it represents is at a high point (v = 1, 2).
+
+smallest 4 sv [1.77516879e-02 2.06305275e-03 2.05732276e-03 3.08505183e-06]
+
+singular vector -1 (sv 3.085e-06):
+  parity  |d(mu)-d(-mu)|, |d(mu)+d(-mu)| = ['9.353e+00', '2.606e-06']
+  omega-rotation |d(mu)-d(omega mu)|, |+| = ['2.538e+00', '2.594e+00']
+  weight by lambda-valuation of lambda^3 mu (|mu|<=3): {0: '18.435', 2: '1.528', 3: '0.762', 4: '0.003', 5: '1.141'}
+  largest entries: m=(-16, -15) |mu|=2.988 |d|=1.000, m=(16, 15) |mu|=2.988 |d|=1.000, m=(-1, 15) |mu|=2.988 |d|=0.999, m=(1, -15) |mu|=2.988 |d|=0.999, m=(9, -9) |mu|=3.000 |d|=0.755, m=(-9, 9) |mu|=3.000 |d|=0.755
+
+singular vector -2 (sv 2.057e-03):
+  parity  |d(mu)-d(-mu)|, |d(mu)+d(-mu)| = ['7.918e+00', '1.687e-01']
+  omega-rotation |d(mu)-d(omega mu)|, |+| = ['3.344e+00', '2.733e+00']
+  weight by lambda-valuation of lambda^3 mu (|mu|<=3): {0: '10.993', 2: '1.972', 3: '0.762', 4: '0.000', 5: '1.955'}
+  largest entries: m=(18, 9) |mu|=3.000 |d|=1.000, m=(-9, 9) |mu|=3.000 |d|=0.996, m=(-9, -18) |mu|=3.000 |d|=0.987, m=(9, -9) |mu|=3.000 |d|=0.982, m=(-18, -9) |mu|=3.000 |d|=0.976, m=(9, 18) |mu|=3.000 |d|=0.964

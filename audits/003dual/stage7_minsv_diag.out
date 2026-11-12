@@ -1,0 +1,24 @@
+
+003dual stage 7, POST-HOC diagnostic (lead, Claude Opus 5.5, 2026-11-12): the smallest singular value of the S1/S2
+systems is isolated (S1: 7.6e-6 vs next 2.9e-3; S2: 8.0e-5 vs next 2.0e-2).  Where does the corresponding right
+singular vector live (which |mu|), and how much does it move the compared coefficients (|mu| <= 3)?
+Table-blind.  Not part of the pre-registered criteria.
+
+
+S1: sv min 7.639e-06, next 2.899e-03
+  top weights (|mu|, weight): (0.192, 0.041), (0.192, 0.041), (0.770, 0.035), (0.770, 0.035), (0.694, 0.028), (0.694, 0.028), (0.694, 0.028), (0.694, 0.028)
+  weight in 0 < |mu| <= 3: 9.966e-01
+  weight in 3 < |mu| <= 6: 3.373e-03
+  weight in 6 < |mu| <= 8: 1.452e-08
+  weight in 8 < |mu| <= 99: 4.052e-16
+  solution component along it: 1.277e-09; its max contribution to |tau| over |mu| <= 3: 8.166e-06
+  noise amplification estimate along it (1e-13 |b| / s_min) -> max |tau| change over |mu| <= 3: 4.828e-02
+
+S2: sv min 8.021e-05, next 1.998e-02
+  top weights (|mu|, weight): (0.770, 0.022), (0.770, 0.022), (0.694, 0.016), (0.694, 0.016), (0.694, 0.016), (0.694, 0.016), (1.171, 0.015), (1.171, 0.015)
+  weight in 0 < |mu| <= 3: 9.724e-01
+  weight in 3 < |mu| <= 6: 2.763e-02
+  weight in 6 < |mu| <= 8: 3.472e-06
+  weight in 8 < |mu| <= 99: 7.142e-10
+  solution component along it: 9.583e-06; its max contribution to |tau| over |mu| <= 3: 3.589e-02
+  noise amplification estimate along it (1e-13 |b| / s_min) -> max |tau| change over |mu| <= 3: 3.076e-03
