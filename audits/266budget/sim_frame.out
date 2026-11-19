@@ -1,0 +1,9 @@
+samples 1500 tries 6186
+max observed W error   9.437e-16  (my bound 1.29e-10, paper 8e-10)
+max observed D error   1.177e-15  (my bound 5.18e-10, paper 4e-9)
+max observed flat-sum error 3.553e-15 (my bound 5.95e-8, paper 1e-6)
+min frame m observed   1.25067  (threshold 1.25)
+min last complement r  0.33645  (threshold .2025)
+near m<1.3: n=183 max D err 1.029e-15
+expair max observed error 4.157e-16 (lemma 2e-14 incl. none of arg formation; my internal bound 5.7e-15)
+NOTE: all numbers above are observations, not upper bounds.

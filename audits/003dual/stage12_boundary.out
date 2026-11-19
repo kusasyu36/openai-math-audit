@@ -1,0 +1,24 @@
+
+Stage 12: size of the boundary gap of stage12_main.out (written after stage12_main.out was seen; bounds only, no dual sum).
+For every run of the W1/W2 frames and the K frame of stage12_main.py: the structured tail with D evaluated at R (struct_tail,
+as used in stage12_main) and at R (1 - 1e-9) (struct_tail2, which also counts every l with N(l) = R).  The difference bounds
+what a term with N(l) = R exactly, missed by both the table sum and the bound, can contribute.  Also the number of table
+entries with |N(l) - R| <= 1e-9 R in the groups (where the floating-point comparison decides).
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage12_boundary.py > audits/003dual/stage12_boundary.out
+
+  W1 B {(1, 3): 1}    struct_tail 2.026543e-06  struct_tail2 2.026607e-06  difference 6.36e-11 (relative 3.1e-05) ; table entries within 1e-9 R of R over the groups: 90
+  W1 B {(-2, -3): 1}  struct_tail 2.026543e-06  struct_tail2 2.026607e-06  difference 6.36e-11 (relative 3.1e-05) ; table entries within 1e-9 R of R over the groups: 90
+  W1 B {(4, 3): 1}    struct_tail 1.337546e-04  struct_tail2 1.337585e-04  difference 3.90e-09 (relative 2.9e-05) ; table entries within 1e-9 R of R over the groups: 96
+  W1 A {}             struct_tail 2.686963e-07  struct_tail2 2.687025e-07  difference 6.23e-12 (relative 2.3e-05) ; table entries within 1e-9 R of R over the groups: 54
+  W1 B {(1, 3): 2}    struct_tail 2.026543e-06  struct_tail2 2.026607e-06  difference 6.36e-11 (relative 3.1e-05) ; table entries within 1e-9 R of R over the groups: 90
+  W1 F {(1, 3): 1}    struct_tail 2.942071e-03  struct_tail2 2.942151e-03  difference 8.00e-08 (relative 2.7e-05) ; table entries within 1e-9 R of R over the groups: 108
+  W1 A {(1, 3): 1}    struct_tail 3.749039e-02  struct_tail2 3.749108e-02  difference 6.91e-07 (relative 1.8e-05) ; table entries within 1e-9 R of R over the groups: 72
+  W2 B {(1, 3): 1}    struct_tail 3.003511e-06  struct_tail2 3.003605e-06  difference 9.42e-11 (relative 3.1e-05) ; table entries within 1e-9 R of R over the groups: 72
+  W2 B {(-2, -3): 1}  struct_tail 3.003511e-06  struct_tail2 3.003605e-06  difference 9.42e-11 (relative 3.1e-05) ; table entries within 1e-9 R of R over the groups: 72
+  W2 B {(4, 3): 1}    struct_tail 1.988477e-04  struct_tail2 1.988535e-04  difference 5.80e-09 (relative 2.9e-05) ; table entries within 1e-9 R of R over the groups: 96
+  W2 A {}             struct_tail 3.970923e-07  struct_tail2 3.971015e-07  difference 9.20e-12 (relative 2.3e-05) ; table entries within 1e-9 R of R over the groups: 54
+  W2 F {(1, 3): 1}    struct_tail 4.396410e-03  struct_tail2 4.396530e-03  difference 1.20e-07 (relative 2.7e-05) ; table entries within 1e-9 R of R over the groups: 108
+  K B {(1, 3): 1}    struct_tail 2.561333e-06  struct_tail2 2.561413e-06  difference 8.03e-11 (relative 3.1e-05) ; table entries within 1e-9 R of R over the groups: 90
+  K B {(1, 3): 0}    struct_tail 9.680929e-07  struct_tail2 9.681233e-07  difference 3.04e-11 (relative 3.1e-05) ; table entries within 1e-9 R of R over the groups: 90
+  K B {(1, 3): 4}    struct_tail 5.808557e-06  struct_tail2 5.808739e-06  difference 1.82e-10 (relative 3.1e-05) ; table entries within 1e-9 R of R over the groups: 90
+  K A {}             struct_tail 3.594388e-07  struct_tail2 3.594470e-07  difference 8.20e-12 (relative 2.3e-05) ; table entries within 1e-9 R of R over the groups: 72

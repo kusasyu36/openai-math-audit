@@ -1,0 +1,125 @@
+Installed 3 packages in 35ms
+
+Stage 12, probe 1 (PLANNING ONLY: bounds, the direct sum |T_dir| as the scale, and checks of the derivation; the dual sum
+is NOT computed and no comparison is made).  Written 2026-11-19 after stage 5 had been seen.
+
+ (1) conversion check of stage12_lib (EQUALITY expected): for each sigma and windows R1 < N(l) <= R2 inside the table,
+     sum |d_sigma(l)| N(l)^-s computed from the d-tables  ==  the same sum computed through the family/A decomposition of
+     stage12_lib with the table values |G(A)|.  Then the INEQUALITY P-bound(s, M) >= sum_{M < N(A) <= Nmax} |G(A)| N(A)^-s.
+     These test the derivation; they are not the basis of the bound.
+ (2) |Q(A + i tau)| monotone non-decreasing on the tau grid (used by Mt_upper).
+ (3) Mt_upper (one-sided Riemann) vs Mt (log-trapezoid of stage5_bump) and vs Mt with 1600 Gauss-Legendre nodes.
+ (4) planning table: for candidate weights (p, a), X = floor(10^6 e^-a), and candidate runs, the registered stage-5 tail
+     bound (T3'), the structured tail bound of stage12_lib, and |T_dir|.
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage12_probe1.py > audits/003dual/stage12_probe1.out
+
+(1) conversion check, sum |d| N^-s over windows (table vs family decomposition):
+   sigma 0  (0, 370.4]  s=0.0 : table 1.6562496676e+05  formula 1.6562496676e+05  rel diff 1.8e-16
+   sigma 0  (0, 370.4]  s=1.5 : table 7.1298436446e+03  formula 7.1298436446e+03  rel diff 1.3e-16
+   sigma 0  (0, 370.4]  s=3.0 : table 6.3042657632e+05  formula 6.3042657632e+05  rel diff 3.7e-16
+   sigma 0  (370.4, 9259]  s=0.0 : table 3.9652164455e+06  formula 3.9652164455e+06  rel diff 0.0e+00
+   sigma 0  (370.4, 9259]  s=1.5 : table 3.7043515645e+01  formula 3.7043515645e+01  rel diff 1.9e-16
+   sigma 0  (370.4, 9259]  s=3.0 : table 1.6152512207e-03  formula 1.6152512207e-03  rel diff 4.0e-16
+   sigma 0  (9259, 3.704e+04]  s=0.0 : table 1.2398123515e+07  formula 1.2398123515e+07  rel diff 3.0e-16
+   sigma 0  (9259, 3.704e+04]  s=1.5 : table 4.6398523580e+00  formula 4.6398523580e+00  rel diff 1.9e-16
+   sigma 0  (9259, 3.704e+04]  s=3.0 : table 2.4424849784e-06  formula 2.4424849784e-06  rel diff 1.7e-16
+   sigma +  (0, 123.5]  s=0.0 : table 1.0069235636e+05  formula 1.0069235636e+05  rel diff 2.9e-16
+   sigma +  (0, 123.5]  s=1.5 : table 2.8558323103e+04  formula 2.8558323103e+04  rel diff 3.8e-16
+   sigma +  (0, 123.5]  s=3.0 : table 1.4679360564e+07  formula 1.4679360564e+07  rel diff 7.6e-16
+   sigma +  (123.5, 3086]  s=0.0 : table 2.4111675538e+06  formula 2.4111675538e+06  rel diff 0.0e+00
+   sigma +  (123.5, 3086]  s=1.5 : table 1.1703887709e+02  formula 1.1703887709e+02  rel diff 4.9e-16
+   sigma +  (123.5, 3086]  s=3.0 : table 2.6556795934e-02  formula 2.6556795934e-02  rel diff 3.9e-16
+   sigma +  (3086, 1.235e+04]  s=0.0 : table 7.5355827662e+06  formula 7.5356727662e+06  rel diff 1.2e-05
+   sigma +  (3086, 1.235e+04]  s=1.5 : table 1.4648950720e+01  formula 1.4649016330e+01  rel diff 4.5e-06
+   sigma +  (3086, 1.235e+04]  s=3.0 : table 4.0048408926e-05  formula 4.0048456755e-05  rel diff 1.2e-06
+   sigma -  (0, 123.5]  s=0.0 : table 1.0069235636e+05  formula 1.0069235636e+05  rel diff 2.9e-16
+   sigma -  (0, 123.5]  s=1.5 : table 2.8558323103e+04  formula 2.8558323103e+04  rel diff 2.5e-16
+   sigma -  (0, 123.5]  s=3.0 : table 1.4679360564e+07  formula 1.4679360564e+07  rel diff 7.6e-16
+   sigma -  (123.5, 3086]  s=0.0 : table 2.4111675538e+06  formula 2.4111675538e+06  rel diff 3.9e-16
+   sigma -  (123.5, 3086]  s=1.5 : table 1.1703887709e+02  formula 1.1703887709e+02  rel diff 4.9e-16
+   sigma -  (123.5, 3086]  s=3.0 : table 2.6556795934e-02  formula 2.6556795934e-02  rel diff 3.9e-16
+   sigma -  (3086, 1.235e+04]  s=0.0 : table 7.5355827662e+06  formula 7.5356727662e+06  rel diff 1.2e-05
+   sigma -  (3086, 1.235e+04]  s=1.5 : table 1.4648950720e+01  formula 1.4649016330e+01  rel diff 4.5e-06
+   sigma -  (3086, 1.235e+04]  s=3.0 : table 4.0048408926e-05  formula 4.0048456755e-05  rel diff 1.2e-06
+   worst relative difference: 1.2e-05  (MISMATCH)
+   P-bound vs table partial sums (bound must be >= the partial sum):
+     s=1.5 M=0.5 : partial sum (N(A) <= 10^6) 1.457604e+00   bound 1.495282e+00   ratio bound/partial 1.026 
+     s=1.5 M=10 : partial sum (N(A) <= 10^6) 2.246137e-01   bound 2.622922e-01   ratio bound/partial 1.168 
+     s=1.5 M=1000 : partial sum (N(A) <= 10^6) 2.274111e-02   bound 2.978778e-02   ratio bound/partial 1.310 
+     s=1.5 M=100000 : partial sum (N(A) <= 10^6) 1.609551e-03   bound 3.998792e-03   ratio bound/partial 2.484 
+     s=2.5 M=0.5 : partial sum (N(A) <= 10^6) 1.053592e+00   bound 1.054754e+00   ratio bound/partial 1.001 
+     s=2.5 M=10 : partial sum (N(A) <= 10^6) 6.914762e-03   bound 8.077089e-03   ratio bound/partial 1.168 
+     s=2.5 M=1000 : partial sum (N(A) <= 10^6) 7.776569e-06   bound 9.042726e-06   ratio bound/partial 1.163 
+     s=2.5 M=100000 : partial sum (N(A) <= 10^6) 7.599248e-09   bound 2.189664e-08   ratio bound/partial 2.881 
+     s=4.0 M=0.5 : partial sum (N(A) <= 10^6) 1.004835e+00   bound 1.004851e+00   ratio bound/partial 1.000 
+     s=4.0 M=10 : partial sum (N(A) <= 10^6) 9.619714e-05   bound 1.118811e-04   ratio bound/partial 1.163 
+     s=4.0 M=1000 : partial sum (N(A) <= 10^6) 1.215948e-10   bound 1.395254e-10   ratio bound/partial 1.147 
+     s=4.0 M=100000 : partial sum (N(A) <= 10^6) 1.239708e-16   bound 5.499779e-16   ratio bound/partial 4.436 
+   max |G(A)|/N(A)^(1/6) on table = 1.000000 (must be <= 1)
+   max |B_{p,1}| for p = (1, 3) (N = 7): 1.000000
+   max |B_{p,1}| for p = (-2, -3) (N = 7): 1.000000
+   max |B_{p,1}| for p = (4, 3) (N = 13): 1.000000
+weight p=4 a=3: built [1s]
+weight p=4 a=2.5: built [1s]
+weight p=3 a=2.5: built [1s]
+weight p=5 a=2.5: built [1s]
+weight p=4 a=2: built [1s]
+weight p=6 a=2.5: built [1s]
+(2) |Q(A+i tau)| monotone on the tau grid:
+   A=1: min diff of log|Q| along the grid = 1.744e-04 (>= 0 means non-decreasing)
+   A=2: min diff of log|Q| along the grid = 1.808e-04 (>= 0 means non-decreasing)
+   A=4: min diff of log|Q| along the grid = 1.833e-04 (>= 0 means non-decreasing)
+   A=8: min diff of log|Q| along the grid = 1.845e-04 (>= 0 means non-decreasing)
+   A=12: min diff of log|Q| along the grid = 1.849e-04 (>= 0 means non-decreasing)
+(3) Mt variants for p=4, a=3:
+   A=1: Mt(trapezoid) 3.184919e+02  Mt_upper 3.530145e+02  Mt(GL 1600) 3.184919e+02  Mt_upper(GL 1600) 3.530145e+02
+   A=2: Mt(trapezoid) 5.801647e+07  Mt_upper 7.052814e+07  Mt(GL 1600) 5.801647e+07  Mt_upper(GL 1600) 7.052814e+07
+   A=3: Mt(trapezoid) 2.854317e+14  Mt_upper 3.805199e+14  Mt(GL 1600) 2.854317e+14  Mt_upper(GL 1600) 3.805199e+14
+   A=4: Mt(trapezoid) 9.964186e+21  Mt_upper 1.456672e+22  Mt(GL 1600) 9.964186e+21  Mt_upper(GL 1600) 1.456672e+22
+   A=6: Mt(trapezoid) 6.117811e+38  Mt_upper 1.075466e+39  Mt(GL 1600) 6.117811e+38  Mt_upper(GL 1600) 1.075466e+39
+   A=8: Mt(trapezoid) 1.532524e+57  Mt_upper 3.239578e+57  Mt(GL 1600) 1.532524e+57  Mt_upper(GL 1600) 3.239578e+57
+(4) planning table: tail bounds (sum over groups) and |T_dir|; ratio = struct tail / |T_dir|
+   p=4 a=3 X=49787  B {7: 1}     |T_dir|=4.752e-03  old tail 7.68e-05 (1.8 digits)  struct tail 2.55e-06 (3.3 digits)  A* [3.75, 4.5, 6.0, 7.0]  largest (sigma,N(c)): -,28:1.3e-06 +,28:1.3e-06 0,28:1.4e-08  [7s]
+   p=4 a=3 X=49787  B {7: 1}     |T_dir|=4.752e-03  old tail 7.68e-05 (1.8 digits)  struct tail 2.55e-06 (3.3 digits)  A* [3.75, 4.5, 6.0, 7.0]  largest (sigma,N(c)): -,28:1.3e-06 +,28:1.3e-06 0,28:1.4e-08  [1s]
+   p=4 a=3 X=49787  B {13: 1}    |T_dir|=3.020e-02  old tail 4.86e-03 (0.8 digits)  struct tail 1.49e-04 (2.3 digits)  A* [3.0, 3.5, 4.75, 5.75]  largest (sigma,N(c)): -,52:7.3e-05 +,52:7.3e-05 0,52:1.9e-06  [1s]
+   p=4 a=3 X=49787  F {7: 1}     |T_dir|=1.258e-01  old tail 1.02e-01 (0.1 digits)  struct tail 3.01e-03 (1.6 digits)  A* [2.5, 4.0]  largest (sigma,N(c)): -,84:3.0e-03 -,21:4.2e-07  [1s]
+   p=4 a=3 X=49787  A {}         |T_dir|=2.212e-03  old tail 2.33e-05 (2.0 digits)  struct tail 3.58e-07 (3.8 digits)  A* [4.0, 6.75]  largest (sigma,N(c)): 0,36:3.6e-07 0,9:1.8e-13  [1s]
+   p=4 a=3 X=49787  A {7: 1}     |T_dir|=2.366e-02  old tail 2.85e+00 (-2.1 digits)  struct tail 3.68e-02 (-0.2 digits)  A* [2.25, 3.25]  largest (sigma,N(c)): 0,252:3.7e-02 0,63:2.2e-05  [1s]
+   p=4 a=3 X=49787  B {7: 2}     |T_dir|=1.312e-02  old tail 7.68e-05 (2.2 digits)  struct tail 2.55e-06 (3.7 digits)  A* [3.75, 4.5, 6.0, 7.0]  largest (sigma,N(c)): -,28:1.3e-06 +,28:1.3e-06 0,28:1.4e-08  [1s]
+   p=4 a=2.5 X=82084  B {7: 1}     |T_dir|=2.018e-02  old tail 6.07e-05 (2.5 digits)  struct tail 2.03e-06 (4.0 digits)  A* [3.75, 4.5, 6.25, 6.5]  largest (sigma,N(c)): -,28:1.0e-06 +,28:1.0e-06 0,28:1.0e-08  [7s]
+   p=4 a=2.5 X=82084  B {7: 1}     |T_dir|=2.018e-02  old tail 6.07e-05 (2.5 digits)  struct tail 2.03e-06 (4.0 digits)  A* [3.75, 4.5, 6.25, 6.5]  largest (sigma,N(c)): -,28:1.0e-06 +,28:1.0e-06 0,28:1.0e-08  [1s]
+   p=4 a=2.5 X=82084  B {13: 1}    |T_dir|=7.917e-02  old tail 4.34e-03 (1.3 digits)  struct tail 1.34e-04 (2.8 digits)  A* [3.0, 3.75, 5.0, 6.0]  largest (sigma,N(c)): +,52:6.6e-05 -,52:6.6e-05 0,52:1.6e-06  [1s]
+   p=4 a=2.5 X=82084  F {7: 1}     |T_dir|=1.123e-01  old tail 9.88e-02 (0.1 digits)  struct tail 2.94e-03 (1.6 digits)  A* [2.5, 4.25]  largest (sigma,N(c)): -,84:2.9e-03 -,21:3.1e-07  [1s]
+   p=4 a=2.5 X=82084  A {}         |T_dir|=5.742e-04  old tail 1.70e-05 (1.5 digits)  struct tail 2.69e-07 (3.3 digits)  A* [4.25, 6.5]  largest (sigma,N(c)): 0,36:2.7e-07 0,9:3.4e-13  [2s]
+   p=4 a=2.5 X=82084  A {7: 1}     |T_dir|=1.698e-02  old tail 2.89e+00 (-2.2 digits)  struct tail 3.75e-02 (-0.3 digits)  A* [2.25, 3.5]  largest (sigma,N(c)): 0,252:3.7e-02 0,63:1.9e-05  [1s]
+   p=4 a=2.5 X=82084  B {7: 2}     |T_dir|=1.528e-02  old tail 6.07e-05 (2.4 digits)  struct tail 2.03e-06 (3.9 digits)  A* [3.75, 4.5, 6.25, 6.5]  largest (sigma,N(c)): -,28:1.0e-06 +,28:1.0e-06 0,28:1.0e-08  [1s]
+   p=3 a=2.5 X=82084  B {7: 1}     |T_dir|=1.604e-02  old tail 1.21e-04 (2.1 digits)  struct tail 3.92e-06 (3.6 digits)  A* [3.5, 4.0, 5.5, 5.75]  largest (sigma,N(c)): -,28:1.9e-06 +,28:1.9e-06 0,28:3.1e-08  [6s]
+   p=3 a=2.5 X=82084  B {7: 1}     |T_dir|=1.604e-02  old tail 1.21e-04 (2.1 digits)  struct tail 3.92e-06 (3.6 digits)  A* [3.5, 4.0, 5.5, 5.75]  largest (sigma,N(c)): -,28:1.9e-06 +,28:1.9e-06 0,28:3.1e-08  [1s]
+   p=3 a=2.5 X=82084  B {13: 1}    |T_dir|=8.283e-02  old tail 5.69e-03 (1.2 digits)  struct tail 1.70e-04 (2.7 digits)  A* [2.75, 3.25, 4.25, 5.25]  largest (sigma,N(c)): +,52:8.4e-05 -,52:8.4e-05 0,52:2.9e-06  [1s]
+   p=3 a=2.5 X=82084  F {7: 1}     |T_dir|=9.257e-02  old tail 9.91e-02 (-0.0 digits)  struct tail 2.85e-03 (1.5 digits)  A* [2.25, 3.75]  largest (sigma,N(c)): -,84:2.9e-03 -,21:7.5e-07  [1s]
+   p=3 a=2.5 X=82084  A {}         |T_dir|=4.186e-03  old tail 4.30e-05 (2.0 digits)  struct tail 6.49e-07 (3.8 digits)  A* [3.75, 5.75]  largest (sigma,N(c)): 0,36:6.5e-07 0,9:3.9e-12  [1s]
+   p=3 a=2.5 X=82084  A {7: 1}     |T_dir|=1.284e-02  old tail 2.23e+00 (-2.2 digits)  struct tail 2.81e-02 (-0.3 digits)  A* [2.0, 3.0]  largest (sigma,N(c)): 0,252:2.8e-02 0,63:2.9e-05  [1s]
+   p=3 a=2.5 X=82084  B {7: 2}     |T_dir|=1.268e-02  old tail 1.21e-04 (2.0 digits)  struct tail 3.92e-06 (3.5 digits)  A* [3.5, 4.0, 5.5, 5.75]  largest (sigma,N(c)): +,28:1.9e-06 -,28:1.9e-06 0,28:3.1e-08  [1s]
+   p=5 a=2.5 X=82084  B {7: 1}     |T_dir|=2.485e-02  old tail 1.39e-04 (2.3 digits)  struct tail 4.74e-06 (3.7 digits)  A* [3.75, 4.75, 6.5, 7.0]  largest (sigma,N(c)): -,28:2.4e-06 +,28:2.4e-06 0,28:2.0e-08  [6s]
+   p=5 a=2.5 X=82084  B {7: 1}     |T_dir|=2.485e-02  old tail 1.39e-04 (2.3 digits)  struct tail 4.74e-06 (3.7 digits)  A* [3.75, 4.75, 6.5, 7.0]  largest (sigma,N(c)): +,28:2.4e-06 -,28:2.4e-06 0,28:2.0e-08  [1s]
+   p=5 a=2.5 X=82084  B {13: 1}    |T_dir|=6.861e-02  old tail 1.11e-02 (0.8 digits)  struct tail 3.45e-04 (2.3 digits)  A* [3.0, 3.75, 5.25, 6.25]  largest (sigma,N(c)): +,52:1.7e-04 -,52:1.7e-04 0,52:3.7e-06  [1s]
+   p=5 a=2.5 X=82084  F {7: 1}     |T_dir|=1.244e-01  old tail 2.62e-01 (-0.3 digits)  struct tail 7.98e-03 (1.2 digits)  A* [2.75, 4.25]  largest (sigma,N(c)): -,84:8.0e-03 -,21:6.8e-07  [1s]
+   p=5 a=2.5 X=82084  A {}         |T_dir|=4.001e-03  old tail 3.65e-05 (2.0 digits)  struct tail 5.79e-07 (3.8 digits)  A* [4.25, 7.0]  largest (sigma,N(c)): 0,36:5.8e-07 0,9:4.0e-13  [1s]
+   p=5 a=2.5 X=82084  A {7: 1}     |T_dir|=1.285e-02  old tail 8.02e+00 (-2.8 digits)  struct tail 1.04e-01 (-0.9 digits)  A* [2.25, 3.5]  largest (sigma,N(c)): 0,252:1.0e-01 0,63:4.5e-05  [1s]
+   p=5 a=2.5 X=82084  B {7: 2}     |T_dir|=1.680e-02  old tail 1.39e-04 (2.1 digits)  struct tail 4.74e-06 (3.5 digits)  A* [3.75, 4.75, 6.5, 7.0]  largest (sigma,N(c)): +,28:2.4e-06 -,28:2.4e-06 0,28:2.0e-08  [1s]
+   p=4 a=2 X=135335  B {7: 1}     |T_dir|=2.668e-02  old tail 8.94e-05 (2.5 digits)  struct tail 3.00e-06 (3.9 digits)  A* [3.75, 4.5, 6.0]  largest (sigma,N(c)): -,28:1.5e-06 +,28:1.5e-06 0,28:1.5e-08  [7s]
+   p=4 a=2 X=135335  B {7: 1}     |T_dir|=2.668e-02  old tail 8.94e-05 (2.5 digits)  struct tail 3.00e-06 (3.9 digits)  A* [3.75, 4.5, 6.0]  largest (sigma,N(c)): -,28:1.5e-06 +,28:1.5e-06 0,28:1.5e-08  [1s]
+   p=4 a=2 X=135335  B {13: 1}    |T_dir|=1.260e-01  old tail 6.43e-03 (1.3 digits)  struct tail 1.99e-04 (2.8 digits)  A* [3.0, 3.75, 5.0, 6.0]  largest (sigma,N(c)): -,52:9.8e-05 +,52:9.8e-05 0,52:2.4e-06  [1s]
+   p=4 a=2 X=135335  F {7: 1}     |T_dir|=5.092e-02  old tail 1.47e-01 (-0.5 digits)  struct tail 4.40e-03 (1.1 digits)  A* [2.5, 4.25]  largest (sigma,N(c)): -,84:4.4e-03 -,21:4.6e-07  [1s]
+   p=4 a=2 X=135335  A {}         |T_dir|=1.339e-03  old tail 2.49e-05 (1.7 digits)  struct tail 3.97e-07 (3.5 digits)  A* [4.25, 6.0]  largest (sigma,N(c)): 0,36:4.0e-07 0,9:8.7e-12  [1s]
+   p=4 a=2 X=135335  A {7: 1}     |T_dir|=1.668e-02  old tail 4.33e+00 (-2.4 digits)  struct tail 5.63e-02 (-0.5 digits)  A* [2.25, 3.5]  largest (sigma,N(c)): 0,252:5.6e-02 0,63:2.8e-05  [1s]
+   p=4 a=2 X=135335  B {7: 2}     |T_dir|=3.082e-02  old tail 8.94e-05 (2.5 digits)  struct tail 3.00e-06 (4.0 digits)  A* [3.75, 4.5, 6.0]  largest (sigma,N(c)): +,28:1.5e-06 -,28:1.5e-06 0,28:1.5e-08  [1s]
+   p=6 a=2.5 X=82084  B {7: 1}     |T_dir|=3.069e-02  old tail 5.50e-04 (1.7 digits)  struct tail 1.84e-05 (3.2 digits)  A* [3.75, 4.75, 6.5, 7.0]  largest (sigma,N(c)): +,28:9.2e-06 -,28:9.2e-06 0,28:8.4e-08  [6s]
+   p=6 a=2.5 X=82084  B {7: 1}     |T_dir|=3.069e-02  old tail 5.50e-04 (1.7 digits)  struct tail 1.84e-05 (3.2 digits)  A* [3.75, 4.75, 6.5, 7.0]  largest (sigma,N(c)): -,28:9.2e-06 +,28:9.2e-06 0,28:8.4e-08  [1s]
+   p=6 a=2.5 X=82084  B {13: 1}    |T_dir|=5.996e-02  old tail 4.02e-02 (0.2 digits)  struct tail 1.24e-03 (1.7 digits)  A* [3.0, 3.75, 5.0, 6.25]  largest (sigma,N(c)): -,52:6.1e-04 +,52:6.1e-04 0,52:1.4e-05  [1s]
+   p=6 a=2.5 X=82084  F {7: 1}     |T_dir|=1.293e-01  old tail 9.06e-01 (-0.8 digits)  struct tail 2.68e-02 (0.7 digits)  A* [2.5, 4.25]  largest (sigma,N(c)): -,84:2.7e-02 -,21:2.7e-06  [1s]
+   p=6 a=2.5 X=82084  A {}         |T_dir|=3.963e-03  old tail 1.48e-04 (1.4 digits)  struct tail 2.34e-06 (3.2 digits)  A* [4.25, 7.0]  largest (sigma,N(c)): 0,36:2.3e-06 0,9:1.8e-12  [1s]
+   p=6 a=2.5 X=82084  A {7: 1}     |T_dir|=6.439e-03  old tail 2.57e+01 (-3.6 digits)  struct tail 3.33e-01 (-1.7 digits)  A* [2.25, 3.5]  largest (sigma,N(c)): 0,252:3.3e-01 0,63:1.7e-04  [1s]
+   p=6 a=2.5 X=82084  B {7: 2}     |T_dir|=1.841e-02  old tail 5.50e-04 (1.5 digits)  struct tail 1.84e-05 (3.0 digits)  A* [3.75, 4.75, 6.5, 7.0]  largest (sigma,N(c)): -,28:9.2e-06 +,28:9.2e-06 0,28:8.4e-08  [1s]
+
+probe 1 done [85s]

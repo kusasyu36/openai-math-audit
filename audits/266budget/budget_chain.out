@@ -1,0 +1,153 @@
+== 0. 前提 ==
+OK  (1+u)^(m+1)-1 < gamma_m (m=2)                  mine<6.000e-16  paper 6.3e-16  
+OK  (1+u)^(m+1)-1 < gamma_m (m=9)                  mine<2.000e-15  paper 2.1e-15  
+OK  (1+u)^(m+1)-1 < gamma_m (m=10)                 mine<2.200e-15  paper 2.3099999999999997e-15  
+OK  (1+u)^(m+1)-1 < gamma_m (m=12)                 mine<2.600e-15  paper 2.7299999999999998e-15  
+OK  (1+u)^(m+1)-1 < gamma_m (m=16)                 mine<3.400e-15  paper 3.569999999999999e-15  
+OK  (1+u)^(m+1)-1 < gamma_m (m=20)                 mine<4.200e-15  paper 4.4099999999999995e-15  
+OK  (1+u)^(m+1)-1 < gamma_m (m=25)                 mine<5.200e-15  paper 5.4599999999999996e-15  
+OK  (1+u)^(m+1)-1 < gamma_m (m=36)                 mine<7.400e-15  paper 7.77e-15  
+OK  (1+u)^(m+1)-1 < gamma_m (m=41)                 mine<8.400e-15  paper 8.819999999999999e-15  
+OK  (1+u)^(m+1)-1 < gamma_m (m=2000)               mine<4.002e-13  paper 4.2021e-13  
+OK  2^-53 <= u                                     mine<1.110e-16  paper 2.0000001e-16  
+== 1. expair (Lemma A.2) ==
+OK  |pihat - pi|                                   mine<1.225e-16  paper 1.225418e-16  
+OK  |y| bound                                      mine<7.854e-01  paper 0.786  
+OK  angle error |y-2pi(x-k/4)|                     mine<1.878e-16  paper 3e-16  
+OK  cos tail y^20/20!                              mine<3.329e-21  paper 3.330e-21  
+OK  sin tail y^21/21!                              mine<1.246e-22  paper 1.247e-22  
+OK  even nonconstant abs sum cosh(.786)-1          mine<3.251e-01  paper 0.4  
+OK  even abs sum cosh(.786)                        mine<1.325e+00  paper 1.4  
+OK  odd after-y abs sum sinh(.786)-.786            mine<8.347e-02  paper 0.2  
+OK  odd abs sum sinh(.786)                         mine<8.695e-01  paper 1  
+OK  rho=(1+u)^27-1                                 mine<5.400e-15  paper 5.5e-15  
+OK  alpha=(1+u)^9-1                                mine<1.800e-15  paper 1.81e-15  
+OK  cos coordinate error                           mine<4.680e-15  paper 4.74e-15  
+OK  sin coordinate error                           mine<2.880e-15  paper 2.92e-15  
+OK  expair complex error (|x|<=16, exact arg)      mine<5.683e-15  paper 6e-15  
+OK  expair + argument formation                    mine<1.825e-14  paper 6e-14  epsilon_exp
+== 2. frame -> W -> K, D (rounding.tex:370-452) ==
+OK  S error                                        mine<2.424e-13  paper 2.5e-13  
+OK  |S|^2 error                                    mine<1.185e-12  paper 2.2e-12  
+OK  16-|S|^2 lower (paper uses 6.1)                mine<-1.006e+01  paper -6.1  
+OK  reciprocal 1/(16-|S|^2) error                  mine<1.177e-14  paper 7e-14  
+OK  pseudoinverse numerator error                  mine<3.927e-13  paper 5.1e-13  
+OK  frame G entry error                            mine<1.335e-13  paper 1e-12  
+OK  |G ideal| (max (4+s)/(16-s^2)=1/(4-s))         mine<6.400e-01  paper 0.81  
+OK  basis[1] numerator error                       mine<1.210e-13  paper 1.3e-13  
+OK  basis[1] denominator lower (>1.5)              mine<-1.586e+00  paper -1.5  
+OK  basis[1] denominator error                     mine<9.433e-14  paper 2e-13  
+OK  basis[1] entry error                           mine<1.360e-13  paper 4e-13  
+OK  k=2 projection entry error                     mine<2.738e-13  paper 9e-13  
+OK  k=2 norm error                                 mine<5.520e-13  paper 2e-12  
+OK  k=2 ideal norm lower (>.449999)                mine<-4.500e-01  paper -0.449999  
+OK  k=2 normalized entry error                     mine<1.835e-12  paper 7e-12  
+OK  k=3 projection entry error                     mine<3.946e-12  paper 1.6e-11  
+OK  k=3 norm error                                 mine<7.896e-12  paper 3.5e-11  
+OK  k=3 normalized entry error                     mine<2.632e-11  paper 1.2e-10  
+OK  kernel projector entry error                   mine<5.631e-11  paper 3e-10  
+OK  W entry error (worst: c3 on both factors)      mine<1.289e-10  paper 8e-10  paper 8e-10 covers c3+c3
+OK  base factor error                              mine<1.214e-13  paper 1.3e-13  
+OK  base entry error                               mine<6.927e-13  paper 1e-11  
+OK  uc.U entry error                               mine<1.202e-13  paper 2e-13  
+OK  K entry error                                  mine<5.169e-10  paper 4e-9  
+OK  D entry error                                  mine<5.176e-10  paper 4e-9  
+OK  mag=|D|^2 error                                mine<4.762e-09  paper 4e-8  
+OK  sqrt(mag) vs |D| error                         mine<5.176e-10  paper 5e-9  
+OK  ||D|| <= max(sqrt6, top*A0/mB) (completion.tex:388, imported) mine<4.060e+00  paper 4.6  
+OK  seed derivative modulus 1.62+.81*4.6           mine<5.346e+00  paper 6  
+== 3. A flat norm (ub/patchx:422-424) ==
+OK  flat sum error (paper scale |dev|<=3.6)        mine<5.963e-08  paper 1e-6  margin 1e-5
+OK  flat sum error if ideal sum<=z^2<2.26          mine<6.211e-09  paper 1e-6  exclusion direction only
+== 4. A directional (ub.cpp:236-250) ==
+OK  fixed entry error                              mine<9.422e-11  paper 2e-9  
+OK  jac entry error                                mine<5.227e-10  paper 1e-8  
+OK  flat real J error                              mine<5.510e-09  paper 1e-7  
+OK  flat c error                                   mine<2.381e-09  paper 5e-8  
+OK  constant pairing error                         mine<3.810e-08  paper 9e-7  
+OK  derivative pairing error                       mine<8.816e-08  paper 1.7e-6  
+OK  linear support undererror                      mine<1.232e-07  paper 2.38e-6  
+OK  sqrt(sd) error                                 mine<2.071e-09  paper 2e-8  
+OK  A directional total                            mine<1.643e-07  paper 4e-6  margin 1e-4
+OK  A directional total (paper sub-bounds)         mine<3.301e-06  paper 4e-6  
+== 5. Candidate (rounding.tex:711-821) ==
+OK  ideal m_j lower (>.14999998)                   mine<-1.500e-01  paper -0.14999998  
+OK  unit-direction error                           mine<6.901e-09  paper 5.5e-8  
+OK  true chord error                               mine<1.069e-07  paper 1.56e-7  
+OK  X entry error                                  mine<4.193e-08  paper 1e-6  
+OK  mi lower (>.148)                               mine<-1.500e-01  paper -0.148  
+OK  invmag upper (<6.8)                            mine<6.667e+00  paper 6.8  
+OK  arc (q<3.8)                                    mine<8.718e+00  paper 8.8  
+OK  slack (<4.1) from z<1.5                        mine<2.250e+00  paper 4.1  
+OK  weighted (slack<z^2+1e-5, ratio at q<3.8)      mine<6.708e+00  paper 10  
+OK  parameter vector norm (N>=64)                  mine<2.255e-01  paper 0.226  
+OK  ||AB - T*X|| (Frobenius)                       mine<6.047e-07  paper 1.5e-5  
+OK  AB substitution (paper 1.5e-5 x .226)          mine<3.390e-06  paper 3.4e-6  
+OK  hor*sqrt(Rs^2+arc^2)                           mine<8.802e-05  paper 8.81e-5  mathematical allowance
+OK  center correction 2pi sqrt(1+ort) 2e-6         mine<1.257e-05  paper 1.27e-5  mathematical allowance
+OK  off error                                      mine<6.284e-11  paper 1e-9  
+OK  external tangent total (paper sub-bounds)      mine<1.040e-04  paper 0.00012  margin .00015
+OK  external tangent total (mine)                  mine<1.007e-04  paper 0.00012  
+   margin/paperX = 1.2499999999999998  margin/ext(paper sub) = 1.442571869710286  margin/ext(mine) = 1.4891828070120763  (margin+2x.00002cyc)/ext = 3.859624236727421
+   rounding-only part of ext (mine): 1.3653995684580634e-07
+== 6. covariance G entries (rounding.tex:823-846) ==
+OK  first G: 9-term AB dot                         mine<1.125e-11  paper 1.3e-11  
+OK  1.45 Rs^2                                      mine<5.975e-02  paper 0.06  
+OK  first G entry error                            mine<1.811e-12  paper 1e-11  
+OK  Dweighted dot error (abs sum 110)              mine<3.960e-13  paper 5e-13  
+OK  second multiplier 2.25*weighted^2              mine<1.013e+02  paper 225  
+OK  second G entry error                           mine<6.386e-11  paper 1e-9  
+OK  k*second G (k<=10)                             mine<6.386e-10  paper 1e-7  diag margin 1e-7
+OK  k*first G (k<=10)                              mine<1.811e-11  paper 1e-7  
+   (tighter, Cauchy-Schwarz sum|T_ih T_jh| <= 1.00001: second G entry < 7.358800000000008e-12 )
+== 7. spectralUpper / ell (rounding.tex:851-969) ==
+OK  row sum error                                  mine<2.200e-13  paper 3e-13  margin 1e-10
+OK  G^2 dot rel. error /m^2                        mine<2.200e-14  paper 3e-14  
+OK  fl(sqrt fro4) rel error vs A                   mine<3.224e-13  paper 4e-13  
+OK  fourth-root abs error at sqrt(A)<=100          mine<3.226e-11  paper 1e-10  margin 2e-7
+OK  gamma upper                                    mine<4.165e+02  paper 418  
+OK  residual component /s_z                        mine<1.373e-12  paper 2e-12  
+OK  residual norm /s_z                             mine<1.073e-11  paper 2e-11  code adds 1e-10*s_z
+OK  U.z dot /s_z                                   mine<2.200e-13  paper 3e-13  code adds 1e-10*s_z
+OK  U norm                                         mine<8.348e-14  paper 1e-13  
+OK  dot surplus >= 9e-11 s_z                       mine<-9.976e-11  paper -9e-11  
+OK  first factor rel surplus >= 2e-12              mine<-3.159e-12  paper -2e-12  
+OK  quotient B scale                               mine<5.291e+18  paper 6e18  
+OK  final add err vs surplus (s_z=1,B=0 worst)     mine<2.020e-14  paper 9e-11  
+== 8. Root identity (patchx.cpp:167-182) ==
+OK  row-edge product error                         mine<1.210e-13  paper 1.3e-13  
+OK  LP entry error                                 mine<1.082e-12  paper 5e-12  
+OK  residual entry error                           mine<6.963e-11  paper 1e-9  
+OK  absolute sum (1+10*4+30*2*8.4)                 mine<5.450e+02  paper 560  
+OK  Frobenius of entry errors                      mine<2.507e-09  paper 3.6e-8  
+OK  norm accumulation at norm 20161                mine<5.757e-09  paper 1e-8  
+OK  Root identity total                            mine<8.264e-09  paper 5e-8  margin 2e-6
+OK  Root identity total (paper entry 1e-9)         mine<4.176e-08  paper 5e-8  
+== 8b. Root stored bounds used by rows 1 and 6 (rounding.tex:550-569, 651-658) ==
+OK  T*T-I dot (len 36, |T|<=2, initial addend)     mine<1.102e-12  paper 1.2e-12  
+OK  ort aggregate+norm error (accepted path ort<1e-5) mine<1.200e-11  paper 1e-10  margin 1e-8
+OK  proj component error                           mine<2.360e-14  paper 1e-13  
+OK  hor Frobenius error (360 comps)                mine<1.897e-12  paper 1e-11  margin 1e-8
+OK  HV/LV Gram dot (len<=36, |.|<=2)               mine<1.066e-12  paper 1.2e-12  
+OK  Gram row sum (25 terms, scale 3600)            mine<4.872e-11  paper 1e-10  inside +1e-8
+OK  M - HV LV^* entry (25-term, abs sum 100)       mine<5.200e-13  paper 6e-13  
+OK  M - HV LV^* Frobenius (36x30)                  mine<1.972e-11  paper 2.1e-11  
+OK  mnorm product/root error at scale 3601         mine<3.601e-12  paper 5e-12  final +1e-8 covers this + 2.1e-11
+== 9. C arrays and joint test (rounding.tex:1226-1262, 1385-1455) ==
+OK  q error (expair internal 6e-15 + arg 6 cycles) mine<5.773e-15  paper 2.5e-14  
+OK  q error (with lemma's 2e-14)                   mine<1.184e-14  paper 1e-13  
+OK  S error                                        mine<6.024e-13  paper 7e-13  
+OK  |S|^2 error                                    mine<2.954e-12  paper 4e-12  
+OK  c error                                        mine<2.357e-13  paper 1e-12  
+OK  J, Dre error                                   mine<4.913e-13  paper 1e-12  
+OK  B error                                        mine<6.008e-12  paper 7e-12  
+OK  pair product Q error                           mine<1.210e-13  paper 1.3e-13  
+OK  pair S error                                   mine<7.320e-13  paper 8e-13  
+OK  pair |S|^2 error                               mine<8.798e-12  paper 1.1e-11  
+OK  U derivative error                             mine<2.438e-13  paper 1e-12  
+OK  joint constant pairing                         mine<1.402e-11  paper 1.5e-11  
+OK  shared-Hadamard coefficient                    mine<8.408e-11  paper 9e-11  
+OK  vector-phase coefficient                       mine<8.014e-12  paper 9e-12  
+OK  joint total (mine)                             mine<2.725e-11  paper 1e-8  margin 3e-7
+
+checks: 137  failed: 0

@@ -1,0 +1,34 @@
+
+Stage 12, probe 2 (PLANNING ONLY for stage12_main2; written after stage12_main.out was seen).  E.run and E.dual are NOT
+called: no dual sum, no comparison.  For the two weights planned in probe 1 but never compared (p=3, a=2.5 and p=5, a=2.5;
+X = 82084) and the runs B {p7:1}, B {p13:1}, A {}:
+  - per group: sigma, N(c), alpha(c), |alpha(c)^4 - 1|, k0 (inputs of NE2 / NE6);
+  - the bound part of Btot12 with struct_tail2 (D evaluated at R (1 - 1e-9)), digits, the control tier it implies and
+    its distance to the tier boundaries; the paper-only bound D_paper as a reference column;
+  - the liveness (size of the change of its own ingredient) of every control NE1-NE7 and J.
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage12_probe2.py > audits/003dual/stage12_probe2.out
+
+
+=== weight p=3 a=2.5 X=82084
+  B {(1, 3): 1} : |T_dir| = 1.6045e-02 ; distinct (sigma, N(c), alpha(c), |alpha^4-1|, k0): [('+', 28, (0.188982-0.981981j), 0.742307489, 0), ('+', 28, (0.188982-0.981981j), 0.742307489, 1), ('+', 28, (0.188982-0.981981j), 0.742307489, 2), ('+', 7, (-0.188982+0.981981j), 0.742307489, 0), ('-', 28, (0.188982-0.981981j), 0.742307489, 0), ('-', 28, (0.188982-0.981981j), 0.742307489, 1), ('-', 28, (0.188982-0.981981j), 0.742307489, 2), ('-', 7, (-0.188982+0.981981j), 0.742307489, 0), ('0', 28, (0.188982-0.981981j), 0.742307489, 0), ('0', 28, (0.188982-0.981981j), 0.742307489, 1), ('0', 28, (0.188982-0.981981j), 0.742307489, 2), ('0', 7, (-0.188982+0.981981j), 0.742307489, 0)]
+      bound part of Btot12 = 3.918e-06 -> digits 3.612 (tier: +NE2-NE5 ; distance to nearest tier boundary 0.39 digits) ; paper-only bound 1.862e-05 -> digits 2.94
+      liveness: NE1 live(2.1e-03) ; J live(1.4e+02) ; NE2 live(7.6e-04) ; NE3 live(1.6e+02) ; NE4 live(3.7e-02) ; NE5 live(2.8e-02) ; NE6 live(5.9e-04) ; NE7 live(5.9e-02)
+  B {(4, 3): 1} : |T_dir| = 8.2830e-02 ; distinct (sigma, N(c), alpha(c), |alpha^4-1|, k0): [('+', 13, (0.693375+0.720577j), 1.998520163, 0), ('+', 52, (-0.693375-0.720577j), 1.998520163, 0), ('+', 52, (-0.693375-0.720577j), 1.998520163, 1), ('+', 52, (-0.693375-0.720577j), 1.998520163, 2), ('-', 13, (0.693375+0.720577j), 1.998520163, 0), ('-', 52, (-0.693375-0.720577j), 1.998520163, 0), ('-', 52, (-0.693375-0.720577j), 1.998520163, 1), ('-', 52, (-0.693375-0.720577j), 1.998520163, 2), ('0', 13, (0.693375+0.720577j), 1.998520163, 0), ('0', 52, (-0.693375-0.720577j), 1.998520163, 0), ('0', 52, (-0.693375-0.720577j), 1.998520163, 1), ('0', 52, (-0.693375-0.720577j), 1.998520163, 2)]
+      bound part of Btot12 = 1.700e-04 -> digits 2.688 (tier: NE1,J(if j=1) ; distance to nearest tier boundary 0.31 digits) ; paper-only bound 8.158e-04 -> digits 2.01
+      liveness: NE1 live(2.1e-03) ; J live(1.4e+02) ; NE2 live(2.1e-03) ; NE3 live(1.6e+02) ; NE4 live(1.1e-01) ; NE5 live(2.8e-02) ; NE6 live(5.9e-04) ; NE7 live(6.5e-02)
+  A {} : |T_dir| = 4.1860e-03 ; distinct (sigma, N(c), alpha(c), |alpha^4-1|, k0): [('0', 36, (-1+0j), 0.0, 0), ('0', 36, (-1+0j), 0.0, 1), ('0', 36, (-1+0j), 0.0, 2), ('0', 9, (1+0j), 0.0, 0), ('0', 9, (1+0j), 0.0, 1), ('0', 9, (1+0j), 0.0, 2)]
+      bound part of Btot12 = 6.490e-07 -> digits 3.810 (tier: +NE2-NE5 ; distance to nearest tier boundary 0.19 digits) ; paper-only bound 5.781e-06 -> digits 2.86
+      liveness: NE1 live(2.1e-03) ; NE2 DEAD(0.0e+00) ; NE3 live(1.6e+02) ; NE4 live(1.2e-02) ; NE5 live(2.8e-02) ; NE6 live(1.8e-03) ; NE7 live(2.4e-02)
+
+=== weight p=5 a=2.5 X=82084
+  B {(1, 3): 1} : |T_dir| = 2.4845e-02 ; distinct (sigma, N(c), alpha(c), |alpha^4-1|, k0): [('+', 28, (0.188982-0.981981j), 0.742307489, 0), ('+', 28, (0.188982-0.981981j), 0.742307489, 1), ('+', 28, (0.188982-0.981981j), 0.742307489, 2), ('+', 7, (-0.188982+0.981981j), 0.742307489, 0), ('-', 28, (0.188982-0.981981j), 0.742307489, 0), ('-', 28, (0.188982-0.981981j), 0.742307489, 1), ('-', 28, (0.188982-0.981981j), 0.742307489, 2), ('-', 7, (-0.188982+0.981981j), 0.742307489, 0), ('0', 28, (0.188982-0.981981j), 0.742307489, 0), ('0', 28, (0.188982-0.981981j), 0.742307489, 1), ('0', 28, (0.188982-0.981981j), 0.742307489, 2), ('0', 7, (-0.188982+0.981981j), 0.742307489, 0)]
+      bound part of Btot12 = 4.739e-06 -> digits 3.720 (tier: +NE2-NE5 ; distance to nearest tier boundary 0.28 digits) ; paper-only bound 2.244e-05 -> digits 3.04
+      liveness: NE1 live(2.1e-03) ; J live(1.4e+02) ; NE2 live(7.6e-04) ; NE3 live(1.6e+02) ; NE4 live(6.2e-02) ; NE5 live(2.8e-02) ; NE6 live(5.9e-04) ; NE7 live(9.2e-02)
+  B {(4, 3): 1} : |T_dir| = 6.8609e-02 ; distinct (sigma, N(c), alpha(c), |alpha^4-1|, k0): [('+', 13, (0.693375+0.720577j), 1.998520163, 0), ('+', 52, (-0.693375-0.720577j), 1.998520163, 0), ('+', 52, (-0.693375-0.720577j), 1.998520163, 1), ('+', 52, (-0.693375-0.720577j), 1.998520163, 2), ('-', 13, (0.693375+0.720577j), 1.998520163, 0), ('-', 52, (-0.693375-0.720577j), 1.998520163, 0), ('-', 52, (-0.693375-0.720577j), 1.998520163, 1), ('-', 52, (-0.693375-0.720577j), 1.998520163, 2), ('0', 13, (0.693375+0.720577j), 1.998520163, 0), ('0', 52, (-0.693375-0.720577j), 1.998520163, 0), ('0', 52, (-0.693375-0.720577j), 1.998520163, 1), ('0', 52, (-0.693375-0.720577j), 1.998520163, 2)]
+      bound part of Btot12 = 3.455e-04 -> digits 2.298 (tier: NE1,J(if j=1) ; distance to nearest tier boundary 0.30 digits) ; paper-only bound 1.648e-03 -> digits 1.62
+      liveness: NE1 live(2.1e-03) ; J live(1.4e+02) ; NE2 live(2.1e-03) ; NE3 live(1.6e+02) ; NE4 live(1.0e-01) ; NE5 live(2.8e-02) ; NE6 live(5.9e-04) ; NE7 live(1.0e-01)
+  A {} : |T_dir| = 4.0008e-03 ; distinct (sigma, N(c), alpha(c), |alpha^4-1|, k0): [('0', 36, (-1+0j), 0.0, 0), ('0', 36, (-1+0j), 0.0, 1), ('0', 36, (-1+0j), 0.0, 2), ('0', 9, (1+0j), 0.0, 0), ('0', 9, (1+0j), 0.0, 1), ('0', 9, (1+0j), 0.0, 2)]
+      bound part of Btot12 = 5.793e-07 -> digits 3.839 (tier: +NE2-NE5 ; distance to nearest tier boundary 0.16 digits) ; paper-only bound 5.164e-06 -> digits 2.89
+      liveness: NE1 live(2.1e-03) ; NE2 DEAD(0.0e+00) ; NE3 live(1.6e+02) ; NE4 live(2.5e-02) ; NE5 live(2.8e-02) ; NE6 live(1.8e-03) ; NE7 live(4.2e-02)
+
+probe 2 done [72s]

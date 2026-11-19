@@ -1,0 +1,18 @@
+You are an independent reviewer with expertise in floating-point error analysis (IEEE binary64, standard rounding model, forward error bounds) and computer-assisted proofs. Result 266 ("The maximum number of mutually unbiased bases in dimension six", unrefereed OpenAI preprint, N(6)=3) relies on Appendix A (rounding.tex): an error budget claiming that each floating-point test in the distributed C++ has adversarial error below a stated X, covered by a margin in the source. Our earlier audits checked the tex mathematics and records (audits/266/REPORT.md) and read all C++ against the tex (audits/266cpp/REPORT.md, item #6 lists the tight rows). Now an auditor (Claude Opus, because the planned auditor model was out of quota) re-derived the budget numbers. Find what it missed, whether any derived bound is wrong or relies on an unstated assumption, and whether the report overstates. Do not trust the report; read the tex, the C++ and the script.
+
+Working directory is the project root. Read-only. Do not run or build any code from data/openai_math.
+- Report: audits/266budget/REPORT.md. Script: audits/266budget/budget_chain.py/.out (137 checks), sim_frame.py/.out (observations only).
+- Paper: data/openai_math/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/ (rounding.tex, esp. :23-49 assumptions and the table :1529-1566; phase-cover.tex :524-527, :844-845; completion.tex for ||D|| < 4.6).
+- Source: .../verification/saved-run/compiled-build/source/ (patchx.cpp :182, :269, :336-347, :424; ub.cpp :132, :250; stageC.cpp :364; seed.cpp expair; atlas.cpp :222).
+
+Questions:
+(1) For each of the six priority rows (Candidate tangent bound, A norm test, second G components, A direction test, C joint test, Root identity), is the auditor's derivation correct and complete for the code path actually executed? Check operation counts, the scale inputs (which thresholds bound them, and are those thresholds actually enforced in the code before use), and the direction of each inequality.
+(2) Candidate row: the auditor says 97% of the 1.2e-4 budget is mathematical tolerance (hor * sqrt(Rs^2+arc^2) = 8.80e-5 and a centre correction 1.26e-5), so rounding is not tight. Is that decomposition right, and is the dependence on phase-cover.tex:524-527 correctly stated?
+(3) Lemma A.2 / expair: the auditor gets complex error 5.7e-15 (1.8e-14 with argument formation) against eps_exp = 6e-14. Check, including the nearbyint assumption.
+(4) The unstated assumptions listed in the report (nearbyint, the factor 2 in the Root identity, N >= 64 for .226, ||D|| < 4.6 imported, constant folding and left-to-right evaluation order, the extra .00002 cycles). Are these all, and are any of them unsafe under the paper's own stated build conditions?
+(5) The same 1e-5 is used in opposite directions (exclusion test and Candidate slack). Is the auditor's treatment right?
+(6) What do the interval computations (mpmath.iv over closed-form expressions) actually certify? Is any observed maximum being called a bound?
+(7) Overstatement check, and propose a one-paragraph public wording.
+
+If you find a concrete error, give the exact file:line and why. If you cannot, say so plainly; do not manufacture one.
+Output in Japanese, plain language, concise: for each of (1)-(7) give 判定（正しい / 一部正しい / 誤り / 確認できず）, 根拠（file:line you actually read）, then 公開する場合の文面への注意, then a short overall summary.

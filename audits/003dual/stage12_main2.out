@@ -1,0 +1,84 @@
+
+Stage 12, SECOND pre-registered comparison (main2).  Auditor: Claude Opus 5.5 (stage-12 subagent), 2026-11-19.
+This docstring was written BEFORE the first run of this script.
+
+HISTORY (read before the verdict).
+  * stage12_main.out (first pre-registered run) printed "NOT MET" for both j = 1 and 3|c.  No run disagreed (every
+    informative run was within Btot12); the cause was the control rule: NE2 was REQUIRED on the two A {} runs but its switch
+    changes nothing there (alpha(c) = +-1 for every 3|c group, so conj(alpha)^2 = alpha^2), and the registered rule turned a
+    dead required control into a failure of BOTH verdicts (condition (iv) was aggregated over all informative runs).
+    That verdict stands and is NOT replaced by this file.
+  * The rule below was corrected AFTER stage12_main.out was seen: the required controls are now LISTED PER RUN, from the
+    liveness table of stage12_probe2.out (computed without any dual sum), and each verdict only looks at its own runs.
+  * In stage12_main.out the six informative j = 1 main-frame runs already agreed (|diff| <= 8.2e-10, within Btot12).  With
+    the same tables and the same formulas, the outcome of this run is therefore largely predictable; what this run adds is
+    a clean pre-registered verdict on two weights never compared before.
+  * Weights: p=3, a=2.5 and p=5, a=2.5, X = 82084 (planned in stage12_probe1.out, never compared; X e^a <= 10^6).
+    p7bar is dropped (its run is exactly the complex conjugate of the p7 run, seen in stage12_main.out).
+
+COMPARED, ERROR BUDGET: as in stage12_main.py, except that the structured tail is evaluated with struct_tail2
+  (D at R (1 - 1e-9), closing a boundary gap of size ~1e-12 found after stage12_main: a table term with N(l) = R exactly
+  could be in neither the table sum nor the bound).  Btot12 = structured tail (Mt by one-sided Riemann sum) + (Q') + rounding
+  allowance (ESTIMATE).  Same premise and the same unbounded numerical steps as in stage12_main.py; the digit count is
+  "digits of the evaluated error bound", not a guarantee.
+CRITERIA.
+  G0 as in stage12_main.py (gate on the derivation).
+  F1: PASS iff |T_dir - T_dual| <= Btot12 ; INFORMATIVE iff Btot12 <= 1e-2 |T_dir| (unchanged 2-digit threshold).
+  Controls: rejected iff |T_dir - T_ctl| > 10 Btot12.  REQUIRED controls, fixed here per run (from stage12_probe2.out;
+  digits of the bound part: W3 3.61 / 2.69 / 3.81, W4 3.72 / 2.30 / 3.84, at least 0.16 digit from a tier boundary):
+     B {p7:1}  (W3, W4): NE1, J, NE2, NE3, NE4, NE5
+     B {p13:1} (W3, W4): NE1, J
+     A {}      (W3, W4): NE1, NE3, NE4, NE5        [NE2 is dead by structure: alpha(c) = +-1 on all groups; not required]
+  The script re-checks liveness in code before each control's dual sum; a REQUIRED control found dead = design failure
+  (verdict NOT MET).  Non-required controls are computed and printed only.
+  VERDICT j = 1 (runs B {p7:1}, B {p13:1} of W3 and W4 only): MET iff G0, at least one of these runs is informative, every
+      informative one passes F1, and every required control of every informative one is live and rejected.
+  VERDICT 3|c (runs A {} of W3 and W4 only): the same with these runs.
+  SECONDARY (reference, registered here): the same two verdicts with the paper-only bound D_paper (stage12_lib; uses only
+      the printed statement :1858-1867, 6 units, all m >= -4, |d| <= 27 3^{m/6}|b|) in place of the structured tail, with the
+      same required controls.  Expected from probe 2: informative for B {p7:1} (2.94, 3.04 digits) and A {} (2.86, 2.89),
+      B {p13:1} only for W3 (2.01, margin 0.01) and not for W4 (1.62).
+Run: UV_CACHE_DIR=$TMPDIR uv run --no-project --with numpy --with scipy --with mpmath python -B -u audits/003dual/stage12_main2.py > audits/003dual/stage12_main2.out
+
+G0 PASS: (a) 7.6e-16 (limit 1e-12); (b) True (smallest ratio 1.000)
+
+=== frame W3: weight p=3 a=2.5 X=82084 ; V^sharp quadrature |tau| <= 148.8, 7441 nodes, truncation bound 9.5e-18, max |V-hat|/envelope = 1.000
+  [W3] Psi_0=B P={(1, 3): 1} : groups 36, N(c) in [7, 28], dual terms 36445056
+      T_dir =  1.5186864147532e-02 +5.1766253558714e-03i   T_dual =  1.5186864164384e-02 +5.1766253711896e-03i
+      |T_dir| = 1.6045e-02  |diff| = 2.28e-11 (abs) 1.42e-09 (rel) ; Btot12 = 3.92e-06 (structured tail 3.92e-06 + quadrature 2.6e-14 + rounding allowance (estimate) 1.2e-11), digits 3.61, within ; paper-only: Btot = 1.86e-05, digits 2.94, within  [51s]
+      controls (* = required): NE1* live(2.1e-03) |T-Tc|/|T|=2.0e+00 /Btot12=8.2e+03 /Btot_paper=1.7e+03 ; J* live(1.4e+02) |T-Tc|/|T|=1.3e+00 /Btot12=5.2e+03 /Btot_paper=1.1e+03 ; NE2* live(7.6e-04) |T-Tc|/|T|=7.4e-01 /Btot12=3.0e+03 /Btot_paper=6.4e+02 ; NE3* live(1.6e+02) |T-Tc|/|T|=1.8e+00 /Btot12=7.2e+03 /Btot_paper=1.5e+03 ; NE4* live(3.7e-02) |T-Tc|/|T|=1.2e+00 /Btot12=4.7e+03 /Btot_paper=9.9e+02 ; NE5* live(2.8e-02) |T-Tc|/|T|=1.0e+00 /Btot12=4.1e+03 /Btot_paper=8.6e+02 ; NE6 live(5.9e-04) |T-Tc|/|T|=1.5e+00 /Btot12=6.0e+03 /Btot_paper=1.3e+03 ; NE7 live(5.9e-02) |T-Tc|/|T|=2.0e+00 /Btot12=8.2e+03 /Btot_paper=1.7e+03
+  [W3] Psi_0=B P={(4, 3): 1} : groups 36, N(c) in [13, 52], dual terms 37994184
+      T_dir = -4.2976284210797e-02 +7.0808375237545e-02i   T_dual = -4.2976282376496e-02 +7.0808374541554e-02i
+      |T_dir| = 8.2830e-02  |diff| = 1.96e-09 (abs) 2.37e-08 (rel) ; Btot12 = 1.70e-04 (structured tail 1.70e-04 + quadrature 2.9e-14 + rounding allowance (estimate) 1.3e-11), digits 2.69, within ; paper-only: Btot = 8.16e-04, digits 2.01, within  [74s]
+      controls (* = required): NE1* live(2.1e-03) |T-Tc|/|T|=2.0e+00 /Btot12=9.7e+02 /Btot_paper=2.0e+02 ; J* live(1.4e+02) |T-Tc|/|T|=1.5e+00 /Btot12=7.1e+02 /Btot_paper=1.5e+02 ; NE2 live(2.1e-03) |T-Tc|/|T|=2.0e+00 /Btot12=9.7e+02 /Btot_paper=2.0e+02 ; NE3 live(1.6e+02) |T-Tc|/|T|=1.5e+00 /Btot12=7.1e+02 /Btot_paper=1.5e+02 ; NE4 live(1.1e-01) |T-Tc|/|T|=1.1e+00 /Btot12=5.4e+02 /Btot_paper=1.1e+02 ; NE5 live(2.8e-02) |T-Tc|/|T|=8.3e-01 /Btot12=4.1e+02 /Btot_paper=8.5e+01 ; NE6 live(5.9e-04) |T-Tc|/|T|=1.3e+00 /Btot12=6.1e+02 /Btot_paper=1.3e+02 ; NE7 live(6.5e-02) |T-Tc|/|T|=1.4e-01 /Btot12=6.6e+01 /Btot_paper=1.4e+01
+  [W3] Psi_0=A P={} : groups 36, N(c) in [9, 36], dual terms 34189398
+      T_dir = -4.1860343813083e-03 +2.2204460492503e-16i   T_dual = -4.1860343779901e-03 -3.0464371985966e-18i
+      |T_dir| = 4.1860e-03  |diff| = 3.32e-12 (abs) 7.93e-10 (rel) ; Btot12 = 6.49e-07 (structured tail 6.49e-07 + quadrature 2.8e-14 + rounding allowance (estimate) 1.3e-11), digits 3.81, within ; paper-only: Btot = 5.78e-06, digits 2.86, within  [36s]
+      controls (* = required): NE1* live(2.1e-03) |T-Tc|/|T|=2.0e+00 /Btot12=1.3e+04 /Btot_paper=1.4e+03 ; NE2 DEAD ; NE3* live(1.6e+02) |T-Tc|/|T|=1.3e+00 /Btot12=8.2e+03 /Btot_paper=9.2e+02 ; NE4* live(1.2e-02) |T-Tc|/|T|=1.0e+00 /Btot12=6.5e+03 /Btot_paper=7.3e+02 ; NE5* live(2.8e-02) |T-Tc|/|T|=8.9e-01 /Btot12=5.7e+03 /Btot_paper=6.4e+02 ; NE6 live(1.8e-03) |T-Tc|/|T|=7.8e-01 /Btot12=5.0e+03 /Btot_paper=5.6e+02 ; NE7 live(2.4e-02) |T-Tc|/|T|=1.4e+00 /Btot12=8.9e+03 /Btot_paper=1.0e+03
+
+=== frame W4: weight p=5 a=2.5 X=82084 ; V^sharp quadrature |tau| <= 148.8, 7441 nodes, truncation bound 7.0e-18, max |V-hat|/envelope = 1.000
+  [W4] Psi_0=B P={(1, 3): 1} : groups 36, N(c) in [7, 28], dual terms 36445056
+      T_dir =  1.6356909403090e-02 -1.8701492430616e-02i   T_dual =  1.6356909406052e-02 -1.8701492432971e-02i
+      |T_dir| = 2.4845e-02  |diff| = 3.78e-12 (abs) 1.52e-10 (rel) ; Btot12 = 4.74e-06 (structured tail 4.74e-06 + quadrature 1.9e-14 + rounding allowance (estimate) 1.0e-11), digits 3.72, within ; paper-only: Btot = 2.24e-05, digits 3.04, within  [64s]
+      controls (* = required): NE1* live(2.1e-03) |T-Tc|/|T|=2.0e+00 /Btot12=1.0e+04 /Btot_paper=2.2e+03 ; J* live(1.4e+02) |T-Tc|/|T|=7.1e-01 /Btot12=3.7e+03 /Btot_paper=7.9e+02 ; NE2* live(7.6e-04) |T-Tc|/|T|=7.4e-01 /Btot12=3.9e+03 /Btot_paper=8.2e+02 ; NE3* live(1.6e+02) |T-Tc|/|T|=1.4e+00 /Btot12=7.4e+03 /Btot_paper=1.6e+03 ; NE4* live(6.2e-02) |T-Tc|/|T|=1.1e+00 /Btot12=5.5e+03 /Btot_paper=1.2e+03 ; NE5* live(2.8e-02) |T-Tc|/|T|=9.5e-01 /Btot12=5.0e+03 /Btot_paper=1.1e+03 ; NE6 live(5.9e-04) |T-Tc|/|T|=1.1e+00 /Btot12=5.9e+03 /Btot_paper=1.3e+03 ; NE7 live(9.2e-02) |T-Tc|/|T|=1.6e+00 /Btot12=8.3e+03 /Btot_paper=1.8e+03
+  [W4] Psi_0=B P={(4, 3): 1} : groups 36, N(c) in [13, 52], dual terms 37994184
+      T_dir = -2.8776682467487e-02 +6.2282930089127e-02i   T_dual = -2.8776683209076e-02 +6.2282930470153e-02i
+      |T_dir| = 6.8609e-02  |diff| = 8.34e-10 (abs) 1.22e-08 (rel) ; Btot12 = 3.45e-04 (structured tail 3.45e-04 + quadrature 2.1e-14 + rounding allowance (estimate) 1.1e-11), digits 2.30, within ; paper-only: Btot = 1.65e-03, digits 1.62, within (NOT INFORMATIVE)  [54s]
+      controls (* = required): NE1* live(2.1e-03) |T-Tc|/|T|=2.0e+00 /Btot12=4.0e+02 /Btot_paper=8.3e+01 ; J* live(1.4e+02) |T-Tc|/|T|=1.4e+00 /Btot12=2.7e+02 /Btot_paper=5.7e+01 ; NE2 live(2.1e-03) |T-Tc|/|T|=2.0e+00 /Btot12=4.0e+02 /Btot_paper=8.3e+01 ; NE3 live(1.6e+02) |T-Tc|/|T|=1.4e+00 /Btot12=2.7e+02 /Btot_paper=5.7e+01 ; NE4 live(1.0e-01) |T-Tc|/|T|=1.0e+00 /Btot12=2.0e+02 /Btot_paper=4.2e+01 ; NE5 live(2.8e-02) |T-Tc|/|T|=1.1e+00 /Btot12=2.1e+02 /Btot_paper=4.4e+01 ; NE6 live(5.9e-04) |T-Tc|/|T|=1.6e+00 /Btot12=3.1e+02 /Btot_paper=6.5e+01 ; NE7 live(1.0e-01) |T-Tc|/|T|=1.3e-01 /Btot12=2.5e+01 /Btot_paper=5.3e+00
+  [W4] Psi_0=A P={} : groups 36, N(c) in [9, 36], dual terms 34189398
+      T_dir =  4.0008125656510e-03 +2.2204460492503e-16i   T_dual =  4.0008125651885e-03 +2.3589409712466e-17i
+      |T_dir| = 4.0008e-03  |diff| = 4.63e-13 (abs) 1.16e-10 (rel) ; Btot12 = 5.79e-07 (structured tail 5.79e-07 + quadrature 2.1e-14 + rounding allowance (estimate) 1.1e-11), digits 3.84, within ; paper-only: Btot = 5.16e-06, digits 2.89, within  [25s]
+      controls (* = required): NE1* live(2.1e-03) |T-Tc|/|T|=2.0e+00 /Btot12=1.4e+04 /Btot_paper=1.5e+03 ; NE2 DEAD ; NE3* live(1.6e+02) |T-Tc|/|T|=2.0e-01 /Btot12=1.4e+03 /Btot_paper=1.6e+02 ; NE4* live(2.5e-02) |T-Tc|/|T|=1.0e+00 /Btot12=7.0e+03 /Btot_paper=7.9e+02 ; NE5* live(2.8e-02) |T-Tc|/|T|=8.3e-01 /Btot12=5.7e+03 /Btot_paper=6.4e+02 ; NE6 live(1.8e-03) |T-Tc|/|T|=3.4e+00 /Btot12=2.3e+04 /Btot_paper=2.6e+03 ; NE7 live(4.2e-02) |T-Tc|/|T|=6.9e-01 /Btot12=4.7e+03 /Btot_paper=5.3e+02
+
+=== summary
+  W3 B {(1, 3): 1}  |T|=1.604e-02 |diff|=2.28e-11 | Btot12=3.92e-06 digits 3.61 inf within | paper-only Btot=1.86e-05 digits 2.94 inf within | required: NE1:8.2e+03*Btot12, J:5.2e+03*Btot12, NE2:3.0e+03*Btot12, NE3:7.2e+03*Btot12, NE4:4.7e+03*Btot12, NE5:4.1e+03*Btot12
+  W3 B {(4, 3): 1}  |T|=8.283e-02 |diff|=1.96e-09 | Btot12=1.70e-04 digits 2.69 inf within | paper-only Btot=8.16e-04 digits 2.01 inf within | required: NE1:9.7e+02*Btot12, J:7.1e+02*Btot12
+  W3 A {}           |T|=4.186e-03 |diff|=3.32e-12 | Btot12=6.49e-07 digits 3.81 inf within | paper-only Btot=5.78e-06 digits 2.86 inf within | required: NE1:1.3e+04*Btot12, NE3:8.2e+03*Btot12, NE4:6.5e+03*Btot12, NE5:5.7e+03*Btot12
+  W4 B {(1, 3): 1}  |T|=2.485e-02 |diff|=3.78e-12 | Btot12=4.74e-06 digits 3.72 inf within | paper-only Btot=2.24e-05 digits 3.04 inf within | required: NE1:1.0e+04*Btot12, J:3.7e+03*Btot12, NE2:3.9e+03*Btot12, NE3:7.4e+03*Btot12, NE4:5.5e+03*Btot12, NE5:5.0e+03*Btot12
+  W4 B {(4, 3): 1}  |T|=6.861e-02 |diff|=8.34e-10 | Btot12=3.45e-04 digits 2.30 inf within | paper-only Btot=1.65e-03 digits 1.62 NOT-inf within | required: NE1:4.0e+02*Btot12, J:2.7e+02*Btot12
+  W4 A {}           |T|=4.001e-03 |diff|=4.63e-13 | Btot12=5.79e-07 digits 3.84 inf within | paper-only Btot=5.16e-06 digits 2.89 inf within | required: NE1:1.4e+04*Btot12, NE3:1.4e+03*Btot12, NE4:7.0e+03*Btot12, NE5:5.7e+03*Btot12
+MAIN2 VERDICT j=1 : MET   (G0 True, informative 4 of 4, all informative within True, all required controls live and rejected True)
+SECONDARY (paper-only bound) VERDICT j=1 : MET   (G0 True, informative 3 of 4, all informative within True, all required controls live and rejected True)
+MAIN2 VERDICT 3|c : MET   (G0 True, informative 2 of 2, all informative within True, all required controls live and rejected True)
+SECONDARY (paper-only bound) VERDICT 3|c : MET   (G0 True, informative 2 of 2, all informative within True, all required controls live and rejected True)
+[941s]

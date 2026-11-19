@@ -1,0 +1,18 @@
+You are an independent reviewer with expertise in automorphic forms over Q(omega) (Kubota's cubic theta function, its Fourier coefficients and Gauss sums), Mellin/Poisson-type reflection identities, and rigorous numerical bounds. You reviewed earlier stages of our audit of result 003 ("The Quasi-Riemann Hypothesis", unrefereed OpenAI preprint): audits/codex_review/review_w9_003dual.md (stage 5, compact-support weights) etc. In stage 5 the one-prime j=1 case (quadratic character) reached only 1.8 guaranteed digits against a pre-registered 2-digit threshold. Now an auditor (Claude Opus; the planned Fable model was out of quota) ran stage 12 to get j=1 and 3|c over the threshold. Find what it missed, whether the bounds are right, whether the pre-registration was honest, and whether the report overstates. Do not trust the report; read the scripts and the TeX.
+
+Working directory is the project root. Read-only. Do not run any code from data/openai_math.
+- Report: audits/003dual/stage12_report_draft.txt (auditor's full report) and REPORT.md section 18 (lead's summary). Earlier: REPORT.md sections 8-10 (stage 5 and your review).
+- Scripts/outputs: audits/003dual/stage12_lib.py (tail bound D_sigma, P, Z, S, D_paper, Mt_upper), stage12_main.py/.out (first pre-registered run, NOT MET), stage12_probe2.py/.out, stage12_main2.py/.out (second run, MET), stage12_probe1, stage12_smoke, stage12_boundary, stage12_ctl.py. Reused: stage5_lib.py, stage5_bump.py, stage4_bounds.py, audits/029reflect/kubota.py.
+- Paper: data/openai_math/preprints/The-Quasi-Riemann-Hypothesis-October-5-2026/build/paper2.tex (:1858-1869 coefficient support and bound; :3095-3170 cusp coefficients; :3272-3282, :3420-3424 closed dual formula and C).
+
+Questions:
+(1) The structured tail bound (report section 2; stage12_lib.py): is |d| = 9|G(A)|, |G(A)| = N(b)^{1/2} for A = n b^3 (and the sigma = 0 families) correctly used? Is the map to (n, b) injective, is dropping squarefreeness safe, is the Abel-sum lattice-count bound S(s, R; d=3) right (Voronoi argument, cov, rho), and the k > 40 geometric tail?
+(2) Which parts of Btot12 are rigorous and which are not (report section 2 "厳密でない部分", section 2c monotonicity proof of |Q(A+i tau)|)? Is the 2c proof correct? Is anything called a bound that is not?
+(3) Pre-registration: run 1 NOT MET because NE2 (structurally dead on 3|c groups) was required; run 2 changed the rule after seeing run 1 and used new weights. Is this handled honestly? Is the "three-layer" reading adequate, and is run 2 meaningful evidence or nearly implied by run 1?
+(4) Controls: are NE1-NE7 and the new J live and meaningful for j=1? Is the statement that a sign error in the exponent of B_{p,1} is invisible for j=1 correct?
+(5) The boundary issue (terms with N(l) = R exactly; stage12_boundary) and its fix in run 2: correct and complete?
+(6) The "paper-only" bound D_paper: does it use only what paper2.tex prints (:1858-1869)? Is W3 B {p13:1} at 2.01 digits a fair "met"?
+(7) Overstatement check over the report and REPORT section 18, and a one-paragraph public wording.
+
+If you find a concrete error, give the exact file:line and why. If you cannot, say so plainly; do not manufacture one.
+Output in Japanese, plain language, concise: for each of (1)-(7) give 判定（正しい / 一部正しい / 誤り / 確認できず）, 根拠（file:line you actually read）, then 公開する場合の文面への注意, then a short overall summary.
