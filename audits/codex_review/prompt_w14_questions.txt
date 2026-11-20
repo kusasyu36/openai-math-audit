@@ -1,0 +1,21 @@
+You are an independent reviewer with broad expertise in analytic number theory, arithmetic geometry (Iwasawa theory, Kato's Euler system), harmonic analysis (Kakeya, restriction), complexity theory (Turing machines, network coding) and operator algebras / geometric group theory. You have reviewed earlier parts of our audit of openai/math.
+
+Working directory is the project root. Read-only. Do not run any code from data/openai_math.
+- Target: public_repo/QUESTIONS.md (new, one page, 8 "questions for experts", to be published on GitHub at the top of our audit repository; linked from public_repo/README.md near the top).
+- Sources it summarizes: the rows for 004b, 011, 029, 029 (core), 077, 109, 142, 285, 321 in public_repo/README.md; reports audits/{004b,011,029core,077,109,142,285,321}/REPORT.md (Japanese); your earlier reviews in audits/codex_review/.
+- Papers: data/openai_math/preprints/ (LaTeX under each paper's build/ directory). Check against the tex, not paper.txt.
+
+Purpose of the page: give a specialist, in one minute, a precisely stated question they can answer or dismiss. A wrong or sloppy question wastes the specialist's time and discredits the repository, so accuracy matters more than coverage.
+
+Questions:
+(1) For each of items 1-8: is the mathematical statement of the question accurate against the tex (theorem numbers, file:line, hypotheses, what is claimed vs inferred)? Flag every place where the page says more than the report or the README row supports.
+(2) Item 1 (011 Thm 3.1 => EH-type near level 1): is the inference stated fairly, including "we know of nothing comparable"? Would an analytic number theorist find the question well posed?
+(3) Item 3 (142 Prop 11.3, q = 2 => least prime quadratic non-residue (log p)^{O(1)}): check against the tex.
+(4) Item 4 (004b): are the two branches (corank 0 uses Kato 12.5(3) at p = 2; corank 1 is what 004 needs) described correctly? Is "Theorem 12.5(3)" the right reference to Kato's paper as the tex cites it?
+(5) Item 5 (077 Thm 2.1, s = 1, D = 1 => 3D Kakeya set conjecture in Minkowski form with loss delta^{-10 kappa}): check theorem number, file:line and whether "without using Wang–Zahl or OpenAI's own Kakeya paper" is right.
+(6) Item 7 (285): is "the theorem implies the base group is not a-T-menable (Higson–Kasparov)" correctly stated for a torsion-free counterexample to Kadison–Kaplansky?
+(7) Is any question already answered in the literature or by a trivial observation, so that asking it would be embarrassing? Is any important expert question from the reports missing (at most two suggestions)?
+(8) Tone and overstatement over the whole page and the new sentence in public_repo/README.md ("If you are a specialist: ...").
+
+If you find a concrete error, give the exact file:line and why. If you cannot, say so plainly; do not manufacture one.
+Output in Japanese, plain language, concise: for each of (1)-(8) give 判定（正しい / 一部正しい / 誤り / 確認できず）, 根拠（file:line you actually read）, 直すべき文面（英語で、そのまま差し替えられる形）, then a short overall summary.
