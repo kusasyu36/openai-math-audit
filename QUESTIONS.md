@@ -1,6 +1,6 @@
 # Questions for experts
 
-These are specific questions arising from our audit of [openai/math](https://github.com/openai/math), not claims that the manuscripts contain errors. The audits were produced by AI agents under the direction of a non-mathematician (see the README). A short correction, reference, or assessment of any stated implication would be valuable; please open an issue on this repository.
+These are specific questions arising from our audit (revised 25 November 2026) of [openai/math](https://github.com/openai/math), not claims that the manuscripts contain errors. The audits were produced by AI agents under the direction of a non-mathematician (see the README). A short correction, reference, or assessment of any stated implication would be valuable; please open an issue on this repository.
 
 In every case the supporting detail is in the report named at the end of the item. Reports are in Japanese; file and line references to the LaTeX sources of openai/math (commit `7ef5c0c`, 26 October 2026) are language-independent.
 
@@ -13,18 +13,16 @@ Result 011 (Poisson–Dirichlet law for the prime factors of p − 1) proves a m
 
 Does this marked, fixed-residue-class consequence follow, and is a comparable estimate known? We did not identify one. The step that would carry it is the coefficient-independent moment bound, Proposition 4.1 (`04-memory.tex:11–35`), which we checked only in part. → `audits/011/REPORT.md`, §2.
 
-**2. Is Theorem 1.2 of result 029 correct?**
-It asserts that finite-order Hecke L-functions over cyclotomic fields containing μ₁₂ have no zeros in Re s > 1 − 10⁻⁶. This implies a quasi-Riemann hypothesis for ζ(s). Two things rest on it:
-- result 029 itself (Artin's primitive-root conjecture, lower bound x/(log x)²), which also imports Theorem 3.1 of 011 verbatim;
-- result 142 (deterministic polynomial factorization over prime fields "without GRH"), which quotes it as Theorem 11.1 without proof (`10-analytic.tex:4–18`).
+**2. Can the zero-free input for results 029 and 142 be independently assessed?**
+Theorem 1.2 of result 029 asserts that finite-order Hecke L-functions over cyclotomic fields containing μ₁₂ have no zeros in Re s > 1 − 10⁻⁶. Result 029 (Artin's primitive-root conjecture, lower bound x/(log x)²) and result 142 (deterministic polynomial factorization over prime fields "without GRH", which quotes it as Theorem 11.1 without proof, `10-analytic.tex:4–18`) both rest on it.
+If correct, [Axiom Math's Lean formalization](https://github.com/AxiomMath/DedekindZetaZeroFree) (October 2026; Cureton–Thorner, with AxiomProver) of a 31/32 zero-free half-plane for all Dedekind zeta functions and finite-order Hecke L-functions supplies the input required by both papers. We have not built it and are not aware of a public review by a domain expert. It reuses analytic number theory code from openai/math, so it is not known to be independent of OpenAI's argument.
+Separately, our audits have not verified result 029's own proof of Theorem 1.2. Neither our agent nor a second model from a different developer located an error in it. The places we could not check are the specialization of Kazhdan–Patterson to the paper's conventions, the unfolding and interchange steps, and the reflection step (Lemma 6.3). → `audits/rh_alpoge/REPORT.md`, `audits/029core/REPORT.md`.
 
-Neither our agent nor a second model from a different developer located an error, but neither verified the argument. The places we could not check are: the specialization of Kazhdan–Patterson to the paper's conventions; the unfolding and interchange steps; and the reflection step (Lemma 6.3). The margins are 1/6000 on the reflection side and about 0.00086 before small power losses for the relevant non-principal rows (`06-zero-free.tex:650–683`). An additional loss of 10⁻³ at either of these estimates would invalidate the stated exponent bookkeeping. → `audits/029core/REPORT.md`.
+**3. Correction concerning the q = 2 case of result 142.**
+An earlier version of this page asked whether Proposition 11.3 of 142 (`10-analytic.tex:91–98`) with n = q = 2 gives a polylogarithmic bound for the least prime quadratic non-residue. Assuming result 003's formalized uniform 7/8 theorem for Dirichlet L-functions (`lean/ComparatorChallenges/DirichletSevenEighths.lean` in openai/math), the zero-free hypotheses needed for this case already follow, since Q(μ₂₄, √p) is abelian over Q. The stated polylogarithmic bound therefore requires no stronger zero-free input than 003. This does not verify the remaining argument of Proposition 11.3. We withdraw the question; we and our reviewing model had missed this. → `audits/rh_alpoge/REPORT.md`.
 
-**3. A consequence of result 142 that the paper does not state.**
-Taking n = q = 2 in Proposition 11.3 of 142 (`10-analytic.tex:91–98`) gives an auxiliary prime ℓ ≤ c₀(23 + 3⌈log₂ p⌉)^{20000000} with ℓ ≡ 1 (mod 24) and (p/ℓ) = −1. Quadratic reciprocity gives (ℓ/p) = −1. Thus, if the proposition is correct, the least prime quadratic non-residue is ≪ (log p)^{20000000} for every sufficiently large prime p. The proposition uses the zero-free theorem of item 2. Is this reading right? → `audits/142/REPORT.md`.
-
-**4. Is the algebraic reduction of result 142 valid on its own?**
-Does Theorem 1.2 of result 142 correctly reduce deterministic polynomial-time factorization to auxiliary primes of polynomial numerical size, independently of result 029? In particular, is the resulting polynomial-time algorithm under GRH valid? It would already improve on Evdokimov's quasi-polynomial bound. → `audits/142/REPORT.md`.
+**4. Is the algebraic reduction of result 142 valid?**
+Does Theorem 1.2 of result 142 correctly give deterministic factorization in time polynomial in B and the numerical sizes of the supplied auxiliary primes? This reduction is independent of result 029's zero-free proof and remains to be assessed even if Axiom Math's formalization supplies the analytic input. If valid, the resulting polynomial-time algorithm under GRH would already improve on Evdokimov's quasi-polynomial bound. → `audits/142/REPORT.md`.
 
 ## Arithmetic geometry
 
